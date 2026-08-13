@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "summer_beach",
+  "name": "夏日海滩",
+  "version": "1.0.0",
+  "author": "攻略图生成器",
+  "description": "晴空、柔云、阳光、气泡与海浪纹理的清爽夏日主题。",
+  "engine_min_version": "31.3",
+  "entry_config": "theme.json",
+  "preview": "preview.png",
+  "variants": [
+    {
+      "id": "sea_salt_blue",
+      "name": "海盐蓝",
+      "description": "清爽浅蓝与海盐白",
+      "config": "variants/sea_salt_blue.json",
+      "preview": "previews/sea_salt_blue.png"
+    },
+    {
+      "id": "lemon_sun",
+      "name": "柠檬阳光",
+      "description": "明亮柠檬黄与青蓝",
+      "config": "variants/lemon_sun.json",
+      "preview": "previews/lemon_sun.png"
+    },
+    {
+      "id": "sunset_coral",
+      "name": "落日珊瑚",
+      "description": "珊瑚橙、粉色与暮色蓝",
+      "config": "variants/sunset_coral.json",
+      "preview": "previews/sunset_coral.png"
+    }
+  ]
+}

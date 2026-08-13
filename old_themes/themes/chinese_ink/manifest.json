@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "chinese_ink",
+  "name": "中国水墨",
+  "version": "1.0.0",
+  "author": "攻略图生成器",
+  "description": "宣纸、墨迹、远山、竹影与印章风格的中国水墨主题。所有配色均手动选择。",
+  "engine_min_version": "31.5",
+  "entry_config": "theme.json",
+  "preview": "preview.png",
+  "variants": [
+    {
+      "id": "bamboo_green",
+      "name": "竹影青",
+      "description": "偏青墨色与竹影宣纸",
+      "config": "variants/bamboo_green.json",
+      "preview": "previews/bamboo_green.png"
+    },
+    {
+      "id": "mist_gray",
+      "name": "烟雨灰",
+      "description": "清淡灰墨与雨雾山影",
+      "config": "variants/mist_gray.json",
+      "preview": "previews/mist_gray.png"
+    },
+    {
+      "id": "cinnabar_ochre",
+      "name": "朱砂赭",
+      "description": "赭石暖调与朱砂印记",
+      "config": "variants/cinnabar_ochre.json",
+      "preview": "previews/cinnabar_ochre.png"
+    }
+  ]
+}

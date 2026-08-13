@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "handwritten_notes",
+  "name": "手绘玩家笔记",
+  "version": "1.6.3",
+  "author": "攻略图生成器 V35.38",
+  "description": "三种分化的手绘纸张语言：米白铅笔作战手账+红色行动标记、黑笔原稿+单一「阅」章红批、泛黄低清旧印刷。",
+  "engine_min_version": "34.2",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "default",
+      "name": "米白手账·红笔作战稿",
+      "description": "米白点阵手账，以石墨铅笔色作为正文和标题；红色仅用于行动箭头、节点、圈注与重点强调。",
+      "config": "variants/default.json"
+    },
+    {
+      "id": "campus_white",
+      "name": "白纸审阅稿·黑笔红批",
+      "description": "白纸蓝线本，正文与行动信息用黑笔；红色只作为勾选、重点、审阅边栏与单一「阅」章。",
+      "config": "variants/campus_white.json"
+    },
+    {
+      "id": "retro_lowprint",
+      "name": "泛黄讲义·低清旧印刷",
+      "description": "泛黄纸、半色调网点、轻微油墨错位与折痕，保留旧讲义/复印件质感。",
+      "config": "variants/retro_lowprint.json"
+    }
+  ],
+  "preview": "preview.png"
+}

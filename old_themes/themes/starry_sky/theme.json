@@ -1,0 +1,234 @@
+{
+  "surface_mode": "dark",
+  "renderer": {
+    "style": "starry_sky",
+    "effects_version": 1
+  },
+  "colors": {
+    "primary": "#7C6EE6",
+    "dark": "#F0F2FF",
+    "light": "#282E5B",
+    "chip": "#343B6D",
+    "background": "#0B0F27",
+    "background_top": "#0B102A",
+    "background_center": "#17183C",
+    "background_bottom": "#241842",
+    "text": "#EDF0FF",
+    "secondary_text": "#B9C0E4",
+    "title_text": "#FFFFFF",
+    "panel": "#151A38",
+    "panel_secondary": "#121731",
+    "card": "#1D2449",
+    "card_secondary": "#242B55",
+    "card_highlight": "#30255E",
+    "card_border": "#5F69A9",
+    "border": "#5F69A9",
+    "day_header": "#292F5D",
+    "day_header_text": "#F0F2FF",
+    "kpi_card": "#1D2449",
+    "kpi_border": "#6671B4",
+    "kpi_label": "#DCE1FF",
+    "kpi_value": "#FFFFFF",
+    "icon_circle": "#2A315F",
+    "icon_circle_border": "#6C77BD",
+    "reward_card": "#20274E",
+    "metric_card": "#252D59",
+    "metric_border": "#5966A6",
+    "metric_text": "#F5F6FF",
+    "footer_left": "#181E43",
+    "footer_center": "#252B59",
+    "footer_right": "#171C3D",
+    "footer_text": "#DDE2FF",
+    "footer_number": "#FFFFFF",
+    "glow_1": "#8B71FF",
+    "glow_2": "#4CA9FF",
+    "nebula_1": "#6848C8",
+    "nebula_2": "#B45DCA",
+    "nebula_3": "#3478CD",
+    "star_1": "#FFFFFF",
+    "star_2": "#C7E7FF",
+    "star_3": "#E5D8FF"
+  },
+  "background": {
+    "type": "vertical_gradient",
+    "top": "$colors.background_top",
+    "center": "$colors.background_center",
+    "bottom": "$colors.background_bottom",
+    "split": 0.44
+  },
+  "effects": [
+    {
+      "type": "radial_glow",
+      "position": [
+        0.18,
+        0.14
+      ],
+      "radius": 420,
+      "color": "$colors.glow_1",
+      "opacity": 0.18
+    },
+    {
+      "type": "radial_glow",
+      "position": [
+        0.84,
+        0.3
+      ],
+      "radius": 380,
+      "color": "$colors.glow_2",
+      "opacity": 0.11
+    },
+    {
+      "type": "radial_glow",
+      "position": [
+        0.56,
+        0.78
+      ],
+      "radius": 340,
+      "color": "$colors.nebula_2",
+      "opacity": 0.07
+    },
+    {
+      "type": "nebula",
+      "count": 6,
+      "radius": [
+        240,
+        500
+      ],
+      "blur": 122,
+      "opacity": [
+        12,
+        30
+      ],
+      "colors": [
+        "$colors.nebula_1",
+        "$colors.nebula_2",
+        "$colors.nebula_3"
+      ]
+    },
+    {
+      "type": "nebula",
+      "count": 10,
+      "radius": [
+        120,
+        260
+      ],
+      "blur": 72,
+      "opacity": [
+        14,
+        38
+      ],
+      "colors": [
+        "$colors.nebula_1",
+        "$colors.nebula_2",
+        "$colors.nebula_3"
+      ]
+    },
+    {
+      "type": "stars",
+      "count": 880,
+      "size": [
+        1,
+        1
+      ],
+      "opacity": [
+        10,
+        34
+      ],
+      "glow": 0,
+      "colors": [
+        "$colors.star_1",
+        "$colors.star_2",
+        "$colors.star_3"
+      ]
+    },
+    {
+      "type": "stars",
+      "count": 300,
+      "size": [
+        1,
+        2
+      ],
+      "opacity": [
+        45,
+        120
+      ],
+      "glow": 0,
+      "y_range": [
+        0.0,
+        0.92
+      ],
+      "colors": [
+        "$colors.star_1",
+        "$colors.star_2",
+        "$colors.star_3"
+      ]
+    },
+    {
+      "type": "stars",
+      "count": 92,
+      "size": [
+        2,
+        3
+      ],
+      "opacity": [
+        120,
+        230
+      ],
+      "glow": 2,
+      "y_range": [
+        0.02,
+        0.76
+      ],
+      "colors": [
+        "$colors.star_1",
+        "$colors.star_2",
+        "$colors.star_3"
+      ]
+    },
+    {
+      "type": "stars",
+      "count": 24,
+      "size": [
+        3,
+        4
+      ],
+      "opacity": [
+        150,
+        240
+      ],
+      "glow": 3,
+      "y_range": [
+        0.04,
+        0.56
+      ],
+      "colors": [
+        "$colors.star_1",
+        "$colors.star_2",
+        "$colors.star_3"
+      ]
+    },
+    {
+      "type": "shooting_stars",
+      "count": 4,
+      "length": [
+        90,
+        180
+      ],
+      "opacity": 130,
+      "color": "$colors.star_2"
+    },
+    {
+      "type": "vignette",
+      "opacity": 86,
+      "inset": 0.78,
+      "color": "#02030B"
+    }
+  ],
+  "risk": {
+    "primary": "#D5658F",
+    "panel": "#321D3B",
+    "bubble": "#432241",
+    "border": "#8D4E78",
+    "text": "#FFD9EB"
+  }
+}

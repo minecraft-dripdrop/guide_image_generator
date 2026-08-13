@@ -1,0 +1,17 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "jrpg_90s"
+  },
+  "colors": {
+    "background": "#D9C79B",
+    "text": "#1D1B16",
+    "primary": "#2D5E9E",
+    "dark": "#172F52",
+    "light": "#EADFB9",
+    "chip": "#B69A5F",
+    "panel": "#F3E8C8",
+    "accent": "#A52A2A"
+  },
+  "effects": []
+}

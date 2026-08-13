@@ -1,0 +1,135 @@
+{
+  "surface_mode": "dark",
+  "renderer": {
+    "style": "deep_sea",
+    "effects_version": 2
+  },
+  "colors": {
+    "primary": "#1DB7C8",
+    "dark": "#DDFBFF",
+    "light": "#173F50",
+    "chip": "#1D5263",
+    "background": "#032132",
+    "background_top": "#0A5870",
+    "background_center": "#07384D",
+    "background_bottom": "#021725",
+    "text": "#E9FAFC",
+    "secondary_text": "#A8D5DB",
+    "title_text": "#FFFFFF",
+    "panel": "#0D3040",
+    "panel_secondary": "#092838",
+    "card": "#123B4B",
+    "card_secondary": "#174756",
+    "card_highlight": "#145466",
+    "card_border": "#31899A",
+    "border": "#31899A",
+    "day_header": "#14566A",
+    "day_header_text": "#E9FCFF",
+    "kpi_card": "#123D4E",
+    "kpi_border": "#3A91A1",
+    "kpi_label": "#CFEFF2",
+    "kpi_value": "#FFFFFF",
+    "icon_circle": "#174B5B",
+    "icon_circle_border": "#42A6B2",
+    "reward_card": "#123D4D",
+    "metric_card": "#174A59",
+    "metric_border": "#398A99",
+    "metric_text": "#EFFDFF",
+    "footer_left": "#062B3B",
+    "footer_center": "#104657",
+    "footer_right": "#052534",
+    "footer_text": "#C9F2F4",
+    "footer_number": "#FFFFFF",
+    "ray": "#B5FAFF",
+    "bubble": "#B9FBFF",
+    "particle": "#76D5DB"
+  },
+  "background": {
+    "type": "vertical_gradient",
+    "top": "$colors.background_top",
+    "center": "$colors.background_center",
+    "bottom": "$colors.background_bottom",
+    "split": 0.45
+  },
+  "effects": [
+    {
+      "type": "light_rays",
+      "count": 8,
+      "origin": [
+        0.48,
+        -0.05
+      ],
+      "spread": 0.72,
+      "color": "$colors.ray",
+      "opacity": [
+        7,
+        20
+      ]
+    },
+    {
+      "type": "radial_glow",
+      "position": [
+        0.22,
+        0.18
+      ],
+      "radius": 370,
+      "color": "#3DE0E5",
+      "opacity": 0.1
+    },
+    {
+      "type": "particles",
+      "count": 440,
+      "size": [
+        1,
+        2
+      ],
+      "opacity": [
+        12,
+        55
+      ],
+      "colors": [
+        "$colors.particle",
+        "#FFFFFF"
+      ],
+      "blur": 0.4
+    },
+    {
+      "type": "bubbles",
+      "count": 70,
+      "radius": [
+        3,
+        18
+      ],
+      "opacity": [
+        25,
+        95
+      ],
+      "color": "$colors.bubble",
+      "y_range": [
+        0.05,
+        0.96
+      ]
+    },
+    {
+      "type": "pattern",
+      "kind": "scales",
+      "spacing": 90,
+      "size": 46,
+      "color": "#63DDE2",
+      "opacity": 10
+    },
+    {
+      "type": "vignette",
+      "opacity": 110,
+      "inset": 0.72,
+      "color": "#010B13"
+    }
+  ],
+  "risk": {
+    "primary": "#E17784",
+    "panel": "#30242D",
+    "bubble": "#402A33",
+    "border": "#875A66",
+    "text": "#FFE0E4"
+  }
+}

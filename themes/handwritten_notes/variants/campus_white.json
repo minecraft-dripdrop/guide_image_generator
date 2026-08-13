@@ -1,0 +1,31 @@
+{
+  "renderer": {
+    "print_effect": "",
+    "font_override_path": "",
+    "special_day_circle_color": "#D54843",
+    "note_mode": "review_markup",
+    "section_highlighter": "#FFE1DE",
+    "review_highlighter": "#FFD7D2",
+    "circle_special_days": true
+  },
+  "colors": {
+    "background": "#E8E9E7",
+    "text": "#202426",
+    "primary": "#D43D37",
+    "dark": "#252A2D",
+    "light": "#FFF0A6",
+    "paper": "#FFFEFA",
+    "line": "#B9D8E4",
+    "line_dark": "#8CAEBB",
+    "margin": "#D98986",
+    "separator": "#BBC5C9",
+    "highlighter": "#FFF096",
+    "reward_note": "#FFFEFA",
+    "tape": "#DED9CE",
+    "chip": "#E7ECEE",
+    "title_highlighter": "#FFFFFF",
+    "day_highlighter": "#FFFFFF",
+    "special_highlighter": "#FFD7D2",
+    "review_highlighter": "#FFD7D2"
+  }
+}

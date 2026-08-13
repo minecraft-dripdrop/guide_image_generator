@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "arcade_pinball",
+  "name": "街机弹珠",
+  "version": "1.4.0",
+  "author": "攻略图生成器 V35.74",
+  "description": "街机弹珠 V35.74：奖励名称固定单行、数量贴最右；D1-D7 剩余/期望栏统一图标框、图标尺寸、字号与行高，长文本只省略不单独缩小；加群信息前加入方形 QQ 群头像并继续使用大字号。",
+  "engine_min_version": "35.7",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "classic_red",
+      "name": "经典街机·红柜弹珠",
+      "description": "磨损红色街机柜、暖黄灯牌、金属轨道与经典弹珠台。",
+      "config": "variants/classic_red.json"
+    },
+    {
+      "id": "neon_night",
+      "name": "午夜霓虹·夜场弹珠",
+      "description": "紫黑机柜、青粉霓虹、发光轨道与夜场街机氛围。",
+      "config": "variants/neon_night.json"
+    },
+    {
+      "id": "steampunk_gears",
+      "name": "蒸汽齿轮·黄铜弹珠",
+      "description": "黄铜、黑铁、铜管、齿轮、铆钉和旧机械质感；仍保持真正弹珠台结构与大字号攻略区。",
+      "config": "variants/steampunk_gears.json"
+    }
+  ]
+}

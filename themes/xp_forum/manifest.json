@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "xp_forum",
+  "name": "Windows XP论坛精华帖",
+  "version": "1.6.0",
+  "author": "攻略图生成器 V35.32",
+  "description": "2000年代经典论坛版式；保留三种差异明显的蓝、银灰、靛蓝论坛配色。",
+  "engine_min_version": "34.2",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "default",
+      "name": "XP 经典蓝",
+      "description": "当前 XP 风格的经典蓝白配色。",
+      "config": "variants/default.json",
+      "preview": "previews/default.png"
+    },
+    {
+      "id": "phpbb_subsilver",
+      "name": "phpBB 银灰",
+      "description": "参考 phpBB 2 subSilver 的 #006699 链接、银灰行与浅灰背景。",
+      "config": "variants/phpbb_subsilver.json",
+      "preview": "previews/phpbb_subsilver.png"
+    },
+    {
+      "id": "vbulletin3",
+      "name": "vBulletin 靛蓝",
+      "description": "参考 vBulletin 3 默认样式的深蓝边框、蓝灰标题栏和淡紫蓝交替底色。",
+      "config": "variants/vbulletin3.json",
+      "preview": "previews/vbulletin3.png"
+    }
+  ],
+  "preview": "preview.png"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "jrpg_90s",
+  "name": "90年代日系RPG攻略本",
+  "version": "1.0.0",
+  "author": "攻略图生成器 V33",
+  "description": "90年代日系RPG攻略本：粗线窗口、状态栏、星号与旧纸张。",
+  "engine_min_version": "33.0",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "default",
+      "name": "王道蓝金",
+      "config": "variants/default.json"
+    }
+  ],
+  "preview": "preview.png"
+}

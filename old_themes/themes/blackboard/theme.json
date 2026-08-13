@@ -1,0 +1,17 @@
+{
+  "surface_mode": "dark",
+  "renderer": {
+    "style": "blackboard"
+  },
+  "colors": {
+    "background": "#173F36",
+    "text": "#F4F1DF",
+    "primary": "#F2D36A",
+    "dark": "#E8E3D0",
+    "light": "#BBD9C2",
+    "chip": "#70A58D",
+    "chalk": "#F4F1DF",
+    "red": "#F09A88"
+  },
+  "effects": []
+}

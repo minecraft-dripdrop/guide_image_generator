@@ -1,0 +1,207 @@
+{
+  "watermark": "欢迎加入冒险者日记萌新交流群：1040094624",
+  "watermark_group_icon": "assets/qq/qq_group_avatar.jpg",
+  "watermark_qr_icon": "assets/qq/qq_group_qr.png",
+  "watermark_group_icon_size": 30,
+  "author": {
+    "prefix": "攻略制作",
+    "separator": " · ",
+    "text": "球球别打我了",
+    "qq_avatar": "assets/qq/author_qq.jpg",
+    "show_avatar": true,
+    "avatar_size": 50,
+    "gap": 11,
+    "font_size": 24,
+    "min_font_size": 18,
+    "bold": false,
+    "color": "auto_dark",
+    "shadow": false,
+    "avatar_frame": {
+      "ring_width": 0,
+      "shadow": false,
+      "supersample": 4,
+      "middle_ring_width": 0,
+      "inner_ring_width": 0,
+      "gap": 0,
+      "highlight": false
+    },
+    "capsule_gap": 16,
+    "capsule_height": 44,
+    "avatar_overhang": 5,
+    "avatar_overlap": 9
+  },
+  "avatar_frame": {
+    "ring_width": 0,
+    "shadow": false,
+    "supersample": 4,
+    "middle_ring_width": 0,
+    "inner_ring_width": 0,
+    "gap": 0,
+    "highlight": false
+  },
+  "reward_text_follow_quality": true,
+  "reward_icon_frame_inner_inset": 14,
+  "reward_icon_plain_inner_inset": 10,
+  "group_footer": {
+    "height": 30,
+    "icon_size": 44,
+    "content_gap": 12,
+    "left_decoration": "assets/grass_left_1.png",
+    "right_decoration": "",
+    "mirror_left_to_right": true,
+    "decoration_width": 150,
+    "decoration_height": 60
+  },
+  "font_regular": "fonts/LXGWWenKai-Regular.ttf",
+  "font_bold": "fonts/LXGWWenKai-Bold.ttf",
+  "budget_resources": [
+    {
+      "name": "钻石",
+      "aliases": [
+        "钻",
+        "钻石"
+      ],
+      "icon": "assets/gem_purple.png"
+    },
+    {
+      "name": "翡翠",
+      "aliases": [
+        "翡翠"
+      ],
+      "icon": "assets/icon_green_diamond.png"
+    }
+  ],
+  "item_rank_badges": {
+    "S": {
+      "path": "assets/item_rank_badges/quality_s.png",
+      "width_ratio": 0.38,
+      "max_height_ratio": 0.32,
+      "offset_x": -2,
+      "offset_y": 2,
+      "offset_x_ratio": -0.03,
+      "offset_y_ratio": 0.03
+    },
+    "SS": {
+      "path": "assets/item_rank_badges/quality_ss.png",
+      "width_ratio": 0.46,
+      "max_height_ratio": 0.34,
+      "offset_x": -2,
+      "offset_y": 2,
+      "offset_x_ratio": -0.03,
+      "offset_y_ratio": 0.03
+    },
+    "SSS": {
+      "path": "assets/item_rank_badges/quality_sss.png",
+      "width_ratio": 0.54,
+      "max_height_ratio": 0.36,
+      "offset_x": -2,
+      "offset_y": 2,
+      "offset_x_ratio": -0.03,
+      "offset_y_ratio": 0.03
+    }
+  },
+  "item_fragment_badge": {
+    "text": "碎",
+    "path": "assets/item_rank_badges/fragment_flag.png",
+    "size_ratio": 0.3,
+    "max_size_ratio": 0.34,
+    "offset_x": 2,
+    "offset_y": -2,
+    "fill": "#5B3A8A",
+    "outline": "#F1DDFF",
+    "text_color": "#FFFFFF"
+  },
+  "featured_items": [
+    {
+      "name": "始祖之怒",
+      "icon": "assets/reward/icon_artifact_shizuzhinu.png",
+      "quality": "chaoyue"
+    },
+    {
+      "name": "超越万能神器核心碎片",
+      "icon": "assets/reward/icon_common_Artifact_Color.png",
+      "quality": "chaoyue",
+      "is_fragment": true
+    },
+    {
+      "name": "至尊自选箱",
+      "icon": "assets/reward/icon_chest_pet_huodong.png",
+      "quality": "pink"
+    },
+    {
+      "name": "觉醒核心自选箱",
+      "icon": "assets/reward/icon_chest_buchang.png",
+      "quality": "red"
+    },
+    {
+      "name": "高级炼金试剂",
+      "icon": "assets/reward/gem_gaojishiji.png",
+      "quality": "chaoyue"
+    },
+    {
+      "name": "万能英杰碎片",
+      "icon": "assets/reward/icon_common_ChuanChengJI.png",
+      "quality": "purple",
+      "is_fragment": true
+    },
+    {
+      "name": "SS限定烙印自选箱",
+      "icon": "assets/reward/icon_chest_ruin_huodong.png",
+      "quality": "purple",
+      "rank_badge": "SS"
+    },
+    {
+      "name": "橙秘宝自选箱",
+      "icon": "assets/reward/icon_chest_collection_chengzixuan.png",
+      "quality": "orange"
+    },
+    {
+      "name": "神兵魔方",
+      "icon": "assets/reward/icon_SSMake.png",
+      "quality": "red"
+    },
+    {
+      "name": "超越万能坐骑核心碎片",
+      "icon": "assets/reward/icon_common_Mount_Color.png",
+      "quality": "chaoyue",
+      "is_fragment": true
+    },
+    {
+      "name": "神话万能秘宝碎片",
+      "icon": "assets/reward/icon_common_MiBao_Red.png",
+      "quality": "red",
+      "is_fragment": true
+    },
+    {
+      "name": "S装备自选箱",
+      "icon": "assets/reward/icon_chest_equip.png",
+      "quality": "purple",
+      "rank_badge": "S"
+    }
+  ],
+  "quality_borders": {
+    "white": "assets/frame/item_frame_1.png",
+    "green": "assets/frame/item_frame_2.png",
+    "blue": "assets/frame/item_frame_3.png",
+    "purple": "assets/frame/item_frame_4.png",
+    "orange": "assets/frame/item_frame_5.png",
+    "red": "assets/frame/item_frame_6.png",
+    "pink": "assets/frame/item_frame_7.png",
+    "chaoyue": "assets/frame/item_frame_8.png",
+    "jueshi": "assets/frame/item_frame_9.png"
+  },
+  "performance": {
+    "png_optimize": false,
+    "png_compress_level": 3,
+    "recursive_path_fallback": true,
+    "print_timing": true
+  },
+  "reward_item_visual": {
+    "icon_ratio_in_frame": 0.75,
+    "icon_ratio_plain": 0.92,
+    "rank_badge_offset_x_ratio": -0.03,
+    "rank_badge_offset_y_ratio": 0.03,
+    "fragment_badge_offset_x_ratio": -0.03,
+    "fragment_badge_offset_y_ratio": -0.03
+  }
+}

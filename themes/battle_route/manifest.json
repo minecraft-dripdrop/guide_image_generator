@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "battle_route",
+  "name": "战术作战路线图",
+  "version": "2.1.0",
+  "author": "攻略图生成器 V35.49",
+  "description": "战术作战路线图：资源情报与补给便签继续统一尺寸/位置；资源情报内的物品图标、名称和数量显著放大并重新对齐，保留兑换/罗盘下移与 Day7 终点避让。",
+  "engine_min_version": "34.2",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "parchment",
+      "name": "复古军用作战图",
+      "description": "低饱和牛皮纸、旧地图纹理、橄榄绿档案卡、做旧红色路线与军事点位标记。",
+      "config": "variants/parchment.json"
+    },
+    {
+      "id": "night_recon",
+      "name": "夜间侦察作战图",
+      "description": "煤黑绿夜间地图纸、浅色测绘线、坐标十字与方位圈、夜战侦察档案卡；红色只用于重点路线/特殊节点。",
+      "config": "variants/night_recon.json"
+    },
+    {
+      "id": "blueprint_command",
+      "name": "蓝图战术指挥图",
+      "description": "海军蓝晒图纸、象牙白/浅青测绘线、工程标尺与登记十字；Day 卡改成描图纸制图批注，情报卡使用切角技术档案结构。",
+      "config": "variants/blueprint_command.json"
+    }
+  ]
+}

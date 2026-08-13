@@ -1,0 +1,31 @@
+{
+  "renderer": {
+    "title_prefix": "战术档案",
+    "stamp_text": "战术资料\n限内部阅览",
+    "file_id": "OPS-0726"
+  },
+  "colors": {
+    "background": "#0D120C",
+    "card": "#1A2418",
+    "panel": "#141C13",
+    "folder_back": "#0A0F09",
+    "folder_mid": "#182117",
+    "red": "#879A58",
+    "red_dark": "#667743",
+    "red_deep": "#3E4D2C",
+    "paper": "#DFE2C9",
+    "ink": "#EEF1DF",
+    "text": "#EEF1DF",
+    "muted": "#AEB9A0",
+    "line": "#40503A",
+    "border": "#050805",
+    "shadow_edge": "#020402",
+    "edge": "#2B3A28",
+    "rule": "#2F472D",
+    "header_ink": "#10160E",
+    "primary": "#879A58",
+    "dark": "#0D120C",
+    "light": "#DFE2C9",
+    "chip": "#40503A"
+  }
+}

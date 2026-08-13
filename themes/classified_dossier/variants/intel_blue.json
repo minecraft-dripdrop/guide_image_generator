@@ -1,0 +1,31 @@
+{
+  "renderer": {
+    "title_prefix": "情报档案",
+    "stamp_text": "情报资料\n限制流转",
+    "file_id": "INT-0726"
+  },
+  "colors": {
+    "background": "#0A1118",
+    "card": "#151F29",
+    "panel": "#101820",
+    "folder_back": "#080E14",
+    "folder_mid": "#121B24",
+    "red": "#4CB6D8",
+    "red_dark": "#2E89A8",
+    "red_deep": "#1B596E",
+    "paper": "#DCE6E9",
+    "ink": "#EAF4F6",
+    "text": "#EAF4F6",
+    "muted": "#9FB2BA",
+    "line": "#344B57",
+    "border": "#04080B",
+    "shadow_edge": "#020405",
+    "edge": "#243942",
+    "rule": "#173D4A",
+    "header_ink": "#0B1115",
+    "primary": "#4CB6D8",
+    "dark": "#0A1118",
+    "light": "#DCE6E9",
+    "chip": "#344B57"
+  }
+}

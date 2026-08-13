@@ -1,0 +1,111 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "xp_forum",
+    "forum_name": "冒险者日记论坛",
+    "forum_section": "攻略交流区",
+    "forum_breadcrumb": "首页  >  活动攻略  >  精华主题",
+    "toolbar_text": "主题列表 | 搜索 | 精华区 | 我的收藏",
+    "show_floor_tools": false,
+    "floor_toolbar_text": "引用 | 回复 | 评分 | 只看该作者",
+    "default_reply_avatar": "",
+    "author_title": "球球攻略组",
+    "author_badge": "主题作者 · 精华★★★",
+    "reply_badge": "楼主更新",
+    "reward_floor_title": "可兑换奖励",
+    "tip_floor_title": "注意事项",
+    "show_window_controls": true,
+    "show_post_tools": true,
+    "top_post_time": "2006-08-17 13:29",
+    "reward_post_time": "2006-08-17 13:35",
+    "tip_post_time": "2006-08-25 14:08",
+    "day_post_times": [],
+    "day_random_time_start": "04:00",
+    "day_random_time_end": "22:30",
+    "day_time_random_seed": "",
+    "reply_users": [
+      {
+        "name": "球球别打我了",
+        "title": "球球攻略组",
+        "badge": "楼主补充",
+        "avatar": "assets/qq/author_qq.jpg"
+      },
+      {
+        "name": "月半猫",
+        "title": "永不言败",
+        "badge": "活跃会员",
+        "avatar": "assets/qq/frame_miaoxingshouhuzhe.png"
+      },
+      {
+        "name": "曜金小龙女",
+        "title": "盲盒机",
+        "badge": "普通会员",
+        "avatar": "assets/qq/frame_xiaolongnvpf.png"
+      },
+      {
+        "name": "夏日卡皮晒太阳",
+        "title": "夏天结束了",
+        "badge": "高级会员",
+        "avatar": "assets/qq/frame_xiaripaidui_2026.png"
+      },
+      {
+        "name": "钻石又花没了",
+        "title": "白嫖",
+        "badge": "白嫖玩家",
+        "avatar": "assets/qq/diamond_6.png"
+      },
+      {
+        "name": "外星什么兽来着",
+        "title": "什么什么",
+        "badge": "活跃会员",
+        "avatar": "assets/qq/frame_xingjiruantangshou_2026.png"
+      },
+      {
+        "name": "我不氪金的",
+        "title": "天下第一",
+        "badge": "零氪",
+        "avatar": "assets/qq/icon_mount_bingshuangjulong.png"
+      },
+      {
+        "name": "最后一天冲冲冲",
+        "title": "小氪不算氪",
+        "badge": "月卡用户",
+        "avatar": "assets/qq/frame_none.png"
+      },
+      {
+        "name": "球球别打我了",
+        "title": "球球攻略组",
+        "badge": "楼主总结",
+        "avatar": "assets/qq/author_qq.jpg"
+      }
+    ],
+    "target_label_cn": "目标",
+    "day_action_font_size": 22,
+    "day_action_min_font_size": 16,
+    "day_action_max_lines": 8,
+    "day_action_line_gap": 5,
+    "user_panel_width": 194,
+    "post_column_gap": 18,
+    "risk_tip_font_size": 19,
+    "risk_tip_min_font_size": 15,
+    "risk_tip_line_gap": 5,
+    "user_avatar_size": 74,
+    "user_avatar_text_gap": 8,
+    "user_panel_inner_pad": 10,
+    "user_meta_line_height": 14,
+    "user_name_line_height": 18,
+    "layout_version": "xp_forum_v3_red_bold_tips"
+  },
+  "colors": {
+    "background": "#D6E3F3",
+    "text": "#222222",
+    "primary": "#2B5DAA",
+    "dark": "#173C78",
+    "light": "#E8F0FA",
+    "chip": "#B9CDE8",
+    "bar": "#4C78B8",
+    "table": "#FFFFFF",
+    "side": "#EDF3FA",
+    "link": "#174EA6"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "classic_clean",
+    "layout_version": "classic_recessed_title_no_author_restored_quality_frames_thin_choice_gradient",
+    "day_action_font_size": 24,
+    "day_action_min_font_size": 16,
+    "day_metric_font_size": 15,
+    "kpi_card_height": 94,
+    "kpi_single_row_max": 4,
+    "day_action_shared_font": true,
+    "special_day_badge": "yellow_pennant",
+    "day_metric_width": 318,
+    "compact_exchange_panel": true,
+    "compact_risk_panel": true,
+    "section_title_width": 760,
+    "section_title_height": 68,
+    "special_day_weighted_height": true,
+    "special_day_metric_fixed_size": true
+  },
+  "colors": {
+    "background": "#F3F6FA",
+    "text": "#26384A",
+    "panel": "#FFFDF7",
+    "card": "#FFFFFF",
+    "card_secondary": "#FFFDFB",
+    "primary": "#4E8C63",
+    "dark": "#2F5D40",
+    "light": "#EAF3EC",
+    "chip": "#DCEBDF"
+  },
+  "panels": {
+    "radius": 22,
+    "border_width": 2
+  },
+  "classic_art": {
+    "variant_background": {
+      "enabled": true,
+      "path": "assets/bb_capymon_bg.png",
+      "tile_width_ratio": 1.0,
+      "base_tint": 0.1,
+      "motif_dark_mix": 0.46,
+      "opacity": 0.88,
+      "stagger": false
+    },
+    "paper_watermark": {
+      "enabled": true,
+      "path": "assets/BG_LOGO.png",
+      "color": "$colors.dark",
+      "opacity": 0.045,
+      "height_ratio": 0.78,
+      "max_width_ratio": 0.2,
+      "right_margin": 18,
+      "bottom_margin": 10,
+      "normalize_source_alpha": true
+    },
+    "header_title": {
+      "auto_color": true,
+      "primary_tint": -0.44
+    }
+  },
+  "title_primary_tint": -0.44
+}

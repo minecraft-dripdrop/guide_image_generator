@@ -1,0 +1,16 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "newspaper"
+  },
+  "colors": {
+    "background": "#F1EBD9",
+    "text": "#171717",
+    "primary": "#8A1C1C",
+    "dark": "#171717",
+    "light": "#EEE5CE",
+    "chip": "#C9BEA4",
+    "rule": "#2A2A2A"
+  },
+  "effects": []
+}

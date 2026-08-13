@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "comic_storyboard",
+  "name": "漫画分镜攻略",
+  "version": "3.4.0",
+  "author": "攻略图生成器 V35.70",
+  "description": "漫画分镜：连体剩余/期望状态带保持不变；侦探真凶继续使用中央白问号，并把原先近似红圈的标记改为明显的偏移镜片、粗手柄双描边放大镜。",
+  "engine_min_version": "34.2",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "bw_red",
+      "name": "黑白漫画·红色重点",
+      "description": "日式少年漫画：黑白网点、速度线、红色特殊日。",
+      "config": "variants/bw_red.json"
+    },
+    {
+      "id": "retro_newsprint",
+      "name": "复古旧刊·泛黄彩印",
+      "description": "泛黄旧纸与做旧印刷，角色保留彩色但降低饱和度、暖色偏移并做旧刊色阶处理。",
+      "config": "variants/retro_newsprint.json"
+    },
+    {
+      "id": "noir_casefile",
+      "name": "侦探悬疑·黑红案件簿",
+      "description": "黑红白案件漫画：所有角色作为嫌疑人，真凶以黑色剪影、中央白问号、粗手柄红色放大镜和真凶章标记。",
+      "config": "variants/noir_casefile.json"
+    }
+  ]
+}

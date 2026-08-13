@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "chinese_new_year",
+  "name": "红火新年",
+  "version": "1.0.0",
+  "author": "攻略图生成器",
+  "description": "红金渐变、金粉、暗纹与烟花装饰的节庆主题。",
+  "engine_min_version": "31.3",
+  "entry_config": "theme.json",
+  "preview": "preview.png",
+  "variants": [
+    {
+      "id": "imperial_red",
+      "name": "宫廷红",
+      "description": "经典大红与鎏金",
+      "config": "variants/imperial_red.json",
+      "preview": "previews/imperial_red.png"
+    },
+    {
+      "id": "lantern_orange",
+      "name": "灯笼橙",
+      "description": "更温暖的橙红灯火",
+      "config": "variants/lantern_orange.json",
+      "preview": "previews/lantern_orange.png"
+    },
+    {
+      "id": "plum_gold",
+      "name": "梅影金",
+      "description": "偏深绛红与雅金",
+      "config": "variants/plum_gold.json",
+      "preview": "previews/plum_gold.png"
+    }
+  ]
+}

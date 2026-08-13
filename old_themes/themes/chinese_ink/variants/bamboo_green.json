@@ -1,0 +1,21 @@
+{
+  "colors": {
+    "primary": "#596858",
+    "day_header": "#687666",
+    "border": "#93897A",
+    "chip": "#DDE7DA",
+    "icon_circle": "#E5E7DD",
+    "icon_circle_border": "#97A08E",
+    "kpi_border": "#979080",
+    "metric_border": "#9A9180",
+    "card_border": "#9D9280",
+    "grain": "#7B786D",
+    "ink_1": "#324035",
+    "ink_2": "#68705F",
+    "ink_3": "#A6A291",
+    "mountain_1": "#C3C0B2",
+    "mountain_2": "#9FA293",
+    "mountain_3": "#7A806F",
+    "seal": "#B64035"
+  }
+}

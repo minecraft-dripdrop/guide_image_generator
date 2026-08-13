@@ -1,0 +1,40 @@
+{
+  "colors": {
+    "primary": "#4B8FD9",
+    "background_top": "#050B18",
+    "background_center": "#0D1A35",
+    "background_bottom": "#102B4D",
+    "panel": "#101C32",
+    "panel_secondary": "#0D182C",
+    "card": "#172743",
+    "card_secondary": "#1D3150",
+    "card_highlight": "#173C63",
+    "card_border": "#4979A9",
+    "border": "#4979A9",
+    "day_header": "#203A5B",
+    "chip": "#254463",
+    "light": "#1D3858",
+    "kpi_border": "#5688BA",
+    "icon_circle": "#203A5B",
+    "icon_circle_border": "#5D91C2",
+    "metric_card": "#1B3353",
+    "metric_border": "#4F7FAE",
+    "footer_left": "#0C1B31",
+    "footer_center": "#183453",
+    "footer_right": "#0B1A2E",
+    "glow_1": "#2F7BC5",
+    "glow_2": "#65C9FF",
+    "nebula_1": "#184984",
+    "nebula_2": "#247BB0",
+    "nebula_3": "#2D5FA2",
+    "star_2": "#BCEBFF",
+    "star_3": "#D7E8FF"
+  },
+  "risk": {
+    "primary": "#DB6C7B",
+    "panel": "#30202E",
+    "bubble": "#412632",
+    "border": "#86505E",
+    "text": "#FFD9DE"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "classic_clean",
+  "name": "经典简洁",
+  "version": "1.6.5",
+  "author": "攻略图生成器",
+  "description": "经典浅色卡片布局：经典主题专属视觉集中于 classic renderer；主标题使用深色凹槽托盘式胶囊并保留明暗分面宝石，标题字体保持现有字形但缩小并按真实墨迹宽高居中以留出四周安全边距；标题与 KPI 采用无中心节点的明显分割线；奖励保留原品质框素材并以细线渐变外框表达组合逻辑。",
+  "engine_min_version": "30.0",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "green",
+      "name": "绿色",
+      "config": "variants/green.json",
+      "legacy_number": 1
+    },
+    {
+      "id": "gold",
+      "name": "金色",
+      "config": "variants/gold.json",
+      "legacy_number": 2,
+      "description": "古铜金"
+    },
+    {
+      "id": "blue",
+      "name": "蓝色",
+      "config": "variants/blue.json",
+      "legacy_number": 3
+    },
+    {
+      "id": "purple",
+      "name": "紫色",
+      "config": "variants/purple.json",
+      "legacy_number": 4
+    },
+    {
+      "id": "red",
+      "name": "红色",
+      "config": "variants/red.json",
+      "legacy_number": 5
+    },
+    {
+      "id": "cyan",
+      "name": "青色",
+      "config": "variants/cyan.json",
+      "legacy_number": 6
+    }
+  ],
+  "preview": "preview.png"
+}
