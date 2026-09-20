@@ -1804,10 +1804,16 @@ def render(guide, out_path: Path, services):
         ry1 = body_y + i * tip_row_h
         ry2 = body_bottom if i == len(tips) - 1 else min(body_bottom, ry1 + tip_row_h)
         if note_mode == "review_markup":
-            # Source warning remains black, reviewer adds margin correction marks.
-            mark = "×" if i % 3 == 1 else "!"
-            hf.center(d, (166, ry1 + 1, 214, ry2 - 1), mark, colors["primary"], max_size=31, min_size=23, bold=True, max_lines=1)
-            hf.left(d, (226, ry1 + 1, W - 165, ry2 - 2), text, colors["text"], max_size=18, min_size=13, bold=True, max_lines=2, line_gap=2, valign="center")
+            # Review-sheet final warnings are themselves red-pen annotations:
+            # no rejection/cross symbol, and every line receives a rough red
+            # underline so the last reminder reads like an actual proof mark.
+            hf.center(d, (166, ry1 + 1, 214, ry2 - 1), "!", colors["primary"], max_size=31, min_size=23, bold=True, max_lines=1)
+            text_box = (226, ry1 + 1, W - 165, ry2 - 2)
+            hf.left(d, text_box, text, colors["primary"], max_size=18, min_size=13, bold=True, max_lines=2, line_gap=2, valign="center")
+            _rough_underline(
+                d, text_box[0] + 2, ry2 - 6, text_box[2] - 4,
+                colors["primary"], tip_rng, width=2
+            )
             hf.left(d, (W - 158, ry1 + 1, W - 108, ry2 - 2), "注意", colors["primary"], max_size=12, min_size=9, bold=True, max_lines=1, valign="center")
             _rough_line(d, [(W - 164, ry1 + 5), (W - 164, ry2 - 7)], colors["primary"], 2, tip_rng, 1, 2)
         else:

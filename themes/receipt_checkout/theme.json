@@ -1,0 +1,33 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "receipt_checkout",
+    "layout_version": "mobile_9x16_v1",
+    "canvas_aspect": "9:16",
+    "canvas_height": 1920,
+    "title_font_size": 38,
+    "day_action_font_size": 24,
+    "day_action_min_font_size": 17,
+    "risk_font_size": 18,
+    "risk_min_font_size": 15,
+    "footer_font_size": 17,
+    "footer_min_font_size": 15,
+    "reward_max_items": 4,
+    "mobile_first": true
+  },
+  "colors": {
+    "background": "#D8D4CE",
+    "paper": "#FFFDF7",
+    "ink": "#222222",
+    "muted": "#6C6861",
+    "rule": "#8F8A82",
+    "accent": "#B74338",
+    "special": "#F6E2DC",
+    "coupon": "#F9E9E4",
+    "gift": "#D1AA4C",
+    "primary": "#B74338",
+    "dark": "#222222",
+    "light": "#FFFDF7",
+    "chip": "#ECE6DE"
+  }
+}

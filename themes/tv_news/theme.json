@@ -1,0 +1,35 @@
+{
+  "surface_mode": "dark",
+  "renderer": {
+    "style": "tv_news",
+    "layout_version": "mobile_9x16_v1",
+    "canvas_aspect": "9:16",
+    "canvas_height": 1920,
+    "title_font_size": 38,
+    "day_action_font_size": 24,
+    "day_action_min_font_size": 17,
+    "risk_font_size": 18,
+    "risk_min_font_size": 15,
+    "footer_font_size": 17,
+    "footer_min_font_size": 15,
+    "reward_max_items": 4,
+    "mobile_first": true
+  },
+  "colors": {
+    "background": "#111923",
+    "navy": "#17314B",
+    "navy2": "#23445F",
+    "red": "#D62D35",
+    "white": "#F7F9FB",
+    "ink": "#172533",
+    "muted": "#6B7B89",
+    "panel": "#F5F8FA",
+    "line": "#A9B5BF",
+    "ticker": "#EAF0F4",
+    "risk": "#F9E1E2",
+    "primary": "#D62D35",
+    "dark": "#172533",
+    "light": "#F7F9FB",
+    "chip": "#DCE7EE"
+  }
+}

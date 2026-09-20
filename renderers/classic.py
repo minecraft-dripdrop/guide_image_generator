@@ -1262,6 +1262,40 @@ def render(guide, out_path: Path, services):
     days = list(guide.get("days") or [])[:7]
     n = len(days)
     row_gap = 7
+
+    # Tier progress configuration is resolved before Day heights so a single
+    # shared tier legend can reserve a small lane once instead of repeating
+    # threshold labels below all seven progress bars.
+    renderer_cfg = theme_cfg.get("renderer") if isinstance(theme_cfg.get("renderer"), dict) else {}
+    tier_progress_enabled = bool(renderer_cfg.get("day_tier_progress_enabled", False))
+    has_tier_progress_data = tier_progress_enabled and any(
+        isinstance(info.get("tier_progress"), dict) and info.get("tier_progress", {}).get("max")
+        for info in days
+    )
+    # The global ruler and the per-Day progress bar are independent.  This lets
+    # the classic theme explain the tier thresholds once, while each Day header
+    # stays lightweight and only shows the day's planned score as text.
+    tier_progress_daily_bar = bool(renderer_cfg.get("day_tier_progress_daily_bar", True))
+    has_tier_progress = has_tier_progress_data and tier_progress_daily_bar
+    tier_progress_title_score = bool(renderer_cfg.get("day_tier_progress_title_score", False))
+    tier_progress_global_legend = bool(renderer_cfg.get("day_tier_progress_global_legend", False))
+    tier_progress_global_legend_style = clean(str(renderer_cfg.get(
+        "day_tier_progress_legend_style", "boxed"
+    ) or "boxed")).lower()
+    tier_progress_legend_h = max(0, int(renderer_cfg.get("day_tier_progress_legend_height", 22) or 22)) if (has_tier_progress_data and tier_progress_global_legend) else 0
+    # The classic shared scale is a threshold lookup, not a live progress bar.
+    # For the milestone-ruler presentation reserve enough vertical room for
+    # readable labels above a thin rail instead of forcing text inside the bar.
+    if tier_progress_legend_h and tier_progress_global_legend_style in {
+        "tier_blocks_right_cap", "milestone_ruler", "milestone_ticks"
+    }:
+        milestone_h = max(60, min(96, int(renderer_cfg.get(
+            "day_tier_progress_milestone_height", 64
+        ) or 64)))
+        tier_progress_legend_h = max(tier_progress_legend_h, milestone_h)
+    if tier_progress_legend_h:
+        y += tier_progress_legend_h
+
     plan_h = max(1, plan_bottom - y)
 
     # V35.81 readability-first classic layout:
@@ -1298,6 +1332,34 @@ def render(guide, out_path: Path, services):
     )
     _draw_fixed_section_title(plan_section_top, "执行计划｜目标档位必看", primary)
 
+    # Prepare shared tier-scale data here; the styled global ruler is drawn
+    # later, after the activity-specific point icon loader is available.
+    _global_tier_legend = None
+    if tier_progress_legend_h:
+        legend_progress = next((
+            info.get("tier_progress") for info in days
+            if isinstance(info.get("tier_progress"), dict) and info.get("tier_progress", {}).get("max")
+        ), None)
+        if isinstance(legend_progress, dict):
+            legend_items = []
+            for item in legend_progress.get("thresholds") or []:
+                try:
+                    tier = int(item.get("tier", len(legend_items) + 1) or (len(legend_items) + 1))
+                    value = float(item.get("value", 0) or 0)
+                except Exception:
+                    continue
+                if value > 0:
+                    legend_items.append((tier, value))
+            try:
+                maximum = float(legend_progress.get("max", 0) or 0)
+            except Exception:
+                maximum = 0
+            if maximum > 0 and not any(abs(v - maximum) < 1e-8 for _, v in legend_items):
+                legend_items.append((len(legend_items) + 1, maximum))
+            legend_items = sorted(legend_items, key=lambda pair: (pair[1], pair[0]))
+            if legend_items and maximum > 0:
+                _global_tier_legend = {"items": legend_items, "maximum": maximum}
+
     def _readable_action_text(raw):
         raw = clean(str(raw or ""))
         if not raw:
@@ -1313,7 +1375,45 @@ def render(guide, out_path: Path, services):
     # 所有 Day 共用一套正文字号。字号由 7 天里最拥挤的那一天决定，
     # 避免 Day1 很大、Day7 因多条序号突然变小。KPI 压缩后释放的高度
     # 优先用于保住这一套统一字号。
-    renderer_cfg = theme_cfg.get("renderer") if isinstance(theme_cfg.get("renderer"), dict) else {}
+    day_head_h = (
+        max(43, min(58, int(renderer_cfg.get("day_tier_progress_header_height", 57) or 57)))
+        if has_tier_progress else 43
+    )
+    # Tier progress is deliberately a compact status element next to the target
+    # text, not a full-width header decoration.  These defaults preserve ample
+    # room on the right for the special-day pennant.
+    tier_progress_layout = clean(str(renderer_cfg.get("day_tier_progress_layout", "compact") or "compact")).lower()
+    tier_progress_width = max(250, int(renderer_cfg.get("day_tier_progress_width", 355) or 355))
+    tier_progress_min_width = max(210, int(renderer_cfg.get("day_tier_progress_min_width", 270) or 270))
+    tier_progress_title_gap = max(8, int(renderer_cfg.get("day_tier_progress_title_gap", 18) or 18))
+    tier_progress_badge_gap = max(12, int(renderer_cfg.get("day_tier_progress_badge_gap", 28) or 28))
+    tier_progress_right_margin = max(10, int(renderer_cfg.get("day_tier_progress_right_margin", 22) or 22))
+    tier_progress_reserve_badge_space = bool(renderer_cfg.get("day_tier_progress_reserve_badge_space", True))
+    tier_progress_vertical_offset = int(renderer_cfg.get("day_tier_progress_vertical_offset", 0) or 0)
+    tier_progress_track_h = max(8, min(18, int(renderer_cfg.get("day_tier_progress_track_height", 14) or 14)))
+    tier_progress_icon_size = max(16, min(36, int(renderer_cfg.get("day_tier_progress_icon_size", 23) or 23)))
+    tier_progress_supersample = max(1, min(6, int(renderer_cfg.get("day_tier_progress_supersample", 4) or 4)))
+    tier_progress_track_radius = max(0, min(6, int(renderer_cfg.get("day_tier_progress_track_radius", 2) or 2)))
+    tier_progress_score_font_size = max(8, min(14, int(renderer_cfg.get("day_tier_progress_score_font_size", 10) or 10)))
+    tier_progress_marker_size = max(1, min(5, int(renderer_cfg.get("day_tier_progress_marker_size", 2) or 2)))
+    tier_progress_label_font_size = max(7, min(12, int(renderer_cfg.get("day_tier_progress_label_font_size", 10) or 10)))
+    tier_progress_label_gap = max(1, min(8, int(renderer_cfg.get("day_tier_progress_label_gap", 3) or 3)))
+    tier_progress_label_x_offset = max(0, min(16, int(renderer_cfg.get("day_tier_progress_label_x_offset", 5) or 5)))
+    tier_progress_label_position = clean(str(renderer_cfg.get("day_tier_progress_label_position", "below_right") or "below_right")).lower()
+    tier_progress_label_vertical_offset = max(-4, min(4, int(renderer_cfg.get("day_tier_progress_label_vertical_offset", 0) or 0)))
+    tier_progress_score_vertical_offset = max(-4, min(4, int(renderer_cfg.get("day_tier_progress_score_vertical_offset", 1) or 1)))
+    tier_progress_show_max_label = bool(renderer_cfg.get("day_tier_progress_show_max_label", True))
+    tier_progress_max_label_right_padding = max(2, min(16, int(renderer_cfg.get("day_tier_progress_max_label_right_padding", 5) or 5)))
+    # The track now derives from the theme's light Day header color instead of
+    # a dark primary/dark blend. This is what keeps ordinary pale-blue days
+    # visually pale-blue instead of inserting a navy slab into every row.
+    tier_progress_track_primary_mix = max(0.0, min(1.0, float(renderer_cfg.get("day_tier_progress_track_primary_mix", 0.10) or 0.10)))
+    tier_progress_fill_primary_mix = max(0.0, min(1.0, float(renderer_cfg.get("day_tier_progress_fill_primary_mix", 0.46) or 0.46)))
+    tier_progress_track_inner_pad = max(0, min(3, int(renderer_cfg.get("day_tier_progress_track_inner_pad", 1) or 1)))
+    tier_progress_track_outline = bool(renderer_cfg.get("day_tier_progress_track_outline", True))
+    tier_progress_track_outline_width = max(1, min(2, int(renderer_cfg.get("day_tier_progress_track_outline_width", 1) or 1)))
+    tier_progress_track_outline_dark_mix = max(0.0, min(1.0, float(renderer_cfg.get("day_tier_progress_track_outline_dark_mix", 0.48) or 0.48)))
+    tier_progress_legend_font_size = max(9, min(15, int(renderer_cfg.get("day_tier_progress_legend_font_size", 12) or 12)))
     action_font_max = max(16, int(renderer_cfg.get("day_action_font_size", 24) or 24))
     action_font_min = max(13, min(action_font_max, int(renderer_cfg.get("day_action_min_font_size", 16) or 16)))
     action_line_gap = 3
@@ -1340,9 +1440,9 @@ def render(guide, out_path: Path, services):
 
     def _action_size_fits(info, size, row_height):
         has_metrics = bool(info.get("metric_items"))
-        metric_w = 318 if has_metrics else 0
+        metric_w = 420 if has_metrics else 0
         max_width = (W-48-metric_w-18 if has_metrics else W-48-22) - (48+22)
-        max_height = max(24, int(row_height) - 43 - 16)
+        max_height = max(24, int(row_height) - day_head_h - 16)
         font, lines = _wrap_action_for_size(_readable_action_text(info.get("action")), size, max_width)
         if len(lines) > action_max_lines:
             return False
@@ -1367,7 +1467,7 @@ def render(guide, out_path: Path, services):
     # Special-day rows may be taller, but their status cards no longer stretch
     # with the row.  Use the shortest Day body as the shared status-area height.
     _metric_body_candidates = [
-        max(72, int(round(h)) - 43 - 17) for h in row_heights
+        max(72, int(round(h)) - day_head_h - 17) for h in row_heights
     ] if row_heights else [96]
     shared_metric_area_h = max(78, min(108, min(_metric_body_candidates)))
 
@@ -1409,9 +1509,14 @@ def render(guide, out_path: Path, services):
                 tx += icon_size+6
             label=clean(str(item.get("label") or ""))
             value=clean(str(item.get("value") or ""))
-            shown=(label+("  "+value if value else "")).strip()
-            draw_left(d,(tx,yy1+2,b-6,yy2-2),shown,metric_fg,
-                      max_size=14,min_size=13,bold=True,max_lines=1,line_gap=0,valign="center")
+
+            # 保持旧版“图标 + 标签 + 数值”单行样式，只做轻量放大。
+            # 同时适当加宽右侧状态区，避免长标签把 18946 / 1092 等数值挤掉。
+            shown=(label+(" "+value if value else "")).strip()
+            draw_left(
+                d,(tx,yy1+2,b-5,yy2-2),shown,metric_fg,
+                max_size=15,min_size=14,bold=True,max_lines=1,line_gap=0,valign="center"
+            )
 
     watermark_cfg = classic_art.get("paper_watermark") if isinstance(classic_art.get("paper_watermark"), dict) else {}
     _paper_watermark_source = None
@@ -1468,8 +1573,1065 @@ def render(guide, out_path: Path, services):
         py = max(y1 + head_h + 2, y2 - bottom_margin - tinted.height)
         img.alpha_composite(tinted, (px, py))
 
+    tier_progress_art_cfg = (
+        classic_art.get("tier_progress")
+        if isinstance(classic_art.get("tier_progress"), dict)
+        else {}
+    )
+
+    def _load_tier_point_icon():
+        """Load the activity-specific point icon.
+
+        Primary source is the activity JSON, e.g.::
+
+            "activity_icons": {
+                "point": "assets/point/fishing_festival.png"
+            }
+
+        This keeps the icon activity-owned instead of theme-owned.  A theme-level
+        ``point_icon`` is accepted only as a backwards-compatible fallback for
+        older projects.  We intentionally DO NOT auto-pick the first image in
+        assets/point, because that folder can contain point icons for many events.
+        """
+        candidates = []
+
+        activity_icons = cfg.get("activity_icons") or {}
+        if isinstance(activity_icons, dict):
+            activity_point = _asset_path(
+                activity_icons.get("point")
+                or activity_icons.get("tier_point")
+                or activity_icons.get("progress_point")
+            )
+            if activity_point and activity_point.is_file():
+                candidates.append(activity_point)
+
+        # Backwards compatibility only. New activity configs should use
+        # activity_icons.point so different activities never share an icon by
+        # accident.
+        configured = _asset_path(tier_progress_art_cfg.get("point_icon"))
+        if configured and configured.is_file() and configured not in candidates:
+            candidates.append(configured)
+
+        for candidate in candidates:
+            try:
+                src = Image.open(candidate).convert("RGBA")
+                # Trim transparent padding so the icon itself can read clearly
+                # at phone-preview size even when the source canvas is square.
+                alpha_bbox = src.getchannel("A").getbbox()
+                if alpha_bbox:
+                    src = src.crop(alpha_bbox)
+                return src
+            except Exception:
+                continue
+        return None
+
+    _tier_point_source = _load_tier_point_icon()
+
+    def _paste_tier_point_icon(cx, cy, size):
+        if _tier_point_source is None:
+            return False
+        size = max(12, int(size))
+        src = _tier_point_source.copy()
+        src.thumbnail((size, size), Image.Resampling.LANCZOS)
+        if src.width <= 0 or src.height <= 0:
+            return False
+        px = int(round(cx - src.width / 2))
+        py = int(round(cy - src.height / 2))
+        img.alpha_composite(src, (px, py))
+        return True
+
+    def _draw_global_tier_ruler():
+        """Draw the shared tier-threshold ruler above the Day cards.
+
+        The ruler is explanatory rather than a live progress meter.  Tier labels
+        sit above exact proportional threshold nodes, joined by short dashed
+        stems.  The rail extends slightly beyond the first and last thresholds so
+        the highest tier reads as a milestone on a scale, not the physical end of
+        a completion bar.
+        """
+        if not (_global_tier_legend and tier_progress_legend_h):
+            return
+
+        items = list(_global_tier_legend.get("items") or [])
+        maximum = float(_global_tier_legend.get("maximum", 0) or 0)
+        if not items or maximum <= 0:
+            return
+
+        legend_y1 = plan_section_top + 52
+        legend_y2 = legend_y1 + tier_progress_legend_h
+        # Day cards are drawn from x=48 to x=W-48.  Matching that span makes
+        # the shared scale feel structurally attached to the card stack below.
+        left = int(renderer_cfg.get("day_tier_progress_ruler_left", 48) or 48)
+        right = W - int(renderer_cfg.get("day_tier_progress_ruler_right", 48) or 48)
+        if right - left < 220:
+            return
+
+        icon_size = max(16, min(36, int(renderer_cfg.get(
+            "day_tier_progress_legend_icon_size", tier_progress_icon_size
+        ) or tier_progress_icon_size)))
+        legend_style = clean(str(renderer_cfg.get(
+            "day_tier_progress_legend_style", "boxed"
+        ) or "boxed")).lower()
+
+        if legend_style in {"tier_blocks_right_cap", "milestone_ruler", "milestone_ticks"}:
+            # Readable milestone ruler for the classic theme.
+            #
+            # Why this is deliberately *not* a segmented progress bar:
+            # - the values are thresholds, not completion states;
+            # - each label belongs to one exact score position;
+            # - labels stay above the rail so the first short 0-210 range no
+            #   longer dictates a tiny font for the entire component.
+            milestone_label_size = max(13, min(18, int(renderer_cfg.get(
+                "day_tier_progress_milestone_font_size", 15
+            ) or 15)))
+            milestone_rail_h = max(6, min(12, int(renderer_cfg.get(
+                "day_tier_progress_milestone_rail_height", 8
+            ) or 8)))
+            milestone_node_size = max(14, min(24, int(renderer_cfg.get(
+                "day_tier_progress_milestone_node_size", 18
+            ) or 18)))
+            milestone_inner_size = max(5, min(milestone_node_size - 6, int(renderer_cfg.get(
+                "day_tier_progress_milestone_inner_size", 8
+            ) or 8)))
+            milestone_stem_gap = max(2, min(10, int(renderer_cfg.get(
+                "day_tier_progress_milestone_stem_gap", 3
+            ) or 3)))
+            milestone_stem_len = max(6, min(16, int(renderer_cfg.get(
+                "day_tier_progress_milestone_stem_length", 10
+            ) or 10)))
+
+            # The point icon acts as the visual origin of the ruler.  Start the
+            # rail at the icon centre and paste the icon afterwards, so the line
+            # appears to grow naturally from behind the icon with no visible gap.
+            if _tier_point_source is not None:
+                icon_size = max(22, min(32, icon_size))
+                icon_cx = left + icon_size / 2
+                track_x1 = icon_cx
+            else:
+                icon_size = 0
+                icon_cx = left
+                track_x1 = left + 2
+
+            node_r = milestone_node_size / 2
+            track_x2 = right - 2
+            if track_x2 - track_x1 < 220:
+                track_x1 = left + 2
+                icon_size = 0
+
+            # Thresholds use a proportional inner span, while the rail itself
+            # extends beyond the first/last marker.  Percentage-based padding
+            # scales cleanly with different output widths and avoids a hard
+            # "3980 = physical end of bar" impression.
+            track_span = max(1.0, track_x2 - track_x1)
+            marker_head_pad = max(node_r + 4, min(30.0, track_span * 0.03))
+            marker_tail_pad = max(node_r + 12, min(64.0, track_span * 0.065))
+            marker_x1 = track_x1 + marker_head_pad
+            marker_x2 = track_x2 - marker_tail_pad
+            if marker_x2 <= marker_x1:
+                marker_x1 = track_x1 + max(node_r + 2, 10)
+                marker_x2 = track_x2 - max(node_r + 2, 10)
+            marker_w = max(1.0, marker_x2 - marker_x1)
+
+            ss = tier_progress_supersample
+            local_w = max(1, right - left)
+            local_h = max(1, legend_y2 - legend_y1)
+            layer = Image.new("RGBA", (local_w * ss, local_h * ss), (0, 0, 0, 0))
+            ld = ImageDraw.Draw(layer)
+
+            def lx(x):
+                return int(round((x - left) * ss))
+
+            def ly(y):
+                return int(round((y - legend_y1) * ss))
+
+            label_font = get_font(milestone_label_size * ss, True)
+            # Rail sits in the lower third of the reserved lane.  This leaves a
+            # calm label row above it while keeping the whole module compact.
+            rail_cy = legend_y2 - max(14, int(round(milestone_node_size * 0.82)))
+            rail_y1 = rail_cy - milestone_rail_h / 2
+            rail_y2 = rail_cy + milestone_rail_h / 2
+
+            label_ink_rgb = _header_hex_rgb(renderer_cfg.get(
+                "day_tier_progress_legend_label_ink_color", "#17212B"
+            ), (23, 33, 43))
+            # Slightly deepen the rail so it stays readable in full-page
+            # mobile previews without regressing into a heavy progress bar.
+            rail_fill = _rgb_mix(card_fill, primary, 0.36)
+            rail_outline = _rgb_mix(light, primary, 0.52)
+            node_outline = _rgb_mix(primary, dark, 0.46)
+            node_fill = _rgb_mix(card_fill, primary, 0.04)
+            node_inner = _rgb_mix(primary, dark, 0.10)
+            stem_rgb = _rgb_mix(primary, dark, 0.34)
+            text_rgb = _rgb_mix(label_ink_rgb, dark, 0.14)
+
+            # Thin rounded threshold rail with a subtle upper highlight.  It is
+            # intentionally uniform: darker spans would imply completed progress.
+            rx1, rx2 = lx(track_x1), lx(track_x2)
+            ry1, ry2 = ly(rail_y1), ly(rail_y2)
+            rr = max(1, int(round(milestone_rail_h * ss / 2)))
+            ld.rounded_rectangle(
+                (rx1, ry1, rx2, ry2),
+                radius=rr,
+                fill=(*rail_fill, 235),
+                outline=(*rail_outline, 210),
+                width=max(1, ss),
+            )
+            hi_y = min(ry2 - ss, ry1 + max(1, ss))
+            ld.line(
+                (rx1 + rr, hi_y, rx2 - rr, hi_y),
+                fill=(255, 255, 255, 88),
+                width=max(1, ss),
+            )
+
+            label_top = legend_y1 + 2
+            min_text_x = lx(track_x1) - 4 * ss
+            # Keep a dedicated safe margin at the right edge so the last label
+            # never gets clipped even after adding the trailing rail tail.
+            text_safe_right = max(track_x1 + 120, right - 10)
+            max_text_x = lx(text_safe_right)
+            previous_right = None
+
+            for tier, value in items:
+                ratio = max(0.0, min(1.0, float(value) / maximum))
+                marker_x = marker_x1 + marker_w * ratio
+                marker_x_s = lx(marker_x)
+
+                label = f"{int(tier)}档 {int(round(value))}"
+                bb = ld.textbbox((0, 0), label, font=label_font)
+                tw = bb[2] - bb[0]
+                desired_x = marker_x_s - tw / 2
+                text_x = max(min_text_x, min(max_text_x - tw, desired_x))
+
+                # The first three thresholds are close together.  Preserve a
+                # small breathing gap if a future activity uses wider labels.
+                if previous_right is not None and text_x < previous_right + 8 * ss:
+                    text_x = min(max_text_x - tw, previous_right + 8 * ss)
+                previous_right = text_x + tw
+
+                text_y = ly(label_top) - bb[1]
+                preferred_text_y = ly(rail_cy - node_r - milestone_stem_gap - milestone_stem_len) - bb[3]
+                if preferred_text_y > text_y:
+                    text_y = preferred_text_y
+                ld.text(
+                    (int(round(text_x)), int(round(text_y))),
+                    label,
+                    font=label_font,
+                    fill=(*text_rgb, 255),
+                )
+
+                # Short dashed stem visually binds the label to the exact score
+                # point without making the component look like a chart grid.
+                stem_x = marker_x_s
+                stem_top = int(round(text_y + bb[3] + milestone_stem_gap * ss))
+                stem_bottom = ly(rail_cy - node_r - 3)
+                dash = max(2 * ss, 1)
+                gap = max(2 * ss, 1)
+                yy = stem_top
+                while yy < stem_bottom:
+                    y_end = min(stem_bottom, yy + dash)
+                    ld.line(
+                        (stem_x, yy, stem_x, y_end),
+                        fill=(*stem_rgb, 135),
+                        width=max(1, ss),
+                    )
+                    yy = y_end + gap
+
+                # Milestone marker: light outer disc + strong theme ring + dot.
+                outer_r = node_r * ss
+                inner_r = milestone_inner_size * ss / 2
+                cy_s = ly(rail_cy)
+                shadow_off = max(1, ss)
+                ld.ellipse(
+                    (
+                        marker_x_s - outer_r,
+                        cy_s - outer_r + shadow_off,
+                        marker_x_s + outer_r,
+                        cy_s + outer_r + shadow_off,
+                    ),
+                    fill=(0, 0, 0, 28),
+                )
+                ld.ellipse(
+                    (
+                        marker_x_s - outer_r,
+                        cy_s - outer_r,
+                        marker_x_s + outer_r,
+                        cy_s + outer_r,
+                    ),
+                    fill=(*node_fill, 255),
+                    outline=(*node_outline, 255),
+                    width=max(2 * ss, ss),
+                )
+                ld.ellipse(
+                    (
+                        marker_x_s - inner_r,
+                        cy_s - inner_r,
+                        marker_x_s + inner_r,
+                        cy_s + inner_r,
+                    ),
+                    fill=(*node_inner, 255),
+                )
+
+            layer = layer.resize((local_w, local_h), Image.Resampling.LANCZOS)
+            img.alpha_composite(layer, (left, legend_y1))
+            if icon_size:
+                _paste_tier_point_icon(icon_cx, rail_cy, icon_size)
+            return
+
+        track_h = max(9, min(24, int(renderer_cfg.get(
+            "day_tier_progress_legend_track_height", tier_progress_track_h
+        ) or tier_progress_track_h)))
+        label_size = max(7, min(14, int(renderer_cfg.get(
+            "day_tier_progress_legend_font_size", tier_progress_label_font_size
+        ) or tier_progress_label_font_size)))
+        label_x_offset = max(1, min(14, int(renderer_cfg.get(
+            "day_tier_progress_legend_label_x_offset", 5
+        ) or 5)))
+        max_right_padding = max(2, min(18, int(renderer_cfg.get(
+            "day_tier_progress_legend_max_label_right_padding", 5
+        ) or 5)))
+        tick_h = max(3, min(track_h - 2, int(renderer_cfg.get(
+            "day_tier_progress_legend_tick_height", 7
+        ) or 7)))
+        tick_w = max(1, min(3, int(renderer_cfg.get(
+            "day_tier_progress_legend_tick_width", 1
+        ) or 1)))
+        track_mix = max(0.0, min(1.0, float(renderer_cfg.get(
+            "day_tier_progress_legend_track_primary_mix", 0.08
+        ) or 0.08)))
+        surface_mix = max(0.0, min(0.30, float(renderer_cfg.get(
+            "day_tier_progress_legend_surface_primary_mix", 0.045
+        ) or 0.045)))
+        fill_mode = clean(str(renderer_cfg.get(
+            "day_tier_progress_legend_fill_mode", "surface"
+        ) or "surface")).lower()
+        outline_mix = max(0.0, min(1.0, float(renderer_cfg.get(
+            "day_tier_progress_legend_outline_dark_mix", 0.52
+        ) or 0.52)))
+        tick_mix = max(0.0, min(1.0, float(renderer_cfg.get(
+            "day_tier_progress_legend_tick_dark_mix", 0.72
+        ) or 0.72)))
+        label_dark_mix = max(0.0, min(1.0, float(renderer_cfg.get(
+            "day_tier_progress_legend_label_dark_mix", 0.88
+        ) or 0.88)))
+        tick_color_mode = clean(str(renderer_cfg.get(
+            "day_tier_progress_legend_tick_color_mode", "theme"
+        ) or "theme")).lower()
+        label_color_mode = clean(str(renderer_cfg.get(
+            "day_tier_progress_legend_label_color_mode", "auto"
+        ) or "auto")).lower()
+        threshold_label_mode = clean(str(renderer_cfg.get(
+            "day_tier_progress_legend_threshold_label_mode", "score_only"
+        ) or "score_only")).lower()
+        tick_ink_rgb = _header_hex_rgb(renderer_cfg.get(
+            "day_tier_progress_legend_tick_ink_color", "#17212B"
+        ), (23, 33, 43))
+        label_ink_rgb = _header_hex_rgb(renderer_cfg.get(
+            "day_tier_progress_legend_label_ink_color", "#17212B"
+        ), (23, 33, 43))
+        contrast_luminance_threshold = max(0.0, min(1.0, float(renderer_cfg.get(
+            "day_tier_progress_legend_contrast_luminance_threshold", 0.29
+        ) or 0.29)))
+        light_label_rgb = _header_hex_rgb(renderer_cfg.get(
+            "day_tier_progress_legend_light_label_color", "#FFFFFF"
+        ), (255, 255, 255))
+        gold_label_rgb = _header_hex_rgb(renderer_cfg.get(
+            "day_tier_progress_legend_gold_label_color", "#4E3A12"
+        ), (78, 58, 18))
+        primary_rgb_for_legend = _header_hex_rgb(primary)
+        is_gold_palette = (
+            primary_rgb_for_legend[0] >= 150
+            and primary_rgb_for_legend[1] >= 110
+            and primary_rgb_for_legend[2] <= 100
+        )
+        light_tick_rgb = _header_hex_rgb(renderer_cfg.get(
+            "day_tier_progress_legend_light_tick_color", "#FFFFFF"
+        ), (255, 255, 255))
+        light_text_alpha = max(180, min(255, int(renderer_cfg.get(
+            "day_tier_progress_legend_light_text_alpha", 255
+        ) or 255)))
+        light_label_from_tier = max(1, min(5, int(renderer_cfg.get(
+            "day_tier_progress_legend_light_label_from_tier", 3
+        ) or 3)))
+        light_label_stroke_width = max(0, min(2, int(renderer_cfg.get(
+            "day_tier_progress_legend_light_label_stroke_width", 1
+        ) or 0)))
+        light_label_stroke_alpha = max(0, min(255, int(renderer_cfg.get(
+            "day_tier_progress_legend_light_label_stroke_alpha", 150
+        ) or 150)))
+        tick_ink_theme_mix = max(0.0, min(0.35, float(renderer_cfg.get(
+            "day_tier_progress_legend_tick_ink_theme_mix", 0.0
+        ) or 0.0)))
+        rail_mix = max(0.0, min(1.0, float(renderer_cfg.get(
+            "day_tier_progress_legend_rail_primary_mix", 0.62
+        ) or 0.62)))
+        rail_alpha = max(0, min(255, int(renderer_cfg.get(
+            "day_tier_progress_legend_rail_alpha", 150
+        ) or 150)))
+        highlight_alpha = max(0, min(255, int(renderer_cfg.get(
+            "day_tier_progress_legend_highlight_alpha", 105
+        ) or 105)))
+        segment_mix_a = max(0.0, min(0.50, float(renderer_cfg.get(
+            "day_tier_progress_legend_segment_mix_a", 0.08
+        ) or 0.08)))
+        segment_mix_b = max(0.0, min(0.50, float(renderer_cfg.get(
+            "day_tier_progress_legend_segment_mix_b", 0.20
+        ) or 0.20)))
+        gradient_inner_y_pad = max(1, min(5, int(renderer_cfg.get(
+            "day_tier_progress_legend_gradient_inner_y_pad", 2
+        ) or 2)))
+        gradient_end_inset = max(1, min(12, int(renderer_cfg.get(
+            "day_tier_progress_legend_gradient_end_inset", 5
+        ) or 5)))
+        raw_gradient_mixes = renderer_cfg.get(
+            "day_tier_progress_legend_gradient_stop_mixes",
+            [0.10, 0.24, 0.38, 0.52, 0.66, 0.78],
+        )
+        if not isinstance(raw_gradient_mixes, (list, tuple)):
+            raw_gradient_mixes = [0.10, 0.24, 0.38, 0.52, 0.66, 0.78]
+        gradient_mixes = []
+        for value in raw_gradient_mixes[:6]:
+            try:
+                gradient_mixes.append(max(0.0, min(1.0, float(value))))
+            except (TypeError, ValueError):
+                pass
+        while len(gradient_mixes) < 6:
+            gradient_mixes.append([0.10, 0.24, 0.38, 0.52, 0.66, 0.78][len(gradient_mixes)])
+        raw_gradient_darkening = renderer_cfg.get(
+            "day_tier_progress_legend_gradient_darkening",
+            [0.0, 0.0, 0.0, 0.0, 0.02, 0.08],
+        )
+        if not isinstance(raw_gradient_darkening, (list, tuple)):
+            raw_gradient_darkening = [0.0, 0.0, 0.0, 0.0, 0.02, 0.08]
+        gradient_darkening = []
+        for value in raw_gradient_darkening[:6]:
+            try:
+                gradient_darkening.append(max(0.0, min(0.5, float(value))))
+            except (TypeError, ValueError):
+                pass
+        while len(gradient_darkening) < 6:
+            gradient_darkening.append([0.0, 0.0, 0.0, 0.0, 0.02, 0.08][len(gradient_darkening)])
+
+        # Flat tier-band palette used by the right-capped scale.  Each tier is a
+        # distinct solid color (no gradient), ordered from light to dark.
+        raw_band_mixes = renderer_cfg.get(
+            "day_tier_progress_legend_band_primary_mixes",
+            [0.14, 0.30, 0.46, 0.62, 0.78],
+        )
+        if not isinstance(raw_band_mixes, (list, tuple)):
+            raw_band_mixes = [0.14, 0.30, 0.46, 0.62, 0.78]
+        band_mixes = []
+        for value in raw_band_mixes[:5]:
+            try:
+                band_mixes.append(max(0.0, min(1.0, float(value))))
+            except (TypeError, ValueError):
+                pass
+        while len(band_mixes) < 5:
+            band_mixes.append([0.14, 0.30, 0.46, 0.62, 0.78][len(band_mixes)])
+
+        raw_band_darkening = renderer_cfg.get(
+            "day_tier_progress_legend_band_darkening",
+            [0.0, 0.0, 0.0, 0.02, 0.08],
+        )
+        if not isinstance(raw_band_darkening, (list, tuple)):
+            raw_band_darkening = [0.0, 0.0, 0.0, 0.02, 0.08]
+        band_darkening = []
+        for value in raw_band_darkening[:5]:
+            try:
+                band_darkening.append(max(0.0, min(0.5, float(value))))
+            except (TypeError, ValueError):
+                pass
+        while len(band_darkening) < 5:
+            band_darkening.append([0.0, 0.0, 0.0, 0.02, 0.08][len(band_darkening)])
+
+
+        icon_cx = left + icon_size / 2 if _tier_point_source is not None else left
+        # Count the point icon as part of the ruler's overall card-width span.
+        # The track begins just under/after the icon, while its right edge aligns
+        # exactly with the Day cards below.
+        track_x1 = left + (icon_size * 3 // 5 if _tier_point_source is not None else 0)
+        track_x2 = right
+        if track_x2 - track_x1 < 180:
+            track_x1 = left
+            icon_size = 0
+
+        content_h = max(track_h, icon_size)
+        track_y = int(round(legend_y1 + max(0, (legend_y2 - legend_y1 - content_h) / 2)))
+
+        ss = tier_progress_supersample
+        local_w = max(1, right - left)
+        local_h = max(1, legend_y2 - legend_y1)
+        layer = Image.new("RGBA", (local_w * ss, local_h * ss), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+
+        def lx(x):
+            return int(round((x - left) * ss))
+
+        def ly(y):
+            return int(round((y - legend_y1) * ss))
+
+        # This ruler is a lookup tool, not decorative chrome: the user should be
+        # able to read a Day score such as 635 and immediately compare it with
+        # the 630 threshold.  Use the theme's existing chip/light surface for
+        # enough separation from the white panel, then reserve the darker theme
+        # tones for the border, ticks and numerals.
+        chip_fill = theme_colors.get("chip", light)
+        if fill_mode == "chip":
+            # Keep the familiar chip surface, but allow a controlled amount of
+            # theme primary color so the global ruler is easy to find at a glance.
+            track_fill = _rgb_mix(chip_fill, primary, track_mix)
+        elif fill_mode == "light":
+            track_fill = _rgb_mix(light, primary, track_mix)
+        else:
+            track_fill = _rgb_mix(card_fill, primary, surface_mix)
+        track_outline = _rgb_mix(primary, dark, outline_mix)
+        rail_rgb = _rgb_mix(primary, dark, rail_mix)
+        tick_rgb = _rgb_mix(primary, dark, tick_mix)
+        label_rgb = _rgb_mix(primary, dark, label_dark_mix)
+        # P5D can use a neutral high-contrast ink for small ruler details.
+        # This keeps 210/630/1060/2520/3980 readable across all six color
+        # variants without forcing the last bands to become excessively dark.
+        tick_ink_rgb = _rgb_mix(tick_ink_rgb, dark, tick_ink_theme_mix)
+        radius = max(1, tier_progress_track_radius) * ss
+
+        tx1, ty1 = lx(track_x1), ly(track_y)
+        tx2, ty2 = lx(track_x2), ly(track_y + track_h)
+        rail_y = int(round((ty1 + ty2) / 2))
+        rail_inset = max(radius, 3 * ss)
+        flat_band_colors = None
+        if legend_style == "tier_blocks_right_cap":
+            # A ruler with a straight left edge and a true semicircular right
+            # cap.  The five tier ranges are full-height, flat-color blocks;
+            # there is deliberately no gradient and no inner rail.
+            cap_r = max(1, int(round((ty2 - ty1) / 2)))
+            shape_mask = Image.new("L", layer.size, 0)
+            md = ImageDraw.Draw(shape_mask)
+            cap_cx = tx2 - cap_r
+            md.rectangle((tx1, ty1, cap_cx, ty2), fill=255)
+            md.ellipse((tx2 - 2 * cap_r, ty1, tx2, ty2), fill=255)
+
+            flat_band_colors = []
+            for idx in range(5):
+                color = _rgb_mix(light, primary, band_mixes[idx])
+                if band_darkening[idx] > 0:
+                    color = _rgb_mix(color, dark, band_darkening[idx])
+                flat_band_colors.append(color)
+
+            bands = Image.new("RGBA", layer.size, (0, 0, 0, 0))
+            bd = ImageDraw.Draw(bands)
+            bounds = [0.0] + [max(0.0, min(maximum, float(v))) for _, v in items[:5]]
+            while len(bounds) < 6:
+                bounds.append(maximum)
+            for idx in range(5):
+                a = bounds[idx] / maximum if maximum > 0 else 0.0
+                b = bounds[idx + 1] / maximum if maximum > 0 else 1.0
+                xa = tx1 + int(round((tx2 - tx1) * a))
+                xb = tx1 + int(round((tx2 - tx1) * b))
+                # Add one pixel of overlap before masking to avoid anti-aliased
+                # seams between adjacent solid-color bands.
+                bd.rectangle((xa, ty1, min(tx2, xb + ss), ty2), fill=(*flat_band_colors[idx], 255))
+            bands.putalpha(ImageChops.multiply(bands.getchannel("A"), shape_mask))
+            layer.alpha_composite(bands)
+
+            ow = max(1, tier_progress_track_outline_width * ss)
+            outline = (*track_outline, 255)
+            # Straight left/top/bottom edges, semicircle only on the far right.
+            ld.line((tx1, ty1, cap_cx, ty1), fill=outline, width=ow)
+            ld.line((tx1, ty2, cap_cx, ty2), fill=outline, width=ow)
+            ld.line((tx1, ty1, tx1, ty2), fill=outline, width=ow)
+            arc_box = (tx2 - 2 * cap_r, ty1, tx2, ty2)
+            ld.arc(arc_box, start=-90, end=90, fill=outline, width=ow)
+
+        elif legend_style == "gradient_capsule":
+            # Outer silhouette is a true capsule/ellipse.  The interior color
+            # field is deliberately rectangular: no rounded segment ends and no
+            # center rail, just a continuous tier-to-tier gradient.
+            capsule_radius = max(1, int(round(track_h * ss / 2)))
+            ld.rounded_rectangle(
+                (tx1, ty1, tx2, ty2),
+                radius=capsule_radius,
+                fill=track_fill,
+                outline=track_outline,
+                width=max(1, tier_progress_track_outline_width * ss),
+            )
+
+            gx1 = tx1 + gradient_end_inset * ss
+            gx2 = tx2 - gradient_end_inset * ss
+            gy1 = ty1 + gradient_inner_y_pad * ss
+            gy2 = ty2 - gradient_inner_y_pad * ss
+            if gx2 > gx1 and gy2 > gy1:
+                # Anchor the color transition at the real tier thresholds so the
+                # visual scale remains faithful to 210/630/1060/2520/3980.
+                threshold_values = [
+                    max(0.0, min(maximum, float(value)))
+                    for _, value in items
+                ]
+                stop_values = [0.0] + threshold_values
+                # Ensure exactly six color anchors: start + five tier endpoints.
+                stop_values = stop_values[:6]
+                while len(stop_values) < 6:
+                    stop_values.append(maximum)
+                stop_positions = [
+                    0.0 if maximum <= 0 else max(0.0, min(1.0, value / maximum))
+                    for value in stop_values
+                ]
+                stop_colors = []
+                for idx in range(6):
+                    color = _rgb_mix(light, primary, gradient_mixes[idx])
+                    if gradient_darkening[idx] > 0:
+                        color = _rgb_mix(color, dark, gradient_darkening[idx])
+                    stop_colors.append(color)
+
+                gw = max(1, gx2 - gx1 + 1)
+                gh = max(1, gy2 - gy1 + 1)
+                grad = Image.new("RGBA", (gw, gh), (0, 0, 0, 0))
+                gp = grad.load()
+                for px in range(gw):
+                    pos = 0.0 if gw <= 1 else px / (gw - 1)
+                    seg = 0
+                    while seg < len(stop_positions) - 2 and pos > stop_positions[seg + 1]:
+                        seg += 1
+                    p0 = stop_positions[seg]
+                    p1 = stop_positions[min(seg + 1, len(stop_positions) - 1)]
+                    t = 0.0 if p1 <= p0 else (pos - p0) / (p1 - p0)
+                    rgb = _rgb_mix(stop_colors[seg], stop_colors[min(seg + 1, len(stop_colors) - 1)], t)
+                    for py in range(gh):
+                        gp[px, py] = (*rgb, 255)
+                layer.alpha_composite(grad, (gx1, gy1))
+
+            # Redraw the capsule outline on top of the rectangular gradient.
+            ld.rounded_rectangle(
+                (tx1, ty1, tx2, ty2),
+                radius=capsule_radius,
+                fill=None,
+                outline=track_outline,
+                width=max(1, tier_progress_track_outline_width * ss),
+            )
+        elif legend_style == "line":
+            # Pure ruler: no filled capsule, only a strong axis plus ticks.
+            ld.line(
+                (tx1 + rail_inset, rail_y, tx2 - rail_inset, rail_y),
+                fill=(*rail_rgb, max(210, rail_alpha)),
+                width=max(2 * ss, tier_progress_track_outline_width * ss),
+            )
+        else:
+            ld.rounded_rectangle(
+                (tx1, ty1, tx2, ty2),
+                radius=radius,
+                fill=track_fill,
+                outline=track_outline,
+                width=max(1, tier_progress_track_outline_width * ss),
+            )
+            if legend_style == "segmented":
+                # Alternate very subtle theme tints between threshold ranges so
+                # the user can perceive each tier band without a heavy dark bar.
+                vals = [0.0] + [max(0.0, min(maximum, float(v))) for _, v in items]
+                vals = sorted(set(vals))
+                for seg_i in range(len(vals)-1):
+                    a, b = vals[seg_i], vals[seg_i+1]
+                    xa = lx(track_x1 + (track_x2-track_x1)*(a/maximum))
+                    xb = lx(track_x1 + (track_x2-track_x1)*(b/maximum))
+                    mix = segment_mix_a if seg_i % 2 == 0 else segment_mix_b
+                    seg_rgb = _rgb_mix(track_fill, primary, mix)
+                    # Stay inside the outer border; square segment edges are
+                    # intentional because ticks mark the exact boundaries.
+                    ld.rectangle((xa, ty1 + ss, xb, ty2 - ss), fill=seg_rgb)
+                # redraw outline over segment fills
+                ld.rounded_rectangle(
+                    (tx1, ty1, tx2, ty2),
+                    radius=radius,
+                    fill=None,
+                    outline=track_outline,
+                    width=max(1, tier_progress_track_outline_width * ss),
+                )
+            if rail_alpha and legend_style != "gradient_capsule":
+                ld.line(
+                    (tx1 + rail_inset, rail_y, tx2 - rail_inset, rail_y),
+                    fill=(*rail_rgb, rail_alpha),
+                    width=max(1, ss),
+                )
+            if highlight_alpha and legend_style != "gradient_capsule":
+                hi_rgb = _rgb_mix(track_fill, card_fill, 0.62)
+                hi_y = min(ty2 - ss, ty1 + max(ss, 2 * ss))
+                ld.line(
+                    (tx1 + rail_inset, hi_y, tx2 - rail_inset, hi_y),
+                    fill=(*hi_rgb, highlight_alpha),
+                    width=max(1, ss),
+                )
+
+        inner_pad = 0 if legend_style == "tier_blocks_right_cap" else max(1, tier_progress_track_inner_pad)
+        ix1 = track_x1 + inner_pad
+        ix2 = track_x2 - inner_pad
+        inner_w = max(1, ix2 - ix1)
+        label_font = get_font(label_size * ss, True)
+        center_y = track_y + track_h / 2
+
+        for idx, (tier, value) in enumerate(items):
+            ratio = max(0.0, min(1.0, value / maximum))
+            mx = ix1 + inner_w * ratio
+            is_last = idx == len(items) - 1 or abs(value - maximum) < 1e-8
+
+            score_label = str(int(round(value)))
+            if threshold_label_mode in {"tier_score", "tier_score_inline", "threshold"}:
+                label = f"{int(tier)}档 {score_label}"
+            else:
+                label = score_label
+            bb = ld.textbbox((0, 0), label, font=label_font)
+            tw = bb[2] - bb[0]
+            th = bb[3] - bb[1]
+
+            if is_last:
+                # The right edge itself acts as the final tick; keep 3980 cleanly
+                # inset rather than drawing a redundant line on top of the border.
+                text_x = lx(ix2 - max_right_padding) - tw - bb[0]
+            else:
+                x = lx(mx)
+                if legend_style == "tier_blocks_right_cap":
+                    # Full-height separators make the five flat-color tiers read
+                    # as actual blocks rather than a continuous fill.
+                    sep_inset = max(ss, tier_progress_track_outline_width * ss)
+                    if tick_color_mode == "adaptive" and flat_band_colors:
+                        left_band = flat_band_colors[min(4, max(0, idx))]
+                        right_band = flat_band_colors[min(4, max(0, idx + 1))]
+                        separator_bg = _rgb_mix(left_band, right_band, 0.5)
+                        separator_rgb = (
+                            light_tick_rgb
+                            if _relative_luminance(separator_bg) <= contrast_luminance_threshold
+                            else tick_ink_rgb
+                        )
+                    else:
+                        separator_rgb = tick_ink_rgb if tick_color_mode == "ink" else track_outline
+                    ld.line(
+                        (x, ty1 + sep_inset, x, ty2 - sep_inset),
+                        fill=(*separator_rgb, 238),
+                        width=max(1, tick_w * ss),
+                    )
+                else:
+                    tick_top = center_y - tick_h / 2
+                    tick_bottom = center_y + tick_h / 2
+                    ld.line(
+                        (x, ly(tick_top), x, ly(tick_bottom)),
+                        fill=(*tick_rgb, 235),
+                        width=max(1, tick_w * ss),
+                    )
+                text_x = lx(mx + label_x_offset) - bb[0]
+                text_x = min(lx(ix2 - max_right_padding) - tw - bb[0], text_x)
+
+            if legend_style == "line":
+                text_y = rail_y + 3 * ss - bb[1]
+            else:
+                text_y = (ty1 + ty2 - th) / 2 - bb[1]
+
+            text_rgb = label_rgb
+            text_alpha = 252
+            if legend_style == "tier_blocks_right_cap" and flat_band_colors:
+                # Threshold labels are anchored to their exact tick.  Use dark
+                # ink on light bands, but reverse to white once the band is
+                # visually dark enough; this is intentionally an aesthetic
+                # threshold rather than a pure maximum-contrast calculation.
+                band_index = min(4, idx + (0 if is_last else 1))
+                band_bg = flat_band_colors[band_index]
+                if label_color_mode == "ink":
+                    text_rgb = label_ink_rgb
+                elif label_color_mode in {"tier_cutoff", "tier", "from_tier"}:
+                    if int(tier) >= light_label_from_tier:
+                        # Do not outline all light labels just to rescue gold.
+                        # Gold is handled as its own palette case with dark-brown
+                        # text, while darker palettes use clean white text.
+                        text_rgb = gold_label_rgb if is_gold_palette else light_label_rgb
+                        text_alpha = light_text_alpha
+                    else:
+                        text_rgb = label_ink_rgb
+                elif _relative_luminance(band_bg) <= contrast_luminance_threshold:
+                    text_rgb = light_label_rgb
+                    text_alpha = light_text_alpha
+                else:
+                    text_rgb = label_ink_rgb
+            if text_rgb == light_label_rgb and light_label_stroke_width > 0:
+                ld.text(
+                    (text_x, text_y),
+                    label,
+                    font=label_font,
+                    fill=(*text_rgb, text_alpha),
+                    stroke_width=light_label_stroke_width * ss,
+                    stroke_fill=(*label_ink_rgb, light_label_stroke_alpha),
+                )
+            else:
+                ld.text((text_x, text_y), label, font=label_font, fill=(*text_rgb, text_alpha))
+
+        layer = layer.resize((local_w, local_h), Image.Resampling.LANCZOS)
+        img.alpha_composite(layer, (left, legend_y1))
+
+        if icon_size:
+            _paste_tier_point_icon(icon_cx, track_y + track_h / 2, icon_size)
+
+    _draw_global_tier_ruler()
+
+    def _format_tier_progress_number(value, decimals=None):
+        try:
+            number = float(value)
+        except Exception:
+            return clean(str(value or ""))
+        if decimals is not None:
+            decimals = max(0, int(decimals))
+            if decimals == 0:
+                # Points shown in the progress component are intentionally whole
+                # numbers.  Only the displayed text drops the decimal portion;
+                # the bar ratio itself still uses the full-precision score.
+                return str(int(number))
+            return (f"{number:.{decimals}f}").rstrip("0").rstrip(".")
+        if abs(number - round(number)) < 1e-8:
+            return str(int(round(number)))
+        return ("{:.2f}".format(number)).rstrip("0").rstrip(".")
+
+    def _draw_tier_progress(info, box, head_fill, head_text, highlight=False):
+        """Draw one continuous, polished tier progress track.
+
+        Design goals:
+        - keep one single bar across all tiers;
+        - use a low-radius rectangular trough instead of a capsule;
+        - use a strictly rectangular filled segment;
+        - show tier milestones as tiny marks with compact per-bar score labels;
+        - omit the final/max milestone because the total is already in the score;
+        - omit the current-position cursor line; the fill edge is sufficient;
+        - supersample the whole component before compositing to remove the
+          pixel-stepped look of tiny text, borders and milestone markers.
+        """
+        progress = info.get("tier_progress") if isinstance(info.get("tier_progress"), dict) else None
+        if not progress:
+            return
+        try:
+            current = max(0.0, float(progress.get("score", 0) or 0))
+            maximum = float(progress.get("max", 0) or 0)
+        except Exception:
+            return
+        if maximum <= 0:
+            return
+
+        threshold_items = []
+        for item in progress.get("thresholds") or []:
+            try:
+                value = float(item.get("value", 0) or 0)
+                tier = int(item.get("tier", len(threshold_items) + 1) or (len(threshold_items) + 1))
+            except Exception:
+                continue
+            # The max/final tier is the endpoint of the whole bar and is already
+            # represented by the ``current / maximum`` score, so do not add a
+            # redundant marker at 100%.
+            if 0 < value < maximum - 1e-8:
+                threshold_items.append({"tier": tier, "value": value})
+        threshold_items.sort(key=lambda item: (item["value"], item["tier"]))
+
+        bx1, by1, bx2, by2 = map(int, box)
+        if bx2 - bx1 < 180 or by2 - by1 < 42:
+            return
+
+        track_h = tier_progress_track_h
+        label_font_probe = get_font(tier_progress_label_font_size, True)
+        label_probe_bb = d.textbbox((0, 0), "2520", font=label_font_probe)
+        label_h = max(7, label_probe_bb[3] - label_probe_bb[1]) if threshold_items else 0
+        # Labels may live either beneath the track (legacy) or inside it.
+        # Inside labels consume no extra vertical lane, so the whole progress
+        # component stays vertically centered in the Day header.
+        label_lane_h = (tier_progress_label_gap + label_h) if (threshold_items and tier_progress_label_position != "inside_right") else 0
+        block_h = max(track_h + label_lane_h, tier_progress_icon_size if _tier_point_source is not None else track_h)
+        track_y = int(round(by1 + max(0, (by2 - by1 - block_h) / 2) + tier_progress_vertical_offset))
+        icon_size = tier_progress_icon_size if _tier_point_source is not None else 0
+        icon_cx = bx1 + icon_size // 2 if icon_size else bx1
+        track_x1 = bx1 + (icon_size * 3 // 5 if icon_size else 0)
+        track_x2 = bx2
+        if track_x2 - track_x1 < 140:
+            track_x1 = bx1
+            icon_size = 0
+
+        # Draw the tiny component at higher resolution, then downsample with
+        # LANCZOS.  This is the main anti-aliasing pass that removes the rough
+        # one-pixel stair-stepping visible in the previous version.
+        ss = tier_progress_supersample
+        local_w = max(1, bx2 - bx1)
+        local_h = max(1, by2 - by1)
+        layer = Image.new("RGBA", (local_w * ss, local_h * ss), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(layer)
+
+        def sx(x):
+            return int(round((x - bx1) * ss))
+
+        def sy(y):
+            return int(round((y - by1) * ss))
+
+        # Use ONE neutral/light progress palette for both normal and special
+        # days.  The ordinary Day header is light, so the track must live in
+        # that same light family; special-day emphasis remains the header +
+        # yellow pennant, not a second darker progress-bar style.
+        progress_light = theme_colors.get("day_header", light)
+        trough = _rgb_mix(progress_light, primary, tier_progress_track_primary_mix)
+        trough_outline = _rgb_mix(primary, dark, tier_progress_track_outline_dark_mix)
+        trough_inner = _rgb_mix(trough, "#FFFFFF", 0.28)
+        fill_color = _rgb_mix(progress_light, primary, tier_progress_fill_primary_mix)
+        fill_top = _rgb_mix(fill_color, "#FFFFFF", 0.16)
+        radius = tier_progress_track_radius * ss
+
+        tx1, ty1, tx2, ty2 = sx(track_x1), sy(track_y), sx(track_x2), sy(track_y + track_h)
+        ld.rounded_rectangle(
+            (tx1, ty1, tx2, ty2),
+            radius=radius,
+            fill=trough,
+            outline=trough_outline if tier_progress_track_outline else None,
+            width=max(1, tier_progress_track_outline_width * ss),
+        )
+
+        # Subtle inset highlight/shadow gives the small bar a machined UI edge
+        # without turning it into a glossy capsule.
+        inset = max(1, ss)
+        ld.line((tx1 + radius, ty1 + inset, tx2 - radius, ty1 + inset), fill=(*trough_inner, 110), width=max(1, ss // 2))
+        shadow_color = _rgb_mix(trough, primary, 0.18)
+        ld.line((tx1 + radius, ty2 - inset, tx2 - radius, ty2 - inset), fill=(*shadow_color, 95), width=max(1, ss // 2))
+
+        inner_pad = tier_progress_track_inner_pad
+        ix1 = track_x1 + inner_pad
+        iy1 = track_y + inner_pad
+        ix2 = track_x2 - inner_pad
+        iy2 = track_y + track_h - inner_pad
+        inner_w = max(1, ix2 - ix1)
+        ratio = max(0.0, min(1.0, current / maximum))
+        fill_x2 = int(round(ix1 + inner_w * ratio))
+
+        if fill_x2 > ix1:
+            # Deliberately square/rectangular fill: no ellipse/capsule at either
+            # end.  The outer trough still has a restrained 4px corner radius.
+            fx2 = max(ix1 + 1, min(ix2, fill_x2))
+            ld.rectangle((sx(ix1), sy(iy1), sx(fx2), sy(iy2)), fill=fill_color)
+            gloss_h = max(1, int(round((iy2 - iy1) * 0.36)))
+            if gloss_h > 0:
+                ld.rectangle((sx(ix1), sy(iy1), sx(fx2), sy(iy1 + gloss_h)), fill=(*fill_top, 220))
+
+        marker_size = tier_progress_marker_size
+        label_font = get_font(tier_progress_label_font_size * ss, True)
+        # On special-day headers the lane behind milestone labels is the
+        # saturated primary color.  Reuse the high-contrast header text color
+        # there instead of the normal muted label color; otherwise the small
+        # 210/630/1060/2520 values visually sink into the dark header.
+        if tier_progress_label_position == "inside_right":
+            # Inside labels always sit on the same light progress trough, even
+            # on special days.  Use the same dark, theme-aware ink for every
+            # Day so Day4~Day6 do not turn into low-contrast white-on-light
+            # text merely because their surrounding header is highlighted.
+            marker_fill = _rgb_mix(primary, dark, 0.16)
+            label_rgb = _rgb_mix(dark, primary, 0.12)
+            label_alpha = 235
+        elif highlight:
+            marker_fill = _rgb_mix(head_text, "#FFFFFF", 0.08)
+            label_rgb = _rgb_mix(head_text, "#FFFFFF", 0.06)
+            label_alpha = 255
+        else:
+            marker_fill = _rgb_mix(primary, "#FFFFFF", 0.18)
+            label_rgb = _rgb_mix(dark, progress_light, 0.30)
+            label_alpha = 230
+        for item in threshold_items:
+            value = item["value"]
+            pos_ratio = max(0.0, min(1.0, value / maximum))
+            mx = ix1 + inner_w * pos_ratio
+
+            # Small diamonds mark each threshold.  The numeric threshold is
+            # printed directly under its own marker, so the user can read the
+            # scale locally without a separate shared legend.
+            ms = marker_size
+            my = track_y + track_h / 2
+            diamond = [
+                (sx(mx), sy(my - ms)),
+                (sx(mx + ms), sy(my)),
+                (sx(mx), sy(my + ms)),
+                (sx(mx - ms), sy(my)),
+            ]
+            ld.polygon(diamond, fill=(*marker_fill, 210))
+
+            label = _format_tier_progress_number(value, 0)
+            lbb = ld.textbbox((0, 0), label, font=label_font)
+            ltw = lbb[2] - lbb[0]
+            # Put the threshold value slightly to the RIGHT of its diamond.
+            # This keeps the node itself visually readable instead of having the
+            # label centered directly beneath it.  The endpoint/max label is
+            # handled separately below and remains right-aligned.
+            label_x = sx(mx + tier_progress_label_x_offset) - lbb[0]
+            min_x = sx(track_x1)
+            max_x = sx(track_x2) - ltw
+            label_x = max(min_x, min(max_x, label_x))
+            if tier_progress_label_position == "inside_right":
+                label_h_px = lbb[3] - lbb[1]
+                label_y = (
+                    (ty1 + ty2 - label_h_px) / 2
+                    - lbb[1]
+                    + tier_progress_label_vertical_offset * ss
+                )
+            else:
+                label_y = sy(track_y + track_h + tier_progress_label_gap) - lbb[1]
+            ld.text((label_x, label_y), label, font=label_font, fill=(*label_rgb, label_alpha))
+
+        # Show the final/max score once at the far-right endpoint, without a
+        # fifth marker.  Unlike the intermediate labels it does NOT receive the
+        # rightward node offset, so 3980 remains visually anchored to the end.
+        if tier_progress_show_max_label:
+            max_label = _format_tier_progress_number(maximum, 0)
+            mbb = ld.textbbox((0, 0), max_label, font=label_font)
+            mtw = mbb[2] - mbb[0]
+            # Keep the final 3980 visibly INSIDE the trough instead of hugging
+            # the clipped outer edge.  Use the inner track boundary plus a
+            # configurable right padding, and keep it marker-free.
+            max_label_x = sx(ix2 - tier_progress_max_label_right_padding) - mtw - mbb[0]
+            if tier_progress_label_position == "inside_right":
+                max_label_h_px = mbb[3] - mbb[1]
+                max_label_y = (
+                    (ty1 + ty2 - max_label_h_px) / 2
+                    - mbb[1]
+                    + tier_progress_label_vertical_offset * ss
+                )
+            else:
+                max_label_y = sy(track_y + track_h + tier_progress_label_gap) - mbb[1]
+            ld.text((max_label_x, max_label_y), max_label, font=label_font, fill=(*label_rgb, label_alpha))
+
+        score_text = "{} / {}".format(
+            _format_tier_progress_number(current, 0),
+            _format_tier_progress_number(maximum, 0),
+        )
+        score_font = get_font(tier_progress_score_font_size * ss, True)
+        bb = ld.textbbox((0, 0), score_text, font=score_font)
+        tw = bb[2] - bb[0]
+        th = bb[3] - bb[1]
+        sx_text = (tx1 + tx2 - tw) / 2 - bb[0]
+        sy_text = (ty1 + ty2 - th) / 2 - bb[1] + tier_progress_score_vertical_offset * ss
+        # No cursor line and no text shadow.  Dark theme text is quieter and
+        # sharper on the new light trough than the previous high-contrast white
+        # text treatment.
+        # The current score sits inside the light track.  Give special days a
+        # slightly deeper ink color and full opacity so the number remains
+        # crisp even though the surrounding Day header itself is dark.
+        score_rgb = _rgb_mix(dark, "#000000", 0.18) if highlight else _rgb_mix(dark, primary, 0.18)
+        ld.text((sx_text, sy_text), score_text, font=score_font, fill=(*score_rgb, 255 if highlight else 245))
+
+        layer = layer.resize((local_w, local_h), Image.Resampling.LANCZOS)
+        img.alpha_composite(layer, (bx1, by1))
+
+        if icon_size:
+            _paste_tier_point_icon(icon_cx, track_y + track_h / 2, icon_size)
+
+    # In stretch mode every Day uses the same right-side badge reserve.
+    # This keeps all progress bars visually centered/aligned even on ordinary
+    # days where the special-day pennant itself is absent.
+    _tier_progress_badge_reserve_w = 0
+    if tier_progress_reserve_badge_space:
+        _badge_font = get_font(17, True)
+        for _day_info in days:
+            _badge_label = clean(str(_day_info.get("special_label") or ""))
+            if not _badge_label:
+                continue
+            _tier_progress_badge_reserve_w = max(
+                _tier_progress_badge_reserve_w,
+                recommended_special_badge_width(
+                    cfg, _badge_label, text_width(d, _badge_label, _badge_font), height=56
+                ),
+            )
+
     def day_card(info, x1, y1, x2, y2, highlight=False):
-        head_h = 43
+        head_h = day_head_h
         has_metrics = bool(info.get("metric_items"))
         body_fill = card_highlight if highlight else card_fill
         head_fill = primary if highlight else theme_colors.get("day_header", light)
@@ -1489,6 +2651,14 @@ def render(guide, out_path: Path, services):
         day = clean(str(info.get("day") or "DAY"))
         target = clean(str(info.get("target") or ""))
         title = day + (("｜目标 " + target) if target else "")
+        title_progress = info.get("tier_progress") if has_tier_progress_data else None
+        if tier_progress_title_score and isinstance(title_progress, dict):
+            try:
+                title_score = float(title_progress.get("score", title_progress.get("current", 0)) or 0)
+            except Exception:
+                title_score = 0
+            if title_score > 0:
+                title += "({}分)".format(_format_tier_progress_number(title_score, 0))
         badge_w = 0
         if highlight:
             # 特殊日使用与参考图一致的黄色“矩形 + 倒三角”挂牌，
@@ -1505,15 +2675,53 @@ def render(guide, out_path: Path, services):
                 badge_text, primary, cfg
             )
 
+        tier_progress = info.get("tier_progress") if has_tier_progress else None
+        progress_left = None
+        progress_right = None
+        title_left = x1 + 20
+        title_limit = x2 - 22 - badge_w
+        if isinstance(tier_progress, dict):
+            title_probe_font = get_font(24, True)
+            title_probe_w = int(round(text_width(d, title, title_probe_font)))
+            progress_left = int(round(title_left + title_probe_w + tier_progress_title_gap))
+
+            # Stretch mode: use the entire middle lane between the target title
+            # and the special-day badge zone.  Left/right gaps remain explicit
+            # parameters, while the bar itself automatically grows with the card.
+            reserve_badge_w = max(badge_w, _tier_progress_badge_reserve_w)
+            safe_right = x2 - tier_progress_right_margin
+            if reserve_badge_w:
+                safe_right -= reserve_badge_w + tier_progress_badge_gap
+
+            if tier_progress_layout in {"stretch", "stretch_between_title_badge", "fill_available"}:
+                progress_right = safe_right
+            else:
+                progress_right = min(progress_left + tier_progress_width, safe_right)
+
+            if progress_right - progress_left < tier_progress_min_width:
+                # If the title is unusually long, allow the left edge to move
+                # slightly back while still preserving the badge safety zone.
+                progress_left = max(title_left + 170, progress_right - tier_progress_min_width)
+            if progress_right - progress_left < 180:
+                progress_left = None
+                progress_right = None
+
+        title_right = (progress_left - tier_progress_title_gap) if progress_left else title_limit
         draw_left(
-            d, (x1+20, y1+2, x2-22-badge_w, y1+head_h-2),
+            d, (title_left, y1+2, title_right, y1+head_h-2),
             title, head_text, max_size=24, min_size=18,
             bold=True, max_lines=1, line_gap=0, valign="center"
         )
+        if progress_left is not None and progress_right is not None:
+            _draw_tier_progress(
+                info,
+                (progress_left, y1+2, progress_right, y1+head_h-2),
+                head_fill, head_text, highlight=highlight
+            )
 
         # Remaining/expected status lives at the right in two rows. This gives
         # the action text the full card height instead of sacrificing a bottom strip.
-        metric_w = 318 if has_metrics else 0
+        metric_w = 420 if has_metrics else 0
         action_right = (x2-metric_w-18) if has_metrics else (x2-22)
         action_text = _readable_action_text(info.get("action"))
         draw_left(

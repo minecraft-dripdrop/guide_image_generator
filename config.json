@@ -177,6 +177,29 @@
       "icon": "assets/reward/icon_chest_equip.png",
       "quality": "purple",
       "rank_badge": "S"
+    },
+    {
+      "name": "S武器自选箱",
+      "icon": "assets/reward/icon_chest_weapon.png",
+      "quality": "purple",
+      "rank_badge": "S"
+    },
+    {
+      "name": " SS武器至宝自选箱",
+      "icon": "assets/reward/icon_chest_collection1_weapon_1.png",
+      "quality": "pink",
+      "rank_badge": "SS"
+    },
+    {
+      "name": "SS装备至宝自选箱",
+      "icon": "assets/reward/icon_chest_collection_2.png",
+      "quality": "pink",
+      "rank_badge": "SS"
+    },
+    {
+      "name": "灰烬始祖龙",
+      "icon": "assets/reward/icon_mount_huijinshizulong.png",
+      "quality": "chaoyue"
     }
   ],
   "quality_borders": {

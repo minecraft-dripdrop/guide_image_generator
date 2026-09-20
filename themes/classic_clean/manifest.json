@@ -2,9 +2,9 @@
   "schema_version": 1,
   "id": "classic_clean",
   "name": "经典简洁",
-  "version": "1.6.5",
+  "version": "1.6.58",
   "author": "攻略图生成器",
-  "description": "经典浅色卡片布局：经典主题专属视觉集中于 classic renderer；主标题使用深色凹槽托盘式胶囊并保留明暗分面宝石，标题字体保持现有字形但缩小并按真实墨迹宽高居中以留出四周安全边距；标题与 KPI 采用无中心节点的明显分割线；奖励保留原品质框素材并以细线渐变外框表达组合逻辑。",
+  "description": "全局门槛刻度尺：保持与Day卡片同宽，轨道/字号/point图标同步放大；3档起白字无描边，金色单独深棕字",
   "engine_min_version": "30.0",
   "entry_config": "theme.json",
   "variants": [

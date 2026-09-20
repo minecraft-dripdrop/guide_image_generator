@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "receipt_checkout",
+  "name": "收银小票攻略",
+  "version": "1.0.0",
+  "author": "攻略图生成器 V35.9",
+  "description": "把七日攻略做成一张超长收银小票：Day 是明细行，资源是结算字段，提醒是红字备注，奖励是赠品。",
+  "engine_min_version": "35.9",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "default",
+      "name": "基础版",
+      "description": "先完成基础主题骨架；后续再扩展材质、年代与配色变体。",
+      "config": "variants/default.json"
+    }
+  ]
+}

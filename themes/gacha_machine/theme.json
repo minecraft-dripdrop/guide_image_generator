@@ -1,0 +1,148 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "gacha_machine",
+    "layout_version": "mobile_9x16_v1",
+    "canvas_aspect": "9:16",
+    "canvas_height": 1920,
+    "title_font_size": 38,
+    "day_action_font_size": 24,
+    "day_action_min_font_size": 17,
+    "risk_font_size": 18,
+    "risk_min_font_size": 15,
+    "footer_font_size": 17,
+    "footer_min_font_size": 15,
+    "reward_max_items": 6,
+    "mobile_first": true,
+    "day_capsule_size": 96,
+    "day_capsule_d7_size": 112,
+    "tier_number_font_size": 29,
+    "tier_affix_font_size": 15,
+    "tier_number_y_offset": -2,
+    "tier_affix_y_offset": -1,
+    "day_border_width": 2,
+    "special_border_width": 3,
+    "d7_border_width": 4,
+    "tier_badge_width": 72,
+    "tier_badge_height": 32,
+    "tier_badge_right": 12,
+    "tier_badge_top": 9,
+    "tier_text_gap": 0
+  },
+  "colors": {
+    "background": "#F2E9DF",
+    "machine": "#D34B43",
+    "machine_dark": "#692B28",
+    "glass": "#EAF1F4",
+    "ink": "#20272C",
+    "muted": "#5D6972",
+    "accent": "#F2C75A",
+    "screen": "#141A1E",
+    "screen_text": "#F7E7A4",
+    "slot": "#DDE6EA",
+    "slot_border": "#66727B",
+    "risk": "#F3D36E",
+    "paper": "#FFF8ED",
+    "primary": "#D34B43",
+    "dark": "#20272C",
+    "light": "#FFFDF8",
+    "chip": "#E5DBCE"
+  },
+  "assets": {
+    "capsule_chamber": {
+      "path": "assets/niudan/niudanji.png",
+      "crop": [
+        0.105,
+        0.205,
+        0.895,
+        0.82
+      ],
+      "focus_y": 0.43
+    },
+    "day_capsule": {
+      "padding": 0.0,
+      "trim_alpha": true,
+      "items": [
+        {
+          "path": "assets/niudan/GachaRed.png",
+          "scale": 1.0,
+          "offset_x": 0.008,
+          "offset_y": 0.0,
+          "fallback_color": "#E95A68",
+          "accent_color": "#E95A68"
+        },
+        {
+          "path": "assets/niudan/GachaYellow.png",
+          "scale": 1.0,
+          "offset_x": 0.003,
+          "offset_y": -0.002,
+          "fallback_color": "#F2B632",
+          "accent_color": "#F2B632"
+        },
+        {
+          "path": "assets/niudan/GachaBlue.png",
+          "scale": 1.0,
+          "offset_x": 0.0,
+          "offset_y": -0.003,
+          "fallback_color": "#5A84C9",
+          "accent_color": "#5A84C9",
+          "safe_margin": 0.035,
+          "padding": 0.0
+        },
+        {
+          "path": "assets/niudan/GachaGreen.png",
+          "scale": 1.0,
+          "offset_x": -0.004,
+          "offset_y": 0.0,
+          "fallback_color": "#58B98A",
+          "accent_color": "#58B98A"
+        },
+        {
+          "path": "assets/niudan/GachaPurple.png",
+          "scale": 1.0,
+          "offset_x": 0.003,
+          "offset_y": 0.001,
+          "fallback_color": "#A45BE5",
+          "accent_color": "#A45BE5"
+        },
+        {
+          "path": "assets/niudan/GachaOrange.png",
+          "scale": 1.0,
+          "offset_x": 0.001,
+          "offset_y": -0.001,
+          "fallback_color": "#F29A32",
+          "accent_color": "#F29A32"
+        },
+        {
+          "path": "assets/niudan/GachaPink.png",
+          "scale": 1.0,
+          "offset_x": 0.0,
+          "offset_y": 0.0,
+          "fallback_color": "#EA6692",
+          "accent_color": "#EA6692"
+        }
+      ],
+      "shadow": {
+        "width_ratio": 0.6,
+        "height_ratio": 0.075,
+        "center_y_ratio": 1.005,
+        "blur_ratio": 0.013,
+        "opacity": 218,
+        "spill_ratio": 0.14
+      }
+    }
+  },
+  "reward_display": {
+    "style": "capsule_pedestal",
+    "choice_accent": "#F0CA5B",
+    "palette": [
+      "#E95A68",
+      "#F2B632",
+      "#5A84C9",
+      "#58B98A",
+      "#A45BE5",
+      "#F29A32",
+      "#EA6692"
+    ]
+  }
+}

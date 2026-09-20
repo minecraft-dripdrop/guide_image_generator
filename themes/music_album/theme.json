@@ -1,0 +1,34 @@
+{
+  "surface_mode": "dark",
+  "renderer": {
+    "style": "music_album",
+    "layout_version": "mobile_9x16_v1",
+    "canvas_aspect": "9:16",
+    "canvas_height": 1920,
+    "title_font_size": 38,
+    "day_action_font_size": 24,
+    "day_action_min_font_size": 17,
+    "risk_font_size": 18,
+    "risk_min_font_size": 15,
+    "footer_font_size": 17,
+    "footer_min_font_size": 15,
+    "reward_max_items": 4,
+    "mobile_first": true
+  },
+  "colors": {
+    "background": "#15171B",
+    "panel": "#23262B",
+    "ink": "#F2F0EB",
+    "muted": "#A9ADB3",
+    "accent": "#C9A54A",
+    "accent2": "#A9574D",
+    "line": "#444950",
+    "track": "#1D2024",
+    "special": "#2B2324",
+    "risk": "#342829",
+    "primary": "#C9A54A",
+    "dark": "#15171B",
+    "light": "#F2F0EB",
+    "chip": "#35383D"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "tv_news",
+  "name": "电视新闻特别节目",
+  "version": "1.0.0",
+  "author": "攻略图生成器 V35.9",
+  "description": "把攻略做成手机竖版电视新闻特别节目：Day 是新闻 rundown，特殊日变成 BREAKING，资源和奖励使用新闻数据条。",
+  "engine_min_version": "35.9",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "default",
+      "name": "基础版",
+      "description": "先完成基础主题骨架；后续再扩展材质、年代与配色变体。",
+      "config": "variants/default.json"
+    }
+  ]
+}

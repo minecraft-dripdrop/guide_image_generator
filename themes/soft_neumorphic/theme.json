@@ -1,0 +1,36 @@
+{
+  "surface_mode": "light",
+  "renderer": {
+    "style": "soft_neumorphic",
+    "layout_version": "soft_neumorphic_v1",
+    "title_font_size": 50,
+    "day_action_font_size": 22,
+    "day_action_min_font_size": 22,
+    "day_action_line_gap": 4,
+    "risk_font_size": 17,
+    "risk_min_font_size": 14,
+    "footer_font_size": 17,
+    "footer_min_font_size": 14,
+    "footer_height": 72,
+    "font_path": "assets/fonts/HarmonyOS_Sans_SC_Regular.ttf",
+    "font_bold_path": "assets/fonts/HarmonyOS_Sans_SC_Bold.ttf"
+  },
+  "colors": {
+    "primary": "#5B8D72",
+    "dark": "#345E4B",
+    "light": "#DDE9E2",
+    "chip": "#C9DCD2",
+    "background": "#E2E9E5",
+    "surface": "#E2E9E5",
+    "text": "#26332E",
+    "muted": "#66746E",
+    "primary_dark": "#345E4B",
+    "primary_soft": "#C9DCD2",
+    "accent_text": "#FFFFFF",
+    "shadow_dark": "#A9B7B0",
+    "shadow_light": "#FFFFFF",
+    "warning": "#B95D53",
+    "warning_soft": "#EED4D0"
+  },
+  "effects": []
+}

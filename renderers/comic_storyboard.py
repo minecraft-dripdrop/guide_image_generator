@@ -9,6 +9,7 @@ different manga/comic-book mastheads rather than simple recolors.
 """
 import math
 import random
+import re
 import time
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageOps, ImageEnhance
@@ -254,7 +255,7 @@ def _find_character_path(guide, s, rcfg, mapped, idx):
     return fallback if fallback and fallback.is_file() else None
 
 
-def _prepare_character_image(guide, s, colors, rcfg, mapped, idx, mirror=False):
+def _prepare_character_image(guide, s, colors, rcfg, mapped, idx, mirror=False, special=False):
     """Load character art, style it in memory, and trim transparent outer canvas.
 
     V35.68 adds:
@@ -284,6 +285,27 @@ def _prepare_character_image(guide, s, colors, rcfg, mapped, idx, mirror=False):
                 day_mode = mode_map.get(str(idx+1))
             if day_mode not in (None, ""):
                 mode = str(day_mode).lower().strip()
+
+        # Legacy compatibility: highlighted days used to switch from monochrome
+        # to colour.  The current comic direction keeps characters coloured on
+        # *every* day, so special/ordinary state is expressed by panel treatment
+        # and the 重点回 marker instead of by desaturating the cast.
+        if special and bool(_char_cfg(rcfg, "special_character_auto_color", None, True)):
+            special_mode = str(
+                _char_cfg(rcfg, "special_character_render_mode", None, "color")
+                or "color"
+            ).lower().strip()
+            if mode not in ("color", "original", "vintage_color", "retro_color", "old_print_color"):
+                mode = special_mode
+
+    # V35.7x visual rule: all comic variants keep character art in colour on
+    # ordinary as well as special days.  Vintage keeps a faded/paper-aged colour
+    # treatment; shonen and detective preserve the source colours.  This is
+    # renderer-local so no shared parser/data meaning is changed, and a future
+    # theme can opt out explicitly if it truly needs monochrome characters.
+    if bool(_char_cfg(rcfg, "character_all_days_color", None, True)):
+        page_style = str(rcfg.get("page_style") or "shonen").lower().strip()
+        mode = "vintage_color" if page_style == "vintage_print" else "color"
 
     contrast = float(
         _char_cfg(rcfg, "character_contrast", "capybara_contrast", 1.18)
@@ -394,7 +416,10 @@ def _paste_character(base, guide, s, colors, rcfg, box, info, idx, terminal=Fals
         forced_side = str(side_map.get(f"D{idx+1}") or side_map.get(str(idx+1)) or "").lower().strip()
     side = forced_side if forced_side in ("left", "right") else ("left" if idx in (0, 2, 5, 6) else "right")
     mirror = side == "right" and bool(_char_cfg(rcfg, "character_auto_mirror", None, True))
-    im = _prepare_character_image(guide, s, colors, rcfg, mapped, idx, mirror=mirror)
+    im = _prepare_character_image(
+        guide, s, colors, rcfg, mapped, idx, mirror=mirror,
+        special=_special(info or {})
+    )
     if im is None:
         return None
 
@@ -486,7 +511,10 @@ def _paste_character_in_free_space(
 
     mapped = _mapped_character_value(info, idx, terminal=terminal, rcfg=rcfg)
     mirror = side == "right" and bool(_char_cfg(rcfg, "character_auto_mirror", None, True))
-    im = _prepare_character_image(guide, s, colors, rcfg, mapped, idx, mirror=mirror)
+    im = _prepare_character_image(
+        guide, s, colors, rcfg, mapped, idx, mirror=mirror,
+        special=_special(info or {})
+    )
     if im is None:
         return None
 
@@ -506,7 +534,13 @@ def _paste_character_in_free_space(
     # Outward overflow increases visual width without stealing content pixels.
     effective_w = fw + max(0, overflow)
     terminal_max_w = int(rcfg.get("character_terminal_max_width", 224) or 224)
-    target_w = int(min(effective_w * .93, (terminal_max_w if terminal else 150)) * scale)
+    if terminal:
+        # D7 is deliberately a two-column comic composition: the character is
+        # the visual anchor of the left column, not a small leftover decoration.
+        # Keep the configured value as a floor, then allow the art to grow with
+        # the actual left-column width (within a conservative cap).
+        terminal_max_w = min(300, max(terminal_max_w, int(effective_w * .90)))
+    target_w = int(min(effective_w * .94, (terminal_max_w if terminal else 150)) * scale)
     target_w = max(min_visible, target_w)
     target_h = int(target_w / max(.01, ratio))
 
@@ -524,16 +558,32 @@ def _paste_character_in_free_space(
         a = im.getchannel("A").point(lambda v: int(v*opacity/255))
         im.putalpha(a)
 
-    # Anchor the inner edge to the free-space boundary; overflow only goes out.
-    yy = int(y2 + bottom_overflow - target_h)
-    if side == "left":
-        xx = int(x2 - target_w)
-        xx = min(xx, x1)
-        # never cross inward past free_box right edge
-        xx = max(px1 - overflow, x2 - target_w)
+    # Ordinary days anchor the character to the inner edge of the free-space
+    # gutter. D7 is different: its left column is a deliberate illustration
+    # panel, so anchoring to the command boundary makes the figure drift right
+    # and leaves a conspicuous empty strip under the Day label.  Anchor D7 to
+    # the OUTER/left panel edge and to the TOP of its free box instead.  This
+    # makes the composition read naturally as "D7 -> character" on the left
+    # and numbered commands on the right.
+    if terminal and side == "left":
+        # D7 is a deliberate two-column panel now: center the hero inside the
+        # left illustration column instead of pinning it to either the outer
+        # frame or the command gutter.  This uses the available space and makes
+        # the whole D7 composition feel centered rather than left-empty/right-heavy.
+        xx = int(x1 + max(0, (fw - target_w) / 2))
+        yy = int(y1 + max(0, (fh - target_h) / 2))
+        xx = max(px1 - overflow, min(xx, x2 - target_w))
+        yy = max(y1, min(yy, y2 - target_h + bottom_overflow))
     else:
-        xx = int(x1)
-        xx = min(px2 - target_w + overflow, xx)
+        yy = int(y2 + bottom_overflow - target_h)
+        if side == "left":
+            xx = int(x2 - target_w)
+            xx = min(xx, x1)
+            # never cross inward past free_box right edge
+            xx = max(px1 - overflow, x2 - target_w)
+        else:
+            xx = int(x1)
+            xx = min(px2 - target_w + overflow, xx)
 
     page_style = str(rcfg.get("page_style") or "shonen").lower().strip()
     outline = max(
@@ -689,6 +739,44 @@ def _speech_balloon(draw, s, box, text, ink, paper, max_size=19, min_size=11, ta
                 max_lines=10, line_gap=line_gap, valign="center")
 
 
+def _warning_callout(draw, s, box, text, ink, paper, max_size=19, min_size=11, bold=True, line_gap=5):
+    """Warning body as one continuous rectangle + triangular tail.
+
+    Rectangle and triangle share one stroke width.  The outline is drawn as a
+    single perimeter with the rectangle's bottom edge deliberately split around
+    the tail attachment, so there is no doubled/internal seam at the overlap.
+    """
+    x1, y1, x2, y2 = map(int, box)
+    stroke = 4
+
+    # Tail attachment points live on the rectangle's bottom edge.
+    a = (x2 - 112, y2)
+    tip = (x2 - 66, y2 + 32)
+    b = (x2 - 30, y2)
+
+    # Unified shadow silhouette.
+    ox, oy = 4, 5
+    draw.rectangle((x1+ox, y1+oy, x2+ox, y2+oy), fill=_rgba(ink, 34))
+    draw.polygon(((a[0]+ox,a[1]+oy),(tip[0]+ox,tip[1]+oy),(b[0]+ox,b[1]+oy)), fill=_rgba(ink, 34))
+
+    # Fill the joined rectangle + tail first.
+    draw.rectangle((x1, y1, x2, y2), fill=paper)
+    draw.polygon((a, tip, b), fill=paper)
+
+    # Draw one continuous outer perimeter.  Crucially, there is NO bottom line
+    # from a -> b; that shared segment is replaced by the two triangle edges.
+    draw.line((x1, y1, x2, y1), fill=ink, width=stroke)
+    draw.line((x1, y1, x1, y2), fill=ink, width=stroke)
+    draw.line((x2, y1, x2, y2), fill=ink, width=stroke)
+    draw.line((x1, y2, a[0], y2), fill=ink, width=stroke)
+    draw.line((a, tip, b), fill=ink, width=stroke, joint="curve")
+    draw.line((b[0], y2, x2, y2), fill=ink, width=stroke)
+
+    s.draw_left(draw, (x1+20, y1+15, x2-20, y2-16), text, ink,
+                max_size=max_size, min_size=min_size, bold=bold,
+                max_lines=10, line_gap=line_gap, valign="center")
+
+
 def _action_dialog_balloon(draw, s, box, text, ink, paper, max_size=19, min_size=11, tail="left", bold=True, line_gap=3):
     """Daily-operation balloon drawn as one continuous manga speech shape.
 
@@ -744,6 +832,47 @@ def _narration_box(draw, s, box, title, body, ink, paper, accent):
                 max_size=14, min_size=9, bold=True, max_lines=3, line_gap=2, valign="center")
 
 
+def _ellipsize_single_line(draw, s, text, font, max_width):
+    """Return one readable line that never paints outside its allotted cell."""
+    text = s.clean(str(text or ""))
+    if not text:
+        return ""
+    try:
+        if draw.textlength(text, font=font) <= max_width:
+            return text
+    except Exception:
+        bb = draw.textbbox((0, 0), text, font=font)
+        if bb[2] - bb[0] <= max_width:
+            return text
+    ellipsis = "…"
+    lo, hi = 0, len(text)
+    while lo < hi:
+        mid = (lo + hi + 1) // 2
+        candidate = text[:mid].rstrip() + ellipsis
+        try:
+            fits = draw.textlength(candidate, font=font) <= max_width
+        except Exception:
+            bb = draw.textbbox((0, 0), candidate, font=font)
+            fits = (bb[2] - bb[0]) <= max_width
+        if fits:
+            lo = mid
+        else:
+            hi = mid - 1
+    return (text[:lo].rstrip() + ellipsis) if lo > 0 else ellipsis
+
+
+def _compact_budget_kpi_text(label, value):
+    """Avoid repeating the diamond resource name beside an already-visible icon."""
+    label = str(label or "")
+    value = str(value or "")
+    budgetish = "预算" in label
+    if budgetish and "钻石" in label:
+        label = label.replace("钻石", "").strip(" ·|｜/-_") or "预算"
+    if budgetish and "钻石" in value:
+        value = value.replace("钻石", "").strip()
+    return label, value
+
+
 def _draw_kpi_cut_in(base, draw, guide, s, colors, rcfg, box, rng):
     x1, y1, x2, y2 = map(int, box)
     poly = _panel_poly(box, 14, False)
@@ -783,6 +912,7 @@ def _draw_kpi_cut_in(base, draw, guide, s, colors, rcfg, box, rng):
         else:
             draw.ellipse((ib[0]+6, ib[1]+6, ib[2]-6, ib[3]-6), outline=colors["accent"], width=2)
         label = s.clean(str(item.get("label") or "资源")); value = s.clean(str(item.get("value") or "—"))
+        label, value = _compact_budget_kpi_text(label, value)
         tx = ib[2]+7
         s.draw_left(draw, (tx, b+4, c-7, b+29), label, colors["ink_mid"],
                     max_size=int(rcfg.get("resource_label_font_size", 13) or 13),
@@ -796,7 +926,13 @@ def _draw_kpi_cut_in(base, draw, guide, s, colors, rcfg, box, rng):
 
 
 def _draw_reward_icons_comic(base, draw, guide, s, colors, rcfg, box):
-    """Comic loot strip using the shared reward artwork layer."""
+    """Comic loot strip using the shared reward artwork layer.
+
+    Reward information follows the same vertical hierarchy used by the main
+    manga loot panel: artwork first, then quantity, then item name.  Keeping
+    quantity on its own line makes the count scan much faster than appending it
+    to the name.
+    """
     tools = SharedRendererTools(s)
     leaves = tools.flat_reward_items(guide.get("reward_items") or [])[:int(rcfg.get("reward_max_items", 5) or 5)]
     x1, y1, x2, y2 = map(int, box)
@@ -817,9 +953,10 @@ def _draw_reward_icons_comic(base, draw, guide, s, colors, rcfg, box):
     for i, item in enumerate(leaves):
         cx1 = int(round(x1 + i*(cell_w+gap)))
         cx2 = int(round(cx1 + cell_w))
-        name_h = 34
-        icon_size = int(min(cell_w-8, y2-y1-name_h-4, frame_size_cfg))
-        icon_size = max(26, icon_size)
+        qty_h = 20
+        name_h = 28
+        icon_size = int(min(cell_w-8, y2-y1-qty_h-name_h-8, frame_size_cfg))
+        icon_size = max(24, icon_size)
         ix1 = int(cx1 + (cell_w-icon_size)/2)
         iy1 = y1 + 2
         ibox = (ix1, iy1, ix1+icon_size, iy1+icon_size)
@@ -836,11 +973,347 @@ def _draw_reward_icons_comic(base, draw, guide, s, colors, rcfg, box):
             draw.rounded_rectangle(ibox, radius=7, outline=colors["accent"], width=2)
             s.draw_center(draw, ibox, "?", colors["accent"], max_size=19, min_size=12, bold=True, max_lines=1)
 
-        qty = s.clean(str(item.get("qty") or ""))
-        label = s.clean(str(item.get("name") or "物品")) + ((" ×" + qty) if qty else "")
-        s.draw_center(draw, (cx1, min(y2-31, iy1+icon_size+1), cx2, y2), label, colors["ink"],
+        qty = s.clean(str(item.get("qty") or "1")) or "1"
+        qty_y1 = min(y2-name_h-qty_h, iy1+icon_size+1)
+        s.draw_center(draw, (cx1+2, qty_y1, cx2-2, qty_y1+qty_h), "×"+qty, colors["ink"],
+                      max_size=max(12, name_size), min_size=max(9, name_min), bold=True, max_lines=1)
+        s.draw_center(draw, (cx1+1, qty_y1+qty_h-1, cx2-1, y2), s.clean(str(item.get("name") or "物品")), colors["ink"],
                       max_size=name_size, min_size=name_min, bold=True, max_lines=2, line_gap=0)
 
+
+def _reward_leaf_count_comic(node):
+    if not isinstance(node, dict):
+        return 0
+    typ = node.get("type", "item")
+    if typ == "item":
+        return 1
+    children = node.get("items") if typ == "bundle" else node.get("options")
+    return sum(_reward_leaf_count_comic(x) for x in (children or []))
+
+
+def _reward_tree_comic(guide, s):
+    raw = guide.get("reward_items") or []
+    if not raw:
+        return None
+    units = s.build_reward_display_units(raw)
+    if not units:
+        return None
+    if len(units) == 1:
+        return units[0]
+    # Separate display units remain additive, matching the parser's historical
+    # A 或 B + C -> (A 或 B) + C convention.
+    return {"type": "bundle", "items": units, "_visual_root": True}
+
+
+def _reward_measure_comic(node, item_w, plus_w, choice_gap, nested=False):
+    if not isinstance(node, dict):
+        return 0.0
+    typ = node.get("type", "item")
+    if typ == "item":
+        return float(item_w)
+    if typ == "bundle":
+        children = list(node.get("items") or [])
+        if not children:
+            return float(item_w)
+        width = 0.0
+        for i, child in enumerate(children):
+            compound = isinstance(child, dict) and child.get("type", "item") != "item"
+            width += _reward_measure_comic(child, item_w, plus_w, choice_gap, nested=compound)
+            if i:
+                width += plus_w
+        return width + (10 if nested else 0)
+    if typ == "choice":
+        options = list(node.get("options") or [])
+        if not options:
+            return float(item_w)
+        # Alternatives share one ordinary white manga ticket.  Its width is
+        # determined only by the reward content; the stamp overlays the outer
+        # top-right corner and must never create an artificial blank tail.
+        option_item_w = _choice_item_width_comic(options, item_w)
+        option_gap = _choice_option_gap_comic(options, option_item_w, choice_gap)
+        width = 0.0
+        for i, option in enumerate(options):
+            compound = isinstance(option, dict) and option.get("type", "item") != "item"
+            local_item_w = item_w if compound else option_item_w
+            width += _reward_measure_comic(option, local_item_w, plus_w, choice_gap, nested=compound)
+            if i:
+                width += option_gap
+        # The shared white ticket needs a small real inset on both sides.  Earlier
+        # versions measured only the option contents but then drew them inside
+        # x1+7..x2-7, so a right-most choice could visually run past / flatten the
+        # ticket's slanted right edge.  Make that inset part of the measured width.
+        return width + 14
+    return float(item_w)
+
+
+def _reward_layout_sizes_comic(tree, available_w):
+    leaves = max(1, _reward_leaf_count_comic(tree))
+    target = 106 if leaves <= 3 else (86 if leaves == 4 else 70)
+    min_w = 48
+    for item_w in range(target, min_w - 1, -2):
+        # No visible '+': items that belong to the same reward bundle sit
+        # naturally close together.  Different alternatives still keep more
+        # air *unless* the choice is simply A-or-B, where the shared ticket
+        # itself already communicates that the two items belong together.
+        plus_w = max(5, min(9, int(round(item_w * 0.075))))
+        choice_gap = max(14, min(22, int(round(item_w * 0.17))))
+        if _reward_measure_comic(tree, item_w, plus_w, choice_gap, nested=False) <= available_w:
+            return item_w, plus_w, choice_gap
+    return min_w, 5, 14
+
+
+def _choice_item_width_comic(options, item_w):
+    """Plain A-or-B choices can be more compact than stand-alone reward tickets."""
+    options = list(options or [])
+    simple_two = (
+        len(options) == 2
+        and all(isinstance(x, dict) and x.get("type", "item") == "item" for x in options)
+    )
+    if simple_two:
+        return max(50, int(item_w) - 8)
+    return int(item_w)
+
+
+def _choice_option_gap_comic(options, item_w, choice_gap):
+    """Use a tight gap for a plain A-or-B choice; keep compound choices readable."""
+    options = list(options or [])
+    simple_two = (
+        len(options) == 2
+        and all(isinstance(x, dict) and x.get("type", "item") == "item" for x in options)
+    )
+    if simple_two:
+        return max(3, min(5, int(round(item_w * 0.05))))
+    return choice_gap
+
+
+def _draw_reward_operator_comic(base, draw, s, op, box, colors, rng=None):
+    """Draw only the small hand-lettered '+' used inside additive bundles."""
+    if op != "+":
+        return
+    x1, y1, x2, y2 = map(int, box)
+    angle = -5 if ((x1 + y1) // 7) % 2 else 5
+    layer = _rotated_text(base, "+", s, 22, colors.get("accent2", colors["paper"]),
+                          angle=angle, bold=True, stroke=1, stroke_fill=colors["ink"], alpha=245)
+    px = int((x1+x2-layer.width)/2)
+    py = int((y1+y2-layer.height)/2)
+    base.alpha_composite(layer, (px, py))
+
+
+def _choice_stamp_text_comic(options):
+    """Choice seal wording.  Two alternatives always read 二选一.
+
+    Using 任选1个 made the seal semantically leak to the whole LOOT row: when
+    two ordinary rewards sit beside the shared choice ticket, readers can easily
+    parse it as “pick one of all four”.  二选一 states the scope more clearly,
+    while the seal's physical attachment to the shared ticket identifies the pair.
+    """
+    options = list(options or [])
+    if len(options) == 2:
+        return "二选一"
+    return f"{len(options)}选1"
+
+
+def _draw_choice_stamp_comic(base, s, text, corner, colors, max_width=68):
+    """Small high-contrast seal that sits *on* the ticket corner, not in it.
+
+    The ticket keeps its natural content width.  Most of the seal hangs above
+    and to the right of the parallelogram, leaving only a light corner overlap.
+    """
+    if not text:
+        return
+    red = colors.get("accent", "#C92D25")
+    dark_red = "#7D1614"
+    paper = colors.get("paper", "#FFFDF8")
+
+    # Horizontal seal is easier to read while staying shallow enough to avoid
+    # the reward icon row.  '任选1个' is intentionally compact.
+    size = 15
+    font = _font(s, size, True)
+    probe = Image.new("RGBA", (8, 8), (0, 0, 0, 0))
+    pd = ImageDraw.Draw(probe, "RGBA")
+    bb = pd.textbbox((0, 0), text, font=font, stroke_width=0)
+    tw, th = bb[2]-bb[0], bb[3]-bb[1]
+    stamp_w = min(int(max_width), max(54, tw + 16))
+    stamp_h = max(30, th + 12)
+    pad = 7
+
+    layer = Image.new("RGBA", (stamp_w+pad*2, stamp_h+pad*2), (0, 0, 0, 0))
+    ld = ImageDraw.Draw(layer, "RGBA")
+    x1, y1, x2, y2 = pad, pad, pad+stamp_w, pad+stamp_h
+    ld.rectangle((x1, y1, x2, y2), fill=_rgba(red, 252), outline=_rgba(dark_red, 255), width=3)
+    ld.rectangle((x1+4, y1+4, x2-4, y2-4), outline=_rgba(paper, 215), width=1)
+    bb = ld.textbbox((0, 0), text, font=font, stroke_width=0)
+    tw, th = bb[2]-bb[0], bb[3]-bb[1]
+    tx = pad + (stamp_w-tw)//2 - bb[0]
+    ty = pad + (stamp_h-th)//2 - bb[1]
+    ld.text((tx, ty), text, font=font, fill=_rgba(paper, 255))
+
+    layer = layer.rotate(-8, resample=Image.BICUBIC, expand=True)
+    cx, cy = map(int, corner)
+    # Keep the seal visually attached to *this* white ticket.  It still hangs
+    # mostly outside so it does not cover the right-most icon, but its lower
+    # edge now overlaps the ticket border clearly instead of floating near the
+    # whole LOOT panel and looking like it applies to every reward.
+    # Keep most of the seal over/above the shared choice ticket rather than
+    # hanging into the surrounding LOOT row.  This makes its scope read as
+    # “these two options” while still only grazing the ticket border.
+    px = int(cx - layer.width * 0.70)
+    py = int(cy - layer.height * 0.72 + 7)
+    base.alpha_composite(layer, (px, py))
+
+
+def _draw_reward_item_ticket_comic(base, draw, guide, s, colors, rcfg, item, box, *, draw_ticket=True):
+    """Draw one reward using icon -> quantity -> name, always on one vertical axis."""
+    x1, y1, x2, y2 = map(int, box)
+    if draw_ticket:
+        draw.polygon(
+            [(x1+2, y1+3), (x2-4, y1), (x2, y2-3), (x1+5, y2)],
+            fill=colors["paper"], outline=colors["ink"]
+        )
+    cell_w = max(1, x2-x1)
+    cell_h = max(1, y2-y1)
+    frame_size_cfg = int(rcfg.get("reward_frame_size", 66) or 66)
+    inset_plain = max(2, int(rcfg.get("reward_icon_plain_inset", 5) or 5))
+    qty_h = 20 if cell_h >= 105 else 17
+    name_h = min(34, max(24, int(cell_h*0.25)))
+    top_pad = 4 if draw_ticket else 1
+    icon_size = max(23, int(min(cell_w-8, cell_h-qty_h-name_h-top_pad-3, frame_size_cfg)))
+    px1 = int(x1 + (cell_w-icon_size)/2)
+    py1 = y1 + top_pad
+    ibox = (px1, py1, px1+icon_size, py1+icon_size)
+    reward_renderer = RewardItemRenderer(s, guide)
+    resolved = reward_renderer.draw_icon(base, item, ibox, plain_inset=inset_plain)
+    icon_path = resolved.get("icon_path")
+    frame_path = resolved.get("frame_path")
+    if not ((icon_path and Path(icon_path).exists()) or (frame_path and Path(frame_path).exists())):
+        draw.rounded_rectangle(ibox, radius=6, outline=colors["accent"], width=2)
+        s.draw_center(draw, ibox, "?", colors["accent"], max_size=18, min_size=11, bold=True, max_lines=1)
+
+    qty = s.clean(str(item.get("qty") or "1")) or "1"
+    qty_y1 = min(y2-name_h-qty_h, py1+icon_size+1)
+    s.draw_center(
+        draw, (x1+3, qty_y1, x2-3, qty_y1+qty_h), "×"+qty, colors["ink"],
+        max_size=max(13, int(rcfg.get("reward_item_font_size", 15) or 15)),
+        min_size=10, bold=True, max_lines=1, line_gap=0
+    )
+    s.draw_center(
+        draw, (x1+3, qty_y1+qty_h-1, x2-3, y2-2), s.clean(str(item.get("name") or "物品")), colors["ink"],
+        max_size=int(rcfg.get("reward_item_font_size", 15) or 15),
+        min_size=max(9, int(rcfg.get("reward_item_min_font_size", 13) or 13)-2),
+        bold=True, max_lines=2, line_gap=0
+    )
+
+
+def _draw_reward_expression_comic(base, draw, guide, s, colors, rcfg, node, box,
+                                  item_w, plus_w, choice_gap, nested=False, inside_choice=False):
+    x1, y1, x2, y2 = map(int, box)
+    typ = (node or {}).get("type", "item") if isinstance(node, dict) else "item"
+    if typ == "item":
+        _draw_reward_item_ticket_comic(
+            base, draw, guide, s, colors, rcfg, node or {}, box,
+            draw_ticket=not inside_choice
+        )
+        return
+
+    if typ == "choice":
+        options = list(node.get("options") or [])
+        if not options:
+            return
+        # One shared version of the existing white parallelogram.  There is no
+        # internal header, divider, '或', or bracket: all reward icons keep one
+        # top line, and the small corner stamp supplies the choice semantics.
+        draw.polygon(
+            [(x1+2, y1+3), (x2-4, y1), (x2, y2-3), (x1+5, y2)],
+            fill=colors["paper"], outline=colors["ink"]
+        )
+        # Every alternative receives the same y-range.  The seal mostly hangs
+        # outside the frame, so it does not consume any internal layout space.
+        cy1, cy2 = y1+4, y2-4
+        option_item_w = _choice_item_width_comic(options, item_w)
+        widths = []
+        for option in options:
+            compound = isinstance(option, dict) and option.get("type", "item") != "item"
+            local_item_w = item_w if compound else option_item_w
+            widths.append(_reward_measure_comic(option, local_item_w, plus_w, choice_gap, nested=compound))
+        option_gap = _choice_option_gap_comic(options, option_item_w, choice_gap)
+        total = sum(widths) + option_gap * max(0, len(options)-1)
+        # Content uses the full ticket width; no blank region is reserved for
+        # the stamp.  This keeps the white parallelogram exactly as large as the
+        # reward content requires.
+        content_left = x1 + 7
+        content_right = x2 - 7
+        usable = max(1.0, content_right - content_left)
+        cursor = content_left + max(0.0, (usable-total)/2.0)
+        for i, (option, ow) in enumerate(zip(options, widths)):
+            o1, o2 = int(round(cursor)), int(round(cursor+ow))
+            compound = isinstance(option, dict) and option.get("type", "item") != "item"
+            local_item_w = item_w if compound else option_item_w
+            _draw_reward_expression_comic(
+                base, draw, guide, s, colors, rcfg, option, (o1, cy1, o2, cy2),
+                local_item_w, plus_w, choice_gap, nested=compound, inside_choice=True
+            )
+            cursor += ow
+            if i < len(options)-1:
+                cursor += option_gap
+
+        _draw_choice_stamp_comic(
+            base, s, _choice_stamp_text_comic(options), (x2-3, y1+2), colors,
+            max_width=max(58, min(70, int((x2-x1)*0.28)))
+        )
+        return
+
+    if typ == "bundle":
+        children = list(node.get("items") or [])
+    else:
+        _draw_reward_item_ticket_comic(
+            base, draw, guide, s, colors, rcfg, node or {}, box,
+            draw_ticket=not inside_choice
+        )
+        return
+    if not children:
+        return
+
+    pad = 5 if nested else 0
+    widths = []
+    for child in children:
+        compound = isinstance(child, dict) and child.get("type", "item") != "item"
+        widths.append(_reward_measure_comic(child, item_w, plus_w, choice_gap, nested=compound))
+    # Root-level reward units should use the whole LOOT stage: keep each ticket
+    # at its natural content width, then distribute the remaining horizontal
+    # room *between* top-level units.  Nested bundles/choice internals stay
+    # compact, so a two-item choice still reads as one tight group.
+    root_spread = bool(node.get("_visual_root")) and not nested and len(children) > 1
+    if root_spread:
+        side_pad = 8
+        content_w = sum(widths)
+        available = max(1.0, (x2-x1) - side_pad*2)
+        # Fill the LOOT row with whitespace, but never force a minimum gap that
+        # pushes the final ticket past the right safety margin.  This was the
+        # second cause of a clipped-looking right edge when a choice sat last.
+        remaining = max(0.0, available - content_w)
+        spread_gap = remaining / max(1, len(children)-1)
+        total = content_w + spread_gap * max(0, len(children)-1)
+        cursor = float(x1 + side_pad)
+    else:
+        spread_gap = float(plus_w)
+        total = sum(widths) + spread_gap * max(0, len(children)-1)
+        cursor = x1 + pad + max(0.0, (x2-x1-2*pad-total)/2.0)
+    op_y1, op_y2 = y1 + 20, y2 - 30
+    if op_y2 <= op_y1:
+        op_y1, op_y2 = y1 + 5, y2 - 5
+
+    for i, (child, cw) in enumerate(zip(children, widths)):
+        c1, c2 = int(round(cursor)), int(round(cursor+cw))
+        compound = isinstance(child, dict) and child.get("type", "item") != "item"
+        _draw_reward_expression_comic(
+            base, draw, guide, s, colors, rcfg, child, (c1, y1, c2, y2),
+            item_w, plus_w, choice_gap, nested=compound, inside_choice=inside_choice
+        )
+        cursor += cw
+        if i < len(children)-1:
+            # No visible '+'.  Root-level units use editorial whitespace to fill
+            # the LOOT frame; nested items remain close enough to read as a bundle.
+            cursor += spread_gap
 
 def _draw_reward_cut_in(base, draw, guide, s, tools, colors, rcfg, box, rng):
     x1, y1, x2, y2 = map(int, box)
@@ -866,8 +1339,9 @@ def _draw_reward_cut_in(base, draw, guide, s, tools, colors, rcfg, box, rng):
             draw, (x2-58, y1+96), 26, colors,
             width=5, alpha=215, angle=46
         )
-    # The large loot field now uses the same dark/halftone language as STATUS.
-    # Individual items remain readable on small pale paper tickets.
+    # The large loot field uses the same dark/halftone language as STATUS.
+    # Ordinary rewards keep individual white manga tickets; alternatives share
+    # one ticket and receive only a small diagonal choice stamp at its top-right.
     rx1, ry1, rx2, ry2 = x1+22, y1+70, x2-22, y2-18
     draw.rectangle((rx1+5, ry1+6, rx2+5, ry2+6), fill=_rgba(colors["ink"], 62))
     inner_fill = (
@@ -881,70 +1355,27 @@ def _draw_reward_cut_in(base, draw, guide, s, tools, colors, rcfg, box, rng):
     )
     _halftone(draw, (rx1+3, ry1+3, rx2-3, ry2-3), colors["paper"], step=15, radius=1, alpha=28, offset=2)
 
-    # Draw each loot item on its own tiny manga data ticket; the big background
-    # stays dark, matching the resource panel instead of turning white.
-    cfg = guide.get("cfg") or {}
-    leaves = tools.flat_reward_items(guide.get("reward_items") or [])[:int(rcfg.get("reward_max_items", 5) or 5)]
-    if not leaves:
+    tree = _reward_tree_comic(guide, s)
+    if not tree:
         s.draw_center(draw, (rx1+12, ry1+10, rx2-12, ry2-10), tools.reward_summary(guide), colors["paper"],
                       max_size=int(rcfg.get("reward_item_font_size", 13) or 13), min_size=9,
                       bold=True, max_lines=3, line_gap=2)
         return
-    # Readability-first loot grid: up to three columns, two rows for 4-6
-    # rewards.  This is less "poster-like" than a five-item strip, but keeps
-    # real item names readable without 9px text.
-    gap_x = 7
-    gap_y = 6
     inner = (rx1+8, ry1+8, rx2-8, ry2-8)
-    ix1, iy1, ix2, iy2 = inner
-    n = len(leaves)
-    cols = min(3, n)
-    rows = int(math.ceil(n / float(cols)))
-    cell_w = (ix2-ix1-gap_x*max(0, cols-1))/max(1, cols)
-    cell_h = (iy2-iy1-gap_y*max(0, rows-1))/max(1, rows)
-    frame_size_cfg = int(rcfg.get("reward_frame_size", 66) or 66)
-    inset_plain = max(2, int(rcfg.get("reward_icon_plain_inset", 5) or 5))
-    name_size = int(rcfg.get("reward_item_font_size", 15) or 15)
-    name_min = int(rcfg.get("reward_item_min_font_size", 13) or 13)
-    reward_renderer = RewardItemRenderer(s, guide)
-
-    for i, item in enumerate(leaves):
-        rr, cc = divmod(i, cols)
-        a = int(round(ix1 + cc*(cell_w+gap_x)))
-        b = int(round(iy1 + rr*(cell_h+gap_y)))
-        c = int(round(a + cell_w))
-        e = int(round(b + cell_h))
-        draw.polygon(
-            [(a+2, b+3), (c-4, b), (c, e-3), (a+5, e)],
-            fill=colors["paper"], outline=colors["ink"]
-        )
-
-        name_h = min(38, max(30, int(cell_h*0.38)))
-        icon_size = int(min(cell_w-10, cell_h-name_h-5, frame_size_cfg))
-        icon_size = max(28, icon_size)
-        px1 = int(a+(cell_w-icon_size)/2)
-        py1 = b+3
-        ibox = (px1, py1, px1+icon_size, py1+icon_size)
-        resolved = reward_renderer.draw_icon(
-            base, item, ibox,
-            # Framed reward geometry is global; frameless comic variants may keep a custom plain inset.
-            plain_inset=inset_plain,
-        )
-        icon_path = resolved.get("icon_path")
-        frame_path = resolved.get("frame_path")
-        has_frame = bool(frame_path and Path(frame_path).exists())
-        if not (icon_path and Path(icon_path).exists()) and not has_frame:
-            draw.rounded_rectangle(ibox, radius=7, outline=colors["accent"], width=2)
-            s.draw_center(draw, ibox, "?", colors["accent"], max_size=19, min_size=12, bold=True, max_lines=1)
-
-        qty = s.clean(str(item.get("qty") or ""))
-        label = s.clean(str(item.get("name") or "物品")) + ((" ×"+qty) if qty else "")
-        s.draw_center(
-            draw, (a+4, max(b+icon_size+4, e-name_h), c-4, e-2),
-            label, colors["ink"],
-            max_size=name_size, min_size=name_min,
-            bold=True, max_lines=2, line_gap=1
-        )
+    available_w = inner[2] - inner[0]
+    item_w, plus_w, choice_gap = _reward_layout_sizes_comic(tree, available_w)
+    expr_w = _reward_measure_comic(tree, item_w, plus_w, choice_gap, nested=False)
+    # A multi-unit root is given the whole stage so its renderer can distribute
+    # natural-size tickets across the LOOT frame.  A single unit remains centered.
+    if isinstance(tree, dict) and tree.get("_visual_root") and len(tree.get("items") or []) > 1:
+        ex1, ex2 = inner[0], inner[2]
+    else:
+        ex1 = int(inner[0] + max(0, (available_w-expr_w)/2))
+        ex2 = int(min(inner[2], ex1+expr_w))
+    _draw_reward_expression_comic(
+        base, draw, guide, s, colors, rcfg, tree,
+        (ex1, inner[1], ex2, inner[3]), item_w, plus_w, choice_gap, nested=False
+    )
 
 
 def _day_label(info, idx):
@@ -1027,26 +1458,34 @@ def _dynamic_day_slots(days, top=485, d7_top=1510, left=44, right=1036, min_pane
     slots = [None]*6
     y = float(top)
     inner_w = right - left
-    # Near-equal pairs still get a bold asymmetric comic rhythm instead of 50/50.
-    tie_ratios = (0.35, 0.66, 0.40)
-    pair_gaps = (18, 24, 19)
-    offsets = ((14, 0), (0, 16), (12, 0))
+    # Keep a manga rhythm, but never manufacture a huge size mismatch when the
+    # two days have similar content.  The old 35/65-ish tie split made equal
+    # D3/D4 instructions look like a hero panel beside a squeezed footnote.
+    # Near-ties now use only a subtle alternation; real content differences may
+    # still earn extra width, but the smaller panel keeps a readable floor.
+    tie_ratios = (0.53, 0.48, 0.52)
+    pair_gaps = (18, 22, 19)
+    offsets = ((10, 0), (0, 10), (8, 0))
 
     for row, (a, b) in enumerate(pairs):
         h = heights[row]
         gap = pair_gaps[row]
         wa, wb = weights[a], weights[b]
         rel = abs(wa - wb) / max(0.01, wa + wb)
-        if rel < 0.085:
+        if rel < 0.10:
             ratio = tie_ratios[row]
         else:
-            # Strong hierarchy: the text-heavier day gets roughly 60-72% width.
-            heavy_share = min(0.72, 0.59 + rel*0.62)
+            # Content-aware, not content-dominated: a denser day may become
+            # larger, but never so large that its neighbour loses readable
+            # speech-balloon width.  A 58-62% ceiling still gives comic rhythm.
+            heavy_share = min(0.62, 0.56 + rel*0.34)
             ratio = heavy_share if wa > wb else 1.0 - heavy_share
         usable_w = inner_w - gap
-        # Keep the composition clearly irregular without creating sliver panels
-        # that cannot hold both character art and readable guide text.
-        min_ratio = max(0.30, min(0.46, float(min_panel_width) / max(1.0, usable_w)))
+        # D1-D6 need enough horizontal room for a real manga balloon + status
+        # ribbon.  Use both the configured floor and ~39% of the row as the
+        # minimum, so equal-content D3/D4 can never collapse into 2:1 widths.
+        readable_floor = max(float(min_panel_width), usable_w * 0.39)
+        min_ratio = min(0.47, readable_floor / max(1.0, usable_w))
         ratio = max(min_ratio, min(1.0-min_ratio, ratio))
         lw = int(round(usable_w * ratio))
         oy_l, oy_r = offsets[row]
@@ -1141,15 +1580,149 @@ def _draw_command_strips(draw, s, box, steps, colors, rcfg, terminal=False):
 
 def _draw_action_bubble_or_strips(draw, s, box, action, colors, rcfg, idx, terminal=False):
     steps = _split_action_steps(action)
-    # Multi-step instructions work better as manga command beats than a giant white bubble.
-    if len(steps) >= 3 or (terminal and len(steps) >= 2):
-        _draw_command_strips(draw, s, box, steps, colors, rcfg, terminal=terminal)
+    # Ordinary days are comic dialogue: even when their guide text contains
+    # several numbered beats, keep them inside one speech balloon.  Only D7
+    # uses the explicit ①②③-style command rhythm.  A previous generic
+    # "3+ steps => strips" rule accidentally made D1/D3/etc. look like a task
+    # table instead of manga dialogue.
+    if terminal and len(steps) >= 2:
+        _draw_command_strips(draw, s, box, steps, colors, rcfg, terminal=True)
         return
     _action_dialog_balloon(draw, s, box, action, colors["ink"], colors["balloon"],
                     max_size=int(rcfg.get("day_action_font_size", 19) or 19) + (1 if terminal else 0),
                     min_size=int(rcfg.get("day_action_min_font_size", 12) or 12),
                     tail="left" if idx%2==0 else "right", bold=True,
                     line_gap=int(rcfg.get("day_action_line_gap", 3) or 3))
+
+
+def _clean_target_tier_comic(s, target):
+    """Return only the tier wording used beside the Day title."""
+    cleaned = s.clean(str(target or ""))
+    cleaned = re.sub(r"^目标档位[：:\s]*", "", cleaned).strip()
+    cleaned = re.sub(r"^目标[：:\s]*", "", cleaned).strip()
+    return cleaned
+
+
+def _draw_tier_ticket(draw, s, panel_box, target, colors, panel_fill, terminal=False, lead=False, page_style="shonen"):
+    """Draw a top-right target-tier marker tailored to each comic variant.
+
+    The information architecture stays stable (same corner, same tier text), while
+    the prop language follows the selected variant:
+      - shonen: A4 single-line chapter tab;
+      - vintage_print: B2 double-line print placard;
+      - detective_red: C5 evidence tag, deep-red stock with outlined white type and a white eyelet.
+    """
+    if not target:
+        return None
+    x1, y1, x2, y2 = map(int, panel_box)
+    page_style = str(page_style or "shonen").lower().strip()
+    max_size = 30 if terminal else (28 if lead else 26)
+    min_size = 17
+
+    # Fit the wording first.  The prop should hug its content rather than reserve
+    # a UI-sized block, but keep a predictable minimum hit area at the corner.
+    fsize = max_size
+    font = _font(s, fsize, True)
+    try:
+        tb = draw.textbbox((0, 0), target, font=font)
+        tw = tb[2] - tb[0]
+    except Exception:
+        tw = len(target) * fsize
+    while fsize > min_size and tw > 104:
+        fsize -= 1
+        font = _font(s, fsize, True)
+        try:
+            tb = draw.textbbox((0, 0), target, font=font)
+            tw = tb[2] - tb[0]
+        except Exception:
+            tw = len(target) * fsize
+
+    top = y1 + 13
+    rx = x2 - 14
+
+    if page_style == "vintage_print":
+        # B2 — double-line print placard: darker aged newsprint stock, tobacco-brown
+        # press border and muted rust registration line.  The stronger sepia stock
+        # separates it from the normal panel paper and reads more like an old刊 header.
+        h = 43 if terminal else 40
+        w = max(96, min(132, int(tw + 34)))
+        left = rx - w
+        paper = "#D8BF87"
+        brown = "#5A3B22"
+        rust = "#9A542F"
+        outer = [(left+2, top+4), (rx-2, top), (rx, top+h-4), (left, top+h)]
+        draw.polygon(outer, fill=paper, outline=brown)
+        draw.line(outer + [outer[0]], fill=brown, width=3, joint="curve")
+        inset = 6
+        inner = [
+            (left+inset+1, top+inset+2), (rx-inset-1, top+inset),
+            (rx-inset, top+h-inset-3), (left+inset, top+h-inset)
+        ]
+        draw.line(inner + [inner[0]], fill=rust, width=2, joint="curve")
+        # Tiny off-register line gives it a printed-magazine feel without clutter.
+        draw.line((left+12, top+h+2, rx-10, top+h-2), fill=rust, width=2)
+        s.draw_center(draw, (left+11, top+5, rx-10, top+h-4), target, brown,
+                      max_size=fsize, min_size=min_size, bold=True, max_lines=1)
+        return (left, top, rx, top+h+3)
+
+    if page_style == "detective_red":
+        # C5 — evidence tag, option 9 (outlined): deep-red stock + white lettering
+        # with a thin black stroke, a brighter red accent edge and a clean white eyelet.
+        # Red establishes the case-file identity; white carries the information; black
+        # stroke keeps the tier wording crisp against both the dark tag and red accents.
+        h = 45 if terminal else 42
+        w = max(106, min(140, int(tw + 46)))
+        left = rx - w
+        deep_red = "#8C1816"
+        bright_red = "#E23B35"
+        white = "#FFFFFF"
+        ink = "#111111"
+        notch = 17
+        tag = [
+            (left, top+5), (rx-notch-7, top), (rx, top+notch),
+            (rx-7, top+h-5), (left+4, top+h)
+        ]
+        draw.polygon(tag, fill=deep_red, outline=ink)
+        draw.line(tag + [tag[0]], fill=ink, width=2, joint="curve")
+        # A short vivid-red registration edge adds contrast without turning the tag
+        # into another warning badge.
+        draw.line((left+10, top+h-5, rx-notch-13, top+h-8), fill=bright_red, width=3)
+        # White eyelet/hole remains the strongest evidence-tag cue.
+        cx, cy = rx-notch+1, top+notch
+        r = 7
+        draw.ellipse((cx-r, cy-r, cx+r, cy+r), fill=white, outline=bright_red, width=2)
+        tx_box = (left+10, top+5, rx-notch-13, top+h-5)
+        font = _font(s, fsize, True)
+        try:
+            bb = draw.textbbox((0,0), target, font=font, stroke_width=2)
+            ww, hh = bb[2]-bb[0], bb[3]-bb[1]
+        except Exception:
+            ww, hh = int(len(target)*fsize*.9), fsize
+        tx = int((tx_box[0]+tx_box[2]-ww)/2)
+        ty = int((tx_box[1]+tx_box[3]-hh)/2 - 1)
+        draw.text((tx, ty), target, font=font, fill=white, stroke_width=2, stroke_fill=ink)
+        return (left, top, rx, top+h)
+
+    # A4 — single-line chapter tab for the black/white shonen variant.  The left
+    # black index strip makes it feel like a manga chapter tab rather than a UI pill.
+    h = 42 if terminal else 39
+    w = max(94, min(130, int(tw + 38)))
+    left = rx - w
+    paper = colors.get("paper") or "#FFFDF8"
+    ink = colors.get("ink") or "#111111"
+    accent = colors.get("accent") or "#B33431"
+    tab = [(left+2, top+4), (rx-3, top), (rx, top+h-4), (left, top+h)]
+    draw.polygon(tab, fill=paper, outline=ink)
+    draw.line(tab + [tab[0]], fill=ink, width=3, joint="curve")
+    strip_w = 18
+    strip = [(left+2, top+4), (left+strip_w+3, top+3),
+             (left+strip_w+1, top+h-1), (left, top+h)]
+    draw.polygon(strip, fill=ink)
+    # Keep A4 strictly monochrome; the chapter-tab geometry itself provides the
+    # manga identity, so no extra red registration slash is needed.
+    s.draw_center(draw, (left+strip_w+12, top+4, rx-7, top+h-3), target, ink,
+                  max_size=fsize, min_size=min_size, bold=True, max_lines=1)
+    return (left, top, rx, top+h)
 
 
 def _draw_day_panel(base, draw, guide, info, idx, s, colors, rcfg, box, rng, mode="speed", terminal=False, lead=False):
@@ -1175,13 +1748,24 @@ def _draw_day_panel(base, draw, guide, info, idx, s, colors, rcfg, box, rng, mod
     draw.polygon(poly, fill=fill)
 
     if special:
-        _pattern_mask(base, poly, lambda pd: _speedlines(
-            pd, (x1, y1, x2, y2),
-            (int(x1+(x2-x1)*.62), int(y1+(y2-y1)*.48)),
-            colors["accent"], rng, count=50, alpha=(22, 52)
-        ))
-        _halftone(draw, (x1+8, y1+8, min(x2, x1+150), y2-8),
-                  colors["accent"], step=9, radius=1, alpha=42)
+        if page_style == "detective_red":
+            # Detective panels already use red for case marks, stamps and tier
+            # accents.  A full fan of red speed lines makes the evidence-board
+            # variant noisy, so special days use one controlled halftone field
+            # instead.  The red emphasis stays local to the Day label/character
+            # side and never throws arbitrary lines across actions or metrics.
+            _pattern_mask(base, poly, lambda pd: _halftone(
+                pd, (x1, y1, min(x2, x1 + max(150, int(pw * .34))), y2),
+                colors["accent"], step=10, radius=1, alpha=38, offset=idx
+            ))
+        else:
+            _pattern_mask(base, poly, lambda pd: _speedlines(
+                pd, (x1, y1, x2, y2),
+                (int(x1+(x2-x1)*.62), int(y1+(y2-y1)*.48)),
+                colors["accent"], rng, count=50, alpha=(22, 52)
+            ))
+            _halftone(draw, (x1+8, y1+8, min(x2, x1+150), y2-8),
+                      colors["accent"], step=9, radius=1, alpha=42)
     elif mode == "tone":
         _pattern_mask(base, poly, lambda pd: _halftone(
             pd, (x1, y1, x2, y2), colors["tone"],
@@ -1195,6 +1779,22 @@ def _draw_day_panel(base, draw, guide, info, idx, s, colors, rcfg, box, rng, mod
             count=36 if lead else 26, alpha=(24, 56)
         ))
     _ink_poly(draw, poly, colors["ink"], rng, width=7 if terminal else (6 if lead else 5))
+
+    # With all characters now kept in colour, special days need a consistent
+    # non-character cue.  A restrained accent keyline/corner treatment works in
+    # every comic variant without creating another large badge or UI component.
+    if special:
+        inset = 8
+        sx1, sy1, sx2, sy2 = x1 + inset, y1 + inset, x2 - inset, y2 - inset
+        if sx2 > sx1 + 30 and sy2 > sy1 + 30:
+            # Upper-left and lower-right editorial brackets are enough to signal
+            # a highlighted panel while leaving speech balloons/KPIs unobstructed.
+            seg = max(34, min(74, int(min(pw, ph) * 0.20)))
+            sw = 4 if terminal else 3
+            draw.line((sx1, sy1, min(sx2, sx1+seg), sy1), fill=colors["accent"], width=sw)
+            draw.line((sx1, sy1, sx1, min(sy2, sy1+seg)), fill=colors["accent"], width=sw)
+            draw.line((max(sx1, sx2-seg), sy2, sx2, sy2), fill=colors["accent"], width=sw)
+            draw.line((sx2, max(sy1, sy2-seg), sx2, sy2), fill=colors["accent"], width=sw)
 
     if page_style == "detective_red":
         # Evidence number in each Day panel.
@@ -1218,60 +1818,155 @@ def _draw_day_panel(base, draw, guide, info, idx, s, colors, rcfg, box, rng, mod
             fill=colors["accent"], width=4
         )
 
-    # ---- 1. Editorial header first: Day typography and target NEVER move for a character.
+    # ---- 1. Editorial header first.  Keep Day on the left and the target tier
+    # as a separate, stable top-right label.  This prevents a long integrated
+    # "D7 · 第X档" heading from dictating the width of the whole D7 composition.
     label = _day_label(info, idx)
+    target = _clean_target_tier_comic(s, info.get("target"))
     day_color = colors["accent"] if special else colors["ink"]
-    fsize = 84 if terminal else (70 if lead else (60 if pw > 500 else 50))
-    _paste_rotated_text(base, (x1+8, y1+14), label, s, fsize, day_color,
-                        -8 if idx%2==0 else 6, True, 2, colors["paper"], 242)
+    if terminal:
+        base_fsize = 80 if special else 74
+    else:
+        base_fsize = 70 if lead else (60 if pw > 500 else 50)
+        if special:
+            base_fsize += 4
+    # Only a light manga tilt: D7 is essentially level, ordinary days alternate
+    # by just a couple of degrees.
+    title_angle = 0 if terminal else (-2 if idx % 2 == 0 else 2)
+
+    max_title_w = max(94, int(pw * (0.42 if terminal else 0.46)))
+    title_size = base_fsize
+    while title_size > 28:
+        probe = _rotated_text(base, label, s, title_size, day_color,
+                              title_angle, True, 2, colors["paper"], 242)
+        if probe.width <= max_title_w:
+            break
+        title_size -= 2
+    title_layer = _rotated_text(base, label, s, title_size, day_color,
+                                title_angle, True, 2, colors["paper"], 242)
+    title_x = x1 + 8
+    title_y = y1 + 14
+    base.alpha_composite(title_layer, (title_x, title_y))
+
+    # Target tier uses the chosen anime chapter-subtitle bar.  It is a compact
+    # prop in the panel corner and does not reserve action height.
+    target_ticket = _draw_tier_ticket(
+        draw, s, box, target, colors, fill, terminal=terminal, lead=lead, page_style=page_style
+    )
 
     effect_words = ["START!", "GO!", "CHECK!", "PUSH!", "SAVE!", "MOVE!", "FINAL!!"]
-    _paste_rotated_text(base, (x1+18, y1+92), effect_words[min(idx, 6)], s,
-                        17 if not terminal else 27, colors["muted"],
-                        8 if idx%2==0 else -8, True, 1, colors["paper"], 145)
+    # On a special day the emphasis burst replaces the decorative effect word,
+    # so the two callouts do not stack on top of each other.
+    if not special:
+        _paste_rotated_text(base, (x1+18, y1+92), effect_words[min(idx, 6)], s,
+                            17 if not terminal else 27, colors["muted"],
+                            6 if idx%2==0 else -6, True, 1, colors["paper"], 145)
 
-    target = s.clean(str(info.get("target") or ""))
-    if target:
-        reserve = 150 if special else 18
-        cap_w = min(320 if not terminal else 390, max(150, pw-150-reserve//2))
-        tx2 = x2-reserve
-        tx1 = max(x1+112, tx2-cap_w)
-        _caption(draw, s, (tx1, y1+14, tx2, y1+50),
-                 "本格目标  " + target,
-                 colors["ink"], colors["paper"],
-                 colors["accent"] if special else None,
-                 True, max_size=13 if not terminal else 14)
-
-    if special:
-        pts = _burst_polygon(x2-69, y1+36, 61, 30, 12, rng, inner=(.54, .76))
+    if special and not terminal:
+        # D1-D6 special marker belongs to the Day header, not to the vertical
+        # content stack.  Place it immediately to the RIGHT of the date on the
+        # same header line, while respecting the top-right tier subtitle bar.
+        # This also gives the speech balloon back the vertical space that the
+        # old under-Date burst consumed.
+        burst_outer = 39
+        burst_inner = 21
+        ticket_left = target_ticket[0] if target_ticket else (x2 - 16)
+        title_right = title_x + title_layer.width
+        available = ticket_left - title_right - 12
+        if available < burst_outer * 2:
+            burst_outer = max(30, int(available / 2))
+            burst_inner = max(16, int(burst_outer * 0.54))
+        burst_cx = min(title_right + burst_outer + 8, ticket_left - burst_outer - 6)
+        burst_cx = max(title_right + burst_outer + 2, burst_cx)
+        burst_cy = title_y + max(28, min(title_layer.height - 10, title_layer.height // 2))
+        pts = _burst_polygon(burst_cx, burst_cy, burst_outer, burst_inner, 12, rng, inner=(.54, .76))
         draw.polygon(pts, fill=colors["accent"], outline=colors["ink"])
-        s.draw_center(draw, (x2-129, y1+13, x2-12, y1+59), "重点回!",
-                      colors["paper"], max_size=15, min_size=10,
+        s.draw_center(draw,
+                      (burst_cx-burst_outer, burst_cy-burst_inner,
+                       burst_cx+burst_outer, burst_cy+burst_inner),
+                      "重点回!", colors["paper"],
+                      max_size=12, min_size=8,
                       bold=True, max_lines=1)
 
     # ---- 2. Action box layout, still without considering any character.
     action = s.clean(str(info.get("action") or "")) or "按计划执行"
     steps = _split_action_steps(action)
     chars = len(action.replace("\n", ""))
-    has_metrics = bool(info.get("metric_items"))
+    metric_items = list(info.get("metric_items") or [])[:4]
+    has_metrics = bool(metric_items)
+    # Very narrow Day panels cannot keep four status values readable in one
+    # line. Reserve a compact 2x2 status area instead of clipping/ellipsizing
+    # the last cells.
+    # Decide by the real per-cell width rather than a brittle panel-width cutoff.
+    # Four values with icons need roughly 105 px per cell to keep full numbers.
+    metric_cell_est = (pw - 36) / max(1, len(metric_items)) if metric_items else pw
+    # Four-digit values such as 5887/9811 need more room than three-digit
+    # values even in a panel that is otherwise wide enough.  Make the switch
+    # threshold data-aware so rebalancing D3/D4 never revives the old "58…"
+    # regression in neighbouring panels.
+    longest_metric_chars = max(
+        (len(s.clean(str(item.get("value") or "—"))) for item in metric_items),
+        default=1
+    )
+    metric_cell_need = 105 + max(0, longest_metric_chars - 3) * 12
+    metric_two_rows = bool(
+        has_metrics and len(metric_items) > 2 and metric_cell_est < metric_cell_need
+    )
+    metric_h = 62 if metric_two_rows else 38
 
-    # D1-D6 keep the generous header safety band that fixed Day-title collisions.
-    # D7 is different: its large D7/FINAL typography lives in the LEFT illustration
-    # column, so the RIGHT command list can start just below the target caption.
+    # D1-D6 keep the generous header safety band that protects the integrated
+    # Day/tier title. D7 keeps its large typography in the LEFT illustration column.
     if terminal:
         header_h = max(62, int(rcfg.get("terminal_action_top", 72) or 72))
     else:
-        header_h = 104 if lead else 96
+        header_h = 104 if lead else (80 if pw < 335 else 96)
+
+    # Day label and target are now independent.  Only the left Day label needs
+    # to reserve vertical header space; the top-right tier never pushes actions down.
+    title_visual_bottom = 14 + title_layer.height
+    # Ordinary panels place actions below the real rotated title bounds.  D7 is
+    # different: its title lives in the left illustration column, so pushing the
+    # right-hand command stack below the whole title wastes vertical space.
+    # Keep D7's configured top and solve collision horizontally with a wider
+    # illustration gutter below.
+    if terminal:
+        header_h = max(62, int(rcfg.get("terminal_action_top", 72) or 72))
+    else:
+        header_h = max(header_h, title_visual_bottom + 10)
+        # Do not let a very tall title consume the action body completely.
+        header_h = min(header_h, max(88, int(ph * 0.42)))
     by1 = y1 + header_h
-    by2 = y2 - (52 if has_metrics else 18)
+    by2 = y2 - ((metric_h + 12) if has_metrics else 18)
+    # Ordinary speech balloons need visible breathing room above the
+    # remaining/expected ribbon.  Four pixels read as if the balloon were
+    # glued to the status row, especially in narrow D1-D6 panels.  Reserve a
+    # deliberate comic gutter without changing the metric ribbon itself.
+    if has_metrics and not terminal:
+        action_metric_gap = max(14, int(rcfg.get("day_action_metric_gap", 16) or 16))
+        by2 = y2 - metric_h - 8 - action_metric_gap
 
     if terminal:
-        # V35.65: D7 returns to the preferred "illustration column + command list"
-        # composition. The left column is deliberately wide enough for a real
-        # character splash, while all numbered steps and metrics stay on the right.
-        terminal_gutter = int(rcfg.get("terminal_illustration_width", 270) or 270)
-        terminal_gutter = max(235, min(int(pw * 0.34), terminal_gutter))
-        bx1, bx2 = x1 + terminal_gutter, x2 - 20
+        # D7 previously grew its left gutter from the width of "D7 · 第X档".
+        # That pushed every command strip toward the right edge and made the
+        # whole panel feel right-heavy.  With the tier detached, use a balanced
+        # fixed proportion instead: enough illustration room, but commands begin
+        # closer to the visual center of the panel.
+        configured_gutter = int(rcfg.get("terminal_illustration_width", 270) or 270)
+        # D7 reads as two centered comic columns: a substantial character panel
+        # on the left and ①②③ commands on the right.  Keep balanced outer margins
+        # instead of pushing the command stack to the extreme right.
+        # Keep the command column visually centered instead of over-reserving
+        # the left illustration side.  The previous 45% gutter plus a positive
+        # command shift pushed ①②③ noticeably to the right.  Around 37% leaves
+        # a large hero column while bringing the commands back toward center.
+        desired_gutter = max(250, configured_gutter, int(pw * 0.37))
+        max_gutter = max(240, pw - 330)  # preserve a readable command column
+        terminal_gutter = min(desired_gutter, max_gutter)
+        # Optional theme override remains available, but the neutral default is
+        # now zero: D7 should not receive an automatic rightward shove.
+        terminal_command_shift_x = int(rcfg.get("terminal_command_shift_x", 0) or 0)
+        terminal_command_shift_x = max(-28, min(28, terminal_command_shift_x))
+        bx1, bx2 = x1 + terminal_gutter + 8 + terminal_command_shift_x, x2 - 24
         open_side = "left"
     else:
         usable_x1, usable_x2 = x1+18, x2-18
@@ -1302,10 +1997,12 @@ def _draw_day_panel(base, draw, guide, info, idx, s, colors, rcfg, box, rng, mod
             bx1 = usable_x1
             bx2 = bx1+bw
 
-    # Defensive minimum height. If a very short panel cannot hold both header and
-    # action region, shrink only the header reserve slightly—never overlap Day text.
+    # Defensive minimum height.  If a very short panel is cramped, recover as
+    # much action height as possible but never move the action above the real
+    # visual bottom of the Day/tier title.
     if by2-by1 < 88:
-        by1 = min(by1, y1+84)
+        title_safe_y = y1 + title_visual_bottom + 4
+        by1 = max(title_safe_y, min(by1, by2-88))
     _draw_action_bubble_or_strips(
         draw, s, (bx1, by1, bx2, by2),
         action, colors, rcfg, idx, terminal=terminal
@@ -1314,33 +2011,72 @@ def _draw_day_panel(base, draw, guide, info, idx, s, colors, rcfg, box, rng, mod
     # ---- 3. Metrics follow the action box horizontally, preserving the same gutter.
     metric_box = None
     if has_metrics:
-        tools = SharedRendererTools(s)
         mx1, mx2 = bx1, bx2
-        if mx2-mx1 < 110:
+        # The command bubble can become narrow in compact panels.  Status data
+        # is more important than preserving that same width, so expand the
+        # ribbon to the whole panel whenever a cell would become cramped.
+        per_cell = (mx2-mx1) / max(1, len(metric_items))
+        if mx2-mx1 < 110 or per_cell < 88:
             mx1, mx2 = x1+18, x2-18
         # Remaining / expected now use compact manga slashes: icon + value in
         # individual parallelograms.  No oversized full-width black bar.
-        metric_box = (mx1, y2-46, mx2, y2-8)
+        metric_box = (mx1, y2-metric_h-8, mx2, y2-8)
         _draw_metric_values_comic(
             base, draw, guide, info, s, colors, metric_box
         )
 
     # ---- 4. Only now look at the whitespace and insert optional decoration.
     gap = int(rcfg.get("character_content_gap", 10) or 10)
+    free_bottom = (metric_box[1]-gap) if metric_box else (y2-5)
+    # D7 metrics live only under the RIGHT command column.  They should not
+    # shorten the LEFT character column; doing so was the main reason the
+    # character stayed tiny while a large blank area remained visible.
+    if terminal and open_side == "left":
+        free_bottom = y2 - 8
     free = None
+    # Keep character art below the left-side Day hierarchy.  On special D7 the
+    # 重点回 burst sits under D7, so reserve that burst instead of shrinking or
+    # pushing the right-side operation stack.
+    free_top = by1 + 2
+    if terminal:
+        # The special marker now sits to the RIGHT of D7, so the illustration
+        # column can begin directly beneath the Day title and use the vertical
+        # space symmetrically.
+        free_top = max(y1 + 68, y1 + 14 + title_layer.height - 4)
     if open_side == "left":
         fx1 = x1+8
         fx2 = bx1-gap
-        free = (fx1, by1+2, fx2, y2-5)
+        free = (fx1, free_top, fx2, free_bottom)
     else:
         fx1 = bx2+gap
         fx2 = x2-8
-        free = (fx1, by1+2, fx2, y2-5)
+        free = (fx1, free_top, fx2, free_bottom)
 
     character_placement = _paste_character_in_free_space(
         base, guide, s, colors, rcfg, box, free, info, idx,
         side=open_side, terminal=terminal
     )
+
+    # D7 special-day emphasis is deliberately drawn AFTER the character.  The
+    # character can therefore sit directly under D7 without hiding the marker;
+    # the marker reads as a small comic overlay attached to the Day header.
+    if special and terminal:
+        # Attach the special-day burst to the D7 header itself: immediately to
+        # the right of D7, while leaving the top-right tier ticket independent.
+        burst_outer = 46
+        burst_inner = 24
+        ticket_left = target_ticket[0] if target_ticket else (x2 - 120)
+        preferred_cx = title_x + title_layer.width + burst_outer + 8
+        burst_cx = min(preferred_cx, ticket_left - burst_outer - 10)
+        burst_cx = max(x1 + 112, burst_cx)
+        burst_cy = y1 + 48
+        pts = _burst_polygon(burst_cx, burst_cy, burst_outer, burst_inner, 12, rng, inner=(.54, .76))
+        draw.polygon(pts, fill=colors["accent"], outline=colors["ink"])
+        s.draw_center(draw,
+                      (burst_cx-burst_outer, burst_cy-burst_inner,
+                       burst_cx+burst_outer, burst_cy+burst_inner),
+                      "重点回!", colors["paper"],
+                      max_size=14, min_size=9, bold=True, max_lines=1)
     return character_placement
 
 def _draw_metric_values_comic(base, draw, guide, info, s, colors, box):
@@ -1351,6 +2087,23 @@ def _draw_metric_values_comic(base, draw, guide, info, s, colors, box):
     x1,y1,x2,y2=map(int,box)
     n=len(items)
     w=max(1,x2-x1); h=max(1,y2-y1)
+
+    # Compact portrait-like panels use two connected mini-ribbons (2 x 2).
+    # This preserves the complete values rather than showing e.g. "6…".
+    if n > 2 and h >= 56:
+        gap = 4
+        row_h = max(24, int((h-gap)/2))
+        for rr in range(2):
+            row_items = items[rr*2:(rr+1)*2]
+            if not row_items:
+                continue
+            ry1 = y1 + rr*(row_h+gap)
+            ry2 = y2 if rr == 1 else min(y2, ry1+row_h)
+            nested_info = dict(info or {})
+            nested_info["metric_items"] = row_items
+            _draw_metric_values_comic(base, draw, guide, nested_info, s, colors, (x1, ry1, x2, ry2))
+        return
+
     skew=max(10,min(18,int(w*0.035)))
 
     # One continuous parallelogram band.  Internal diagonal rules create four
@@ -1368,6 +2121,32 @@ def _draw_metric_values_comic(base, draw, guide, info, s, colors, box):
         xb=int(round(bot_left+(bot_right-bot_left)*t))
         draw.line((xt,y1+2,xb,y2-2),fill=_rgba(colors.get("accent",colors["paper"]),210),width=2)
 
+    # Pick one shared size for the whole ribbon.  Narrow panels no longer let
+    # the final remaining/expected value fall outside its cell.
+    nominal_cell = max(1.0, w / float(n))
+    shared_icon_size = max(14, min(22, h-8, int(nominal_cell*0.24)))
+    shared_font_size = 11
+    for candidate in range(15, 10, -1):
+        font = _font(s, candidate, True)
+        all_fit = True
+        for item in items:
+            icon = s.config_day_icon(cfg, item)
+            icon_cost = shared_icon_size + 5 if icon and Path(icon).exists() else 0
+            max_text_w = max(8, nominal_cell - icon_cost - 16)
+            value = s.clean(str(item.get("value") or "—"))
+            try:
+                tw = draw.textlength(value, font=font)
+            except Exception:
+                bb = draw.textbbox((0, 0), value, font=font)
+                tw = bb[2]-bb[0]
+            if tw > max_text_w:
+                all_fit = False
+                break
+        if all_fit:
+            shared_font_size = candidate
+            break
+    shared_font = _font(s, shared_font_size, True)
+
     for i,item in enumerate(items):
         t0=i/float(n); t1=(i+1)/float(n)
         tl=top_left+(top_right-top_left)*t0; tr=top_left+(top_right-top_left)*t1
@@ -1376,11 +2155,13 @@ def _draw_metric_values_comic(base, draw, guide, info, s, colors, box):
         if b<=a+12:
             a=int(min(tl,bl)+3); b=int(max(tr,br)-3)
         icon=s.config_day_icon(cfg,item)
-        icon_size=max(16,min(22,h-8))
+        icon_size=shared_icon_size
         value=s.clean(str(item.get("value") or "—"))
         # Center icon+number as a compact pair inside each shared cell.
-        value_font=_font(s,15,True)
-        vb=draw.textbbox((0,0),value,font=value_font)
+        max_value_w=max(8,(b-a) - (icon_size+5 if icon and Path(icon).exists() else 0))
+        max_value_w=max(8,max_value_w-4)
+        value=_ellipsize_single_line(draw,s,value,shared_font,max_value_w)
+        vb=draw.textbbox((0,0),value,font=shared_font)
         vw=max(1,vb[2]-vb[0])
         pair_w=vw + (icon_size+5 if icon and Path(icon).exists() else 0)
         px=max(a, int((a+b-pair_w)/2))
@@ -1391,11 +2172,65 @@ def _draw_metric_values_comic(base, draw, guide, info, s, colors, box):
         else:
             tx=px
         s.draw_left(draw,(tx,y1+1,b,y2-1),value,colors["paper"],
-                    max_size=15,min_size=11,bold=True,max_lines=1,line_gap=0,valign="center")
+                    max_size=shared_font_size,min_size=shared_font_size,bold=True,max_lines=1,line_gap=0,valign="center")
 
 def _draw_risk(base, draw, guide, s, tools, colors, rcfg, box, rng):
     x1, y1, x2, y2 = map(int, box); cx=(x1+x2)//2; cy=(y1+y2)//2
-    # A real comic explosion palette: dark orange outer blast + yellow inner flash.
+    page_style = str(rcfg.get("page_style") or "shonen").lower().strip()
+
+    risks = tools.risk_items(guide)
+    body = "\n".join("●  "+x for x in risks[:4]) if risks else "●  到达目标档位后停止\n●  不要为随机奖励过度追高"
+    warning = str(rcfg.get("warning_text") or "WARNING!!")
+
+    if page_style == "detective_red":
+        # Detective decoration follows one restrained case-file language: solid
+        # red paper/backing, short corner brackets and stamps.  Avoid explosion
+        # rays / long free-floating red lines, which duplicate the evidence-board
+        # accents and make the lower page look tangled.
+        accent = colors.get("accent", "#B51F24")
+        ink = colors["ink"]
+        paper = colors["paper"]
+
+        # One torn-paper backing shape gives the warning visual weight without
+        # sending spikes across the page.
+        pad_x = 92
+        top = y1 + 58
+        bottom = y2 - 24
+        back = [
+            (x1+pad_x+18, top+8),
+            (x2-pad_x-22, top),
+            (x2-pad_x, top+24),
+            (x2-pad_x-14, bottom-4),
+            (x1+pad_x+6, bottom),
+            (x1+pad_x-8, bottom-22),
+        ]
+        draw.polygon([(x+5, y+6) for x,y in back], fill=_rgba(ink, 45))
+        draw.polygon(back, fill=_rgba(accent, 238), outline=ink)
+
+        balloon = (x1+155, y1+76, x2-105, y2-38)
+        _warning_callout(draw, s, balloon, body, ink, paper,
+                         max_size=int(rcfg.get("risk_font_size", 19) or 19),
+                         min_size=15, bold=True, line_gap=5)
+
+        # Compact warning stamp attached to the upper-left of the backing.
+        stamp = (x1+76, y1+23, x1+250, y1+70)
+        draw.polygon([
+            (stamp[0]+4, stamp[1]+5), (stamp[2], stamp[1]),
+            (stamp[2]-7, stamp[3]-4), (stamp[0], stamp[3])
+        ], fill=paper, outline=ink)
+        draw.rectangle((stamp[0]+5, stamp[1]+6, stamp[0]+13, stamp[3]-5), fill=accent)
+        _paste_rotated_text(base, (stamp[0]+20, stamp[1]+5), warning, s,
+                            int(rcfg.get("warning_font_size", 29) or 29),
+                            accent, -2, True, 1, paper, 255)
+
+        # Two small, repeatable case-file corner brackets are enough decoration.
+        draw.line((x1+54, y1+96, x1+54, y1+126), fill=accent, width=3)
+        draw.line((x1+54, y1+96, x1+83, y1+96), fill=accent, width=3)
+        draw.line((x2-54, y2-92, x2-54, y2-62), fill=accent, width=3)
+        draw.line((x2-83, y2-62, x2-54, y2-62), fill=accent, width=3)
+        return
+
+    # Other manga variants retain the energetic explosion treatment.
     outer = colors.get("explosion_outer", "#D95827")
     inner = colors.get("explosion_inner", "#F3C84B")
     hot = colors.get("explosion_hot", "#E9822D")
@@ -1406,13 +2241,10 @@ def _draw_risk(base, draw, guide, s, tools, colors, rcfg, box, rng):
     draw.polygon(inner_pts, fill=inner, outline=hot)
     _speedlines(draw, (x1+35, y1+24, x2-35, y2-24), (cx, cy), colors["ink"], rng, count=22, alpha=(18, 34))
 
-    risks = tools.risk_items(guide)
-    body = "\n".join("●  "+x for x in risks[:4]) if risks else "●  到达目标档位后停止\n●  不要为随机奖励过度追高"
-    _speech_balloon(draw, s, (x1+165, y1+78, x2-115, y2-38), body, colors["ink"], colors["paper"],
-                    max_size=int(rcfg.get("risk_font_size", 19) or 19), min_size=15, tail="bottom", bold=True, line_gap=5)
+    _warning_callout(draw, s, (x1+165, y1+78, x2-115, y2-38), body, colors["ink"], colors["paper"],
+                     max_size=int(rcfg.get("risk_font_size", 19) or 19), min_size=15, bold=True, line_gap=5)
 
     # Draw WARNING last as an impact burst / sound-effect title, never a UI pill.
-    warning = str(rcfg.get("warning_text") or "WARNING!!")
     wcx, wcy = x1+178, y1+47
     wburst = _burst_polygon(wcx, wcy, 142, 48, 15, rng, inner=(.42, .68))
     draw.polygon([(x+4, y+5) for x,y in wburst], fill=_rgba(colors["ink"], 62))
@@ -1537,8 +2369,8 @@ def _draw_detective_suspect_overlay(
        If D1 has no character and D2 is the first visible one, D2 is 嫌疑人A.
     2. The culprit is stably randomised from the same visible roster, so it may
        occur on any Day that actually contains a rendered character.
-    3. The selected culprit artwork is replaced in-place by a pure black
-       silhouette before the red hand-drawn circle / 真凶 stamp is added.
+    3. The selected culprit keeps its full-colour artwork; the magnifier and
+       red 真凶 stamp provide the reveal without destroying character readability.
     """
     if not placements:
         return
@@ -1585,6 +2417,7 @@ def _draw_detective_suspect_overlay(
     culprit_text = str(
         rcfg.get("detective_culprit_text") or "真凶"
     )
+    all_chars_color = bool(_char_cfg(rcfg, "character_all_days_color", None, True))
     silhouette_color = _rgba(
         rcfg.get("detective_culprit_silhouette_color") or "#050505",
         255
@@ -1608,10 +2441,11 @@ def _draw_detective_suspect_overlay(
         )
         label = f"{suspect_prefix}{suspect_id}"
 
-        # True culprit reveal: replace the character with a 100% opaque,
-        # binary black silhouette.  Do NOT reuse semi-transparent sprite alpha
-        # as the source alpha and mask at the same time (that would let clothing
-        # details show through).
+        # All-colour comic rendering applies to ordinary suspects only.  The
+        # detective variant keeps its own unrevealed-identity language for the
+        # selected culprit: an opaque black silhouette + white question mark.
+        # This is a semantic detective cue, not the ordinary/special-day colour
+        # treatment, so it must remain even when character_all_days_color=True.
         if is_culprit:
             rendered_im = placement.get("image")
             if rendered_im is not None:
@@ -1633,9 +2467,6 @@ def _draw_detective_suspect_overlay(
                     hard_alpha = source_alpha.point(
                         lambda v: 255 if v >= threshold else 0
                     )
-
-                    # Slightly expand the silhouette to cover any anti-aliased
-                    # remnants of the original character edge.
                     expand = max(
                         0,
                         min(
@@ -1651,9 +2482,6 @@ def _draw_detective_suspect_overlay(
                         hard_alpha = hard_alpha.filter(
                             ImageFilter.MaxFilter(expand * 2 + 1)
                         )
-
-                    # Opaque RGB/RGBA source + binary mask => one alpha operation.
-                    # Interior pixels become absolute black, never translucent.
                     opaque_black = Image.new(
                         "RGBA",
                         rendered_im.size,
@@ -1664,13 +2492,10 @@ def _draw_detective_suspect_overlay(
                             255,
                         ),
                     )
-                    # paste() safely clips characters that break outside the panel.
                     base.paste(opaque_black, (x1, y1), hard_alpha)
                 except Exception:
                     pass
 
-            # Put the white question mark at the visual centre of the culprit
-            # silhouette, not above the head.  It now reads as an identity mask.
             qw=max(46,int((x2-x1)*0.62)); qh=max(54,int((y2-y1)*0.54))
             qbox=(cx-qw//2, (y1+y2)//2-qh//2, cx+qw//2, (y1+y2)//2+qh//2)
             s.draw_center(
@@ -1685,6 +2510,13 @@ def _draw_detective_suspect_overlay(
         tx1 = max(4, cx-tag_w//2)
         tx2 = tx1+tag_w
         ty1 = max(4, y1-24)
+        # D7's character now begins directly below the Day hierarchy.  A tag
+        # floating above the sprite would collide with the 重点回 burst, so keep
+        # the roster tag attached to the character's upper-right shoulder area.
+        if day_idx >= 6:
+            tx1 = max(4, x2 - tag_w - 4)
+            tx2 = tx1 + tag_w
+            ty1 = max(4, y1 + 4)
         ty2 = ty1+tag_h
 
         if is_culprit:
@@ -1705,6 +2537,12 @@ def _draw_detective_suspect_overlay(
             stamp_h = 30
             sx1 = max(4, min(x2-stamp_w, cx-stamp_w//2))
             sy1 = max(4, y1-59)
+            if day_idx >= 6:
+                # D7's 重点回 burst now sits beside the Day label. Keep the
+                # detective reveal stamp attached to the character itself so the
+                # two comic callouts never overlap.
+                sx1 = max(4, x1 + 6)
+                sy1 = max(4, y1 + 8)
             draw.rectangle(
                 (sx1, sy1, sx1+stamp_w, sy1+stamp_h),
                 fill=colors["paper"],
@@ -1720,11 +2558,9 @@ def _draw_detective_suspect_overlay(
                 bold=True, max_lines=1
             )
 
-            # Editorial evidence line pointing directly at the silhouette.
-            draw.line(
-                (sx1+stamp_w, sy1+stamp_h//2, x1+8, y1+8),
-                fill=colors["accent"], width=3
-            )
+            # The magnifier + attached 真凶 stamp already identify the reveal.
+            # Do not add a long red connector: on a dense case-board page it
+            # reads as one more stray evidence string and crosses character art.
 
         # Even the culprit retains its suspect roster identity (e.g. 嫌疑人C),
         # while the separate red 真凶 mark reveals the solution.
@@ -1869,28 +2705,39 @@ def render(guide, out_path: Path, services):
         )
 
     elif page_style == "detective_red":
-        # High-contrast crime manga: black hatch + red evidence-string traces.
-        for yy in range(-H, H*2, 28):
-            d.line((0, yy, W, yy+W), fill=_rgba(c["ink"], 8), width=1)
-        for yy in range(0, H, 18):
-            for xx in range((yy//18)%2*9, W, 18):
-                d.ellipse(
-                    (xx, yy, xx+1, yy+1),
-                    fill=_rgba(c["ink"], 26)
-                )
-        for _ in range(10):
-            xa = rng.choice((rng.randint(0, 130), rng.randint(W-130, W)))
-            ya = rng.randint(190, H-160)
-            xb = rng.choice((rng.randint(0, 180), rng.randint(W-180, W)))
-            yb = rng.randint(190, H-160)
-            d.line(
-                (xa, ya, xb, yb),
-                fill=_rgba(c["accent"], 25), width=2
-            )
-            d.ellipse(
-                (xa-4, ya-4, xa+4, ya+4),
-                fill=_rgba(c["accent"], 70)
-            )
+        # Detective paper uses a disciplined red/black line language.  The
+        # background may feel like an evidence board, but the lines must read as
+        # texture rather than as arbitrary connections between unrelated content.
+        # Panels are painted later and therefore naturally mask the pattern; the
+        # red/black hatching remains visible mainly in page margins and gutters.
+        edge = c["accent"]
+        for yy in range(-H, H*2, 48):
+            d.line((0, yy, W, yy+W), fill=_rgba(c["ink"], 16), width=1)
+        for yy in range(-H+24, H*2, 144):
+            d.line((0, yy, W, yy+W), fill=_rgba(edge, 44), width=2)
+        # A very faint counter-direction black hatch keeps the paper from reading
+        # as a set of parallel hazard stripes while staying quieter than the red.
+        for yy in range(0, H+W, 104):
+            d.line((0, yy, W, yy-W), fill=_rgba(c["ink"], 6), width=1)
+        for yy in range(0, H, 22):
+            for xx in range((yy//22)%2*11, W, 22):
+                d.ellipse((xx, yy, xx+1, yy+1), fill=_rgba(c["ink"], 18))
+
+        # Four short evidence rails anchor the line texture to the case-file
+        # motif.  They stay in the margins and never cross readable content.
+        margin_marks = [
+            (16, 205, 16, 352, "left"),
+            (W-18, 335, W-18, 500, "right"),
+            (16, H-520, 16, H-372, "left"),
+            (W-18, H-356, W-18, H-214, "right"),
+        ]
+        for x1m, y1m, x2m, y2m, side in margin_marks:
+            d.line((x1m, y1m, x2m, y2m), fill=_rgba(edge, 172), width=2)
+            for yy in (y1m, y2m):
+                d.ellipse((x1m-4, yy-4, x1m+4, yy+4), fill=_rgba(edge, 220))
+            tick = 18 if side == "left" else -18
+            mid = (y1m + y2m)//2
+            d.line((x1m, mid, x1m+tick, mid-10), fill=_rgba(c["ink"], 145), width=2)
 
     else:
         for y in range(0, H, 22):

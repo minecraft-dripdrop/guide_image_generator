@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "soft_neumorphic",
+  "name": "柔光新拟物",
+  "version": "1.0.0",
+  "author": "攻略图生成器",
+  "description": "在经典简洁的信息骨架上，用同色系柔光双阴影、圆角浮起面板与内凹状态槽重构的新拟物主题；保留六种配色。",
+  "engine_min_version": "35.7",
+  "entry_config": "theme.json",
+  "variants": [
+    {
+      "id": "green",
+      "name": "绿色",
+      "config": "variants/green.json",
+      "legacy_number": 101
+    },
+    {
+      "id": "gold",
+      "name": "金色",
+      "config": "variants/gold.json",
+      "legacy_number": 102
+    },
+    {
+      "id": "blue",
+      "name": "蓝色",
+      "config": "variants/blue.json",
+      "legacy_number": 103
+    },
+    {
+      "id": "purple",
+      "name": "紫色",
+      "config": "variants/purple.json",
+      "legacy_number": 104
+    },
+    {
+      "id": "red",
+      "name": "红色",
+      "config": "variants/red.json",
+      "legacy_number": 105
+    },
+    {
+      "id": "cyan",
+      "name": "青色",
+      "config": "variants/cyan.json",
+      "legacy_number": 106
+    }
+  ],
+  "preview": "preview.png"
+}

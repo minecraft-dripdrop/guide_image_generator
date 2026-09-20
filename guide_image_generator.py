@@ -8,6 +8,9 @@
 """
 from __future__ import annotations
 
+import ast
+import hashlib
+import inspect
 import json
 import math
 import html
@@ -44,6 +47,9 @@ THEME_MANAGER = None
 LAST_THEME_SELECTIONS = {}
 CUSTOM_FONT_REGULAR = None
 CUSTOM_FONT_BOLD = None
+
+# 全主题预览的持久化成品缓存版本。修改签名结构时递增，旧缓存会自动失效。
+RENDER_CACHE_SCHEMA = 1
 
 
 def program_root_dir():
@@ -517,6 +523,261 @@ def parse_day_marker(day_text: str):
 
     return raw, ""
 
+
+def _column_letters(index: int) -> str:
+    """1-based column number -> Excel column letters."""
+    try:
+        n = int(index)
+    except Exception:
+        return ""
+    if n <= 0:
+        return ""
+    out = []
+    while n:
+        n, rem = divmod(n - 1, 26)
+        out.append(chr(65 + rem))
+    return "".join(reversed(out))
+
+
+def _read_cell_formulas(z: zipfile.ZipFile, sheet_path: str) -> dict[str, str]:
+    """Read raw formula text without changing the existing cached-value parser."""
+    try:
+        root = ET.fromstring(z.read(sheet_path))
+    except Exception:
+        return {}
+    formulas = {}
+    for c in root.findall(f".//{{{NS_MAIN}}}c"):
+        ref = c.attrib.get("r", "")
+        f = c.find(f"{{{NS_MAIN}}}f")
+        if ref and f is not None and clean(f.text or ""):
+            formulas[ref] = clean(f.text or "")
+    return formulas
+
+
+def _parse_single_cell_formula_ref(formula: str):
+    """Parse a direct cross-sheet reference such as Sheet1!C20 or 'A B'!$C$20."""
+    text = clean(str(formula or ""))
+    if text.startswith("="):
+        text = text[1:].strip()
+    m = re.fullmatch(
+        r"(?:'((?:[^']|'')+)'|([^!]+))!\$?([A-Za-z]+)\$?(\d+)",
+        text,
+    )
+    if not m:
+        return None
+    sheet_name = (m.group(1) or m.group(2) or "").replace("''", "'").strip()
+    if not sheet_name:
+        return None
+    return sheet_name, m.group(3).upper(), int(m.group(4))
+
+
+def _as_float(value):
+    text = clean(str(value or "")).replace(",", "")
+    if not text:
+        return None
+    try:
+        number = float(text)
+    except Exception:
+        return None
+    if not math.isfinite(number):
+        return None
+    return number
+
+
+def _find_tier_thresholds_in_workbook(z, targets, shared, theme_colors, xfs, parsed_fonts):
+    """Find the workbook's tier threshold table (档位 / 累积积分) as real numeric data."""
+    ordered = []
+    preferred = ["基础计算设置"]
+    for name in preferred:
+        if name in targets:
+            ordered.append((name, targets[name]))
+    ordered.extend((name, path) for name, path in targets.items() if name not in preferred)
+
+    for _sheet_name, sheet_path in ordered:
+        try:
+            values, _styles, _rich = read_sheet(
+                z, sheet_path, shared, theme_colors, xfs, parsed_fonts
+            )
+        except Exception:
+            continue
+        by_row = build_matrix(values)
+        for header_row, cells in sorted(by_row.items()):
+            header_text = {c: clean(v) for c, (_, v) in cells.items()}
+            tier_col = next(
+                (c for c, text in header_text.items() if text in {"档位", "奖励档位", "积分档位"}),
+                None,
+            )
+            points_col = next(
+                (c for c, text in header_text.items() if text in {"累积积分", "累计积分", "档位积分", "积分要求"}),
+                None,
+            )
+            if not tier_col or not points_col:
+                continue
+
+            thresholds = []
+            for row in range(header_row + 1, min(header_row + 16, max(by_row.keys(), default=header_row) + 1)):
+                row_cells = by_row.get(row, {})
+                label = clean(row_cells.get(tier_col, ("", ""))[1])
+                value = _as_float(row_cells.get(points_col, ("", ""))[1])
+                m = re.fullmatch(r"第\s*(\d+)\s*档", label)
+                if not m or value is None or value <= 0:
+                    continue
+                thresholds.append({
+                    "tier": int(m.group(1)),
+                    "label": f"第{int(m.group(1))}档",
+                    "value": float(value),
+                })
+            if len(thresholds) >= 2:
+                thresholds.sort(key=lambda item: item["tier"])
+                return thresholds
+    return []
+
+
+def read_day_tier_progress_context(z, sheet_path, values, shared, theme_colors, xfs, parsed_fonts):
+    """Resolve per-Day tier score + workbook tier thresholds.
+
+    Preferred contract (new workbooks): the guide sheet exposes an explicit
+    ``当日档位积分`` column beside Day1~Day7.  The renderer can therefore consume
+    the final display value directly from the guide sheet, while the tier
+    thresholds still come from the workbook's 档位/累积积分 table (normally
+    ``基础计算设置!A6:B10``).
+
+    Older workbooks remain compatible: when that explicit score column is
+    absent (or a particular Day is blank), fall back to the historical rule of
+    following the 目标档位 formula into the calculation sheet and reading the
+    adjacent score cell.
+    """
+    by_row = build_matrix(values)
+    header_row = find_day_header(by_row)
+    if not header_row:
+        return {}
+    headers = {c: v for c, (_, v) in sorted(by_row.get(header_row, {}).items())}
+    day_col = find_header_col(headers, ["天数", "日期", "day"])
+    target_col = find_header_col(headers, ["目标档位", "目标", "档位"])
+    score_col = find_header_col(
+        headers,
+        ["当日档位积分", "当天档位积分", "每日档位积分", "档位积分"],
+    )
+    if not day_col:
+        return {}
+
+    targets = workbook_sheet_targets(z)
+    thresholds = _find_tier_thresholds_in_workbook(
+        z, targets, shared, theme_colors, xfs, parsed_fonts
+    )
+    if not thresholds:
+        return {}
+    max_value = float(thresholds[-1]["value"])
+    if max_value <= 0:
+        return {}
+
+    result = {}
+
+    # New explicit interface: read the score straight from the guide sheet.
+    # This is intentionally preferred even when the cell itself contains a
+    # formula, because read_sheet() already exposes Excel's cached result.
+    if score_col:
+        score_letter = _column_letters(score_col)
+        for row in range(header_row + 1, header_row + 32):
+            cells = by_row.get(row, {})
+            raw_day = cells.get(day_col, ("", ""))[1]
+            if not raw_day:
+                continue
+            day, _marker = parse_day_marker(raw_day)
+            if not is_valid_day_label(day):
+                continue
+            score = _as_float(cells.get(score_col, ("", ""))[1])
+            if score is None or score < 0:
+                continue
+            result[row] = {
+                "score": float(score),
+                "max": max_value,
+                "thresholds": [dict(item) for item in thresholds],
+                "source_cell": f"{score_letter}{row}",
+                "source_mode": "guide_score_column",
+            }
+
+    # Backward-compatible fallback for old sheets or isolated blank score cells.
+    if not target_col:
+        return result
+
+    formulas = _read_cell_formulas(z, sheet_path)
+    source_values_cache = {}
+    target_letter = _column_letters(target_col)
+
+    for row in range(header_row + 1, header_row + 32):
+        if row in result:
+            continue
+        cells = by_row.get(row, {})
+        raw_day = cells.get(day_col, ("", ""))[1]
+        if not raw_day:
+            continue
+        day, _marker = parse_day_marker(raw_day)
+        if not is_valid_day_label(day):
+            continue
+
+        formula = formulas.get(f"{target_letter}{row}")
+        ref = _parse_single_cell_formula_ref(formula)
+        if not ref:
+            continue
+        source_sheet, source_col_letters, source_row = ref
+        source_path = targets.get(source_sheet)
+        if not source_path:
+            continue
+
+        if source_sheet not in source_values_cache:
+            try:
+                source_values, _styles, _rich = read_sheet(
+                    z, source_path, shared, theme_colors, xfs, parsed_fonts
+                )
+                source_values_cache[source_sheet] = source_values
+            except Exception:
+                source_values_cache[source_sheet] = {}
+        source_values = source_values_cache[source_sheet]
+
+        source_col = col_num(source_col_letters)
+        score_ref = f"{_column_letters(source_col + 1)}{source_row}"
+        score = _as_float(source_values.get(score_ref, ""))
+        if score is None or score < 0:
+            continue
+
+        # Safety check: the referenced target label should match the visible guide target.
+        visible_target = clean(cells.get(target_col, ("", ""))[1])
+        source_target = clean(source_values.get(f"{source_col_letters}{source_row}", ""))
+        if visible_target and source_target and visible_target != source_target:
+            continue
+
+        result[row] = {
+            "score": float(score),
+            "max": max_value,
+            "thresholds": [dict(item) for item in thresholds],
+            "source_sheet": source_sheet,
+            "source_cell": score_ref,
+            "source_mode": "legacy_target_formula",
+        }
+    return result
+
+def is_valid_day_label(day_text: str) -> bool:
+    """判断“天数”列是否真的是 Day 行，而不是后续的风险/提醒标题。"""
+    s = clean(str(day_text))
+    if not s:
+        return False
+
+    # 常见写法：Day1 / Day 1 / D1 / 第1天 / 1天。
+    # Day1（首日）这类旧写法也兼容；纯数字则必须整格只有日序号，
+    # 避免把“1092个……”之类风险正文误识别成 Day。
+    if re.match(r"^(?:day\s*\d+|d\s*\d+)(?:\s*.*)?$", s, flags=re.IGNORECASE):
+        return True
+    if re.match(r"^(?:第\s*\d+\s*[天日]|\d+\s*[天日])(?:\s*.*)?$", s):
+        return True
+    if re.fullmatch(r"\d+", s):
+        try:
+            return 1 <= int(s) <= 31
+        except ValueError:
+            return False
+    return False
+
+
 def find_kpi_label_row(by_row, day_header_row):
     """
     找顶部 KPI 标签所在行。
@@ -689,16 +950,24 @@ def find_kpis(by_row, title_row, day_header_row):
 
 def find_risk(by_row, day_end_row):
     """
-    读取风险提示，并按“Excel 行 / 单元格内换行”拆成独立条目。
-    返回 list[str]，供渲染阶段一条风险画一个气泡。
+    读取风险 / 提醒，并按“Excel 行 / 单元格内换行”拆成独立条目。
+
+    day_end_row 必须传“最后一个真实 Day 所在行”，不能再用
+    header_row + len(days) 推算。这样即使用户删除或插入空白行，
+    Day7 后面的【风险提示】仍然能稳定找到。
     """
     risk_row = None
     risk_col = None
+    risk_headers = ("风险提示", "风险", "重要提醒", "提醒", "注意事项", "注意")
     for r, cells in sorted(by_row.items()):
         if r <= day_end_row:
             continue
         for c, (_, v) in cells.items():
-            if "风险提示" in v or v == "风险":
+            text = clean(v)
+            if not text:
+                continue
+            if any(text == header or text.startswith(header + "：") or text.startswith(header + ":")
+                   for header in risk_headers):
                 risk_row, risk_col = r, c
                 break
         if risk_row:
@@ -707,13 +976,14 @@ def find_risk(by_row, day_end_row):
         return []
 
     parts = []
+    punctuation_only = {".", "。", "-", "—", "--", "——", "·", "•"}
     for r in range(risk_row + 1, risk_row + 20):
         cells = by_row.get(r, {})
         raw = ""
         if risk_col in cells and cells[risk_col][1]:
             raw = cells[risk_col][1]
         else:
-            candidates = [v for _, v in cells.values() if len(v) >= 4]
+            candidates = [clean(v) for _, v in cells.values() if len(clean(v)) >= 4]
             if candidates:
                 raw = candidates[0]
 
@@ -722,7 +992,7 @@ def find_risk(by_row, day_end_row):
 
         for line in str(raw).replace("\r", "").split("\n"):
             line = clean(line)
-            if line:
+            if line and line not in punctuation_only:
                 parts.append(line)
 
     return parts
@@ -1932,7 +2202,7 @@ def parse_reward_items(reward_text: str, reward_runs: list[dict], catalog: list[
         nodes.append(node)
     return nodes
 
-def parse_guide(sheet_name, values, styles, rich, fills, xfs, parsed_fonts, theme_selection, cfg):
+def parse_guide(sheet_name, values, styles, rich, fills, xfs, parsed_fonts, theme_selection, cfg, tier_progress_by_row=None):
     by_row = build_matrix(values)
     header_row = find_day_header(by_row)
     if not header_row:
@@ -1960,14 +2230,16 @@ def parse_guide(sheet_name, values, styles, rich, fills, xfs, parsed_fonts, them
     metric_cols = status_cols + expected_cols
 
     days = []
+    last_day_row = header_row
     r = header_row + 1
-    while r <= header_row + 31:
+    while r <= header_row + 31 and len(days) < 7:
         cells = by_row.get(r, {})
-        if day_col not in cells:
-            break
-        raw_day = cells[day_col][1]
+        raw_day = cells.get(day_col, ("", ""))[1]
         if not raw_day:
-            break
+            # 空白行只是版式，不再作为 Day 表结束条件。这样用户删/加空白行
+            # 都不会改变后续风险提示的识别结果。
+            r += 1
+            continue
 
         # Day 左侧单元格作为通用“特殊日”标记。
         # 例如：A15=爆发日 / 收尾日 / 氪金日，B15=Day4。
@@ -1976,8 +2248,13 @@ def parse_guide(sheet_name, values, styles, rich, fills, xfs, parsed_fonts, them
             pre_day_marker = clean(cells.get(day_col - 1, ("", ""))[1])
 
         day, inline_marker = parse_day_marker(raw_day)
-        special_label = pre_day_marker or inline_marker
+        if not is_valid_day_label(day):
+            # 只接受真实 Day 标记。尤其不能把 Day7 后的“风险提示”或正文
+            # 当成 Day8/Day9；这是删掉空白行后风险模块消失的根因。
+            r += 1
+            continue
 
+        special_label = pre_day_marker or inline_marker
         action = cells.get(action_col, ("",""))[1]
         target = cells.get(target_col, ("",""))[1]
 
@@ -2011,7 +2288,9 @@ def parse_guide(sheet_name, values, styles, rich, fills, xfs, parsed_fonts, them
             "action": action,
             "target": target,
             "metric_items": metric_items[:4],
+            "tier_progress": (tier_progress_by_row or {}).get(r),
         })
+        last_day_row = r
         r += 1
 
     if not days:
@@ -2027,7 +2306,7 @@ def parse_guide(sheet_name, values, styles, rich, fills, xfs, parsed_fonts, them
     reward_fill = cell_fill(styles.get(reward_ref), fills, xfs, "#F8CBAD") if reward_ref else "#F8CBAD"
     core = find_core(by_row, header_row)
     kpis = find_kpis(by_row, title_row, header_row)
-    risk = find_risk(by_row, header_row + len(days))
+    risk = find_risk(by_row, last_day_row)
     palette_name = theme_selection["variant_name"]
     palette = theme_selection["palette"]
 
@@ -3277,10 +3556,14 @@ def process_book(book: Path, selected_sheet_names=None, reuse_last_selections=Fa
                 values,styles,rich=read_sheet(
                     z,sheet_path,shared,theme_colors,xfs,parsed_fonts
                 )
+                tier_progress_by_row = read_day_tier_progress_context(
+                    z, sheet_path, values, shared, theme_colors, xfs, parsed_fonts
+                )
                 guide=parse_guide(
                     sheet_name,values,styles,rich,
                     fills,xfs,parsed_fonts,
-                    selection,cfg
+                    selection,cfg,
+                    tier_progress_by_row=tier_progress_by_row
                 )
 
                 # 正常生成也放到全主题预览目录下，和全主题预览共用同一套路径结构
@@ -3584,6 +3867,417 @@ def build_excel_preview_html(sheet_data, out_path, excel_name):
     return out_path
 
 
+
+# -----------------------------------------------------------------------------
+# 全主题预览：持久化增量渲染缓存
+# -----------------------------------------------------------------------------
+
+_RENDER_DEPENDENCY_SUFFIXES = {
+    ".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".tif", ".tiff",
+    ".ttf", ".otf", ".ttc", ".json", ".jsonc",
+}
+
+
+def _stable_cache_value(value):
+    """把配置整理成可稳定 JSON 化的值；运行时私有键（_xxx）不参与签名。"""
+    if isinstance(value, dict):
+        return {
+            str(k): _stable_cache_value(v)
+            for k, v in sorted(value.items(), key=lambda item: str(item[0]))
+            if not str(k).startswith("_")
+        }
+    if isinstance(value, (list, tuple)):
+        return [_stable_cache_value(v) for v in value]
+    if isinstance(value, set):
+        return sorted((_stable_cache_value(v) for v in value), key=lambda x: repr(x))
+    if isinstance(value, Path):
+        return str(value)
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    return str(value)
+
+
+def _json_digest(value):
+    payload = json.dumps(
+        _stable_cache_value(value), ensure_ascii=False,
+        sort_keys=True, separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+@lru_cache(maxsize=1024)
+def _file_digest_cached(path_text, mtime_ns, size_bytes):
+    """同一进程内相同版本文件只做一次内容 SHA256。"""
+    h = hashlib.sha256()
+    with open(path_text, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _file_digest(path):
+    path = Path(path).resolve()
+    try:
+        st = path.stat()
+    except OSError:
+        return None
+    if not path.is_file():
+        return None
+    return _file_digest_cached(str(path), int(st.st_mtime_ns), int(st.st_size))
+
+
+def _cache_path_label(path):
+    """缓存里优先保存相对工程根目录的路径，避免无意义的绝对路径噪声。"""
+    path = Path(path).resolve()
+    root = program_root_dir().resolve()
+    try:
+        return str(path.relative_to(root)).replace("\\", "/")
+    except Exception:
+        return str(path).replace("\\", "/")
+
+
+def _fingerprint_files(paths):
+    result = []
+    seen = set()
+    for raw in paths:
+        if not raw:
+            continue
+        try:
+            p = Path(raw).resolve()
+        except Exception:
+            continue
+        key = str(p)
+        if key in seen:
+            continue
+        seen.add(key)
+        digest = _file_digest(p)
+        result.append({
+            "path": _cache_path_label(p),
+            "sha256": digest or "MISSING",
+        })
+    result.sort(key=lambda item: item["path"])
+    return result
+
+
+def _iter_dependency_path_strings(value):
+    """从配置中提取看起来像素材/字体/JSON 文件的路径字符串。"""
+    if isinstance(value, dict):
+        for k, v in value.items():
+            if str(k).startswith("_"):
+                continue
+            yield from _iter_dependency_path_strings(v)
+        return
+    if isinstance(value, (list, tuple, set)):
+        for v in value:
+            yield from _iter_dependency_path_strings(v)
+        return
+    if not isinstance(value, str):
+        return
+    raw = value.strip().replace("\\", "/")
+    if not raw or len(raw) > 1024:
+        return
+    try:
+        suffix = Path(raw).suffix.lower()
+    except Exception:
+        return
+    if suffix in _RENDER_DEPENDENCY_SUFFIXES:
+        yield raw
+
+
+def _resolve_cache_dependency(raw_path, cfg=None, theme_dir=None):
+    """按 renderer 实际常用根目录解析一个配置素材路径；不存在时返回 None。"""
+    raw = str(raw_path or "").strip().replace("\\", "/")
+    if not raw:
+        return None
+    p = Path(raw)
+    if p.is_absolute():
+        return p.resolve() if p.exists() else None
+
+    roots = []
+    for candidate in [
+        program_root_dir(),
+        Path(theme_dir) if theme_dir else None,
+        Path(cfg.get("_activity_config_dir")) if isinstance(cfg, dict) and cfg.get("_activity_config_dir") else None,
+        Path(cfg.get("_workbook_dir")) if isinstance(cfg, dict) and cfg.get("_workbook_dir") else None,
+        Path(cfg.get("_config_dir")) if isinstance(cfg, dict) and cfg.get("_config_dir") else None,
+        Path(cfg.get("_script_dir")) if isinstance(cfg, dict) and cfg.get("_script_dir") else None,
+    ]:
+        if candidate is not None and candidate not in roots:
+            roots.append(candidate)
+    for root in roots:
+        try:
+            candidate = (root / p).resolve()
+            if candidate.is_file():
+                return candidate
+        except Exception:
+            pass
+
+    # 与主程序 resolve_path 的兼容逻辑保持一致；它还支持文件名递归兜底。
+    if isinstance(cfg, dict):
+        try:
+            found = resolve_path(cfg, raw)
+            if found and Path(found).is_file():
+                return Path(found).resolve()
+        except Exception:
+            pass
+    return None
+
+
+def _config_dependency_fingerprints(value, cfg=None, theme_dir=None):
+    """配置路径既记录原始声明，也记录解析后的文件内容，文件新增/替换均会失效。"""
+    result = []
+    seen_raw = set()
+    for raw in _iter_dependency_path_strings(value):
+        if raw in seen_raw:
+            continue
+        seen_raw.add(raw)
+        resolved = _resolve_cache_dependency(raw, cfg=cfg, theme_dir=theme_dir)
+        result.append({
+            "declared": raw,
+            "resolved": _cache_path_label(resolved) if resolved else "MISSING",
+            "sha256": _file_digest(resolved) if resolved else "MISSING",
+        })
+    result.sort(key=lambda item: item["declared"])
+    return result
+
+
+def _relative_import_path(source_path, level, module_name, alias_name=None):
+    """把 renderer 内的相对 import 尽量解析到同工程 .py 文件。"""
+    source_path = Path(source_path).resolve()
+    base = source_path.parent
+    for _ in range(max(0, int(level or 0) - 1)):
+        base = base.parent
+    parts = [p for p in str(module_name or "").split(".") if p]
+    if not parts and alias_name:
+        parts = [p for p in str(alias_name).split(".") if p]
+    if not parts:
+        return None
+    candidate = base.joinpath(*parts)
+    py_file = candidate.with_suffix(".py")
+    if py_file.is_file():
+        return py_file.resolve()
+    init_file = candidate / "__init__.py"
+    if init_file.is_file():
+        return init_file.resolve()
+    return None
+
+
+def _renderer_python_dependencies(style):
+    """递归收集当前 renderer 自己实际 import 的 renderers/*.py 依赖。"""
+    from renderers.registry import get_renderer
+
+    renderer = get_renderer(style) or get_renderer("classic_cards")
+    if renderer is None:
+        return []
+    try:
+        first = Path(inspect.getsourcefile(renderer) or inspect.getfile(renderer)).resolve()
+    except Exception:
+        return []
+
+    renderers_root = (program_root_dir() / "renderers").resolve()
+    pending = [first]
+    seen = set()
+    result = []
+    while pending:
+        path = Path(pending.pop()).resolve()
+        if str(path) in seen or not path.is_file():
+            continue
+        try:
+            path.relative_to(renderers_root)
+        except Exception:
+            continue
+        seen.add(str(path))
+        result.append(path)
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        except Exception:
+            continue
+        for node in ast.walk(tree):
+            target = None
+            if isinstance(node, ast.ImportFrom):
+                if node.level:
+                    if node.module:
+                        target = _relative_import_path(path, node.level, node.module)
+                        if target:
+                            pending.append(target)
+                    else:
+                        for alias in node.names:
+                            target = _relative_import_path(path, node.level, None, alias.name)
+                            if target:
+                                pending.append(target)
+                elif node.module and node.module.startswith("renderers."):
+                    target = program_root_dir() / (node.module.replace(".", "/") + ".py")
+                    if target.is_file():
+                        pending.append(target.resolve())
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    if alias.name.startswith("renderers."):
+                        target = program_root_dir() / (alias.name.replace(".", "/") + ".py")
+                        if target.is_file():
+                            pending.append(target.resolve())
+
+    # registry/services 属于所有 renderer 的公共调用链，也参与失效判断。
+    for common in [
+        renderers_root / "registry.py",
+        renderers_root / "services.py",
+        renderers_root / "__init__.py",
+    ]:
+        if common.is_file() and str(common.resolve()) not in seen:
+            result.append(common.resolve())
+    return result
+
+
+def _theme_config_source_files(selection):
+    """基础 theme/manifest 影响全部变体；当前 variant JSON 只影响当前变体。"""
+    result = []
+    theme_dir = Path(selection.get("theme_dir") or "")
+    if not theme_dir.is_dir():
+        return result
+    for name in ["manifest.json", "theme.json"]:
+        p = theme_dir / name
+        if p.is_file():
+            result.append(p)
+    variant_id = clean(str(selection.get("variant_id") or ""))
+    if variant_id:
+        p = theme_dir / "variants" / (variant_id + ".json")
+        if p.is_file():
+            result.append(p)
+    return result
+
+
+def _workbook_render_style_digest(z):
+    """Excel 样式/主题会影响文字与奖励底色；这些属于工作簿级公共依赖。"""
+    h = hashlib.sha256()
+    for name in ["xl/styles.xml", "xl/theme/theme1.xml"]:
+        h.update(name.encode("utf-8"))
+        try:
+            h.update(z.read(name))
+        except Exception:
+            h.update(b"MISSING")
+    return h.hexdigest()
+
+
+def _sheet_render_digest(values, styles, rich, workbook_style_digest, tier_progress_by_row=None):
+    return _json_digest({
+        "values": values,
+        "styles": styles,
+        "rich": rich,
+        "workbook_style": workbook_style_digest,
+        "tier_progress": tier_progress_by_row or {},
+    })
+
+
+def _theme_render_signature(sheet_digest, selection, cfg):
+    """构建单一 Sheet + Theme + Variant 的精确渲染签名。"""
+    style = clean(str(((selection.get("config") or {}).get("renderer") or {}).get("style") or "classic_cards"))
+    theme_dir = selection.get("theme_dir")
+
+    global_source_files = [Path(__file__).resolve()]
+    theme_system_path = program_root_dir() / "theme_system.py"
+    if theme_system_path.is_file():
+        global_source_files.append(theme_system_path)
+
+    payload = {
+        "schema": RENDER_CACHE_SCHEMA,
+        "engine_version": ENGINE_VERSION,
+        "sheet_digest": sheet_digest,
+        "global_sources": _fingerprint_files(global_source_files),
+        "renderer_sources": _fingerprint_files(_renderer_python_dependencies(style)),
+        "theme_sources": _fingerprint_files(_theme_config_source_files(selection)),
+        "selection": {
+            "theme_id": selection.get("theme_id"),
+            "theme_name": selection.get("theme_name"),
+            "theme_version": selection.get("theme_version"),
+            "variant_id": selection.get("variant_id"),
+            "variant_name": selection.get("variant_name"),
+            "config": selection.get("config") or {},
+            "palette": selection.get("palette") or {},
+        },
+        "theme_assets": _config_dependency_fingerprints(
+            selection.get("config") or {}, cfg=cfg, theme_dir=theme_dir
+        ),
+        "global_config": _stable_cache_value(cfg),
+        "global_config_assets": _config_dependency_fingerprints(cfg, cfg=cfg),
+    }
+    return _json_digest(payload)
+
+
+def _render_cache_path(base_out_dir):
+    return Path(base_out_dir) / "render_cache.json"
+
+
+def load_render_cache(base_out_dir):
+    """读取全主题预览成品缓存；损坏/旧版本自动按空缓存处理。"""
+    path = _render_cache_path(base_out_dir)
+    if not path.exists():
+        return {"schema": RENDER_CACHE_SCHEMA, "entries": {}}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if int(data.get("schema", -1)) != RENDER_CACHE_SCHEMA:
+            return {"schema": RENDER_CACHE_SCHEMA, "entries": {}}
+        entries = data.get("entries")
+        if not isinstance(entries, dict):
+            entries = {}
+        return {"schema": RENDER_CACHE_SCHEMA, "entries": entries}
+    except Exception:
+        return {"schema": RENDER_CACHE_SCHEMA, "entries": {}}
+
+
+def save_render_cache(base_out_dir, cache):
+    """原子保存渲染缓存，避免中断时留下半截 JSON。"""
+    path = _render_cache_path(base_out_dir)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "schema": RENDER_CACHE_SCHEMA,
+        "entries": (cache or {}).get("entries", {}),
+    }
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(path)
+
+
+def _render_cache_key(sheet_name, selection):
+    return "{}\n{}\n{}".format(
+        str(sheet_name),
+        str(selection.get("theme_id") or ""),
+        str(selection.get("variant_id") or ""),
+    )
+
+
+def _cached_output_is_valid(entry, signature, out_path):
+    if not isinstance(entry, dict) or entry.get("signature") != signature:
+        return False
+    out_path = Path(out_path)
+    if not out_path.is_file():
+        return False
+    try:
+        st = out_path.stat()
+    except OSError:
+        return False
+    if int(st.st_size) <= 0:
+        return False
+    if entry.get("path") and str(Path(entry.get("path")).resolve()) != str(out_path.resolve()):
+        return False
+    cached_size = entry.get("output_size")
+    cached_mtime = entry.get("output_mtime_ns")
+    if cached_size is not None and int(cached_size) != int(st.st_size):
+        return False
+    if cached_mtime is not None and int(cached_mtime) != int(st.st_mtime_ns):
+        return False
+    return True
+
+
+def _update_render_cache_entry(cache, key, signature, out_path):
+    out_path = Path(out_path).resolve()
+    st = out_path.stat()
+    cache.setdefault("entries", {})[key] = {
+        "signature": signature,
+        "path": str(out_path),
+        "output_size": int(st.st_size),
+        "output_mtime_ns": int(st.st_mtime_ns),
+    }
+
+
 def _preview_index_path(base_out_dir):
     return Path(base_out_dir) / "preview_index.json"
 
@@ -3624,7 +4318,7 @@ def rebuild_excel_preview_html(base_out_dir, excel_name):
     return build_excel_preview_html(sheet_data, out_path, excel_name)
 
 def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=None):
-    """一次生成全部已安装主题/变体，并为整个工作簿维护一个可追加的统一 HTML 预览。"""
+    """一次生成全部主题/变体；未变化的成品直接命中持久化增量缓存。"""
     base_out_dir = output_directory_for_book(book)
     base_out_dir.mkdir(parents=True, exist_ok=True)
     cfg = load_config_for_book(book)
@@ -3634,12 +4328,14 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
         raise ThemeError("没有可用于预览的主题或配色变体")
 
     preview_index = load_preview_index(base_out_dir)
+    render_cache = load_render_cache(base_out_dir)
 
     with zipfile.ZipFile(book, "r") as z:
         targets = workbook_sheet_targets(z)
         theme_colors = read_theme_colors(z)
         shared = read_shared_strings(z, theme_colors)
         fills, xfs, parsed_fonts = read_styles(z, theme_colors)
+        workbook_style_digest = _workbook_render_style_digest(z)
         target_sheets = sorted([(n, p) for n, p in targets.items() if KEYWORD in n], key=guide_sheet_sort_key)
         if selected_sheet_names is not None:
             wanted = set(selected_sheet_names)
@@ -3650,20 +4346,28 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
 
         total_ok = 0
         total_expected = len(target_sheets) * len(selections)
+        total_cache_hits = 0
+        total_rerendered = 0
+
         for sheet_seq, (sheet_name, sheet_path) in enumerate(target_sheets, 1):
             print("\n全主题预览：{}【{}/{}】共 {} 种效果".format(
                 sheet_name, sheet_seq, len(target_sheets), len(selections)
             ))
             values, styles, rich = read_sheet(z, sheet_path, shared, theme_colors, xfs, parsed_fonts)
+            tier_progress_by_row = read_day_tier_progress_context(
+                z, sheet_path, values, shared, theme_colors, xfs, parsed_fonts
+            )
+            sheet_digest = _sheet_render_digest(
+                values, styles, rich, workbook_style_digest, tier_progress_by_row
+            )
             sheet_dir = base_out_dir / safe_filename(sheet_name)
             sheet_dir.mkdir(parents=True, exist_ok=True)
             records = []
+            sheet_cache_hits = 0
+            sheet_rerendered = 0
+
             for index, selection in enumerate(selections, 1):
                 try:
-                    guide = parse_guide(
-                        sheet_name, values, styles, rich,
-                        fills, xfs, parsed_fonts, selection, cfg
-                    )
                     theme_folder = sheet_dir / safe_filename(
                         "{}_v{}".format(selection["theme_name"], selection["theme_version"])
                     )
@@ -3671,17 +4375,44 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
                     out = theme_folder / "{:02d}_{}.png".format(
                         index, safe_filename(selection["variant_name"])
                     )
-                    render(guide, out)
-                    records.append({
+
+                    signature = _theme_render_signature(sheet_digest, selection, cfg)
+                    cache_key = _render_cache_key(sheet_name, selection)
+                    cache_entry = (render_cache.get("entries") or {}).get(cache_key)
+
+                    record = {
                         "path": str(out.resolve()),
                         "theme_id": selection["theme_id"],
                         "theme_name": selection["theme_name"],
                         "theme_version": selection["theme_version"],
                         "variant_id": selection["variant_id"],
                         "variant_name": selection["variant_name"],
-                    })
+                    }
+
+                    if _cached_output_is_valid(cache_entry, signature, out):
+                        records.append(record)
+                        total_ok += 1
+                        total_cache_hits += 1
+                        sheet_cache_hits += 1
+                        print("  [{:02d}/{:02d}] [缓存] {} v{} / {}".format(
+                            index, len(selections),
+                            selection["theme_name"], selection["theme_version"],
+                            selection["variant_name"]
+                        ))
+                        continue
+
+                    guide = parse_guide(
+                        sheet_name, values, styles, rich,
+                        fills, xfs, parsed_fonts, selection, cfg,
+                        tier_progress_by_row=tier_progress_by_row
+                    )
+                    render(guide, out)
+                    _update_render_cache_entry(render_cache, cache_key, signature, out)
+                    records.append(record)
                     total_ok += 1
-                    print("  [{:02d}/{:02d}] {} v{} / {}".format(
+                    total_rerendered += 1
+                    sheet_rerendered += 1
+                    print("  [{:02d}/{:02d}] [生成] {} v{} / {}".format(
                         index, len(selections),
                         selection["theme_name"], selection["theme_version"],
                         selection["variant_name"]
@@ -3691,6 +4422,9 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
                         selection.get("theme_name"), selection.get("variant_name"), exc
                     ))
 
+            # 每个 sheet 完成后先落盘缓存；中途退出也不会丢掉已经成功的结果。
+            save_render_cache(base_out_dir, render_cache)
+
             contact = None
             if records:
                 title = "{}｜{}｜全主题效果预览".format(book.stem, sheet_name)
@@ -3698,6 +4432,8 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
                     records, sheet_dir / "00_全主题总览.jpg", title
                 )
                 print("  总览拼图：{}".format(contact))
+
+            print("  缓存命中：{}；重新生成：{}".format(sheet_cache_hits, sheet_rerendered))
 
             # 合并到 preview_index：已有记录保留，同 theme+variant 替换，新记录追加
             existing = preview_index.get(sheet_name, {"records": [], "contact_sheet": None, "count": 0})
@@ -3724,6 +4460,7 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
             if html_path:
                 print("  统一 HTML 预览：{}".format(html_path))
 
+        print("\n[增量缓存] 命中 {} 张；实际重新生成 {} 张。".format(total_cache_hits, total_rerendered))
         return total_ok, total_expected
 
 

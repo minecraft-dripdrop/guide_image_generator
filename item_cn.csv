@@ -80,6 +80,7 @@
 77,item,Armament Crystal,武装晶石,用于宠物武装升级,icon_petequip_up
 78,item,Darkmoon Silver Coin,暗月银币,用于冲刺商店中兑换道具,icon_dark_coin
 79,item,Darkmoon Gold Coin,暗月金币,用于冲刺商店中兑换稀有道具,icon_darkmoon_gold_coin
+80,avatar_item,Interstellar Gummy Beast Avatar,星际软糖兽头像,,
 81,item,Dragon Ticket,龙巢挑战券,用于挑战巨龙巢穴,icon_dungeon_ticket_dragon
 82,item,Tree Ticket,星界树挑战券,用于挑战星界树,icon_dungeon_ticket_tree
 83,item,Island Ticket,空岛挑战券,用于挑战幻剑空岛,icon_dungeon_ticket_sword
@@ -141,19 +142,25 @@
 209,item,Armor Chip,装甲芯片,可用于军械研发中晋阶机甲,img_season_xinpian
 210,item,Officer Medal,将官勋章,可用太空勋章中进阶勋章,img_season_gaoxunji
 211,item,Sergeant Medal,士官勋章,可用太空勋章中升级勋章,img_season_dixunji
-221,item,Avalon Intelligence Point,阿瓦隆情报点,,
-222,item,Hazy Moon Information Point,胧月情报点,,
+221,item,Avalon Intelligence Point,阿瓦隆情报点,可在阿瓦隆船坞中研究情报,icon_bbENQingbaodian
+222,item,Hazy Moon Information Point,胧月情报点,可在胧月船坞中研究情报,icon_bbJPQingbaodian
+223,item,,icon_bbJPQingbaodian,,icon_bbJPQingbaodian
+224,item,,icon_bbJPQingbaodian,,icon_bbJPQingbaodian
 240,item,Daily Points,每日积分,用于马拉松活动每周宝箱解锁,icon_MaLaSong_Day
 241,item,Weekly Points,每周积分,用于马拉松活动每日宝箱解锁,icon_MaLaSong_Week
-261,item,Walloon coin,瓦隆币,,
-262,item,Hazy Moon Coin,胧月币,,
-271,item,Avalon Token,阿瓦隆令牌,,
-272,item,Hazy Moon Pass Token,胧月通令牌,,
-300,item,Energy,精力,,
-301,item,Smelting Crystal,冶炼晶石,,
-302,item,Tool Pool Speedup Ticket,工具池加速券,,
-303,item,Capy Allowance,卡皮津贴,,
-304,item,Capy Chip,卡皮筹码,,
+261,item,Voyage Coin,远航币,可在卡皮大航海的兑换商店中使用,icon_bbTYShop
+262,item,Hazy Moon Coin,胧月币,可在胧月兑换商店中使用,icon_bbJPShop
+263,item,,icon_bbJPShop,,icon_bbJPShop
+264,item,,icon_bbJPShop,,icon_bbJPShop
+271,item,Avalon Token,阿瓦隆令牌,可用于解锁阿瓦隆的区域,icon_bbENYunUnlock
+272,item,Hazy Moon Pass Token,胧月通令牌,可用于解锁胧月的区域,icon_bbJPYunUnlock
+273,item,,icon_bbJPYunUnlock,,icon_bbJPYunUnlock
+274,item,,icon_bbJPYunUnlock,,icon_bbJPYunUnlock
+300,item,Energy,精力,可用于卡皮工作室打工,icon_CapyBattery
+301,item,Smelting Crystal,冶炼晶石,可用于升级卡皮工作室工具池,icon_Capymon_Stone
+302,item,Tool Pool Speedup Ticket,工具池加速券,可使工具池升级或海岛开拓加速10分钟,icon_Capymon_Speed
+303,item,Capy Allowance,卡皮津贴,可用于提升卡皮兽等级,icon_Capymon_Money
+304,item,Capy Chip,卡皮筹码,可用于抽取卡皮兽,icon_Capymon_Coin
 1001,activity_item,,richman_dice_1,“大丰收”活动道具，随机扔出1-6的点数,richman_dice_1
 1002,activity_item,,richman_dice_1,“火鸡寻宝”活动道具，可指定扔出的点数,richman_dice_1
 1003,activity_item,,richman_dice_1,“灯笼贺岁”活动道具，随机扔出1-6的点数,richman_dice_1
@@ -197,6 +204,9 @@
 1041,item,Sweetheart Cake,爱心蛋糕,可用于烛光交易会，可出售兑换货币,First_Anniversary_aixindangao
 1042,item,1st Anniversary Exchange Ticket,1周年兑换券,可用于烛光交易会兑换商店,First_Anniversary_duihuanquan
 1043,skin,Island Holiday,海岛假日,,
+1044,skin,Radiant Gold Dragon Girl,曜金龙女,,
+1045,skin,Interstellar Gummy Beast,星际软糖兽,,
+1046,skin,Starry Night Sorcerer,星夜魔法使,,
 1101,activity_item,,nangua_coin,“大丰收”累计南瓜，收集更多领取奖励,nangua_coin
 1102,activity_item,,icon_item_denglong,“灯笼贺岁”累计灯笼，收集更多领取奖励,icon_item_denglong
 1201,item,Cornucopia,丰饶角,用于在丰收寻宝中抽取奖励,icon_slottrain_coin
@@ -211,7 +221,7 @@
 1210,item,Bow Tie,蝴蝶结,可用于庆典寻宝活动中抽取奖励，活动结束后将转化为金币,icon_shengdan_hudiejie
 1211,item,Yuanbao Voucher,元宝券,可用于暖春轮盘活动中抽取奖励，活动结束后将转化为金币,icon_chunjie_yuanbaoquan
 1212,item,Penguin Tokens,企鹅券,可用于冰雪幸运活动中抽取奖励，活动结束后将转化为金币,icon_Pingu1_qiequan
-1213,item,Party Ticket,派对门票,,
+1213,item,Party Ticket,派对门票,可用于派对转盘活动中抽取奖励，活动结束后将转化为金币,icon_SummerParty_choujiang
 1251,item,Pumpkin Gift Box,南瓜礼盒,用于在丰收寻宝中兑换奖励，活动结束后将转化为金币,icon_ganenjie_duihuanbi
 1252,item,Wonderful Crown,奇妙王冠,用于在奇妙演出中兑换道具,icon_yuren_huobi
 1253,item,Magic Cup,魔法杯,可用于咒语轮盘活动中兑换奖励，活动结束后将转化为金币,icon_laodong_huobi
@@ -223,7 +233,7 @@
 1260,item,Celebration Stocking,庆典袜,可用于庆典寻宝活动中兑换奖励，活动结束后将转化为金币,icon_shengdan_wazi
 1261,item,God of Wealth Hat,财神帽,可用于暖春轮盘活动中兑换奖励，活动结束后将转化为金币,icon_chunjie_caishenmao
 1262,item,Camera,相机,可用于冰雪幸运活动中兑换奖励，活动结束后将转化为金币,icon_Pingu1_xiangji
-1263,item,Snorkel Mask,浮潜镜,,
+1263,item,Snorkel Mask,浮潜镜,可用于派对转盘活动中兑换奖励，活动结束后将转化为金币,icon_SummerParty_fuqianjing
 1301,item,Compass,罗盘,用于活动寻宝特工队抽奖,theme_cost_1
 1302,item,Telescope,望远镜,寻宝特工队活动大奖，可用于兑换对应活动商店中的各类奖品。活动结束后，该物品可保留至下次活动开启时继续使用。,theme_bigitem_1
 1303,item,Adventure Log,冒险日记,用于活动冒险者大探险抽奖,theme_cost_2
@@ -256,11 +266,11 @@
 1513,item,Gold Blueprint,金图纸,可用于雪屋奇缘活动中兑换奖励，活动结束后将转化为金币,icon_Pingu1_jintuzhi
 1514,item,Pointer,指针,可用于雪屋奇缘活动的特殊模式，活动结束后将转化为金币,icon_Pingu1_zhizhen
 1515,item,Small Fish,小鱼,可用于雪域富翁活动中兑换奖励，活动结束后将转化为金币,icon_Pingu1_xiaoyu
-1516,item,Scratch Card,刮刮券,,
-1517,item,Vanilla Ice Cream,香草冰淇淋,,
-1518,item,Dream Ice Cream,梦幻冰淇淋,,
-1519,item,Kiwi Juice,奇异果汁,,
-1520,item,Dragon Fruit Juice,火龙果汁,,
+1516,item,Scratch Card,刮刮券,可用于游玩夏日刮刮乐活动，活动结束后将转化为金币,icon_SummerParty_guaguaquan
+1517,item,Vanilla Ice Cream,香草冰淇淋,可用于夏日刮刮乐活动中兑换奖励，活动结束后将转化为金币,icon_shengdan_xiangcao
+1518,item,Dream Ice Cream,梦幻冰淇淋,可用于夏日刮刮乐活动中兑换奖励，活动结束后将转化为金币,icon_shengdan_menghuan
+1519,item,Kiwi Juice,奇异果汁,可用于夏日环游活动中兑换奖励，活动结束后将转化为金币,icon_shengdan_qiyiguozhi
+1520,item,Dragon Fruit Juice,火龙果汁,可用于夏日环游活动中兑换奖励，活动结束后将转化为金币,icon_shengdan_huolongguozhi
 2000,frame,Default,默认,,
 2001,bait,,icon_fishing_bait,用于钓鱼活动,icon_fishing_bait
 2002,activity_score,,icon_fishing_sliver_medal,用于钓鱼活动中兑换普通奖励,icon_fishing_sliver_medal
@@ -307,6 +317,8 @@
 2043,frame,Snow Journey Begins,冰雪启程,,
 2044,frame,Meow Zongzi Time,喵粽时光,,
 2045,frame,Summer Coast,夏日海岸,,
+2046,frame,Interstellar Observatory,星际观测站,,
+2047,frame,Star-Moon Magic Theater,星月魔法剧场,,
 2050,frame,Supreme Dual Polar (28d),至尊双极（28天）,,
 2051,frame,Supreme Duo (28d),至尊双雄（28天）,,
 2052,frame,Supreme Elite Duo (28d),至尊双杰（28天）,,
@@ -448,6 +460,8 @@
 3044,title,Penguin Home,企鹅之家,,
 3045,title,Sticky Rice Gift,糯米有礼,,
 3046,title,Party Star,派对之星,,
+3047,title,Star Candy Navigator,星糖领航员,,
+3048,title,Star-Wishing Mage,星愿魔法师,,
 3100,item,Mysterious Egg Embryo,神秘彩蛋胚子,神秘的胚子，种下后可能会产出随机彩蛋,RandomSeed_egg
 3101,item,Spiral Egg Embryo,螺旋彩蛋胚子,种下后会产出螺旋彩蛋,Crop_101
 3102,item,Tricolor Egg Embryo,三色彩蛋胚子,种下后会产出三色彩蛋,Crop_102
@@ -479,17 +493,20 @@
 3500,item,Gacha Coin,扭蛋币,可用于扭蛋奇缘活动中进行抽奖，活动结束后将转化为金币,icon_duanwu_choujiang
 3501,item,Green Bamboo Leaf,绿粽叶,可用于扭蛋奇缘活动中兑换奖励，活动结束后将转化为金币,icon_duanwu_putongduihuan
 3502,item,Golden Bamboo Leaf,金粽叶,可用于扭蛋奇缘活动中兑换高级奖励，活动结束后将转化为金币,icon_duanwu_gaojiduihuan
-3503,item,Dumpling Gift,粽子好礼,可用于扭蛋奇缘活动中赠送他人礼物获得幸运值，同时双方获得随机奖励，活动结束后将转化为金币,icon_duanwu_liwu
+3503,item,Magic Gift,魔术好礼,可用于扭蛋魔术活动中赠送他人礼物获得幸运值，同时双方获得随机奖励，活动结束后将转化为金币,icon_duanwu_liwu
 3504,item,Coconut Wave Ticket,椰浪券,可用于盛夏大赏活动中进行抽奖，活动结束后将转化为金币,icon_fanshang_choujiang
 3505,item,Coconut Medal,椰子勋章,可用于盛夏大赏活动中兑换奖励，活动结束后将转化为金币,icon_fanshang_duihuan
 3510,item,Twist Coin,扭扭币,可用于卡皮扭蛋机活动中进行抽奖，活动结束后将转化为金币,icon_niudan_choujiang
 3511,item,Silver Card Skin,银卡皮,可用于卡皮扭蛋机活动中兑换奖励，活动结束后将转化为金币,icon_niudan_putongduihuan
 3512,item,Gold Card Skin,金卡皮,可用于卡皮扭蛋机活动中兑换高级奖励，活动结束后将转化为金币,icon_niudan_gaojiduihuan
-3513,item,Kapibara Gift,卡皮好礼,可用于卡皮扭蛋机活动中赠送他人礼物获得幸运值，同时双方获得随机奖励，活动结束后将转化为金币,icon_niudan_liwu
+3513,item,Capybara Gift,卡皮好礼,可用于卡皮扭蛋机活动中赠送他人礼物获得幸运值，同时双方获得随机奖励，活动结束后将转化为金币,icon_niudan_liwu
 3514,item,Gold Zhu Voucher,金铢券,可用于暖春大赏活动中进行抽奖，活动结束后将转化为金币,icon_chunjie_jinzhuquan
 3515,item,Gold Zhu Medal,金铢勋章,可用于暖春大赏活动中兑换奖励，活动结束后将转化为金币,icon_chunjie_jinzhuxunzhang
 3516,item,Hot Pot,火锅,可用于暖春派对，可出售兑换货币，活动结束后将转化为金币,icon_chunjie_huoguo
 3517,item,Hot Pot Ticket,火锅票,可用于暖春派对兑换商店，活动结束后将转化为金币,icon_chunjie_huoguopiao
+3518,item,Fantasy Gacha Coin,奇幻扭蛋币,可用于扭蛋魔术活动中进行抽奖，活动结束后将转化为金币,icon_mofa_niudanbi
+3519,item,Apprentice Magic Hat,见习魔法帽,可用于扭蛋魔术活动中兑换奖励，活动结束后将转化为金币,icon_mofa_jianximofamao
+3520,item,Master Magic Hat,大师魔法帽,可用于扭蛋魔术活动中兑换高级奖励，活动结束后将转化为金币,icon_mofa_dashimofamao
 5001,item,Hero Material Box,勇者自选材料箱,可自选以下一种材料,icon_chest_item
 5002,item,Master Material Box,大师自选材料箱,可自选以下一种材料,icon_chest_item_2
 5003,item,Equipment Treasure Selection Box (Phase 1),装备至宝自选箱(1期),可自选装备至宝,icon_chest_collection1
@@ -551,6 +568,11 @@
 5506,item,Adventurer's Token Selection Box,冒险者信物自选箱,可自选一个冒险者信物,icon_ches_maoxianzhe
 5507,item,Artifact & Core Selection Box,神器&核心自选箱,可自选一件神器或核心,icon_chest_hongshenqihexin
 5508,item,Mount & Core Selection Box,坐骑&核心自选箱,可自选一件坐骑或核心,icon_chest_hongzuoqihexin
+5509,item,Pink Core Chest,粉耀核心箱,可自选以下一种核心,icon_chest_pet_huodong
+5510,item,Prismatic Core Chest,幻彩核心箱,可自选以下一种核心,icon_chest_huancaihexin
+5511,item,All-Rounder Advancement Chest,全能进阶箱,可自选以下一种道具,icon_chest_quannengjinjie
+5512,item,Pet Supply Chest,萌宠补给箱,可自选以下一种道具,icon_chest_mengchongbuji
+5513,item,Pet Advancement Chest,萌宠进阶箱,可自选以下一种道具,icon_chest_mengchongjinjie
 5601,item,Holy Grail Optional Mythic Treasure,圣杯自选秘宝,可自选以下一种材料,icon_chest_collection_shuangxing
 5602,item,Legendary Mythic Treasure Selection Box,橙秘宝自选箱,可自选以下一种秘宝,icon_chest_collection_chengzixuan
 5603,item,Universal Material Chest,万化材料宝箱,可自选以下一种材料,icon_chest_wanhua
@@ -561,26 +583,28 @@
 5608,item,Immortal Pet Armament Selection Chest,不朽宠物武装自选箱,可自选一件专属不朽宠物武装,icon_chest_petequip07
 5609,item,Holy Grail War Secret Treasure Chest,圣杯战争秘宝宝箱,开启后可从以下秘宝中任选一件获得,icon_chest_collection_shengbei
 5610,item,Holy Grail War Secret Treasure Chest Shard,圣杯战争秘宝宝箱碎片,开启后可从以下秘宝碎片中任选一个获得,icon_chest_collection_shengbei
-5701,item,RareCapymonChoice Box,稀有卡皮兽自选箱,,
-5702,item,EpicCapymonChoice Box,史诗卡皮兽自选箱,,
-5703,item,LegendaryCapymonChoice Box,传奇卡皮兽自选箱,,
-5704,item,MythicCapymonChoice Box,神话卡皮兽自选箱,,
-5711,item,RareCapymonRandom Box,稀有卡皮兽随机箱,,
-5712,item,EpicCapymonRandom Box,史诗卡皮兽随机箱,,
-5713,item,LegendaryCapymonRandom Box,传奇卡皮兽随机箱,,
-5714,item,MythicCapymonRandom Box,神话卡皮兽随机箱,,
-5721,item,RareCapymonTokenChoice Box,稀有卡皮兽信物自选箱,,
-5722,item,EpicCapymonTokenChoice Box,史诗卡皮兽信物自选箱,,
-5723,item,LegendaryCapymonTokenChoice Box,传奇卡皮兽信物自选箱,,
-5724,item,MythicCapymonTokenChoice Box,神话卡皮兽信物自选箱,,
-5731,item,RareCapymonTokenRandom Box,稀有卡皮兽信物随机箱,,
-5732,item,EpicCapymonTokenRandom Box,史诗卡皮兽信物随机箱,,
-5733,item,LegendaryCapymonTokenRandom Box,传奇卡皮兽信物随机箱,,
-5734,item,MythicCapymonTokenRandom Box,神话卡皮兽信物随机箱,,
-5735,item,Universal rare CapymonToken,万能稀有卡皮兽信物,,
-5736,item,Universal epic CapymonToken,万能史诗卡皮兽信物,,
-5737,item,CapymonToken,万能传说卡皮兽信物,,
-5738,item,Universal Myth CapymonToken,万能神话卡皮兽信物,,
+5611,item,Precious Chest,珍品宝箱,可自选以下一种道具,icon_chest_zhenpin
+5612,item,Pristine Chest,至臻宝箱,可自选以下一种道具,icon_chest_zhizhen
+5701,item,RareCapymonChoice Box,稀有卡皮兽自选箱,可从以下卡皮兽中任选其一获得,icon_chest_capymon_blue
+5702,item,EpicCapymonChoice Box,史诗卡皮兽自选箱,可从以下卡皮兽中任选其一获得,icon_chest_capymon_purple
+5703,item,LegendaryCapymonChoice Box,传奇卡皮兽自选箱,可从以下卡皮兽中任选其一获得,icon_chest_capymon_orange
+5704,item,MythicCapymonChoice Box,神话卡皮兽自选箱,可从以下卡皮兽中任选其一获得,icon_chest_capymon_red
+5711,item,RareCapymonRandom Box,稀有卡皮兽随机箱,从以下卡皮兽中随机获得一只,icon_chest_capymon_blue_random
+5712,item,EpicCapymonRandom Box,史诗卡皮兽随机箱,从以下卡皮兽中随机获得一只,icon_chest_capymon_purple_random
+5713,item,LegendaryCapymonRandom Box,传奇卡皮兽随机箱,从以下卡皮兽中随机获得一只,icon_chest_capymon_orange_random
+5714,item,MythicCapymonRandom Box,神话卡皮兽随机箱,从以下卡皮兽中随机获得一只,icon_chest_capymon_red_random
+5721,item,RareCapymonTokenChoice Box,稀有卡皮兽信物自选箱,可从以下卡皮兽信物中任选其一获得,icon_chest_capymon_blue
+5722,item,EpicCapymonTokenChoice Box,史诗卡皮兽信物自选箱,可从以下卡皮兽信物中任选其一获得,icon_chest_capymon_purple
+5723,item,LegendaryCapymonTokenChoice Box,传奇卡皮兽信物自选箱,可从以下卡皮兽信物中任选其一获得,icon_chest_capymon_orange
+5724,item,MythicCapymonTokenChoice Box,神话卡皮兽信物自选箱,可从以下卡皮兽信物中任选其一获得,icon_chest_capymon_red
+5731,item,RareCapymonTokenRandom Box,稀有卡皮兽信物随机箱,从以下卡皮兽信物中随机获得一个,icon_chest_capymon_blue_random
+5732,item,EpicCapymonTokenRandom Box,史诗卡皮兽信物随机箱,从以下卡皮兽信物中随机获得一个,icon_chest_capymon_purple_random
+5733,item,LegendaryCapymonTokenRandom Box,传奇卡皮兽信物随机箱,从以下卡皮兽信物中随机获得一个,icon_chest_capymon_orange_random
+5734,item,MythicCapymonTokenRandom Box,神话卡皮兽信物随机箱,从以下卡皮兽信物中随机获得一个,icon_chest_capymon_red_random
+5735,item,Universal rare CapymonToken,万能稀有卡皮兽信物,可用于代替稀有品质的卡皮兽信物,icon_capymon_xinwu_3
+5736,item,Universal epic CapymonToken,万能史诗卡皮兽信物,可用于代替史诗品质的卡皮兽信物,icon_capymon_xinwu_4
+5737,item,CapymonToken,万能传说卡皮兽信物,可用于代替传说品质的卡皮兽信物,icon_capymon_xinwu_5
+5738,item,Universal Myth CapymonToken,万能神话卡皮兽信物,可用于代替神话品质的卡皮兽信物,icon_capymon_xinwu_6
 6000,item,GM Material Box,GM材料箱,打开获得海量所有升级资源和GM装备,icon_chest_universal_random
 6002,item,Random Hero Box,随机英杰箱,,
 6003,item,Random Insignia Box,随机烙印箱,,
@@ -597,9 +621,11 @@
 6015,item,Random Legendary Gem Chest,随机传说宝石箱,开启后可随机获得一个传说宝石,chest_random_orange
 6016,item,Random Mythic Gem Chest,随机神话宝石箱,开启后可随机获得一个神话宝石,chest_random_red
 6017,item,Random Immortal Gem Chest,随机不朽宝石箱,开启后可随机获得一个不朽宝石,chest_random_pink
+6018,item,Random Transcendent Gem Chest,随机超越宝石箱,开启后可随机获得一个超越宝石,chest_random_color
 6021,item,Premium Scroll Random Chest,高级卷轴随机箱,开启后随机获得高级卷轴,icon_chest_gaojijuanzhousjx
-6022,item,Dream Ice Cream random box,梦幻冰淇淋随机箱,,
-6023,item,Dragon Fruit Juice random box,火龙果汁随机箱,,
+6022,item,Dream Ice Cream random box,梦幻冰淇淋随机箱,开启后随机获得梦幻冰淇淋,icon_chest_mhbqlsjx
+6023,item,Dragon Fruit Juice random box,火龙果汁随机箱,开启后随机获得火龙果汁,icon_chest_hlgzsjx
+6024,item,Master Magic Hat Random Box,大师魔法帽随机箱,开启后随机获得大师魔法帽,icon_chest_dsmfm
 6101,item,Equipment Treasure Box Fragment (Phase 1),装备至宝箱碎片(1期),集齐60枚碎片后，可合成1个装备至宝自选箱（1期）,icon_fragment_collection1
 6102,item,Equipment Treasure Box Fragment (Phase 2),装备至宝箱碎片(2期),集齐60枚碎片后，可合成1个装备至宝自选箱（2期）,icon_fragment_collection2
 6103,item,Random Universal Crystal Stone Box Fragment,随机万能晶石箱碎片,集齐60枚碎片后，可合成1个随机万能晶石箱,icon_fragment_universal_random
@@ -614,6 +640,8 @@
 6112,item,(Shard) Artifact & Core Selection Chest,(碎片)神器&核心自选箱,集齐60枚碎片后，可合成一个神器&核心自选箱,icon_chest_hongshenqihexinsuipian
 6113,item,(Shard) Mount & Core Selection Chest,(碎片)坐骑&核心自选箱,集齐60枚碎片后，可合成一个坐骑&核心自选箱,icon_chest_hongzuoqihexinsuipian
 6114,item,(Shard) S Epic Inheritance Selection Chest,(碎片)S史诗传承自选箱,集齐60枚碎片后，可合成一个S史诗传承自选箱,icon_chest_chuanchengsuipian
+6116,item,(Shard) Awakening Core Choice Chest,(碎片)觉醒核心自选箱,集齐60枚碎片后，可合成一个觉醒核心自选箱,icon_chest_buchang
+6117,item,(Shard) Universal Mythic Capymon Token,(碎片)万能神话卡皮兽信物,集齐10枚碎片后，可合成一个万能神话卡皮兽信物,icon_capymon_xinwu_suipian_6
 7001,item,Adventure Fund Reorder,冒险基金补单,冒险基金补单,uimian_icon_rechargegift
 7101,cannon_part,Ballista Shard,巨弩碎片,可用于合成或升级巨弩,cannon_JuNu
 7102,cannon_part,Dual-Shot Crossbow Cannon Shard,双发弩炮碎片,可用于合成或升级双发弩炮,cannon_ShuangFaJuNu
@@ -663,6 +691,7 @@
 22004,item,,uimian_icon_rechargegift,自动挖矿卡,uimian_icon_rechargegift
 22005,iap_item,Weekly Pass,周卡,周卡,uimian_icon_rechargegift
 22006,iap_item,Trade Privilege Card,贸易特权卡,贸易特权卡,uimian_icon_rechargegift
+22007,iap_item,Card ExchangePrivilege Card,集换特权卡,集换特权卡,uimian_icon_rechargegift
 23001,iap_item,Talent Fund 1,天赋基金1,天赋基金1,uimian_icon_rechargegift
 23002,iap_item,Talent Fund 2,天赋基金2,天赋基金2,uimian_icon_rechargegift
 23003,iap_item,Tower Challenge Fund 1,挑战之塔基金1,挑战之塔基金1,uimian_icon_rechargegift
@@ -719,7 +748,15 @@
 40607,item,Michelangelo Token,米开朗基罗信物,搜集足够数量后，可用于解锁冒险者米开朗基罗,avatar_yellowT
 40608,item,Daji Token,妲己信物,搜集足够数量后，可用于解锁冒险者妲己,avatar_daji
 40609,item,Jianghu Meow Keepsake,江湖喵信物,搜集足够数量后，可用于解锁冒险者江湖喵,avatar_maolaoshi
-90001,item,Guild Red Packet,公会红包,可发放至公会频道，时限内可被公会成员领取,icon_redPacket
+90001,item,Martial Supreme Red Packet,武道至尊红包,武道大会第1名专属红包，内含3000宝石，持续24小时，最多20人可抢。,icon_redPacket
+90002,item,Grandmaster Glory Red Packet,宗师荣耀红包,武道大会第2名专属红包，内含2000宝石，持续24小时，最多15人可抢。,icon_redPacket
+90003,item,Champion Clash Red Packet,豪杰争锋红包,武道大会第3名专属红包，内含1000宝石，持续24小时，最多10人可抢。,icon_redPacket
+90004,item,Holy Grail King Red Packet,圣杯王者红包,圣杯战争至尊战区第1名专属红包，内含3000宝石，持续24小时，最多20人可抢。,icon_redPacket
+90005,item,Heroic Spirit Glory Red Packet,英灵荣光红包,圣杯战争至尊战区第2名专属红包，内含2000宝石，持续24小时，最多15人可抢。,icon_redPacket
+90006,item,Knight's Triumph Red Packet,骑士凯旋红包,圣杯战争至尊战区第3名专属红包，内含1000宝石，持续24小时，最多10人可抢。,icon_redPacket
+90007,item,Chief Archaeologist Red Packet,首席考古红包,联合考古第1名专属红包，内含300宝石，持续24小时，最多10人可抢。,icon_redPacket
+90008,item,Top Bounty Red Packet,头号赏金红包,公会悬赏第1名专属红包，内含300宝石，持续24小时，最多10人可抢。,icon_redPacket
+90009,item,Speedy Capy Red Packet,极速卡皮红包,卡皮马拉松第1名专属红包，内含300宝石，持续24小时，最多10人可抢。,icon_redPacket
 91101,gem,Normal Gem,普通宝石,,gem_white
 91102,gem,Normal Gem,普通宝石,,gem_white
 91103,gem,Normal Gem,普通宝石,,gem_white
@@ -1823,6 +1860,7 @@
 358011,collection,Ceramics Horse,陶瓷马,被无数鉴定专家赞不绝口的稀世珍品，据说流传时间超过千年，你这才相信卖给你这东西的地摊小贩，真的如他所说是穿越者,icon_358011
 358012,collection,Sapling,树苗,这株树苗据说源自千年之前的神秘传承，蕴含着古老文明的力量。无数专家无法揭开它的真相，只知道它能在任何环境中生根发芽，象征着新生与希望。如今，它终于出现在你面前。,icon_358012
 358013,collection,Fragrant Boat,粽香满舟,这枚粽子承载着古老秘方，叶叶相扣，包裹着岁月沉淀的香气。它的来历无人能解，却总在不经意间，唤醒人们对团圆与幸福的渴望。此刻，它静静地，出现在你的面前。,icon_358013
+358014,collection,Starwish Magic Crystal,星愿魔晶,这枚魔晶传说在魔法庆典最热闹的夜晚，散落于天幕的星光会汇聚成这颗紫色魔晶。凝视它的人能够看见深藏心底的愿望；若愿望足够真诚，水晶便会泛起微光，为追梦者指引方向,icon_358014
 359001,collection,Pingu Statue,Pingu雕像,这尊雕像象征着欢乐与勇气，承载着童真与冒险的精神。Pingu将在雕像的力量加持下觉醒，变得更加机敏与大胆，释放出源源不断的活力，解锁全新的奇趣能力。,icon_359001
 361001,collection_fragment,Alchemist's Lamp - Shard,炼金术士的瓶灯碎片,用于解锁及升级藏品炼金术士的瓶灯,icon_351001
 361002,collection_fragment,Eternal Torch - Shard,永恒火炬碎片,用于解锁及升级藏品永恒火炬,icon_351002
@@ -1931,6 +1969,7 @@
 368011,collection_fragment,Ceramics Horse Shard,陶瓷马碎片,用于解锁及升级藏品陶瓷马,icon_358011
 368012,collection_fragment,Sapling Shard,树苗碎片,用于解锁及升级藏品树苗,icon_358012
 368013,collection_fragment,Fragrant Boat Shard,粽香满舟碎片,用于解锁及升级藏品粽香满舟,icon_358013
+368014,collection_fragment,Starwish Magic Crystal Shard,星愿魔晶碎片,用于解锁及升级藏品星愿魔晶,icon_358014
 369001,collection_fragment,Pingu Statue Fragment,Pingu雕像碎片,用于解锁及升级藏品Pingu雕像,icon_359001
 380201,item,Core of the Crocodile Overlord,鳄霸核心,用于提升鳄霸的觉醒等级,icon_core_eba
 380202,item,Core of the Snail Immortal,蜗仙人核心,用于提升蜗仙人的觉醒等级,icon_core_woxianren
@@ -1958,7 +1997,7 @@
 380705,item,Dreamy Bathtub Core,梦幻浴缸核心,用于提升梦幻浴缸的觉醒等级,icon_core_menghuanyugang
 380801,item,Imperial Dragon-Armor Beast Core,帝皇龙甲兽核心,用于提升帝皇龙甲兽的觉醒等级,icon_core_dimolong
 380802,item,Ash Progenitor Dragon Core,灰烬始祖龙核心,用于提升灰烬始祖龙的觉醒等级,icon_core_shizulong
-380803,item,Frost DragonCore,冰霜巨龙核心,,
+380803,item,Frost DragonCore,冰霜巨龙核心,用于提升冰霜巨龙的觉醒等级,icon_core_bingshuangjulong
 381001,mount,Crocodile Overlord,鳄霸,坐骑鳄霸,icon_mount_eba
 381002,mount,Snail Immortal,蜗仙人,坐骑蜗仙人,icon_mount_woxianren
 381003,mount,Bubble Newt,泡泡蝾,坐骑泡泡蝾,icon_mount_paopaorong
@@ -1985,7 +2024,7 @@
 384005,mount,Dreamy Bathtub,梦幻浴缸,坐骑梦幻浴缸,icon_mount_menghuanyugang
 385001,mount,Imperial Dragon-Armor Beast,帝皇龙甲兽,坐骑帝皇龙甲兽,icon_mount_dimolong
 385002,mount,Ash Progenitor Dragon,灰烬始祖龙,坐骑灰烬始祖龙,icon_mount_ShiZuLong
-385003,mount,Frost Dragon,冰霜巨龙,,
+385003,mount,Frost Dragon,冰霜巨龙,坐骑冰霜巨龙,icon_mount_bingshuangjulong
 390501,item,Core of the Oath of Victory Sword,胜利誓约之剑核心,用于提升胜利誓约之剑的觉醒等级,icon_core_Jian
 390601,item,Core of the Demon Lord's Eye,魔王之眼核心,用于提升魔王之眼的觉醒等级,icon_core_EMoZhiYan
 390602,item,Core of the Thunder God's Spear,雷神之矛核心,用于提升雷神之矛的觉醒等级,icon_core_LeiShenZhiMao
@@ -2003,6 +2042,7 @@
 390801,item,Holy Sword Core,神圣剑核心,用于提升神圣剑的觉醒等级,icon_core_shenshengjian
 390802,item,Ancestor's Rage Core,始祖之怒核心,用于提升始祖之怒的觉醒等级,icon_core_shizuzhinu
 390803,item,Abyssal Devourer Core,深渊吞噬者核心,用于提升深渊吞噬者的觉醒等级,icon_core_shenyuantunshizhe
+390804,item,Zeus Arcane Blade Core,宙斯·秘法之刃核心,用于提升宙斯·秘法之刃的觉醒等级,icon_core_zhousimifazhiren
 391001,artifact,Sword of Victory Oath,胜利誓约之剑,神器胜利誓约之剑,icon_artifact_shenglishiyuezhijian
 393001,artifact,Demonic Eye,魔王之眼,神器魔王之眼,icon_artifact_emozhiyan
 393002,artifact,Spear of Thor,雷神之矛,神器雷神之矛,icon_artifact_leishenzhimao
@@ -2020,6 +2060,7 @@
 395001,artifact,Holy Sword,神圣剑,神器神圣剑,icon_artifact_shenshengjian
 395002,artifact,Ancestor's Rage,始祖之怒,神器始祖之怒,icon_artifact_shizuzhinu
 395003,artifact,Abyssal Devourer,深渊吞噬者,神器深渊吞噬者,icon_artifact_shenyuantunshizhe
+395004,artifact,Zeus Arcane Blade,宙斯·秘法之刃,神器宙斯·秘法之刃,icon_artifact_zhousimifazhiren
 400001,avatar_item,Ice Shroom Avatar,冰晶菇头像,冰晶菇头像,frame_BingJingGu
 400002,avatar_item,Monopoly Avatar,大富翁头像,大富翁头像,frame_DaFuWeng
 400003,avatar_item,Beetle Avatar,独角仙头像,独角仙头像,frame_DuJiaoXian
@@ -2097,6 +2138,10 @@
 400138,avatar_item,Pingu Avatar,Pingu头像,Pingu头像,frame_Pingu_2026
 400139,avatar_item,Jianghu Meow Avatar,江湖喵头像,江湖喵头像,frame_jianghumiao
 400140,avatar_item,Meow Star Guardian Avatar,喵星守护者头像,喵星守护者头像,frame_miaoxingshouhuzhe
+400141,avatar_item,Island HolidayAvatar,海岛假日头像,海岛假日头像,frame_xiaripaidui_2026
+400142,avatar_item,Radiant Gold Dragon Girl Avatar,曜金龙女头像,曜金龙女头像,frame_xiaolongnvpf
+400143,avatar_item,Interstellar Gummy Beast Avatar,星际软糖兽头像,星际软糖兽头像,frame_xingjiruantangshou_2026
+400144,avatar_item,Starry Night Mage Avatar,星夜魔法使头像,星夜魔法使头像,frame_xymfs_2026
 400501,frame_item,Champion Adventurer Frame (28 days),冠军冒险者头像框（28天）,冠军冒险者头像框（28天）,Frame_GuanJun
 400502,frame_item,Runner-Up Adventurer Frame (28 days),亚军冒险者头像框（28天）,亚军冒险者头像框（28天）,Frame_YaJun
 400503,frame_item,Third-Place Adventurer Frame (28 days),季军冒险者头像框（28天）,季军冒险者头像框（28天）,Frame_JiJun
@@ -2142,6 +2187,9 @@
 400543,frame,Ironstone Warband (28d),磐石战团（28天）,磐石战团头像框,Frame_WangZhe_9&64
 400544,frame,Snow Journey Begins,冰雪启程,冰雪启程头像框,Frame_Pingu1_2026
 400545,frame,Meow Zongzi Time,喵粽时光,喵粽时光头像框,Frame_duanwujie_2026
+400546,frame,Summer Coast,夏日海岸,夏日海岸头像框,Frame_xiaripaidui_2026
+400547,frame,Interstellar Observatory,星际观测站,星际观测站头像框,Frame_xingji_2026
+400548,frame,Star-Moon Magic Theater,星月魔法剧场,星月魔法剧场头像框,Frame_xymfjc_2026
 400550,frame,Supreme Dual Polar (28d),至尊双极（28天）,至尊双极头像框,Frame_ZhiZun_1
 400551,frame,Supreme Duo (28d),至尊双雄（28天）,至尊双雄头像框,Frame_ZhiZun_2
 400552,frame,Supreme Elite Duo (28d),至尊双杰（28天）,至尊双杰头像框,Frame_ZhiZun_3
@@ -2205,7 +2253,7 @@
 401122,skin,Little Elephant Prince,小象王子,半周年礼包获得,Skin_LittleElephant
 401123,skin,God of War,武神,武道大会商店获取,Skin_WuShen
 401124,skin,Velvet Moon Maze,绒月迷踪,月饼狂欢礼包获取,Skin_zhongqiutuzi
-401125,skin,Phantom Thief Kapi,怪盗卡皮,蛋糕大转盘兑换商店获取,Skin_yizhounian
+401125,skin,Phantom Thief Capy,怪盗卡皮,蛋糕大转盘兑换商店获取,Skin_yizhounian
 401126,skin,Kabuda,卡布达,圣杯战争获取,Skin_DuJiaoXian
 401127,skin,Pumpkin Baron,南瓜男爵,丰收庆典活动获取,Skin_nanguananjue
 401128,skin,Gingerbread Man,姜饼人,盲盒机活动获取,Skin_jiangbingren
@@ -2217,10 +2265,16 @@
 401134,skin,Funny Master,滑稽大师,盲盒机活动获取,Skin_huajidashi
 401135,skin,Pingu,Pingu,盲盒机活动获取,Skin_Pingu
 401136,skin,Meow Star Guardian,喵星守护者,盲盒机活动获取,Skin_miaoxingshouhuzhe
+401137,skin,Island Holiday,海岛假日,盲盒机活动获取,Skin_xiaripaidui
+401138,skin,Radiant Gold Dragon Girl,曜金龙女,盲盒机活动获取,Skin_xiaolongnv
+401139,skin,Interstellar Gummy Beast,星际软糖兽,前往 Habby Store，使用积分兑换获得。,Skin_xingjiruantangshou
+401140,skin,Starry Night Sorcerer,星夜魔法使,盲盒机活动获取,Skin_xymfs
 404001,item,Crystal Crown (30 Days),水晶王冠（30天）,使用后可将聊天框变更为水晶王冠主题,img_chatbox_4001
 404003,item,Capy's Watch,卡皮的守望,使用后可将聊天框变更为卡皮的守望主题,img_chatbox_4003
 404004,item,Tropical Sunshine,热海阳光,使用后可将聊天框变更为热海阳光主题,img_chatbox_4004_effect
 404005,item,Melody Carnival,音律狂欢,使用后可将聊天框变更为音律狂欢主题,img_chatbox_4005_effect
+404006,item,Starlight Magic,星光魔法,使用后可将聊天框变更为星光魔法主题,img_chatbox_4006_effect
+404007,item,Planetary Rhythm,星球律动,使用后可将聊天框变更为星球律动主题,img_chatbox_4007_effect
 405001,item,Capy Spa (7d),卡皮的温泉(7天）,可解锁场景“卡皮的温泉(7天）”,Skin_scene_wenquan
 405002,item,Family Reunion,合家欢乐,合家欢乐,Skin_scene_chunjie
 405003,item,Cappy’s Hot Spring,卡皮的温泉,可解锁场景“卡皮的温泉”,Skin_scene_wenquan
@@ -2274,6 +2328,74 @@
 406067,title,Ironstone Glory (28d),磐石荣耀（28天）,公会争霸王者组第9至64名获取,Title_WangZhe_9&64
 406068,title,Penguin Home,企鹅之家,冰雪幸运活动礼包获取,Title_Pingu_2026_1
 406069,title,Sticky Rice Gift,糯米有礼,龙舟庆典活动礼包获取,Title_duanwujie_2026
+406070,title,Party Star,派对之星,夏日派对活动礼包获取,Title_xiaripaidui_2026
+406071,title,Star Candy Navigator,星糖领航员,前往 Habby Store，使用积分兑换获得。,Title_xingji_2026
+406072,title,Star-Wishing Mage,星愿魔法师,魔法庆典活动礼包获取,Title_xymfs_2026
+407001,item,Feast Mode,大吃,解锁后可在聊天中使用,001
+407002,item,Flood of Tears,大哭,解锁后可在聊天中使用,028
+407003,item,Fuming,生气,解锁后可在聊天中使用,035
+407004,item,Belly Laugh,大笑,解锁后可在聊天中使用,001
+407005,item,Love at First Sight,爱心,解锁后可在聊天中使用,026
+407006,item,Fast Asleep,睡觉,解锁后可在聊天中使用,001
+407007,item,Happy Dance,跳舞,解锁后可在聊天中使用,016
+407008,item,Full Sprint,奔跑,解锁后可在聊天中使用,001
+407009,item,Stunned,震惊,解锁后可在聊天中使用,006
+410301,item,pink water spirit,粉水灵,粉水灵,Capymon_Avatar_LanRongYuan
+410302,item,Aurora Penguin,极光企鹅,极光企鹅,Capymon_Avatar_QiE
+410303,item,Ruin Elf,遗迹精灵,遗迹精灵,Capymon_Avatar_ShiTou
+410401,item,twin flowers,双生花,双生花,Capymon_Avatar_ShuangTouHua
+410402,item,Pumpkin Priest,南瓜牧师,南瓜牧师,Capymon_Avatar_NanGuaGuai
+410403,item,Starlight Angel,星光天使,星光天使,Capymon_Avatar_TianShiJingLing
+410404,item,sea ​​crab,海之蟹,海之蟹,Capymon_Avatar_PangXie
+410405,item,Piggy Crown Prince,猪猪王储,猪猪王储,Capymon_Avatar_GuoWang
+410406,item,Salamander,炎火蜥,炎火蜥,Capymon_Avatar_HuoXiYi
+410407,item,green mountain armor,青山甲,青山甲,Capymon_Avatar_ChuanShanJia
+410408,item,water cannon snake,水炮蛇,水炮蛇,Capymon_Avatar_She
+410409,item,Blue crystal octopus,蓝晶章鱼,蓝晶章鱼,Capymon_Avatar_LanZhangYu
+410501,item,Sea King,海霸王,海霸王,Capymon_Avatar_DiaoYuLao
+410502,item,Mushroom Fighter,蘑斗士,蘑斗士,Capymon_Avatar_MoGuRen
+410503,item,Caiyunju,彩云驹,彩云驹,Capymon_Avatar_DuJiaoShou
+410504,item,Falcon,猎空鹰,猎空鹰,Capymon_Avatar_MaoTouYing
+410505,item,Sky Lizard,翔空蜥,翔空蜥,Capymon_Avatar_HuangFeng
+410506,item,quantum turtle,量子龟,量子龟,Capymon_Avatar_JinGui
+410507,item,Fire Crocodile,旋火鳄,旋火鳄,Capymon_Avatar_HuoYanE
+410508,item,teapot duck,茶壶鸭,茶壶鸭,Capymon_Avatar_ChaHuYa
+410509,item,Ice Pick Mage,冰锥法师,冰锥法师,Capymon_Avatar_BingZhuiFaShi
+410601,item,Ollie,奥莉,奥莉,Capymon_Avatar_MuCaoLong
+410602,item,Garfield,加菲,加菲,Capymon_Avatar_FeiTianMao
+410603,item,Maxwell,麦斯威尔,麦斯威尔,Capymon_Avatar_ShiTouShe
+410604,item,List,陈,陈,Capymon_Avatar_XiongMao
+410605,item,Alduin,奥杜因,奥杜因,Capymon_Avatar_AnHeiYang
+410606,item,Gryffindor,格兰芬多,格兰芬多,Capymon_Avatar_ShenShengNiao
+410607,item,Cerberus,刻耳柏洛斯,刻耳柏洛斯,Capymon_Avatar_SanTouQuan
+420301,item,Pink Shuiling Token,粉水灵信物,可用于合成对应卡皮兽,Capymon_Avatar_LanRongYuan
+420302,item,Aurora Penguin Token,极光企鹅信物,可用于合成对应卡皮兽,Capymon_Avatar_QiE
+420303,item,Ruin Elf Token,遗迹精灵信物,可用于合成对应卡皮兽,Capymon_Avatar_ShiTou
+420401,item,Twin Flower Token,双生花信物,可用于合成对应卡皮兽,Capymon_Avatar_ShuangTouHua
+420402,item,Pumpkin Priest Token,南瓜牧师信物,可用于合成对应卡皮兽,Capymon_Avatar_NanGuaGuai
+420403,item,Starlight Angel Token,星光天使信物,可用于合成对应卡皮兽,Capymon_Avatar_TianShiJingLing
+420404,item,Sea Crab Token,海之蟹信物,可用于合成对应卡皮兽,Capymon_Avatar_PangXie
+420405,item,Piggy Crown Prince Token,猪猪王储信物,可用于合成对应卡皮兽,Capymon_Avatar_GuoWang
+420406,item,Fire Lizard Token,炎火蜥信物,可用于合成对应卡皮兽,Capymon_Avatar_HuoXiYi
+420407,item,Qingshanjia Token,青山甲信物,可用于合成对应卡皮兽,Capymon_Avatar_ChuanShanJia
+420408,item,Water Cannon Snake Token,水炮蛇信物,可用于合成对应卡皮兽,Capymon_Avatar_She
+420409,item,Blue Crystal Octopus Token,蓝晶章鱼信物,可用于合成对应卡皮兽,Capymon_Avatar_LanZhangYu
+420501,item,Haibawang Token,海霸王信物,可用于合成对应卡皮兽,Capymon_Avatar_DiaoYuLao
+420502,item,Mushroom Fighter Token,蘑斗士信物,可用于合成对应卡皮兽,Capymon_Avatar_MoGuRen
+420503,item,Caiyunju Token,彩云驹信物,可用于合成对应卡皮兽,Capymon_Avatar_DuJiaoShou
+420504,item,Falcon Eagle Token,猎空鹰信物,可用于合成对应卡皮兽,Capymon_Avatar_MaoTouYing
+420505,item,Sky Lizard Token,翔空蜥信物,可用于合成对应卡皮兽,Capymon_Avatar_HuangFeng
+420506,item,Quantum Turtle Token,量子龟信物,可用于合成对应卡皮兽,Capymon_Avatar_JinGui
+420507,item,Tornado Crocodile Token,旋火鳄信物,可用于合成对应卡皮兽,Capymon_Avatar_HuoYanE
+420508,item,Teapot Duck Token,茶壶鸭信物,可用于合成对应卡皮兽,Capymon_Avatar_ChaHuYa
+420509,item,Ice Cone Mage Token,冰锥法师信物,可用于合成对应卡皮兽,Capymon_Avatar_BingZhuiFaShi
+420601,item,Ollie Token,奥莉信物,可用于合成对应卡皮兽,Capymon_Avatar_MuCaoLong
+420602,item,Garfield Token,加菲信物,可用于合成对应卡皮兽,Capymon_Avatar_FeiTianMao
+420603,item,Maxwell Token,麦斯威尔信物,可用于合成对应卡皮兽,Capymon_Avatar_ShiTouShe
+420604,item,ChenToken,陈信物,可用于合成对应卡皮兽,Capymon_Avatar_XiongMao
+420605,item,Alduin Token,奥杜因信物,可用于合成对应卡皮兽,Capymon_Avatar_AnHeiYang
+420606,item,Gryffindor Token,格兰芬多信物,可用于合成对应卡皮兽,Capymon_Avatar_ShenShengNiao
+420607,item,Cerberus Token,刻耳柏洛斯信物,可用于合成对应卡皮兽,Capymon_Avatar_SanTouQuan
 500001,item,Holy Sword Core,神圣剑核心,用于提升神圣剑的觉醒等级,icon_core_shenshengjian
 500002,item,Ancestor's Rage Core,始祖之怒核心,用于提升始祖之怒的觉醒等级,icon_core_shizuzhinu
 505101,talentlegacy_fragment,Little Bone Fragment,小骨碎片,用于解锁及升级英杰【小骨】,img_talentLegacy_xiaogu
@@ -2325,6 +2447,7 @@
 506313,talentlegacy_fragment,Slayers Shard,秀逗魔导士碎片,集齐120片激活SS级烙印【秀逗魔导士】，激活后使用碎片进行升阶,monster_nvwu
 506314,talentlegacy_fragment,Alien UFO Shard,异星飞碟碎片,集齐120片激活SS级烙印【异星飞碟】，激活后使用碎片进行升阶,monster_yixingfeidie
 506315,talentlegacy_fragment,Ootengu Shard,大天狗碎片,集齐120片激活SS级烙印【大天狗】，激活后使用碎片进行升阶,monster_datiangou
+506316,talentlegacy_fragment,Iron Wall Mecha Vajra Shard,铁壁·机甲金刚碎片,集齐120片激活SS级烙印【铁壁·机甲金刚】，激活后使用碎片进行升阶,monster_tiebijijiajingang
 507001,item,Rare Universal Treasure Shard,稀有万能秘宝碎片,可用于稀有秘宝升星,icon_common_MiBao_Blue
 507002,item,Epic Universal Treasure Shard,史诗万能秘宝碎片,可用于史诗秘宝升星,icon_common_MiBao_Purple
 507003,item,Legendary Universal Treasure Shard,传说万能秘宝碎片,可用于传说秘宝升星,icon_common_MiBao_Orange
@@ -3015,6 +3138,19 @@
 631511,talentlegacy,Ootengu,大天狗,,monster_datiangou
 631512,talentlegacy,Ootengu,大天狗,,monster_datiangou
 631513,talentlegacy,Ootengu,大天狗,,monster_datiangou
+631601,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631602,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631603,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631604,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631605,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631606,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631607,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631608,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631609,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631610,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631611,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631612,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
+631613,talentlegacy,Iron Wall Mecha Vajra,铁壁·机甲金刚,,monster_tiebijijiajingang
 700001,item,Basic Pickaxe,初级矿镐,初级矿镐,gold_mining_draft
 700002,item,Advanced Pickaxe,高级矿镐,高级矿镐,silver_mining_draft
 700003,item,Honor Coin,荣誉币,荣誉币,silver_mining_draft
@@ -4822,10 +4958,10 @@
 908201,home,Jester's Tent,小丑帐篷,屋顶那颗水豚头盯着你，因为它觉得你还没它聪明,homeItemIcon_908201
 908301,home,Stage,舞台,两位水豚演员已就位，假发非常专业,homeIcon_908301
 908302,home,Muffin House,松饼屋,屋顶的派似乎想逃离这个疯狂的节日,homeIcon_908302
-908401,home,Kapi Fountain,卡皮喷泉,它是世界上唯一一座用尖叫鸡装饰的喷泉,homeIcon_908401
+908401,home,Capy Fountain,卡皮喷泉,它是世界上唯一一座用尖叫鸡装饰的喷泉,homeIcon_908401
 908402,home,Confetti Cannon,彩花炮,瞄准目标，发射！,homeIcon_908402
 908403,home,Jester's Gift Box,小丑礼盒,专门治疗那些“非要看看里面是什么”的强迫症,homeIcon_908403
-908404,home,Kapi Box,卡皮盒子,虽然手持武器，但眼神里只有放空的宁静,homeIcon_908404
+908404,home,Capy Box,卡皮盒子,虽然手持武器，但眼神里只有放空的宁静,homeIcon_908404
 908405,home,Banana Peel,香蕉皮,它是这套建筑中最具杀伤力的存在,homeIcon_908405
 909201,home,Pingu's Igloo,Pingu之家,极地海景房，自带垂钓位，做绝不空军钓鱼佬,homeItemIcon_909201
 909401,home,Noot Noot,Noot Noot,Noot Noot!,homeIcon_909401
@@ -4842,20 +4978,29 @@
 910403,home,Lotus Pond,荷塘,荷叶铺在水面上，让庭院多了一处清爽景色。,homeIcon_910403
 910404,home,Stone Steps,石阶,青石阶通向庭院深处，走起来安静又稳当。,homeIcon_910404
 910501,home,Mugwort Tree,艾香树,树下有淡淡艾草香，给庭院添上一点清新的味道。,homeIcon_910501
-911201,home,Summer Slide,夏日滑滑乐,,
-911301,home,golden castle,黄金城堡,,
-911401,home,Cool pool,清凉水池,,
-911402,home,fruit boat,水果小船,,
-911403,home,surfboard rack,冲浪板架,,
-911404,home,beach street sign,海滩路牌,,
-911405,home,golden snowman,黄金雪人,,
-911406,home,Leisure beach mat,悠闲沙滩垫,,
-911407,home,beach slippers,沙滩拖鞋,,
-911501,home,twin coconut trees,双生椰子树,,
-911502,home,Coconut Tree,椰子树,,
-911701,home,beach,沙滩,,
+911201,home,Summer Slide,夏日滑滑乐,据说滑到底只要三秒，但卡皮巴拉会在水池里漂上三个小时。,homeItemIcon_911201
+911301,home,golden castle,黄金城堡,卡皮巴拉花了一下午堆出的海景城堡，涨潮前谁也别想把它赶出去。,homeIcon_911301
+911401,home,Cool pool,清凉水池,原本只想泡泡脚，结果大家带着游泳圈住了进来。,homeIcon_911401
+911402,home,fruit boat,水果小船,满载水果的补给船，通常还没开航，就先因为船员偷吃而减载一半。,homeIcon_911402
+911403,home,surfboard rack,冲浪板架,每块冲浪板都做好了乘风破浪的准备，只有卡皮巴拉还在认真等浪把自己送回来。,homeIcon_911403
+911404,home,beach street sign,海滩路牌,所有箭头都指向海边，照着走不会迷路，只会更快找到下一块树荫。,homeIcon_911404
+911405,home,golden snowman,黄金雪人,用沙子堆成的雪人，最大的优点是永远不会融化，最大的秘密是它根本不是雪。,homeIcon_911405
+911406,home,Leisure beach mat,悠闲沙滩垫,遮阳帽、饮料和软垫都已就位，现在只差一只躺下后不打算起身的卡皮巴拉。,homeIcon_911406
+911407,home,beach slippers,沙滩拖鞋,穿上后会自动切换度假步伐，每一步都慢得理直气壮。,homeIcon_911407
+911501,home,twin coconut trees,双生椰子树,两棵椰子树轮流遮阳，椰子落下时还会提供免费的叫醒服务。,homeIcon_911501
+911502,home,Coconut Tree,椰子树,树荫很凉，椰子很甜，唯一的问题是午睡时最好记得戴头盔。,homeIcon_911502
+911701,home,beach,沙滩,踩上去柔软又温暖，最适合留下几串脚印，再躺下来欣赏自己的劳动成果。,homeIcon_911701
+912201,home,Starship,星舰,以群星为坐标，以未知为航向。引擎撕开天幕，载着探索者驶向宇宙最遥远的边界。,homeItemIcon_912201
+912401,home,Star-Patrol Radar,巡星雷达,探测阵列扫过浩瀚星海，捕捉来自深空的每一道回响。沉寂亿万年的星球，也将在光束下显露坐标。,homeIcon_912401
+912402,home,Rover,漫游者,载着探索者驶过异星荒原，穿越陨石与星尘。每一道车辙，都将把星际远征的边界推向宇宙更深处。,homeIcon_912402
+912403,home,Spectrometer,光谱仪,将亿万光年外的星辉展开成绚丽光谱。群星的温度、元素与命运，都被铭刻在这片光芒之中。,homeIcon_912403
+912404,home,Alien UFO,异星飞碟,来自未知文明的飞行器，无声穿越星云与黑暗。它的航线，通往人类从未抵达的星域。,homeIcon_912404
+912405,home,Wormhole,虫洞,时空在群星之间折叠，亿万光年的距离被压缩成一步之遥。穿过这道星界裂隙，便能抵达宇宙的另一端。,homeIcon_912405
+912406,home,Warp Core,曲速核心,汇聚足以扭曲时空的磅礴能量。当核心全面启动，遥远星系也将在一瞬之间跨越。,homeIcon_912406
+912407,home,Star Seeker,探星者,跨越陨石荒原，深入未知星球。它驶过的每一寸土地，都将成为星际远征的新坐标。,homeIcon_912407
+912901,home,Boundless Sector,无垠星域,群星在脚下铺展，星云与光轨交汇成无尽航路。踏入其中，便如置身浩瀚宇宙的中心。,homeIcon_912901
 1001001,home,Wealth & Fortune Tree,招财进宝树,*建议尽快使用招财树，避免因有效期时间不足，导致无法及时建造完成！\n能够分享给公会盟友的幸运宝树。\n放置后将进入建造阶段，参与建造或建造完成后，均即可收获奖励，先到先得！,homeItemIcon_1001001
-1001002,home,cocktail,鸡尾酒,,
+1001002,home,cocktail,鸡尾酒,*建议尽快使用鸡尾酒，避免因有效期时间不足，导致无法及时建造完成！\n能够分享给公会盟友的清凉特调。\n放置后将进入建造阶段，参与建造或建造完成后，均可收获奖励，先到先得！,homeItemIcon_1001002
 1007201,home_fragment,Sunny Capy (Shard),阳光卡皮号(碎片),家园建筑碎片，集齐60个后可以兑换家园主题-大亨藏品-阳光卡皮号,homeItemIcon_1007201
 1007202,home_fragment,Puffer Puffer (Shard),豚豚号(碎片),家园建筑碎片，集齐60个后可以兑换家园主题-大亨藏品-豚豚号,homeItemIcon_1007202
 1007203,home_fragment,Ghost Ship (Shard),幽灵号(碎片),家园建筑碎片，集齐60个后可以兑换家园主题-大亨藏品-幽灵号,homeItemIcon_1007203
@@ -4999,7 +5144,10 @@
 1376018,collection,Spartan Scimitar,斯巴达弯刀,这把短刃舍弃了华丽的装饰，只为从最刁钻的角度给予敌人致命一击。它在铠甲的缝隙间游走，是近身肉搏时最后绽放的寒光，象征着斯巴达人绝不后退的意志——要么带着盾牌凯旋，要么躺在盾牌之上，被它带回故乡。,icon_1376018
 1376019,collection,Li Gang's Mace,李纲锏,铜锏无刃，专靠沉重的分量与坚硬的方形棱角进行砸击，这种重型钝器被称为“破甲克星”,icon_1376019
 1376020,collection,Cold Moon Blade,寒月刀,寒光如月的古刀，刀身弧线冷峻清亮，似曾映照过漫长岁月中的烽火与霜雪。它被静静收藏至今，锋芒虽已归于沉寂，却仍透出令人不敢轻视的肃杀之气。,icon_1376020
-1376021,collection,Radiant Armor,明光铠,,
+1376021,collection,Radiant Armor,明光铠,甲叶灿若明光，披身如垒。相传此铠历经百战而辉色不减，战意越盛，流转其上的明光便越发坚凝，将袭来的锋芒层层消弭。,icon_1376021
+1376022,collection,Mountain-Suppressing Knuckles,镇山指虎,黄铜铸成的近身利器，四环紧扣，拳锋所至，坚甲亦为之震裂。,icon_1376022
+1376023,collection,Sekhmet's Aegis,塞赫麦特神盾,狮首女神塞赫麦特的护佑之盾，金辉与青蓝釉彩交织，镇守一切来袭之力。,icon_1376023
+1376024,collection,Skythunder Vajra Pestle,天雷金刚杵,五股金刚杵汇聚天雷之力，挥落时如霹雳撕裂长空。,icon_1376024
 1383001,collection_fragment,Travels of Marco Polo (Fragment),马可波罗游记(碎片),用于解锁及升级秘宝马可波罗游记,icon_1373001
 1383002,collection_fragment,Mandrake Root (Fragment),曼陀罗根(碎片),用于解锁及升级秘宝曼陀罗根,icon_1373002
 1383003,collection_fragment,Faustian Contract (Fragment),浮士德契约书(碎片),用于解锁及升级秘宝浮士德契约书,icon_1373003
@@ -5140,7 +5288,10 @@
 1386018,collection_fragment,Spartan Scimitar (Shard),斯巴达弯刀(碎片),用于解锁及升级秘宝斯巴达弯刀,icon_1376018
 1386019,collection_fragment,Li Gang's Mace (Shard),李纲锏（碎片）,用于解锁及升级秘宝李纲锏,icon_1376019
 1386020,collection_fragment,Cold Moon Blade (Shard),寒月刀（碎片）,用于解锁及升级秘宝寒月刀,icon_1376020
-1386021,collection_fragment,Radiant Armor (Fragment),明光铠（碎片）,,
+1386021,collection_fragment,Radiant Armor (Fragment),明光铠（碎片）,用于解锁及升级秘宝明光铠,icon_1376021
+1386022,collection_fragment,Mountain-Suppressing Knuckles (Shard),镇山指虎（碎片）,用于解锁及升级秘宝镇山指虎,icon_1376022
+1386023,collection_fragment,Sekhmet's Aegis (Shard),塞赫麦特神盾（碎片）,用于解锁及升级秘宝塞赫麦特神盾,icon_1376023
+1386024,collection_fragment,Skythunder Vajra Pestle (Shard),天雷金刚杵（碎片）,用于解锁及升级秘宝天雷金刚杵,icon_1376024
 3103001,pet_equip,Glimmer Earrings,微光耳饰,,Pet_Equip_3_ErHuan
 3103002,pet_equip,Footprint Fossil,足印化石,,Pet_Equip_3_FuWen
 3103003,pet_equip,Crystal Necklace,晶石项链,,Pet_Equip_3_JingShi
