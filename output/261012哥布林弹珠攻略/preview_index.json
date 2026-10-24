@@ -1,0 +1,1114 @@
+{
+  "1.4w钻": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "classic_red",
+        "variant_name": "经典街机·红柜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "neon_night",
+        "variant_name": "午夜霓虹·夜场弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "steampunk_gears",
+        "variant_name": "蒸汽齿轮·黄铜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "parchment",
+        "variant_name": "复古军用作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "night_recon",
+        "variant_name": "夜间侦察作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "blueprint_command",
+        "variant_name": "蓝图战术指挥图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\07_绿色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\08_金色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\09_蓝色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\10_紫色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\11_红色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\12_青色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "default",
+        "variant_name": "黑红机密档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "field_olive",
+        "variant_name": "军绿战术卷宗"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "intel_blue",
+        "variant_name": "冷蓝情报档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "bw_red",
+        "variant_name": "黑白漫画·红色重点"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "retro_newsprint",
+        "variant_name": "复古旧刊·泛黄彩印"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "noir_casefile",
+        "variant_name": "侦探悬疑·黑红案件簿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+        "theme_id": "gacha_machine",
+        "theme_name": "扭蛋机攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "default",
+        "variant_name": "米白手账·红笔作战稿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "campus_white",
+        "variant_name": "白纸审阅稿·黑笔红批"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "retro_lowprint",
+        "variant_name": "泛黄讲义·低清旧印刷"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+        "theme_id": "music_album",
+        "theme_name": "音乐专辑攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\收银小票攻略_v1.0.0\\24_基础版.png",
+        "theme_id": "receipt_checkout",
+        "theme_name": "收银小票攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\25_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\26_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\27_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\28_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\29_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\30_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+        "theme_id": "tv_news",
+        "theme_name": "电视新闻特别节目",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "default",
+        "variant_name": "XP 经典蓝"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "phpbb_subsilver",
+        "variant_name": "phpBB 银灰"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "vbulletin3",
+        "variant_name": "vBulletin 靛蓝"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\00_全主题总览.jpg",
+    "count": 34
+  },
+  "5w钻": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "classic_red",
+        "variant_name": "经典街机·红柜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "neon_night",
+        "variant_name": "午夜霓虹·夜场弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "steampunk_gears",
+        "variant_name": "蒸汽齿轮·黄铜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "parchment",
+        "variant_name": "复古军用作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "night_recon",
+        "variant_name": "夜间侦察作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "blueprint_command",
+        "variant_name": "蓝图战术指挥图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\07_绿色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\08_金色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\09_蓝色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\10_紫色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\11_红色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\12_青色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "default",
+        "variant_name": "黑红机密档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "field_olive",
+        "variant_name": "军绿战术卷宗"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "intel_blue",
+        "variant_name": "冷蓝情报档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "bw_red",
+        "variant_name": "黑白漫画·红色重点"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "retro_newsprint",
+        "variant_name": "复古旧刊·泛黄彩印"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "noir_casefile",
+        "variant_name": "侦探悬疑·黑红案件簿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+        "theme_id": "gacha_machine",
+        "theme_name": "扭蛋机攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "default",
+        "variant_name": "米白手账·红笔作战稿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "campus_white",
+        "variant_name": "白纸审阅稿·黑笔红批"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "retro_lowprint",
+        "variant_name": "泛黄讲义·低清旧印刷"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+        "theme_id": "music_album",
+        "theme_name": "音乐专辑攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\收银小票攻略_v1.0.0\\24_基础版.png",
+        "theme_id": "receipt_checkout",
+        "theme_name": "收银小票攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\25_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\26_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\27_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\28_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\29_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\30_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+        "theme_id": "tv_news",
+        "theme_name": "电视新闻特别节目",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "default",
+        "variant_name": "XP 经典蓝"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "phpbb_subsilver",
+        "variant_name": "phpBB 银灰"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "vbulletin3",
+        "variant_name": "vBulletin 靛蓝"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\00_全主题总览.jpg",
+    "count": 34
+  },
+  "4000翡翠": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "classic_red",
+        "variant_name": "经典街机·红柜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "neon_night",
+        "variant_name": "午夜霓虹·夜场弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "steampunk_gears",
+        "variant_name": "蒸汽齿轮·黄铜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "parchment",
+        "variant_name": "复古军用作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "night_recon",
+        "variant_name": "夜间侦察作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "blueprint_command",
+        "variant_name": "蓝图战术指挥图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\07_绿色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\08_金色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\09_蓝色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\10_紫色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\11_红色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\12_青色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "default",
+        "variant_name": "黑红机密档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "field_olive",
+        "variant_name": "军绿战术卷宗"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "intel_blue",
+        "variant_name": "冷蓝情报档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "bw_red",
+        "variant_name": "黑白漫画·红色重点"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "retro_newsprint",
+        "variant_name": "复古旧刊·泛黄彩印"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "noir_casefile",
+        "variant_name": "侦探悬疑·黑红案件簿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+        "theme_id": "gacha_machine",
+        "theme_name": "扭蛋机攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "default",
+        "variant_name": "米白手账·红笔作战稿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "campus_white",
+        "variant_name": "白纸审阅稿·黑笔红批"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "retro_lowprint",
+        "variant_name": "泛黄讲义·低清旧印刷"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+        "theme_id": "music_album",
+        "theme_name": "音乐专辑攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\收银小票攻略_v1.0.0\\24_基础版.png",
+        "theme_id": "receipt_checkout",
+        "theme_name": "收银小票攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\25_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\26_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\27_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\28_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\29_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\30_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+        "theme_id": "tv_news",
+        "theme_name": "电视新闻特别节目",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "default",
+        "variant_name": "XP 经典蓝"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "phpbb_subsilver",
+        "variant_name": "phpBB 银灰"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "vbulletin3",
+        "variant_name": "vBulletin 靛蓝"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\00_全主题总览.jpg",
+    "count": 34
+  },
+  "20500翡翠": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "classic_red",
+        "variant_name": "经典街机·红柜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "neon_night",
+        "variant_name": "午夜霓虹·夜场弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+        "theme_id": "arcade_pinball",
+        "theme_name": "街机弹珠",
+        "theme_version": "1.4.0",
+        "variant_id": "steampunk_gears",
+        "variant_name": "蒸汽齿轮·黄铜弹珠"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "parchment",
+        "variant_name": "复古军用作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "night_recon",
+        "variant_name": "夜间侦察作战图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+        "theme_id": "battle_route",
+        "theme_name": "战术作战路线图",
+        "theme_version": "2.1.0",
+        "variant_id": "blueprint_command",
+        "variant_name": "蓝图战术指挥图"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\07_绿色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\08_金色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\09_蓝色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\10_紫色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\11_红色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\12_青色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "default",
+        "variant_name": "黑红机密档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "field_olive",
+        "variant_name": "军绿战术卷宗"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+        "theme_id": "classified_dossier",
+        "theme_name": "机密行动档案",
+        "theme_version": "1.1.1",
+        "variant_id": "intel_blue",
+        "variant_name": "冷蓝情报档案"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "bw_red",
+        "variant_name": "黑白漫画·红色重点"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "retro_newsprint",
+        "variant_name": "复古旧刊·泛黄彩印"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+        "theme_id": "comic_storyboard",
+        "theme_name": "漫画分镜攻略",
+        "theme_version": "3.4.0",
+        "variant_id": "noir_casefile",
+        "variant_name": "侦探悬疑·黑红案件簿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+        "theme_id": "gacha_machine",
+        "theme_name": "扭蛋机攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "default",
+        "variant_name": "米白手账·红笔作战稿"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "campus_white",
+        "variant_name": "白纸审阅稿·黑笔红批"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+        "theme_id": "handwritten_notes",
+        "theme_name": "手绘玩家笔记",
+        "theme_version": "1.6.3",
+        "variant_id": "retro_lowprint",
+        "variant_name": "泛黄讲义·低清旧印刷"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+        "theme_id": "music_album",
+        "theme_name": "音乐专辑攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\收银小票攻略_v1.0.0\\24_基础版.png",
+        "theme_id": "receipt_checkout",
+        "theme_name": "收银小票攻略",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\25_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\26_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\27_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\28_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\29_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\30_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+        "theme_id": "tv_news",
+        "theme_name": "电视新闻特别节目",
+        "theme_version": "1.0.0",
+        "variant_id": "default",
+        "variant_name": "基础版"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "default",
+        "variant_name": "XP 经典蓝"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "phpbb_subsilver",
+        "variant_name": "phpBB 银灰"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+        "theme_id": "xp_forum",
+        "theme_name": "Windows XP论坛精华帖",
+        "theme_version": "1.6.0",
+        "variant_id": "vbulletin3",
+        "variant_name": "vBulletin 靛蓝"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\00_全主题总览.jpg",
+    "count": 34
+  }
+}

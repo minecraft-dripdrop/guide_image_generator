@@ -464,6 +464,289 @@ def build_matrix(values):
             by_row.setdefault(r, {})[c] = (ref, value)
     return by_row
 
+
+def _find_strategy_row(by_row, labels, col=2, start_row=1):
+    """在“方案计算 Sheet”里按左侧语义标签找行号。"""
+    wanted = {clean(str(x)) for x in labels if clean(str(x))}
+    for r in sorted(by_row):
+        if r < start_row:
+            continue
+        value = clean(by_row.get(r, {}).get(col, ("", ""))[1])
+        if value in wanted:
+            return r
+    return None
+
+
+def _strategy_sheet_layout(values):
+    """识别“计算 + 每日操作合一”的单 Sheet 方案模板。
+
+    这类 Sheet 不是传统的“xxx攻略图”展示表，而是用户真正维护的方案表。
+    只要关键语义区都存在，就允许生成器直接把它适配成标准攻略数据。
+    """
+    by_row = build_matrix(values)
+    day_header_row = _find_strategy_row(by_row, ["活动天数"])
+    target_row = _find_strategy_row(by_row, ["当前档位积分"])
+    special_row = _find_strategy_row(by_row, ["特殊日"])
+    risk_row = _find_strategy_row(by_row, ["风险提示"])
+    reward_row = _find_strategy_row(by_row, ["可兑换道具", "可兑换奖励", "兑换奖励"])
+
+    action_rows = []
+    for r in sorted(by_row):
+        label = clean(by_row.get(r, {}).get(2, ("", ""))[1])
+        if re.match(r"^每日操作", label):
+            action_rows.append(r)
+
+    if not all([day_header_row, target_row, special_row, risk_row, reward_row]) or not action_rows:
+        return None
+
+    day_columns = []
+    for c, (_ref, value) in sorted(by_row.get(day_header_row, {}).items()):
+        text = clean(value)
+        m = re.fullmatch(r"第\s*([1-7])\s*天", text)
+        if m:
+            day_columns.append((int(m.group(1)), c))
+    day_columns.sort()
+    if [d for d, _c in day_columns] != list(range(1, 8)):
+        return None
+
+    remaining_rows = []
+    for r in sorted(by_row):
+        label = clean(by_row.get(r, {}).get(2, ("", ""))[1])
+        if label.startswith("剩余"):
+            remaining_rows.append(r)
+
+    total_box_row = _find_strategy_row(by_row, ["总随机箱"])
+    expected_rows = []
+    if total_box_row:
+        next_bundle_row = None
+        for r in sorted(by_row):
+            if r <= total_box_row:
+                continue
+            label = clean(by_row.get(r, {}).get(2, ("", ""))[1])
+            if label == "礼包选择":
+                next_bundle_row = r
+                break
+        end_row = next_bundle_row or special_row
+        for r in range(total_box_row + 1, end_row):
+            label = clean(by_row.get(r, {}).get(2, ("", ""))[1])
+            if not label:
+                continue
+            if any(clean(by_row.get(r, {}).get(c, ("", ""))[1]) for _d, c in day_columns):
+                expected_rows.append(r)
+
+    if len(remaining_rows) < 2 or len(expected_rows) < 2:
+        return None
+
+    use_row = None
+    for r in sorted(by_row):
+        label = clean(by_row.get(r, {}).get(2, ("", ""))[1])
+        if label.startswith("使用") and r < target_row:
+            use_row = r
+            break
+
+    return {
+        "by_row": by_row,
+        "day_header_row": day_header_row,
+        "day_columns": day_columns,
+        "target_row": target_row,
+        "special_row": special_row,
+        "action_rows": action_rows,
+        "risk_row": risk_row,
+        "reward_row": reward_row,
+        "remaining_rows": remaining_rows[:2],
+        "expected_rows": expected_rows[:2],
+        "use_row": use_row,
+    }
+
+
+def is_strategy_source_sheet(values):
+    return _strategy_sheet_layout(values) is not None
+
+
+def _strategy_title(values, fallback="活动攻略"):
+    by_row = build_matrix(values)
+    candidates = []
+    for r in range(1, 7):
+        for _c, (_ref, raw) in sorted(by_row.get(r, {}).items()):
+            text = clean(raw)
+            if text and any(k in text for k in ["攻略", "活动", "派对"]):
+                candidates.append(text)
+    return candidates[0] if candidates else fallback
+
+
+def _strategy_budget_value(layout):
+    by_row = layout["by_row"]
+    stats_row = _find_strategy_row(by_row, ["全部统计", "总计", "总统计"])
+    if not stats_row:
+        return ""
+    candidates = []
+    fallback = []
+    for c, (_ref, raw) in sorted(by_row.get(stats_row, {}).items()):
+        if c <= 2:
+            continue
+        text = clean(raw)
+        if not text:
+            continue
+        fallback.append(text)
+        if any(unit in text for unit in ["钻", "翡翠", "宝石"]):
+            if not re.match(r"^0(?:\.0+)?\D*$", text):
+                candidates.append(text)
+    return "+".join(candidates) if candidates else (fallback[0] if fallback else "")
+
+
+def _strategy_reward_text(layout):
+    cells = layout["by_row"].get(layout["reward_row"], {})
+    for c, (_ref, raw) in sorted(cells.items()):
+        if c <= 2:
+            continue
+        text = clean(raw)
+        if text:
+            return text, _ref
+    return "", ""
+
+
+def _strategy_compact_actions(actions):
+    """保持源表为唯一维护点，同时兼容旧月夜漫游攻略图的收尾日精简写法。"""
+    actions = [clean(x) for x in actions if clean(x)]
+    if len(actions) == 5:
+        use_match = re.fullmatch(r"用\s*(?:约)?(\d+(?:\.\d+)?)\s*骰子转约\s*\d+(?:\.\d+)?\s*圈", actions[2])
+        fund_match = re.fullmatch(r"领免费基金\s*(\d+(?:\.\d+)?)\s*骰子继续转约\s*\d+(?:\.\d+)?\s*圈", actions[3])
+        box_match = re.fullmatch(r"用掉\s*\d+(?:\.\d+)?\s*随机箱", actions[4])
+        if use_match and fund_match and box_match:
+            actions = actions[:2] + [
+                "用约{}骰子后领取基金{}骰子".format(use_match.group(1), fund_match.group(1)),
+                "继续用完骰子和随机箱",
+            ]
+    return actions
+
+
+def _strategy_action_text(layout, source_col):
+    actions = []
+    for r in layout["action_rows"]:
+        text = clean(layout["by_row"].get(r, {}).get(source_col, ("", ""))[1])
+        if text:
+            actions.append(text)
+    actions = _strategy_compact_actions(actions)
+    circled = ["①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨"]
+    out = []
+    for idx, text in enumerate(actions):
+        if re.match(r"^[①②③④⑤⑥⑦⑧⑨]", text):
+            out.append(text)
+        else:
+            marker = circled[idx] if idx < len(circled) else "{}.".format(idx + 1)
+            out.append("{} {}".format(marker, text))
+    return "\n".join(out)
+
+
+def _strategy_display_sheet_name(source_sheet_name, title, workbook_sheet_names):
+    """渲染语义尽量沿用旧攻略图 sheet 名，避免主题随机种子/副标题发生变化。"""
+    matches = [
+        name for name in workbook_sheet_names
+        if KEYWORD in name and source_sheet_name.lower() in name.lower()
+    ]
+    if matches:
+        return sorted(matches, key=lambda x: (len(x), x))[0]
+
+    activity = re.split(r"[｜|]", clean(title), maxsplit=1)[0].strip()
+    currency = "钻" if "钻" in title else ""
+    if activity:
+        return "{}{}{}攻略图".format(activity, source_sheet_name, currency)
+    return "{}攻略图".format(source_sheet_name)
+
+
+def adapt_strategy_sheet_to_guide_view(sheet_name, values, styles, rich, workbook_sheet_names):
+    """把单 Sheet 方案表映射成 parse_guide 已支持的标准攻略视图。
+
+    返回 None 表示它不是单 Sheet 方案表；否则返回适配后的 values/styles/rich
+    以及仅用于渲染语义的 display_sheet_name。原工作簿无需新增或维护第二张攻略图表。
+    """
+    layout = _strategy_sheet_layout(values)
+    if not layout:
+        return None
+
+    by_row = layout["by_row"]
+    title = _strategy_title(values, fallback=sheet_name)
+    budget = _strategy_budget_value(layout)
+    reward_text, reward_ref = _strategy_reward_text(layout)
+    expected_rows = layout["expected_rows"]
+    normal_label = clean(by_row.get(expected_rows[0], {}).get(2, ("", ""))[1]) or "普通奖励"
+    advanced_label = clean(by_row.get(expected_rows[1], {}).get(2, ("", ""))[1]) or "高级奖励"
+    final_day_col = layout["day_columns"][-1][1]
+    normal_final = clean(by_row.get(expected_rows[0], {}).get(final_day_col, ("", ""))[1])
+    advanced_final = clean(by_row.get(expected_rows[1], {}).get(final_day_col, ("", ""))[1])
+
+    v = {
+        "B2": title,
+        "B3": "预算",
+        "D3": "期望" + normal_label,
+        "G3": "期望" + advanced_label,
+        "B5": budget,
+        "D5": normal_final,
+        "G5": advanced_final,
+        "B6": "可兑换： " + reward_text if reward_text else "",
+        "A8": "特殊日",
+        "B8": "天数",
+        "C8": "今天只做这些",
+        "D8": "目标档位",
+        "E8": clean(by_row.get(layout.get("use_row") or 0, {}).get(2, ("", ""))[1]) or "使用道具",
+        "F8": clean(by_row.get(layout["remaining_rows"][0], {}).get(2, ("", ""))[1]),
+        "G8": clean(by_row.get(layout["remaining_rows"][1], {}).get(2, ("", ""))[1]),
+        "H8": "期望" + normal_label,
+        "I8": "期望" + advanced_label,
+        "J8": "当日档位积分",
+    }
+
+    use_row = layout.get("use_row")
+    status_row_1, status_row_2 = layout["remaining_rows"]
+    target_row = layout["target_row"]
+    special_row = layout["special_row"]
+    for day_no, source_col in layout["day_columns"]:
+        out_row = 8 + day_no
+        v[f"A{out_row}"] = clean(by_row.get(special_row, {}).get(source_col, ("", ""))[1])
+        v[f"B{out_row}"] = "Day{}".format(day_no)
+        v[f"C{out_row}"] = _strategy_action_text(layout, source_col)
+        v[f"D{out_row}"] = clean(by_row.get(target_row, {}).get(source_col, ("", ""))[1])
+        if use_row:
+            v[f"E{out_row}"] = clean(by_row.get(use_row, {}).get(source_col, ("", ""))[1])
+        v[f"F{out_row}"] = clean(by_row.get(status_row_1, {}).get(source_col, ("", ""))[1])
+        v[f"G{out_row}"] = clean(by_row.get(status_row_2, {}).get(source_col, ("", ""))[1])
+        v[f"H{out_row}"] = clean(by_row.get(expected_rows[0], {}).get(source_col, ("", ""))[1])
+        v[f"I{out_row}"] = clean(by_row.get(expected_rows[1], {}).get(source_col, ("", ""))[1])
+        score_col = source_col + 1
+        v[f"J{out_row}"] = clean(by_row.get(target_row, {}).get(score_col, ("", ""))[1])
+
+    v["B17"] = "风险提示"
+    risk_parts = []
+    for r in range(layout["risk_row"] + 1, layout["risk_row"] + 20):
+        raw = clean(by_row.get(r, {}).get(2, ("", ""))[1])
+        if raw:
+            risk_parts.extend([clean(x) for x in raw.replace("\r", "").split("\n") if clean(x)])
+    v["B18"] = "\n".join(risk_parts)
+
+    # 删除空串，保持 build_matrix / parse_guide 与真实工作表读取结果一致。
+    v = {ref: value for ref, value in v.items() if clean(str(value))}
+
+    adapted_styles = {}
+    if reward_ref and reward_ref in styles:
+        adapted_styles["B6"] = styles[reward_ref]
+
+    # 奖励文本颜色不继承计算 Sheet 的白字样式；与旧攻略图 Sheet 一样，
+    # 让奖励目录/品质规则决定最终颜色，只保留文字与加粗语义。
+    adapted_rich = {}
+    if v.get("B6"):
+        adapted_rich["B6"] = [{
+            "text": v["B6"], "color": None, "bold": True, "explicit_color": False,
+        }]
+
+    return {
+        "values": v,
+        "styles": adapted_styles,
+        "rich": adapted_rich,
+        "display_sheet_name": _strategy_display_sheet_name(
+            sheet_name, title, list(workbook_sheet_names)
+        ),
+    }
+
 def find_day_header(by_row):
     for r, cells in sorted(by_row.items()):
         texts = {c: v for c, (_, v) in cells.items()}
@@ -1782,10 +2065,26 @@ def build_render_kpis(kpis, cfg):
                         "budget_components": [],
                     })
             else:
+                display_label = label
+                # A plain numeric "预算" already uses the default diamond icon.
+                # Name it explicitly so it cannot be confused with emerald budget.
+                if cl == "预算" and not comps:
+                    default_resource = None
+                    for resource_meta in budget_resource_catalog(cfg):
+                        aliases = [clean(str(x)) for x in (resource_meta.get("aliases") or [])]
+                        if any(a in {"钻", "钻石"} for a in aliases):
+                            default_resource = clean(str(resource_meta.get("name") or "")) or "钻石"
+                            break
+                    if default_resource:
+                        display_label = f"{default_resource}预算"
+                elif cl == "预算" and len(comps) == 1:
+                    resource = clean(str(comps[0].get("resource") or ""))
+                    if resource:
+                        display_label = f"{resource}预算"
                 render_kpis.append({
-                    "label": label,
-                    "value": value,
-                    "icon": config_kpi_icon(cfg, label, idx),
+                    "label": display_label,
+                    "value": clean(str(comps[0].get("amount"))) if len(comps) == 1 and comps[0].get("amount") is not None else value,
+                    "icon": (comps[0].get("icon") if len(comps) == 1 else None) or config_kpi_icon(cfg, label, idx),
                     "budget_components": comps,
                 })
         else:
@@ -3482,11 +3781,39 @@ def guide_sheet_sort_key(item):
     return (2, float("inf"), sheet_name)
 
 
+def collect_guide_source_targets(z, targets, shared, theme_colors, xfs, parsed_fonts):
+    """收集可直接生成攻略图的数据源。
+
+    兼容两类：
+    1) 传统名称含“攻略图”的展示 Sheet；
+    2) 新版“计算 + 每日操作合一”的方案 Sheet（例如 4.9w）。
+    """
+    result = []
+    for name, path in targets.items():
+        if KEYWORD in name:
+            result.append((name, path))
+            continue
+        try:
+            values, _styles, _rich = read_sheet(
+                z, path, shared, theme_colors, xfs, parsed_fonts
+            )
+        except Exception:
+            continue
+        if is_strategy_source_sheet(values):
+            result.append((name, path))
+    return sorted(result, key=guide_sheet_sort_key)
+
+
 def list_guide_sheets(book: Path):
-    """只读取工作簿结构，返回按顺序排列的“攻略图”工作表。"""
+    """返回可生成攻略图的数据源：旧攻略图 Sheet + 新版单 Sheet 方案表。"""
     with zipfile.ZipFile(book, "r") as z:
         targets = workbook_sheet_targets(z)
-    return sorted([(n,p) for n,p in targets.items() if KEYWORD in n], key=guide_sheet_sort_key)
+        theme_colors = read_theme_colors(z)
+        shared = read_shared_strings(z, theme_colors)
+        _fills, xfs, parsed_fonts = read_styles(z, theme_colors)
+        return collect_guide_source_targets(
+            z, targets, shared, theme_colors, xfs, parsed_fonts
+        )
 
 
 def process_book(book: Path, selected_sheet_names=None, reuse_last_selections=False):
@@ -3505,14 +3832,16 @@ def process_book(book: Path, selected_sheet_names=None, reuse_last_selections=Fa
         theme_colors = read_theme_colors(z)
         shared = read_shared_strings(z, theme_colors)
         fills, xfs, parsed_fonts = read_styles(z, theme_colors)
-        target_sheets = sorted([(n,p) for n,p in targets.items() if KEYWORD in n], key=guide_sheet_sort_key)
+        target_sheets = collect_guide_source_targets(
+            z, targets, shared, theme_colors, xfs, parsed_fonts
+        )
 
         if selected_sheet_names is not None:
             wanted=set(selected_sheet_names)
             target_sheets=[item for item in target_sheets if item[0] in wanted]
 
         if not target_sheets:
-            print(f"[跳过] {book.name}：没有选中的'{KEYWORD}'工作表")
+            print(f"[跳过] {book.name}：没有选中的可生成攻略数据工作表")
             return 0,0
 
         ok=0
@@ -3556,11 +3885,21 @@ def process_book(book: Path, selected_sheet_names=None, reuse_last_selections=Fa
                 values,styles,rich=read_sheet(
                     z,sheet_path,shared,theme_colors,xfs,parsed_fonts
                 )
+                adapted = adapt_strategy_sheet_to_guide_view(
+                    sheet_name, values, styles, rich, targets.keys()
+                )
+                parse_sheet_name = sheet_name
+                if adapted:
+                    values = adapted["values"]
+                    styles = adapted["styles"]
+                    rich = adapted["rich"]
+                    parse_sheet_name = adapted["display_sheet_name"]
+                    print("  单Sheet方案：{} → {}".format(sheet_name, parse_sheet_name))
                 tier_progress_by_row = read_day_tier_progress_context(
                     z, sheet_path, values, shared, theme_colors, xfs, parsed_fonts
                 )
                 guide=parse_guide(
-                    sheet_name,values,styles,rich,
+                    parse_sheet_name,values,styles,rich,
                     fills,xfs,parsed_fonts,
                     selection,cfg,
                     tier_progress_by_row=tier_progress_by_row
@@ -4336,12 +4675,14 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
         shared = read_shared_strings(z, theme_colors)
         fills, xfs, parsed_fonts = read_styles(z, theme_colors)
         workbook_style_digest = _workbook_render_style_digest(z)
-        target_sheets = sorted([(n, p) for n, p in targets.items() if KEYWORD in n], key=guide_sheet_sort_key)
+        target_sheets = collect_guide_source_targets(
+            z, targets, shared, theme_colors, xfs, parsed_fonts
+        )
         if selected_sheet_names is not None:
             wanted = set(selected_sheet_names)
             target_sheets = [item for item in target_sheets if item[0] in wanted]
         if not target_sheets:
-            print(f"[跳过] {book.name}：没有选中的'{KEYWORD}'工作表")
+            print(f"[跳过] {book.name}：没有选中的可生成攻略数据工作表")
             return 0, 0
 
         total_ok = 0
@@ -4354,6 +4695,16 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
                 sheet_name, sheet_seq, len(target_sheets), len(selections)
             ))
             values, styles, rich = read_sheet(z, sheet_path, shared, theme_colors, xfs, parsed_fonts)
+            adapted = adapt_strategy_sheet_to_guide_view(
+                sheet_name, values, styles, rich, targets.keys()
+            )
+            parse_sheet_name = sheet_name
+            if adapted:
+                values = adapted["values"]
+                styles = adapted["styles"]
+                rich = adapted["rich"]
+                parse_sheet_name = adapted["display_sheet_name"]
+                print("  单Sheet方案：{} → {}".format(sheet_name, parse_sheet_name))
             tier_progress_by_row = read_day_tier_progress_context(
                 z, sheet_path, values, shared, theme_colors, xfs, parsed_fonts
             )
@@ -4402,7 +4753,7 @@ def process_book_theme_preview(book: Path, selected_sheet_names=None, theme_id=N
                         continue
 
                     guide = parse_guide(
-                        sheet_name, values, styles, rich,
+                        parse_sheet_name, values, styles, rich,
                         fills, xfs, parsed_fonts, selection, cfg,
                         tier_progress_by_row=tier_progress_by_row
                     )

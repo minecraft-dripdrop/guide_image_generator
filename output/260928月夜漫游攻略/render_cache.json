@@ -1,0 +1,1841 @@
+{
+  "schema": 1,
+  "entries": {
+    "月夜漫游4.9w钻攻略图\narcade_pinball\nclassic_red": {
+      "signature": "165407c37f6364965efbe1d5bbfad7f476f0ad0bd59be111a8312a6f2654c208",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 452280,
+      "output_mtime_ns": 1789997064726181700
+    },
+    "月夜漫游4.9w钻攻略图\narcade_pinball\nneon_night": {
+      "signature": "3cffeee2bd38aeb4c30ea00ca1c1d247022a8f782f50d4a8fd26b740d9d6d231",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 471508,
+      "output_mtime_ns": 1789997065217152900
+    },
+    "月夜漫游4.9w钻攻略图\narcade_pinball\nsteampunk_gears": {
+      "signature": "fea89873c7cc2693edc9f62d8741e1e75b1abcfabc6cfb0556ac0975959017c1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 427918,
+      "output_mtime_ns": 1789997065599647100
+    },
+    "月夜漫游4.9w钻攻略图\nbattle_route\nparchment": {
+      "signature": "0347a765d7a436b86a9bffb5c6f4a81929637331c4a451bb0b9667279bf2ac37",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 418953,
+      "output_mtime_ns": 1789997066580073400
+    },
+    "月夜漫游4.9w钻攻略图\nbattle_route\nnight_recon": {
+      "signature": "9d8575ad2fd25c5e0580607a892ac5afffdc6ee10fd1743ae7d1d5b0e495953a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 334632,
+      "output_mtime_ns": 1789997067520173900
+    },
+    "月夜漫游4.9w钻攻略图\nbattle_route\nblueprint_command": {
+      "signature": "f111eefcfb2d79efee186efb18885a31ddb57e10108b38fa84bfadddf6615520",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 333904,
+      "output_mtime_ns": 1789997068901099600
+    },
+    "月夜漫游4.9w钻攻略图\nclassic_clean\ngreen": {
+      "signature": "c96afdd5465e31b50530490e5ac0db58e0a7e93d11723650474da8934fb378c1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 544136,
+      "output_mtime_ns": 1789997071790555400
+    },
+    "月夜漫游4.9w钻攻略图\nclassic_clean\ngold": {
+      "signature": "9c9ee1dd3e0f5f0d624f6603ee2f32791963010ed40e4ead51bfd81f4639ede5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 547901,
+      "output_mtime_ns": 1789997073396984200
+    },
+    "月夜漫游4.9w钻攻略图\nclassic_clean\nblue": {
+      "signature": "2d46b1c70c25e4b1be668c837c705c77866a880f4dce3ed869f8423dddb8ba0c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 544212,
+      "output_mtime_ns": 1789997075029109700
+    },
+    "月夜漫游4.9w钻攻略图\nclassic_clean\npurple": {
+      "signature": "3c14c3fab6fbee65ed5ca0a9e2c35c82946efdcbdadd416fdbee60219b2f859c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 544503,
+      "output_mtime_ns": 1789997077043329100
+    },
+    "月夜漫游4.9w钻攻略图\nclassic_clean\nred": {
+      "signature": "6a965731436e50a8e8eebe9287f4017ef4db5e17ef91045482bf000a8f80fbf7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 542355,
+      "output_mtime_ns": 1789997078954924000
+    },
+    "月夜漫游4.9w钻攻略图\nclassic_clean\ncyan": {
+      "signature": "f4747bcb315913464f1df5f42b4ecd234bb065b29151b97d348c94f7c28d1465",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 540577,
+      "output_mtime_ns": 1789997080586188400
+    },
+    "月夜漫游4.9w钻攻略图\nclassified_dossier\ndefault": {
+      "signature": "52b8d3523515b46544093a13564a11d131d0069067e7e04ca080964a00692224",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1079136,
+      "output_mtime_ns": 1789997081949902200
+    },
+    "月夜漫游4.9w钻攻略图\nclassified_dossier\nfield_olive": {
+      "signature": "859174ab4ce866ae2fbb771b7ba58dfd17100c97b5f9aacf96fffe2a44893797",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1070265,
+      "output_mtime_ns": 1789997082974351300
+    },
+    "月夜漫游4.9w钻攻略图\nclassified_dossier\nintel_blue": {
+      "signature": "b0cfbc8b8aa0981e8f77804bc90ec0743f2c370b8b4932df7a337685c88ffd7f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1116258,
+      "output_mtime_ns": 1789997084016855000
+    },
+    "月夜漫游4.9w钻攻略图\ncomic_storyboard\nbw_red": {
+      "signature": "b567294e4ceed18ae85daf3bd787bb992461304ac4ddd3064f8737eb9f60213d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 508114,
+      "output_mtime_ns": 1789997084824963900
+    },
+    "月夜漫游4.9w钻攻略图\ncomic_storyboard\nretro_newsprint": {
+      "signature": "189bb0366cc0dab39e435c3c74a622a75cd3893341814ad145e7fdefde61c2b2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 494932,
+      "output_mtime_ns": 1789997085850333200
+    },
+    "月夜漫游4.9w钻攻略图\ncomic_storyboard\nnoir_casefile": {
+      "signature": "a28d9f7abe8d7126ebf26bc290ff0a2612bb78811686df49edc9ec98da33135a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 533549,
+      "output_mtime_ns": 1789997086577857100
+    },
+    "月夜漫游4.9w钻攻略图\ngacha_machine\ndefault": {
+      "signature": "fcea74226139dc52f4a2ac50d646f6095da311d52f2410f7d281e4a312fea1ac",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 622023,
+      "output_mtime_ns": 1789997087119577500
+    },
+    "月夜漫游4.9w钻攻略图\nhandwritten_notes\ndefault": {
+      "signature": "6ca4ece5c407875ced6392c29db632cc002d04bd51f5acb83a1b7a48e9d07ec8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 591076,
+      "output_mtime_ns": 1789997087955850900
+    },
+    "月夜漫游4.9w钻攻略图\nhandwritten_notes\ncampus_white": {
+      "signature": "5c0599c132f0c3555274ca05cff9abb426b22b3ebd45d2c05c878cf1cff95abf",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 594220,
+      "output_mtime_ns": 1789997088564434300
+    },
+    "月夜漫游4.9w钻攻略图\nhandwritten_notes\nretro_lowprint": {
+      "signature": "e0f21a849d69c3fc2f53b08115f45b99444263262b4e685c816665dd66768bea",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 978507,
+      "output_mtime_ns": 1789997090051728600
+    },
+    "月夜漫游4.9w钻攻略图\nmusic_album\ndefault": {
+      "signature": "3a88c4e222cd5d5d8e6972c9580567c792529b013e785f166adb44115e347ad3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 166625,
+      "output_mtime_ns": 1789997090520239200
+    },
+    "月夜漫游4.9w钻攻略图\nreceipt_checkout\ndefault": {
+      "signature": "90f6657d4987ae3ce0461e420ca45c6cc61fa54a533c23697bc74eacf40007f0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 190056,
+      "output_mtime_ns": 1789997091031215100
+    },
+    "月夜漫游4.9w钻攻略图\nsoft_neumorphic\ngreen": {
+      "signature": "bde7e6ab04ae2829eb2e322a6e5ea972621002706b16d30de8521cacf4e6d7d6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 496737,
+      "output_mtime_ns": 1789997091796451200
+    },
+    "月夜漫游4.9w钻攻略图\nsoft_neumorphic\ngold": {
+      "signature": "1a435754f404b8ad8a82890ae4441443a6d83614ba8acb2b55aee6bbfe9db920",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 496103,
+      "output_mtime_ns": 1789997092364577400
+    },
+    "月夜漫游4.9w钻攻略图\nsoft_neumorphic\nblue": {
+      "signature": "7f124e6334cef2ed75b7e1d7d8f27b02027eb2330ee0a1fced02c41e5ac51e4b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 496142,
+      "output_mtime_ns": 1789997092942927200
+    },
+    "月夜漫游4.9w钻攻略图\nsoft_neumorphic\npurple": {
+      "signature": "f81b3f20e0dd460333beb3f9dc20a6e489a68a309fbf6a3d3f35d2f60643b7d0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 495809,
+      "output_mtime_ns": 1789997093523028000
+    },
+    "月夜漫游4.9w钻攻略图\nsoft_neumorphic\nred": {
+      "signature": "c7ae8939c64bb5ec24e12945d9a1bf967ca1d1039d9a65ba8ea6be7e57666428",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 495930,
+      "output_mtime_ns": 1789997094086582900
+    },
+    "月夜漫游4.9w钻攻略图\nsoft_neumorphic\ncyan": {
+      "signature": "0ef8bc552db774ca3828451d02015797e9984cbf026051740aeda890b3b88509",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 496091,
+      "output_mtime_ns": 1789997094669039500
+    },
+    "月夜漫游4.9w钻攻略图\ntv_news\ndefault": {
+      "signature": "c0fee89a2b8d93733daaa8e4d68d1d086d416098ba5c9839d3dac4de3979166d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 200941,
+      "output_mtime_ns": 1789997095042932500
+    },
+    "月夜漫游4.9w钻攻略图\nxp_forum\ndefault": {
+      "signature": "856a39b80630387a08a27e6e17872ca0cc58a161a9dece893119530f090a5a56",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 524577,
+      "output_mtime_ns": 1789997095550707700
+    },
+    "月夜漫游4.9w钻攻略图\nxp_forum\nphpbb_subsilver": {
+      "signature": "358cbb53a3e5ce32067e0a9b01b54f03b8ecba7141ae06bd283b9e96a350696c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 523475,
+      "output_mtime_ns": 1789997096014402300
+    },
+    "月夜漫游4.9w钻攻略图\nxp_forum\nvbulletin3": {
+      "signature": "b834534bbc3bf3c5cd2279d9995ebbbf87a189c41d28a9d00b21ea7cce99146b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\月夜漫游4.9w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 532328,
+      "output_mtime_ns": 1789997096464406900
+    },
+    "4.9w\narcade_pinball\nclassic_red": {
+      "signature": "8459fb8bb2fa70edcfbe7bbbfb81c3e22baee58394b29c94eeae6fdfa7fec160",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 459740,
+      "output_mtime_ns": 1790006366679832100
+    },
+    "4.9w\narcade_pinball\nneon_night": {
+      "signature": "e1a179c279f4d6c2a7e84b59b8d4a95616accc245c7686de5bb4c1e1cb55965f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 478626,
+      "output_mtime_ns": 1790006367133823500
+    },
+    "4.9w\narcade_pinball\nsteampunk_gears": {
+      "signature": "6bd20c19f6b4ba6297d8893a150d6d8238fa56fa42148dc811ffe8b162b663c6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 434804,
+      "output_mtime_ns": 1790006367523011100
+    },
+    "4.9w\nbattle_route\nparchment": {
+      "signature": "a2e2187a1ea0e1d3ab6d604c3103b8c882fe4ea81b506aa8432e703e058ac256",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 426555,
+      "output_mtime_ns": 1790006368450608600
+    },
+    "4.9w\nbattle_route\nnight_recon": {
+      "signature": "68994a7ebacc300914bb10ec9a28fbd586939ba0b19a05ee3ef65d5b524a7483",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 341486,
+      "output_mtime_ns": 1790006369340714600
+    },
+    "4.9w\nbattle_route\nblueprint_command": {
+      "signature": "611824449059d60005b0e45af3f045e16ff76b01fcef5d33e3d02cf7870c44b4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 330782,
+      "output_mtime_ns": 1790006370219527600
+    },
+    "4.9w\nclassic_clean\ngreen": {
+      "signature": "ed4964f561193d393317ac4fffd16d9b94fba6ab712a68b1a2c9e4016a65dc00",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 551272,
+      "output_mtime_ns": 1790006372482003400
+    },
+    "4.9w\nclassic_clean\ngold": {
+      "signature": "b8e46dd0d80546d9995ca46929cf013324f2b594c0736933995fc515c6c2da86",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 555154,
+      "output_mtime_ns": 1790006373963208900
+    },
+    "4.9w\nclassic_clean\nblue": {
+      "signature": "f018d064f7c8918dd47afc3f049f2e982679ede45d5254bff79100bc6c6c1797",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 551477,
+      "output_mtime_ns": 1790006375508252100
+    },
+    "4.9w\nclassic_clean\npurple": {
+      "signature": "3ef85e40c93e84b5d47bd6e0db5f8fbf53be3804ebb6ecdd8f35a285feea3205",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 551719,
+      "output_mtime_ns": 1790006376994554300
+    },
+    "4.9w\nclassic_clean\nred": {
+      "signature": "8d9d74f41e82bc1d10164f613cba00d97494e5ba75b40bcc0970a4bffda9acb0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 549322,
+      "output_mtime_ns": 1790006378473583900
+    },
+    "4.9w\nclassic_clean\ncyan": {
+      "signature": "7b14577760aceb64f62f889451925d92ff296650be91ec9fd571346a157300f2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 547597,
+      "output_mtime_ns": 1790006380002130600
+    },
+    "4.9w\nclassified_dossier\ndefault": {
+      "signature": "6dcb7b73084c31acf733e848b9c4ec288e0b5fde99f4934f00cded1cac223b45",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1108554,
+      "output_mtime_ns": 1790006381306980800
+    },
+    "4.9w\nclassified_dossier\nfield_olive": {
+      "signature": "12ab0d8d8c04a3041842508a5c36919399adf838a51af2e7ccc28ab0f1f42391",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1076166,
+      "output_mtime_ns": 1790006382572911300
+    },
+    "4.9w\nclassified_dossier\nintel_blue": {
+      "signature": "d3b324548ecb50539f5a514407a43fb8514bb9aea8648721afe462c3d6121168",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1129885,
+      "output_mtime_ns": 1790006383828062000
+    },
+    "4.9w\ncomic_storyboard\nbw_red": {
+      "signature": "35d3e8b972ea0ec5d772018765cf89b8e5468f168eff962d6df15907a71bf689",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 514178,
+      "output_mtime_ns": 1790006384741027000
+    },
+    "4.9w\ncomic_storyboard\nretro_newsprint": {
+      "signature": "379addd1aee8ddddd2eded311b239f9784349e273e1ff5cc7e530fb168638b91",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 500795,
+      "output_mtime_ns": 1790006385662290000
+    },
+    "4.9w\ncomic_storyboard\nnoir_casefile": {
+      "signature": "c4d1a802720ea159a9046e3a550a29cf49a2d4c42a73493b8d8587dbcdc1dc63",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 541245,
+      "output_mtime_ns": 1790006386357560100
+    },
+    "4.9w\ngacha_machine\ndefault": {
+      "signature": "1a94da9a1e6210506f5e9af7080031a974d0e110c6e856da412ca5b37981c82e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 625200,
+      "output_mtime_ns": 1790006386977150900
+    },
+    "4.9w\nhandwritten_notes\ndefault": {
+      "signature": "5f82147ab627b4c62bcb3f20b730fadd0ea20d9ae7053e44a7a038415e291450",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 597498,
+      "output_mtime_ns": 1790006387747989100
+    },
+    "4.9w\nhandwritten_notes\ncampus_white": {
+      "signature": "2815d446661e77f1f63d78e142118f72b104ec1fb0b3e292af927236dfc7dd08",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 603117,
+      "output_mtime_ns": 1790006388344800000
+    },
+    "4.9w\nhandwritten_notes\nretro_lowprint": {
+      "signature": "a5ee0660f02a6278e97182cee138e8e5da13add0c4357515757f0ff7de124e2e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 996479,
+      "output_mtime_ns": 1790006389855917700
+    },
+    "4.9w\nmusic_album\ndefault": {
+      "signature": "e667ca8f6fff8e7eef41b876c3d4c253d8a047e5cfcecd6f23f78b2175ffce9b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 170535,
+      "output_mtime_ns": 1790006390289638300
+    },
+    "4.9w\nreceipt_checkout\ndefault": {
+      "signature": "c73ce659354d50cc54d8b1cc0948d878886cfef899499416b095c07b59bc70a0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 193286,
+      "output_mtime_ns": 1790006390729758700
+    },
+    "4.9w\nsoft_neumorphic\ngreen": {
+      "signature": "6dc17d605ee831aa02940dfa3f273a3de2f7157c51398e6d32fb7d8a2ebbb12b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 501979,
+      "output_mtime_ns": 1790006391500261600
+    },
+    "4.9w\nsoft_neumorphic\ngold": {
+      "signature": "bb1386f813dcff27e5e184c803852c54502308a5b56aaaf8d2588786e35d4ef2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 501182,
+      "output_mtime_ns": 1790006392093370200
+    },
+    "4.9w\nsoft_neumorphic\nblue": {
+      "signature": "e4f9cb53637ebe528e39ced720a42ab00abfd4431e7a2fccafe7418f7bf456c9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 501095,
+      "output_mtime_ns": 1790006392719385300
+    },
+    "4.9w\nsoft_neumorphic\npurple": {
+      "signature": "be61ec956ce632041f78bd9868e4e74da9e235fcdf565fd4569eb45a85df79ee",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 500703,
+      "output_mtime_ns": 1790006393307349200
+    },
+    "4.9w\nsoft_neumorphic\nred": {
+      "signature": "44471760b85fb61fb5ba18880290967dd841d877baae655535251ea7ac845675",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 500902,
+      "output_mtime_ns": 1790006393932707400
+    },
+    "4.9w\nsoft_neumorphic\ncyan": {
+      "signature": "899a21803d0c47915bb67dc48ed35f297ae56fcf73c1078776bd915211768d63",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 501166,
+      "output_mtime_ns": 1790006394548536300
+    },
+    "4.9w\ntv_news\ndefault": {
+      "signature": "6f463a924feca62ec5ccdce56ea4e617cc2f08ff096c2626af71a9af729de20e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 205690,
+      "output_mtime_ns": 1790006394935660200
+    },
+    "4.9w\nxp_forum\ndefault": {
+      "signature": "daebef993b93514cf06c58e61522ce3f1b8b300e3d9c81b8a21d877e1a0e4eb2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 530655,
+      "output_mtime_ns": 1790006395474713500
+    },
+    "4.9w\nxp_forum\nphpbb_subsilver": {
+      "signature": "5755fdf8b85ec027db2ef4cbee7db0f8731b0a51fc6220c1c22408680cc133db",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 529366,
+      "output_mtime_ns": 1790006396090606700
+    },
+    "4.9w\nxp_forum\nvbulletin3": {
+      "signature": "904e7f5ac08c392d91fe5c923d860e511a4f67d932490c537fb3b16c17936f70",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 538476,
+      "output_mtime_ns": 1790006396694458800
+    },
+    "4.9w钻\narcade_pinball\nclassic_red": {
+      "signature": "2ca7d37c0f462c6382c3fb635fca23f1302b6596dc4545fae57a710bac38933c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 462016,
+      "output_mtime_ns": 1790527100345033600
+    },
+    "4.9w钻\narcade_pinball\nneon_night": {
+      "signature": "1ed9a10a73b179030f76a329d694592b683d21ca1e13eec54d06f3bb51d350c5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 481873,
+      "output_mtime_ns": 1790527100825749800
+    },
+    "4.9w钻\narcade_pinball\nsteampunk_gears": {
+      "signature": "5fc87fd5ac72a6896b1c638a3d39a50db9ee359a49f5f3bdb034e6c0114d1759",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 438510,
+      "output_mtime_ns": 1790527101246240900
+    },
+    "4.9w钻\nbattle_route\nparchment": {
+      "signature": "65cd8921d1742d058df562eec8e3eb05d3c9500e8faf3a6b78145cb0ff4428b0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 425803,
+      "output_mtime_ns": 1790527102295639700
+    },
+    "4.9w钻\nbattle_route\nnight_recon": {
+      "signature": "012e04648779c99049ee557b586ad122111819c37b3f8148f90337a622fe2a45",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 338012,
+      "output_mtime_ns": 1790527103337852300
+    },
+    "4.9w钻\nbattle_route\nblueprint_command": {
+      "signature": "2953594fe55c01ffb8f4c042a6c1ac9776f3eb746ef591cd4498dfeb7f6d1098",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 327954,
+      "output_mtime_ns": 1790527104912152300
+    },
+    "4.9w钻\nclassic_clean\ngreen": {
+      "signature": "1c6ea2d13903fa48e4d858cf531d6e0a87c90fb8f865e75f1defe3c3efb4c33f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 559883,
+      "output_mtime_ns": 1790529089738062600
+    },
+    "4.9w钻\nclassic_clean\ngold": {
+      "signature": "ec6d8dddd22c59fde5fa2b659b4e66377074b444bb7f261c9f939d6e1105385e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 563451,
+      "output_mtime_ns": 1790529090967742400
+    },
+    "4.9w钻\nclassic_clean\nblue": {
+      "signature": "50ec0745183ee2405e2177acca9b6c84f393e703e5aa5c173d75d9e924c6058c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 559989,
+      "output_mtime_ns": 1790529092053752700
+    },
+    "4.9w钻\nclassic_clean\npurple": {
+      "signature": "8b797faa75d0a8a62505a3702af32d9ce0bf7050f4d1c8fe71c9b55791e32887",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 560147,
+      "output_mtime_ns": 1790529093094927200
+    },
+    "4.9w钻\nclassic_clean\nred": {
+      "signature": "4c81dd8432f363e16e0ed39cfe0a6bb4f148686bf93c7df77763d264dc96be37",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 558453,
+      "output_mtime_ns": 1790529094074310500
+    },
+    "4.9w钻\nclassic_clean\ncyan": {
+      "signature": "3be34d54c5d8e5b47b7c235c1205cda3b68b8338eb102eee215dfcf0601fc440",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 556488,
+      "output_mtime_ns": 1790529095067655000
+    },
+    "4.9w钻\nclassified_dossier\ndefault": {
+      "signature": "9accc52a3970f3f5eaba0b13f5c5b0f5f74b4036415fd00d2b36eb69256706b6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1146548,
+      "output_mtime_ns": 1790527116430819500
+    },
+    "4.9w钻\nclassified_dossier\nfield_olive": {
+      "signature": "18e9e4478dc0e9b9e06fcf6148e06318ecc5bc085ead1358f0127494781fcf61",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1148577,
+      "output_mtime_ns": 1790527117502421400
+    },
+    "4.9w钻\nclassified_dossier\nintel_blue": {
+      "signature": "9c967bb5ce291d0002748a44c6ce0bb94bbd6724e79e1f69c65b10c42736a450",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1134627,
+      "output_mtime_ns": 1790527118532638000
+    },
+    "4.9w钻\ncomic_storyboard\nbw_red": {
+      "signature": "c4042113a171c8c23f5354e093b8f269ab43e8362bb6bc70f11be899865b8f64",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 508729,
+      "output_mtime_ns": 1790527119387805100
+    },
+    "4.9w钻\ncomic_storyboard\nretro_newsprint": {
+      "signature": "8617508e660f71f3646ce22a9d03b6375e3e5a3ce01c1d9f41d0b3e0ce53becb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 489853,
+      "output_mtime_ns": 1790527120384142100
+    },
+    "4.9w钻\ncomic_storyboard\nnoir_casefile": {
+      "signature": "dded41e038493b1ca13c42a3370b81e50d9c498137d335f945cc838748b1bd58",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 529546,
+      "output_mtime_ns": 1790527121170408900
+    },
+    "4.9w钻\ngacha_machine\ndefault": {
+      "signature": "957a6fe7fcbca40e294fd6ae0711a07c6fd373dadd38bd34359167fe23e4348a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 627778,
+      "output_mtime_ns": 1790527121986072700
+    },
+    "4.9w钻\nhandwritten_notes\ndefault": {
+      "signature": "d39161565b7216c199fdb4aff18d3bb4e035b52807d39bb729a3bd0b76f1d42c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 604689,
+      "output_mtime_ns": 1790527122752976900
+    },
+    "4.9w钻\nhandwritten_notes\ncampus_white": {
+      "signature": "a01ccc2614208b21f8b1e7fb700c80d907a4c7595b46ce646d3737a041e1979a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 609052,
+      "output_mtime_ns": 1790527123349383300
+    },
+    "4.9w钻\nhandwritten_notes\nretro_lowprint": {
+      "signature": "cf2abaa7df710e117fa02c6deef0fe8fbf56985215092d269ab4eebb094836f8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1003696,
+      "output_mtime_ns": 1790527125133041100
+    },
+    "4.9w钻\nmusic_album\ndefault": {
+      "signature": "77785bc3e2a19ab26d66bf608881447b96d1917f6a6c1839e435abc02b03dec9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 172735,
+      "output_mtime_ns": 1790527125889020200
+    },
+    "4.9w钻\nreceipt_checkout\ndefault": {
+      "signature": "846254a149f5b0e653293c1f9ee55bf5ccb1be7f6c3cee0da88fedd1540269c1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 194523,
+      "output_mtime_ns": 1790527126492407100
+    },
+    "4.9w钻\nsoft_neumorphic\ngreen": {
+      "signature": "28265a8f893f8fe06ec6c25573b7489315ae69cf810f46a95fadff1c973fd7b5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 506708,
+      "output_mtime_ns": 1790527127448882900
+    },
+    "4.9w钻\nsoft_neumorphic\ngold": {
+      "signature": "6cdb880de303da9379e584612bf3ae34a3fd6c522aba7f37d1fd1cf88488ad14",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 505994,
+      "output_mtime_ns": 1790527128056406600
+    },
+    "4.9w钻\nsoft_neumorphic\nblue": {
+      "signature": "f78d41f06157e6adedeaeb3369f2344237a26b711ecd9e40b12b574e50f7e8b1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 505984,
+      "output_mtime_ns": 1790527128749554400
+    },
+    "4.9w钻\nsoft_neumorphic\npurple": {
+      "signature": "64a1dbfc3341cff9b86aa211ca4f20af5ce9bd69a8652b4ac5efacaac34bd224",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 505597,
+      "output_mtime_ns": 1790527129348404200
+    },
+    "4.9w钻\nsoft_neumorphic\nred": {
+      "signature": "14068e6a93d6c19997351c3fa9e1b0530261154fcbb774f8db601d5fbcc17ec6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 505780,
+      "output_mtime_ns": 1790527129968846600
+    },
+    "4.9w钻\nsoft_neumorphic\ncyan": {
+      "signature": "dc912ba53f273b1db78e032ea6213907c8ac1d3e8505a094c4a668d4751280f4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 505993,
+      "output_mtime_ns": 1790527130577633600
+    },
+    "4.9w钻\ntv_news\ndefault": {
+      "signature": "ae9f3e7a18dd94b707198edac9afe626a9411b320a586582d466b0b3bbe7a81f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 207970,
+      "output_mtime_ns": 1790527130999504800
+    },
+    "4.9w钻\nxp_forum\ndefault": {
+      "signature": "c75bfc2d139813eb95274a15474674e94c4fac49c6eea7d5a2b54920b837aa48",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 533433,
+      "output_mtime_ns": 1790527131602353900
+    },
+    "4.9w钻\nxp_forum\nphpbb_subsilver": {
+      "signature": "231b29d7fd4e294cd7c56c208f05ddee37d53439ede4df8363fea1ae1eda35f0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 531950,
+      "output_mtime_ns": 1790527132228647900
+    },
+    "4.9w钻\nxp_forum\nvbulletin3": {
+      "signature": "c1dd36da3d77b5095e170d10399730c376c2d13b4bc5c8822d1e98e2b3539eea",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\4.9w钻\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 541967,
+      "output_mtime_ns": 1790527132765212800
+    },
+    "1秘宝\narcade_pinball\nclassic_red": {
+      "signature": "07dcb26c086846c444d27172782af5c5b9778fdaaa245f744874ab82d99db8c0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 469385,
+      "output_mtime_ns": 1790527134981327200
+    },
+    "1秘宝\narcade_pinball\nneon_night": {
+      "signature": "3f1c6062f6e38596bcf16a7fb237c8355bed7141b49c648272a4a3c5a77bb898",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 488046,
+      "output_mtime_ns": 1790527135480991300
+    },
+    "1秘宝\narcade_pinball\nsteampunk_gears": {
+      "signature": "3d67cc6e3a0a23f8d7b854ec3bc5ed5fa880088c91b6ce0dd067362dbc64d8b9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 444089,
+      "output_mtime_ns": 1790527135910842200
+    },
+    "1秘宝\nbattle_route\nparchment": {
+      "signature": "6bfa4e81d749685f369d3d2de8709f37d1400f60ff49bad800b14ada5798fc67",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 419632,
+      "output_mtime_ns": 1790527136870336500
+    },
+    "1秘宝\nbattle_route\nnight_recon": {
+      "signature": "e2ebbbde256316d19c591cc7323f63540c28c2c8f8c1fc7b9452e78a28ab84cc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 338526,
+      "output_mtime_ns": 1790527137763954100
+    },
+    "1秘宝\nbattle_route\nblueprint_command": {
+      "signature": "c54ebe1b4f836ed6a3a83c848f6be1ba4facb725d91258c8b47a49dc1b9c3835",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 323516,
+      "output_mtime_ns": 1790527138654856400
+    },
+    "1秘宝\nclassic_clean\ngreen": {
+      "signature": "eea7a9c47eb4f11fad258f42bf825f4194444508c57b50bbde20809cc63e4321",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 561292,
+      "output_mtime_ns": 1790529102907147800
+    },
+    "1秘宝\nclassic_clean\ngold": {
+      "signature": "a4fd1a535656d81dc5e141906b2934f9f54bdfb6c80e9bfe93767755a7286c94",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 565055,
+      "output_mtime_ns": 1790529103895473400
+    },
+    "1秘宝\nclassic_clean\nblue": {
+      "signature": "9ac507ebfaa4b93fe4a4df46458103c654d0e87c405eb80d37eb79161af1efe4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 561168,
+      "output_mtime_ns": 1790529104909793800
+    },
+    "1秘宝\nclassic_clean\npurple": {
+      "signature": "4d206d31aee35f066685aa3716b0aa6d3c473978a471c3f7e199d0202f8b56cf",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 561512,
+      "output_mtime_ns": 1790529105908260800
+    },
+    "1秘宝\nclassic_clean\nred": {
+      "signature": "87949a492a7d06695f55fe0b427b7854d24f20420c6c90e1b04821a704466564",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 559626,
+      "output_mtime_ns": 1790529106924543500
+    },
+    "1秘宝\nclassic_clean\ncyan": {
+      "signature": "031afbeb511f14b9ae6a4c75e1907b908c9ab61fb4820ad2f33147af0f62f0f4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 557627,
+      "output_mtime_ns": 1790529107911513800
+    },
+    "1秘宝\nclassified_dossier\ndefault": {
+      "signature": "84fe347f615de8652b4ffc9d2cc3955b00a3dcfb121af3be87836f0871bc4e85",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1136918,
+      "output_mtime_ns": 1790527145973332700
+    },
+    "1秘宝\nclassified_dossier\nfield_olive": {
+      "signature": "39d4aef818864153c3a65d078b836db07389ec2d9ce0e746c454f9fea752771b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1177527,
+      "output_mtime_ns": 1790527147074439700
+    },
+    "1秘宝\nclassified_dossier\nintel_blue": {
+      "signature": "0b246bccf96c496c4e2339a361373cd53ac95e1cfba47d5a5f543f3c52709eb4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1126826,
+      "output_mtime_ns": 1790527148215232100
+    },
+    "1秘宝\ncomic_storyboard\nbw_red": {
+      "signature": "aa2c21ab6f58e6f18f9d065a21df811d7f79053595418358d99c71eb22dabdbc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 514956,
+      "output_mtime_ns": 1790527148917206000
+    },
+    "1秘宝\ncomic_storyboard\nretro_newsprint": {
+      "signature": "3d34c0e54d6831bae70b222931951c2cb89ea19db023b4607d92a9e09d824551",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 518141,
+      "output_mtime_ns": 1790527149626738900
+    },
+    "1秘宝\ncomic_storyboard\nnoir_casefile": {
+      "signature": "9f1848fd91da51db29166179d4472925376a5f371cf83c774cb78a347993617b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 532890,
+      "output_mtime_ns": 1790527150302951500
+    },
+    "1秘宝\ngacha_machine\ndefault": {
+      "signature": "d9bf4f6566bd222a08ecb68378caa85f4cba48bf3bd13e9d3db25b29497d9350",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 634428,
+      "output_mtime_ns": 1790527150817216600
+    },
+    "1秘宝\nhandwritten_notes\ndefault": {
+      "signature": "1511ce71c5678ea991ddc4b654be2f7f4fef96551f7cdd7a29b85556be28fb57",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 616218,
+      "output_mtime_ns": 1790527151348794800
+    },
+    "1秘宝\nhandwritten_notes\ncampus_white": {
+      "signature": "ae06649f330832d2f9afeed2ad88d438302eeea50e573948a897b5dff691cd4b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 619680,
+      "output_mtime_ns": 1790527151890313300
+    },
+    "1秘宝\nhandwritten_notes\nretro_lowprint": {
+      "signature": "ac6d7e22872208e09cb695a4f44272b0d34528a553ed0916233152933cf54401",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1027929,
+      "output_mtime_ns": 1790527153200810500
+    },
+    "1秘宝\nmusic_album\ndefault": {
+      "signature": "9842c9290af87c1f7e3684017e9d5de570874543f7a5f5f4e2db9555f205bf82",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 170301,
+      "output_mtime_ns": 1790527153601408300
+    },
+    "1秘宝\nreceipt_checkout\ndefault": {
+      "signature": "d911866edc70d1d6b15036c97cecff8d62efaf7ab40856d06b146df54c7d19fc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 189035,
+      "output_mtime_ns": 1790527154068158400
+    },
+    "1秘宝\nsoft_neumorphic\ngreen": {
+      "signature": "3567da2cd96ec15dc4672b3df546da5104bec4ff87d00b76c07dcb87b2678e1a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 517447,
+      "output_mtime_ns": 1790527154680679900
+    },
+    "1秘宝\nsoft_neumorphic\ngold": {
+      "signature": "a395afeacb36662b709f68ba238a8ed9b4062fadc63eef5817c9baeb4dbcf446",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 516658,
+      "output_mtime_ns": 1790527155281108500
+    },
+    "1秘宝\nsoft_neumorphic\nblue": {
+      "signature": "06dc67f732b47b26f9609345f04bbc94fe5307c913a9c23ba72fd0a2e8bed030",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 516604,
+      "output_mtime_ns": 1790527155877512100
+    },
+    "1秘宝\nsoft_neumorphic\npurple": {
+      "signature": "8a32bc539671ad8209434f477be5deb0adc099a8411c327e425eb46586bdea1b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 516243,
+      "output_mtime_ns": 1790527156470175500
+    },
+    "1秘宝\nsoft_neumorphic\nred": {
+      "signature": "f9fb2a7212972938d6ee9f22bc0a81dbda5c588bc1c6c3670202fb68a03892de",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 516420,
+      "output_mtime_ns": 1790527157063624200
+    },
+    "1秘宝\nsoft_neumorphic\ncyan": {
+      "signature": "a1a108bb13bacc5143852111df9ab68fa036708be8f65fd5f729c5de705bb397",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 516670,
+      "output_mtime_ns": 1790527157651018700
+    },
+    "1秘宝\ntv_news\ndefault": {
+      "signature": "d33b0885afa0181ccac81350d975a3d75c56c272e1444dbc5b1fe3d7a2ea4437",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 202622,
+      "output_mtime_ns": 1790527158055968700
+    },
+    "1秘宝\nxp_forum\ndefault": {
+      "signature": "611547235f92f300b919f2989465be63ea2ddb5027f6aa012f01147aad7fb7a3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 527804,
+      "output_mtime_ns": 1790527158534114000
+    },
+    "1秘宝\nxp_forum\nphpbb_subsilver": {
+      "signature": "2b751e209119b26842648f87f096786d4974ff810adbbaa80eb9d9d199ceda11",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 525525,
+      "output_mtime_ns": 1790527159026795100
+    },
+    "1秘宝\nxp_forum\nvbulletin3": {
+      "signature": "e11d2912c6166bbd9499fe2ed8fec8082b32ba99c205b0b2683e4bffee3808e4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 534775,
+      "output_mtime_ns": 1790527159501278700
+    },
+    "1秘宝+1藏品\narcade_pinball\nclassic_red": {
+      "signature": "856e993c912e5b9cb97242a26c72d4517701a85103cb5e29987f24ec93abf84f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 461124,
+      "output_mtime_ns": 1790527161727277300
+    },
+    "1秘宝+1藏品\narcade_pinball\nneon_night": {
+      "signature": "4a6ae11670f165ab1a50731d0a7c3fb1b3fc5549102642c2055355eb9b260d5c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 480168,
+      "output_mtime_ns": 1790527162238741300
+    },
+    "1秘宝+1藏品\narcade_pinball\nsteampunk_gears": {
+      "signature": "9fa34065a328cb36960cf339078e02434546c242ea75bec856d881538d69aaf8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 436372,
+      "output_mtime_ns": 1790527162680525900
+    },
+    "1秘宝+1藏品\nbattle_route\nparchment": {
+      "signature": "037acceef9be616cbd6c96dea59bcebe8ee45acf222db4ce19513b868fc5b6c3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 425396,
+      "output_mtime_ns": 1790527163627029100
+    },
+    "1秘宝+1藏品\nbattle_route\nnight_recon": {
+      "signature": "678f3da88f7c89fc8b68253c42d8adefc6bba683123a08b7c260cbffc0e0030d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 335770,
+      "output_mtime_ns": 1790527164559534400
+    },
+    "1秘宝+1藏品\nbattle_route\nblueprint_command": {
+      "signature": "c1352e9e3960e192ee1d1797f893586e4afd7099a2b9d6799e9ba75479fd2629",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 331408,
+      "output_mtime_ns": 1790527165469570200
+    },
+    "1秘宝+1藏品\nclassic_clean\ngreen": {
+      "signature": "64fa3c1322f69eb381ad11070d5fc137842f6fd53d9eece7bbfb3103fe015b6f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 587612,
+      "output_mtime_ns": 1790529115705954200
+    },
+    "1秘宝+1藏品\nclassic_clean\ngold": {
+      "signature": "132f7810361ab832d3cec969074f60d786f65cc6153434bde4563074edb8be92",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 590576,
+      "output_mtime_ns": 1790529116750127800
+    },
+    "1秘宝+1藏品\nclassic_clean\nblue": {
+      "signature": "896b48e2fbbb58313b45f7c2aa58efd2afd58e2a721b93e83fb77a19b06c2ad7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 587655,
+      "output_mtime_ns": 1790529117807336300
+    },
+    "1秘宝+1藏品\nclassic_clean\npurple": {
+      "signature": "97fc10fce5c972fe40f296a51b55ac13048b665a0fa5736368a7efeab0515f75",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 587616,
+      "output_mtime_ns": 1790529118859523500
+    },
+    "1秘宝+1藏品\nclassic_clean\nred": {
+      "signature": "6e0c7e7a0452189dc1c01dbf27029af913d4aa903bf092848712f45a3fcfeeaf",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 586302,
+      "output_mtime_ns": 1790529119909715800
+    },
+    "1秘宝+1藏品\nclassic_clean\ncyan": {
+      "signature": "686ca7539aad8d2cb8524f1c9c36b45333537e6f1665115817cab9e58659bfc0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 584673,
+      "output_mtime_ns": 1790529120982812700
+    },
+    "1秘宝+1藏品\nclassified_dossier\ndefault": {
+      "signature": "24145ecd6581d1d99bf2a0ddfc6ada33937778bb09433cfc554564eca7bbde78",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1223621,
+      "output_mtime_ns": 1790527176016554800
+    },
+    "1秘宝+1藏品\nclassified_dossier\nfield_olive": {
+      "signature": "b422b2de59f29d8566a8cb06acfcbb1341d2085429ffea1ed32abe5fe48e5382",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1135121,
+      "output_mtime_ns": 1790527177095296700
+    },
+    "1秘宝+1藏品\nclassified_dossier\nintel_blue": {
+      "signature": "e2e63630683948212eaad16c9a1a1b5b55f421c65fd4fda79902a44c69b3d2fb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1203421,
+      "output_mtime_ns": 1790527178190379300
+    },
+    "1秘宝+1藏品\ncomic_storyboard\nbw_red": {
+      "signature": "f51586932bce02312e22807132685989ed8743d5b5ffff5c6312f844b1352e5b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 546934,
+      "output_mtime_ns": 1790527178874548100
+    },
+    "1秘宝+1藏品\ncomic_storyboard\nretro_newsprint": {
+      "signature": "07270042071f9fb014e72be90dc59e51a25000da617f750e7757559a336c8ad9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 543877,
+      "output_mtime_ns": 1790527179549710000
+    },
+    "1秘宝+1藏品\ncomic_storyboard\nnoir_casefile": {
+      "signature": "833031bcf6564052a97128868931ce90c818feca65da1c335e623d4a0ba7ba62",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 530934,
+      "output_mtime_ns": 1790527180225936100
+    },
+    "1秘宝+1藏品\ngacha_machine\ndefault": {
+      "signature": "a894fcdd753081cec4b600726325e484e46ae2a7caa897215358eabfd40f0ce7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 645642,
+      "output_mtime_ns": 1790527180735574200
+    },
+    "1秘宝+1藏品\nhandwritten_notes\ndefault": {
+      "signature": "477dfb8f31197e7deb23c03b8b5c7e049df7a6135b83c088f75b1b9c8eb26f69",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 634964,
+      "output_mtime_ns": 1790527181295101600
+    },
+    "1秘宝+1藏品\nhandwritten_notes\ncampus_white": {
+      "signature": "38fdba9db6e3be5b9761f718ae35f1a9065a5dae290a1893480c62f555c0ee41",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 638385,
+      "output_mtime_ns": 1790527181851613900
+    },
+    "1秘宝+1藏品\nhandwritten_notes\nretro_lowprint": {
+      "signature": "353a51c48410fd69239bf6ac4f972686c26895387f8613f55f4b25f4c8218f79",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1071766,
+      "output_mtime_ns": 1790527183259882300
+    },
+    "1秘宝+1藏品\nmusic_album\ndefault": {
+      "signature": "a110d32e4b8e11750b94c1297f21ca2bd7aef8ec5642660140511160b1630b13",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 167220,
+      "output_mtime_ns": 1790527183658081100
+    },
+    "1秘宝+1藏品\nreceipt_checkout\ndefault": {
+      "signature": "931ae0850a6b1f9f78b09627473d057271845fc1491873623fd30b841ce2e69d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 189764,
+      "output_mtime_ns": 1790527184157743500
+    },
+    "1秘宝+1藏品\nsoft_neumorphic\ngreen": {
+      "signature": "ab0f61b487763751de6c3c5cf6750a026acc273d931dbe58b981989ca63afb63",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 544979,
+      "output_mtime_ns": 1790527184784104100
+    },
+    "1秘宝+1藏品\nsoft_neumorphic\ngold": {
+      "signature": "9bce36ae30083e91494307f09a6a5ac3f90adc7aef36b3a3026bb9d596a32807",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 544316,
+      "output_mtime_ns": 1790527185398428700
+    },
+    "1秘宝+1藏品\nsoft_neumorphic\nblue": {
+      "signature": "aee0f9f4f2dc6c3fee00fa3e313369bffd347fc2dc3bb819ab63bb20a5577dfe",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 544196,
+      "output_mtime_ns": 1790527186014779000
+    },
+    "1秘宝+1藏品\nsoft_neumorphic\npurple": {
+      "signature": "f497a1ad2f4021f3a88fb9b30dd3cd7d384c9010ea710ea30e2399feb1b159ae",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 544005,
+      "output_mtime_ns": 1790527186624149700
+    },
+    "1秘宝+1藏品\nsoft_neumorphic\nred": {
+      "signature": "dc0479171fccbb9ce7e76c7f317f116ff2e4bad2632cdaf70ecd92397effee32",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 543888,
+      "output_mtime_ns": 1790527187235515300
+    },
+    "1秘宝+1藏品\nsoft_neumorphic\ncyan": {
+      "signature": "49fe5b6b312d3ac654ae4b844701fd553d828a3d105bea042c03338c7c1f37f3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 544109,
+      "output_mtime_ns": 1790527187852981300
+    },
+    "1秘宝+1藏品\ntv_news\ndefault": {
+      "signature": "f78a01ac45d7618a3ad3b597e97aad26e497503b6aca423651bd57bb6003f245",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 195061,
+      "output_mtime_ns": 1790527188241336500
+    },
+    "1秘宝+1藏品\nxp_forum\ndefault": {
+      "signature": "7317e81c87fcc3a9e41ea0808ff6e8210cbea9f5e26a4cffc825e9712b764b04",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 513663,
+      "output_mtime_ns": 1790527188759178500
+    },
+    "1秘宝+1藏品\nxp_forum\nphpbb_subsilver": {
+      "signature": "a7aa1b76f191eb93d0f8c785e339f1adb252cf4cd377780fd43dd97e15168a1f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 511496,
+      "output_mtime_ns": 1790527189274800700
+    },
+    "1秘宝+1藏品\nxp_forum\nvbulletin3": {
+      "signature": "752460fef42158f02a5ead6ba41f2f963d74e1e90d966f15c6f23d7ab7d272c4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\1秘宝+1藏品\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 521620,
+      "output_mtime_ns": 1790527189791429600
+    },
+    "2秘宝\narcade_pinball\nclassic_red": {
+      "signature": "d06df066f6165879a71d8071926fffe5715e1a822ae0e07c15dba74ae2521eb4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 463696,
+      "output_mtime_ns": 1790527192030362100
+    },
+    "2秘宝\narcade_pinball\nneon_night": {
+      "signature": "faa0246c510ae4bdb227b5eed12ccc667fbafce9c866d532638cff43b91512a8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 481624,
+      "output_mtime_ns": 1790527192593890300
+    },
+    "2秘宝\narcade_pinball\nsteampunk_gears": {
+      "signature": "3490e3e32aeaead18fd65dd7f456c69dfd7ba48f7b5cb218dcf816fd2ed48b22",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 438518,
+      "output_mtime_ns": 1790527193046255000
+    },
+    "2秘宝\nbattle_route\nparchment": {
+      "signature": "dda6be4ebd8a947850d99ba914eff70fb5ca5a95107d5ae9e927f455e7d50ac9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 426268,
+      "output_mtime_ns": 1790527194005792300
+    },
+    "2秘宝\nbattle_route\nnight_recon": {
+      "signature": "2de16b40ea6d5da1820abe18c00845a56bd78f0b9f1462447daf4b30b8a23674",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 332676,
+      "output_mtime_ns": 1790527194911371400
+    },
+    "2秘宝\nbattle_route\nblueprint_command": {
+      "signature": "33bf18906074748e5e1cf44458dab6a7386b221f28635704cb86f10eb3a7a718",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 345538,
+      "output_mtime_ns": 1790527195823965900
+    },
+    "2秘宝\nclassic_clean\ngreen": {
+      "signature": "c030c5c0b43375622cb33391b86b6877ce48b33a80eee6cc05ddd7c4df3aa4f4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 581347,
+      "output_mtime_ns": 1790529128824429800
+    },
+    "2秘宝\nclassic_clean\ngold": {
+      "signature": "6d5f0f61398378fa8b9e2f16fcde7acaa6ba47d0aef5142ba127283a581219e2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 583652,
+      "output_mtime_ns": 1790529129837324600
+    },
+    "2秘宝\nclassic_clean\nblue": {
+      "signature": "3c55a78efa92da226b6d7bced74163cf4fd8a83043d83bacf7863b3968794727",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 580865,
+      "output_mtime_ns": 1790529130821657900
+    },
+    "2秘宝\nclassic_clean\npurple": {
+      "signature": "ee56f8a5c9266275844bbfbf4a3311ef2b55c84d8e1d8076fea30451ee03dabb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 580949,
+      "output_mtime_ns": 1790529131824977300
+    },
+    "2秘宝\nclassic_clean\nred": {
+      "signature": "347f58705b5adc4b6a491e137666a31957e493a366d94f28d100f230df0ff2f7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 579557,
+      "output_mtime_ns": 1790529132821553900
+    },
+    "2秘宝\nclassic_clean\ncyan": {
+      "signature": "73cd0381ffabd3c5e388a25c608735ef38ee3cfb27901e7d0736689819671b6d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 578001,
+      "output_mtime_ns": 1790529133822110200
+    },
+    "2秘宝\nclassified_dossier\ndefault": {
+      "signature": "677b4a0f7421e0eeafb9fbbaca0033fb2f0b6eddd41f9ae969bf1fa1a50d28ec",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1152485,
+      "output_mtime_ns": 1790527205602433800
+    },
+    "2秘宝\nclassified_dossier\nfield_olive": {
+      "signature": "2fa50eb55c56367b1b12acf741b557181556675204e8e9bb34c3d3c613c21407",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1219298,
+      "output_mtime_ns": 1790527206692629400
+    },
+    "2秘宝\nclassified_dossier\nintel_blue": {
+      "signature": "8cf8b68af52bfcbbd72501225df717b60a2cbdf4ecad0e8b6a846c2043985d62",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1204874,
+      "output_mtime_ns": 1790527207780721400
+    },
+    "2秘宝\ncomic_storyboard\nbw_red": {
+      "signature": "f1f808ac89b68df06bc8c9ebe31c9a5e965e1e598f9634279ef82807735b45a6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 548207,
+      "output_mtime_ns": 1790527208514834000
+    },
+    "2秘宝\ncomic_storyboard\nretro_newsprint": {
+      "signature": "11007baacd9667c71ade9d9de39e7c2e54905bbaef50bc87e3e24b6cd30984e9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 553977,
+      "output_mtime_ns": 1790527209218928600
+    },
+    "2秘宝\ncomic_storyboard\nnoir_casefile": {
+      "signature": "df8f32be0125c1c1c84edf907df7338b387536bda7b0ce2c9afe81d49d6d4de4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 521779,
+      "output_mtime_ns": 1790527209902437500
+    },
+    "2秘宝\ngacha_machine\ndefault": {
+      "signature": "9eeca4b8320801915912fc60ccbe65d5b8d7ef7aa130daf90359b489c2bf2d19",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 631775,
+      "output_mtime_ns": 1790527210416058100
+    },
+    "2秘宝\nhandwritten_notes\ndefault": {
+      "signature": "2aeb3de894348760dfc16c224b71e8b9d33bed97312639bf70e9d528764b6478",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 625826,
+      "output_mtime_ns": 1790527210956860200
+    },
+    "2秘宝\nhandwritten_notes\ncampus_white": {
+      "signature": "37843e3070729641cc9689274ef5c6dbed156f3a01787a0aa7a96db2fb1e41bc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 626796,
+      "output_mtime_ns": 1790527211516364000
+    },
+    "2秘宝\nhandwritten_notes\nretro_lowprint": {
+      "signature": "85ab46609012e3f7cb2355dcbcd66503928fa7448b08823337849b22f90f46bb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1062480,
+      "output_mtime_ns": 1790527212901913300
+    },
+    "2秘宝\nmusic_album\ndefault": {
+      "signature": "8e1565b2ce7541d740fe4970d270ce493f72e802020b5b28706a2184fd915c88",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 166578,
+      "output_mtime_ns": 1790527213305204600
+    },
+    "2秘宝\nreceipt_checkout\ndefault": {
+      "signature": "8f1ebc9bf78c566866d0a07163c36474e09634faa24f63f429c913ceca21c08b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 186801,
+      "output_mtime_ns": 1790527213792064700
+    },
+    "2秘宝\nsoft_neumorphic\ngreen": {
+      "signature": "e4c2a7872973cf3cf594f4d38e652e8b8af133d8ef58f5a17dc9d5f6cc17c950",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 538457,
+      "output_mtime_ns": 1790527214409641400
+    },
+    "2秘宝\nsoft_neumorphic\ngold": {
+      "signature": "e1b0374910b0f81d9408019cf4bf66ce4e92a7ee2d75d3245706f946bb73e619",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 537675,
+      "output_mtime_ns": 1790527215023037300
+    },
+    "2秘宝\nsoft_neumorphic\nblue": {
+      "signature": "cd9934d607b3c4acfb778ee4fa1ad71d839c932826fca6a91370fdf989439e26",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 537575,
+      "output_mtime_ns": 1790527215638041400
+    },
+    "2秘宝\nsoft_neumorphic\npurple": {
+      "signature": "088e4ef67af84b9c463f0555348c520983fbcc546c33316a96e3030195f1c041",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 537333,
+      "output_mtime_ns": 1790527216241148900
+    },
+    "2秘宝\nsoft_neumorphic\nred": {
+      "signature": "39e0fd0553cc7b95445f531a1c9b0855e13ff6be2af8df8b26998fe2a46d88b9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 537233,
+      "output_mtime_ns": 1790527216846799300
+    },
+    "2秘宝\nsoft_neumorphic\ncyan": {
+      "signature": "eca85643c7cc1ef406c06950ecfe8615137937974dddfdc02412d84b107e9750",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 537525,
+      "output_mtime_ns": 1790527217456169100
+    },
+    "2秘宝\ntv_news\ndefault": {
+      "signature": "933d446688cad56076184b37c6599052a90a241da931cefbcacbd581547c9450",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 192855,
+      "output_mtime_ns": 1790527217853258200
+    },
+    "2秘宝\nxp_forum\ndefault": {
+      "signature": "308807e3a8bd41c55c3855c37d37de011eb6c28789d1b931057b3942267fb1e9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 511400,
+      "output_mtime_ns": 1790527218381880200
+    },
+    "2秘宝\nxp_forum\nphpbb_subsilver": {
+      "signature": "e6eb5cb390d8df462836aefaa422c140da6d0505f5b388a74a6186ca577f9d77",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 509234,
+      "output_mtime_ns": 1790527218910889400
+    },
+    "2秘宝\nxp_forum\nvbulletin3": {
+      "signature": "0794db06b561a859898fe898f675259d7c4612b5e030d994369d5a08f4ea7aec",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 519361,
+      "output_mtime_ns": 1790527219448452500
+    },
+    "2秘宝+1藏品\narcade_pinball\nclassic_red": {
+      "signature": "b60936df2489faca05977c340f1bf0fa5610c5dc3a11010effc012c7ebbff197",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 470344,
+      "output_mtime_ns": 1790527221457384700
+    },
+    "2秘宝+1藏品\narcade_pinball\nneon_night": {
+      "signature": "b98596126cef762d391d7cf5c18633c2731affc8baf896d3240360ac038536fc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 490944,
+      "output_mtime_ns": 1790527221996347500
+    },
+    "2秘宝+1藏品\narcade_pinball\nsteampunk_gears": {
+      "signature": "329ede75799b1866b1df78a19a8dcf9cc5534f8e1bcf7f95c827c84a29194f90",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 446555,
+      "output_mtime_ns": 1790527222483306200
+    },
+    "2秘宝+1藏品\nbattle_route\nparchment": {
+      "signature": "11129a4179aeeb9e5274c4c8187bee7acddae32c238e51da3bc98e274bad355c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 427788,
+      "output_mtime_ns": 1790527223458004800
+    },
+    "2秘宝+1藏品\nbattle_route\nnight_recon": {
+      "signature": "1734dfe2d3de29f5bf23ff9f3af72e2f90ab07107a2f33d08d31f640ebfdb3a8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 341756,
+      "output_mtime_ns": 1790527224419968600
+    },
+    "2秘宝+1藏品\nbattle_route\nblueprint_command": {
+      "signature": "b8f6d44ed80f351df210d0eef0df12fe7d9e7d5fe8f2df9acb3cfb14a952c2e4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 342815,
+      "output_mtime_ns": 1790527225346458400
+    },
+    "2秘宝+1藏品\nclassic_clean\ngreen": {
+      "signature": "ee0f243020cf9431a7923e4140b79e6c3057446a237b36d373cb0a4c1c5c999c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 591529,
+      "output_mtime_ns": 1790529141642081200
+    },
+    "2秘宝+1藏品\nclassic_clean\ngold": {
+      "signature": "f66d509bf1af50891cd184c469c9c82019c2ac3833f9b4bb25b297db404365c2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 594522,
+      "output_mtime_ns": 1790529142643439000
+    },
+    "2秘宝+1藏品\nclassic_clean\nblue": {
+      "signature": "f0e7f2019806423fc47d2101388841eac672b469e4cbc65959ec381d323fe601",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 591382,
+      "output_mtime_ns": 1790529143638781100
+    },
+    "2秘宝+1藏品\nclassic_clean\npurple": {
+      "signature": "fe65b8bc7304290523ffc38660edc4073ab3a984119abc1d62530d0d7a51b96a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 591481,
+      "output_mtime_ns": 1790529144711931500
+    },
+    "2秘宝+1藏品\nclassic_clean\nred": {
+      "signature": "5d762279cd7804c248d88805b4c473b5fec4807cf866c01fb6e6f94cd4eb9663",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 589714,
+      "output_mtime_ns": 1790529145787091800
+    },
+    "2秘宝+1藏品\nclassic_clean\ncyan": {
+      "signature": "627e97c5f43168743621a9cb1809a1145379470155e141105f9f8a4cc0236fc8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 588009,
+      "output_mtime_ns": 1790529146909090800
+    },
+    "2秘宝+1藏品\nclassified_dossier\ndefault": {
+      "signature": "6767678cfc815587ba6a6c6fccccb7d49f8e0793419a77254e4fa66f25a09462",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1256852,
+      "output_mtime_ns": 1790527232836090600
+    },
+    "2秘宝+1藏品\nclassified_dossier\nfield_olive": {
+      "signature": "f84563403e27d132892e30269388c90ea47e90a1c493a188b3ef04049f24646f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1222452,
+      "output_mtime_ns": 1790527233973008500
+    },
+    "2秘宝+1藏品\nclassified_dossier\nintel_blue": {
+      "signature": "59aeb09f0d084504c18d3c4f7cf032688b9b1d45cb1f96b2d82bbb1191f52087",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1193065,
+      "output_mtime_ns": 1790527235107418700
+    },
+    "2秘宝+1藏品\ncomic_storyboard\nbw_red": {
+      "signature": "b945a3c331db146200283ddca8a93cbc69f68fe2a3582a0bccc6650aa39ecd19",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 527612,
+      "output_mtime_ns": 1790527235797862400
+    },
+    "2秘宝+1藏品\ncomic_storyboard\nretro_newsprint": {
+      "signature": "4bb4604ee77080c79997853c86c1993fbe11574bbbe4a7ca1031fc1d350b5520",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 545155,
+      "output_mtime_ns": 1790527236482825500
+    },
+    "2秘宝+1藏品\ncomic_storyboard\nnoir_casefile": {
+      "signature": "0c2e86d9c2cecbcac823c88f1a5893ad1664fbdc11c8e9ca9a45e27d80e65017",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 546355,
+      "output_mtime_ns": 1790527237166998300
+    },
+    "2秘宝+1藏品\ngacha_machine\ndefault": {
+      "signature": "f1ead5b3eae6a6f1dbc7744e8374b54c67651db671f3d3328e3aced3e1d6c158",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 643884,
+      "output_mtime_ns": 1790527237680708200
+    },
+    "2秘宝+1藏品\nhandwritten_notes\ndefault": {
+      "signature": "28746c352b5bf4232f42219db98b627c130381d1d8a56e1b2b8a269e23186f08",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 641978,
+      "output_mtime_ns": 1790527238225282900
+    },
+    "2秘宝+1藏品\nhandwritten_notes\ncampus_white": {
+      "signature": "eafdcf39059612e4e6bdbc9a930000bc68255727cbc94d1b26edb2acfaf38f77",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 643476,
+      "output_mtime_ns": 1790527238762500300
+    },
+    "2秘宝+1藏品\nhandwritten_notes\nretro_lowprint": {
+      "signature": "c96409238d87f77bb0b782cff61b7f771ef01b700bb3d53be655d1b35c0bea7f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1089236,
+      "output_mtime_ns": 1790527240134453600
+    },
+    "2秘宝+1藏品\nmusic_album\ndefault": {
+      "signature": "294287e7c4e7bbf50896ee0e2cd52ee5e37fe098a12522624f780a30f6cb4a08",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 171383,
+      "output_mtime_ns": 1790527240548556500
+    },
+    "2秘宝+1藏品\nreceipt_checkout\ndefault": {
+      "signature": "f6e1f1628b643f6924ca8256e00df5b42ef9aca786eed8d3f520b9bfd0793843",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 192601,
+      "output_mtime_ns": 1790527241071259700
+    },
+    "2秘宝+1藏品\nsoft_neumorphic\ngreen": {
+      "signature": "9a309ff6c8d83cad8eb6f3b441e4712037af5fb6f52ed58cfa796e9f774b9aad",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 551673,
+      "output_mtime_ns": 1790527241687822900
+    },
+    "2秘宝+1藏品\nsoft_neumorphic\ngold": {
+      "signature": "d591ab094e0f3285f6e36bf8a0a9381af40b83c4425801c5164cee08e2dd83c5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 551011,
+      "output_mtime_ns": 1790527242299190700
+    },
+    "2秘宝+1藏品\nsoft_neumorphic\nblue": {
+      "signature": "7ff41539a31f421f9838f2eba269fb43327a240c185d4ade975091f8be453b29",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 550887,
+      "output_mtime_ns": 1790527242926170300
+    },
+    "2秘宝+1藏品\nsoft_neumorphic\npurple": {
+      "signature": "0f922aafdfa8a428dc057bbe3cdf83a8580e911c195db5cfb8318a2c0920b56a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 550673,
+      "output_mtime_ns": 1790527243576429300
+    },
+    "2秘宝+1藏品\nsoft_neumorphic\nred": {
+      "signature": "af2876489389b46ae168c3eeaac2b0db905edc84d20fcba6f7e7ef53126a59ed",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 550579,
+      "output_mtime_ns": 1790527244183298400
+    },
+    "2秘宝+1藏品\nsoft_neumorphic\ncyan": {
+      "signature": "e726dd8abd053c1ef8fb8b5f8227e6f8f69db22dc17a19a4da90635e3ec2b65d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 550792,
+      "output_mtime_ns": 1790527244794806900
+    },
+    "2秘宝+1藏品\ntv_news\ndefault": {
+      "signature": "4310f52dc61dba98c660b792075ccc58aca4e06cb4e7424caa8713ffcde12586",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 200077,
+      "output_mtime_ns": 1790527245220916900
+    },
+    "2秘宝+1藏品\nxp_forum\ndefault": {
+      "signature": "f7551442fdb051dd177fe975d05b3f9e8feddc5d4fea6f2e5be49b2f66adc02e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 520059,
+      "output_mtime_ns": 1790527245798075300
+    },
+    "2秘宝+1藏品\nxp_forum\nphpbb_subsilver": {
+      "signature": "108b254e0f36878f2323228f89f5d806a6f4d085932c4dcecac7329c72fa1406",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 517771,
+      "output_mtime_ns": 1790527246353591400
+    },
+    "2秘宝+1藏品\nxp_forum\nvbulletin3": {
+      "signature": "38a7555beda603f91ba71c6c31990292976fadfd9bcadcbd7b3d78d03da108a8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\2秘宝+1藏品\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 527774,
+      "output_mtime_ns": 1790527246906094000
+    },
+    "420桂香糕\narcade_pinball\nclassic_red": {
+      "signature": "bec4880d74bfc1cf1b12a6a193c2e94617b04991b1de6f43bfb77f33492988e7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 446129,
+      "output_mtime_ns": 1790527248832180500
+    },
+    "420桂香糕\narcade_pinball\nneon_night": {
+      "signature": "aba2ade125c5ae8b39c74a75dbebc5e08058b3df1ce902c952690029c3a98f2c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 465630,
+      "output_mtime_ns": 1790527249275004900
+    },
+    "420桂香糕\narcade_pinball\nsteampunk_gears": {
+      "signature": "62278f0ab947079c0e168c74f50d55eeb16b4f0c93f87d526bdbc383880697eb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 422235,
+      "output_mtime_ns": 1790527249665353200
+    },
+    "420桂香糕\nbattle_route\nparchment": {
+      "signature": "3c3910101fa72b54a13eaf22f9d4ee81fac203e9ba1b57f5f5f9382550cfdf37",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 411240,
+      "output_mtime_ns": 1790527250565978400
+    },
+    "420桂香糕\nbattle_route\nnight_recon": {
+      "signature": "bb0534ba28749e46603b3056e8fbf9feaf96f40572dc24629e26b3ab4fd21f74",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 316528,
+      "output_mtime_ns": 1790527251455601000
+    },
+    "420桂香糕\nbattle_route\nblueprint_command": {
+      "signature": "18e87bda6da6223b43ffc6fce37a146e4c36b1cd119632e555a621252c1f128d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 309786,
+      "output_mtime_ns": 1790527252324400800
+    },
+    "420桂香糕\nclassic_clean\ngreen": {
+      "signature": "56afbd196f7d9a3caa147fd1d828cbe2999373c2920f62a4cae838ac7f01201e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 544811,
+      "output_mtime_ns": 1790529154583160100
+    },
+    "420桂香糕\nclassic_clean\ngold": {
+      "signature": "171e4c4f5394e172677eaf228ab914dbf577979901bbfe5286a6e1258cb2720f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 548438,
+      "output_mtime_ns": 1790529155549543700
+    },
+    "420桂香糕\nclassic_clean\nblue": {
+      "signature": "14937610015c1fe6708da12f9e24509fc8a3cb2054cfbe8e7fd937bfb983d480",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 544595,
+      "output_mtime_ns": 1790529156502992800
+    },
+    "420桂香糕\nclassic_clean\npurple": {
+      "signature": "23ae3b01ed51d316ef48c77d063409e3ace1bc411377e0ed039c07cbae01ae49",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 545092,
+      "output_mtime_ns": 1790529157454450900
+    },
+    "420桂香糕\nclassic_clean\nred": {
+      "signature": "ef1c188b552f27e96fbbef7170bbea8ea24aa401f485dfe65d74e6ba7858640b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 543468,
+      "output_mtime_ns": 1790529158419869900
+    },
+    "420桂香糕\nclassic_clean\ncyan": {
+      "signature": "1f06fc98a710014ed3a13086c43e72666ecdf840b0bb4fdeb1255d0fd5430f13",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 541839,
+      "output_mtime_ns": 1790529159370362000
+    },
+    "420桂香糕\nclassified_dossier\ndefault": {
+      "signature": "b6c705de73b91bdfdb117cbcbc1f7086816bab4de1af9060c2ba8f6063e39dca",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1031679,
+      "output_mtime_ns": 1790527259310279300
+    },
+    "420桂香糕\nclassified_dossier\nfield_olive": {
+      "signature": "6ea3c2c35002864438d89b8b6465af38b264c8421949066eafd73e8f8db4e4f3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1056329,
+      "output_mtime_ns": 1790527260319813200
+    },
+    "420桂香糕\nclassified_dossier\nintel_blue": {
+      "signature": "14b9d5eddf7dce77d15f062113c4ac843b4773ca4d7430f658a1e72a9771cedb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1063860,
+      "output_mtime_ns": 1790527261328368200
+    },
+    "420桂香糕\ncomic_storyboard\nbw_red": {
+      "signature": "aab97d87518842b8285eaf1fd8fff1b6aa335913384cef31fa6ebf4f49e33a3c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 497025,
+      "output_mtime_ns": 1790527262003503800
+    },
+    "420桂香糕\ncomic_storyboard\nretro_newsprint": {
+      "signature": "38eba009eb501d2170324ec49a7a81e6129bca8c5ab9b565c51d0abd17666c55",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 501854,
+      "output_mtime_ns": 1790527262682763400
+    },
+    "420桂香糕\ncomic_storyboard\nnoir_casefile": {
+      "signature": "03bd6c94f517700b1007fd79b0fba6cc3c1e5260146fb6f0e9ad463f8a9a4e01",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 514455,
+      "output_mtime_ns": 1790527263354989100
+    },
+    "420桂香糕\ngacha_machine\ndefault": {
+      "signature": "9e58678c74675c2f8f50381fae3a40a2ade50f3691770585c66071d2d124979b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 629189,
+      "output_mtime_ns": 1790527263843707000
+    },
+    "420桂香糕\nhandwritten_notes\ndefault": {
+      "signature": "017ca3930a010570c103041d009c19b6daf285f901ceaa7ac3dbfd6b9c4bb3fc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 572444,
+      "output_mtime_ns": 1790527264354715800
+    },
+    "420桂香糕\nhandwritten_notes\ncampus_white": {
+      "signature": "8228fc9c1b19fe846f01b5cdd59e0c57ba8fedd8fa258a7db4300e2da52f606b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 575172,
+      "output_mtime_ns": 1790527264869209800
+    },
+    "420桂香糕\nhandwritten_notes\nretro_lowprint": {
+      "signature": "d9d7b7aeadc86d0dd986b82880302a9fa4a614a8e445dda78f5a6914ad87f84e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 940394,
+      "output_mtime_ns": 1790527266203138800
+    },
+    "420桂香糕\nmusic_album\ndefault": {
+      "signature": "5d5dc8d4aa980c12e5f7b9f85f52108a1268b2ebfece05335a612d8aaf342ec2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 169371,
+      "output_mtime_ns": 1790527266570357100
+    },
+    "420桂香糕\nreceipt_checkout\ndefault": {
+      "signature": "a6df0b9296c5474561fc69fc0104ac8848ab93fe8b939f8431667c4311db2d40",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 191478,
+      "output_mtime_ns": 1790527266989929800
+    },
+    "420桂香糕\nsoft_neumorphic\ngreen": {
+      "signature": "84991d4df9ef8a97e93281a839a216e437fca5b07ad0a4b8bf50f0b22bbe74b3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 493957,
+      "output_mtime_ns": 1790527267581789500
+    },
+    "420桂香糕\nsoft_neumorphic\ngold": {
+      "signature": "e6f454879cdde8582d0031817a5b0e37a11fb84c0b0ef9c3f3e0c4573d36d6ea",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 493194,
+      "output_mtime_ns": 1790527268146421000
+    },
+    "420桂香糕\nsoft_neumorphic\nblue": {
+      "signature": "9609cb59b515f42d4f81cabe33b5dba6b5ad73c44c317cc99b00d2ad767573e7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 493148,
+      "output_mtime_ns": 1790527268707135500
+    },
+    "420桂香糕\nsoft_neumorphic\npurple": {
+      "signature": "219c3830c8b4cb0cb8dd41b0a7e8063c1e4dbed908ea5e27cb74e474ba648428",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 493004,
+      "output_mtime_ns": 1790527269269624000
+    },
+    "420桂香糕\nsoft_neumorphic\nred": {
+      "signature": "a052ef293c4ffe8769343bb5d2504052746b648deebc284a89dfdf37e0d83223",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 493047,
+      "output_mtime_ns": 1790527269850128400
+    },
+    "420桂香糕\nsoft_neumorphic\ncyan": {
+      "signature": "94825349f3ee525919863f1395e1b48142a7dddfb9400fc79ed973c6b133757d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 493164,
+      "output_mtime_ns": 1790527270417663100
+    },
+    "420桂香糕\ntv_news\ndefault": {
+      "signature": "a709881c0aa723f5dee611027a6272876845b05ab09b44146e4c8b24c75f1b4a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 198934,
+      "output_mtime_ns": 1790527270772714800
+    },
+    "420桂香糕\nxp_forum\ndefault": {
+      "signature": "f274bfcf5bcc0e4cf49c9ffbab53dbc534398f99470cb54087c11623751b1925",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 522339,
+      "output_mtime_ns": 1790527271231524700
+    },
+    "420桂香糕\nxp_forum\nphpbb_subsilver": {
+      "signature": "751dd5fbd373b2e1e553bb461b6d11f8d5aa650dda376dac9b52a621255d6772",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 520663,
+      "output_mtime_ns": 1790527271685310700
+    },
+    "420桂香糕\nxp_forum\nvbulletin3": {
+      "signature": "601c9f4ffba9593aea317666aa2253a18bed1605fc35d96ec833a317a30468c3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\420桂香糕\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 530212,
+      "output_mtime_ns": 1790527272129124800
+    },
+    "550桂香糕\narcade_pinball\nclassic_red": {
+      "signature": "3ef4ef56c1b35d22effc5350b0a6318400e6224e758a6f5ff6eaec182a401144",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 469006,
+      "output_mtime_ns": 1790527274098566400
+    },
+    "550桂香糕\narcade_pinball\nneon_night": {
+      "signature": "9da192ee9933000fc369906cea622f0a9dd3248b0a739d3943dd019b66fe7c41",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 488726,
+      "output_mtime_ns": 1790527274601255800
+    },
+    "550桂香糕\narcade_pinball\nsteampunk_gears": {
+      "signature": "227a3e37c895fb25dbc623f3571c1f28763797376d0e79e3c45aabf0031a6a20",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 444983,
+      "output_mtime_ns": 1790527275007135800
+    },
+    "550桂香糕\nbattle_route\nparchment": {
+      "signature": "1b6eaabf9310189491405bebb2aa6cfe2e34a34d2de663ad0a70a08ba7f10fa3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 435563,
+      "output_mtime_ns": 1790527275915707900
+    },
+    "550桂香糕\nbattle_route\nnight_recon": {
+      "signature": "9a56ca0726534317b638be972c1ae78ecd334284d141342ffae4fdaf027b7356",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 340484,
+      "output_mtime_ns": 1790527276840529900
+    },
+    "550桂香糕\nbattle_route\nblueprint_command": {
+      "signature": "c12a57f64702140e05ae49d44d2995f721ad4d9377e777218482e226c1c0be55",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 332562,
+      "output_mtime_ns": 1790527277723168700
+    },
+    "550桂香糕\nclassic_clean\ngreen": {
+      "signature": "83799fe146cd955046c7b16732515972e1bb138f2499e9666192c83e5bf22998",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 569092,
+      "output_mtime_ns": 1790529167345023700
+    },
+    "550桂香糕\nclassic_clean\ngold": {
+      "signature": "7d893ca94dffc998ed12785e24711436ba102eb6a432325a4f5939911d844f6a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 573054,
+      "output_mtime_ns": 1790529168314787800
+    },
+    "550桂香糕\nclassic_clean\nblue": {
+      "signature": "bf20fcd3da92fb8cb97e47888b81f5c83612a9d243229c82d7406feffe94b23e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 569272,
+      "output_mtime_ns": 1790529169291175600
+    },
+    "550桂香糕\nclassic_clean\npurple": {
+      "signature": "c5e893dbd6f62e08107c431e5bea33f2e3395fb59d0de931055ae35d79029ab0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 569786,
+      "output_mtime_ns": 1790529170264054500
+    },
+    "550桂香糕\nclassic_clean\nred": {
+      "signature": "daaa868bdcc853a235ce9431a5aff961e76fba8931fdaf65cfddfb21fc31bfb0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 567362,
+      "output_mtime_ns": 1790529171234570100
+    },
+    "550桂香糕\nclassic_clean\ncyan": {
+      "signature": "869ad303b42e45c305ad1c368941f7f464a32c43f5ae9df273a3ea09711f70e2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 565527,
+      "output_mtime_ns": 1790529172234895200
+    },
+    "550桂香糕\nclassified_dossier\ndefault": {
+      "signature": "943cd2e41ca1a472dd038735ccba922fd511dbba0c18d7bf96ed37c001dcc8f4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1127880,
+      "output_mtime_ns": 1790527284894266500
+    },
+    "550桂香糕\nclassified_dossier\nfield_olive": {
+      "signature": "23138a23ed3cf8aa5130f465c1f89dad147eaed577f5a1741d14be80ed979da2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1105597,
+      "output_mtime_ns": 1790527285909291100
+    },
+    "550桂香糕\nclassified_dossier\nintel_blue": {
+      "signature": "612442bb330b130c239eb2dac300ae526ed769d0bdeef11b74435ff2f7532d51",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1141345,
+      "output_mtime_ns": 1790527286928598900
+    },
+    "550桂香糕\ncomic_storyboard\nbw_red": {
+      "signature": "d7e0ac6170c1cb324eb60ad278286428d35fb3bd47e77fe85f842c61b4fd8bbf",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 519893,
+      "output_mtime_ns": 1790527287609712100
+    },
+    "550桂香糕\ncomic_storyboard\nretro_newsprint": {
+      "signature": "f2d5501ad6cfc387868f75ed1023e03d96761ad4c8b3579c8ed2c358c51fae2c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 531132,
+      "output_mtime_ns": 1790527288291886800
+    },
+    "550桂香糕\ncomic_storyboard\nnoir_casefile": {
+      "signature": "97a7b30dfcd9b27167514d84f50b3a0f3c896b16aaab55a091e0285eb889218b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 521340,
+      "output_mtime_ns": 1790527288977022600
+    },
+    "550桂香糕\ngacha_machine\ndefault": {
+      "signature": "d345f2c36744a456345662f59a7ea2110a58cc96876eca9db877be73db7aaa5f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 634728,
+      "output_mtime_ns": 1790527289485705100
+    },
+    "550桂香糕\nhandwritten_notes\ndefault": {
+      "signature": "0162dd007387a5679a2454e0ab933d192fd75da7e7f8ef9690a4dbb7652e2ff5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 605133,
+      "output_mtime_ns": 1790527290058174200
+    },
+    "550桂香糕\nhandwritten_notes\ncampus_white": {
+      "signature": "6afb57fab2a4236193273ff564e94cb2e4afe9d2b8beb8ca016b694c89633bf4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 610827,
+      "output_mtime_ns": 1790527290600396000
+    },
+    "550桂香糕\nhandwritten_notes\nretro_lowprint": {
+      "signature": "842f87edad6bae91de984651359d1a6fb9cf117783c6a295f524ee153024fa21",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 993273,
+      "output_mtime_ns": 1790527291915911000
+    },
+    "550桂香糕\nmusic_album\ndefault": {
+      "signature": "0e753ff1a2484d0a4c49821a5db53a27f4b18677fc9207c404302bda9a7f7e8f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 176399,
+      "output_mtime_ns": 1790527292313848700
+    },
+    "550桂香糕\nreceipt_checkout\ndefault": {
+      "signature": "0ff718579a98a94b96a723d940886ee7abef4e259865589b57e332c937c0d2c9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 196410,
+      "output_mtime_ns": 1790527292872321500
+    },
+    "550桂香糕\nsoft_neumorphic\ngreen": {
+      "signature": "ab1edd2573d412ebac55bed5061a047c4083dc8041212e202afc153a690ff4c5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 520470,
+      "output_mtime_ns": 1790527293473366900
+    },
+    "550桂香糕\nsoft_neumorphic\ngold": {
+      "signature": "a2a589969ce0ca00b0311d9f6462506101e47f2d0d6d5f08bee1cf4c6ac95d1f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 519811,
+      "output_mtime_ns": 1790527294054332700
+    },
+    "550桂香糕\nsoft_neumorphic\nblue": {
+      "signature": "4b6102a4397e8b43c8e295b605d71604fd830e5b59be422389bda114e85da083",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 519692,
+      "output_mtime_ns": 1790527294646717100
+    },
+    "550桂香糕\nsoft_neumorphic\npurple": {
+      "signature": "51341581ee687755e8c180abe34ccf9c9c99fd35f62202570fb63852da8d551e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 519613,
+      "output_mtime_ns": 1790527295230155500
+    },
+    "550桂香糕\nsoft_neumorphic\nred": {
+      "signature": "47d3e21c5515b69241d138fec2fd741e26f1798f07ab17c0c50e6a8d736d4596",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 519634,
+      "output_mtime_ns": 1790527295811814400
+    },
+    "550桂香糕\nsoft_neumorphic\ncyan": {
+      "signature": "f7d882e8b64791a38dce32c2985b3738b14a62b53af36a66c4c95e33c515734d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 519679,
+      "output_mtime_ns": 1790527296402269700
+    },
+    "550桂香糕\ntv_news\ndefault": {
+      "signature": "1925963dc5b7292e46e3bf5b2b8824160f8373c654ceb8c4fc916d58f560e5e5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 207989,
+      "output_mtime_ns": 1790527296779627200
+    },
+    "550桂香糕\nxp_forum\ndefault": {
+      "signature": "f352f8a3ce9201ba451496c73045d7b2c77aded1b0c9a8374f28c09a885043cf",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 530654,
+      "output_mtime_ns": 1790527297262546200
+    },
+    "550桂香糕\nxp_forum\nphpbb_subsilver": {
+      "signature": "a5ad1b6d01f07d753be8e036aa164b61c0806976bf448e82e851883c6d1db7fc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 528106,
+      "output_mtime_ns": 1790527297768229700
+    },
+    "550桂香糕\nxp_forum\nvbulletin3": {
+      "signature": "2b734a7961dc44374704d47d01e04565f7f5f028fc968e0f398cefdb6f27174d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260928月夜漫游攻略\\550桂香糕\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 538317,
+      "output_mtime_ns": 1790527298244999900
+    }
+  }
+}

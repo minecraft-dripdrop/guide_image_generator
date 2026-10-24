@@ -1,0 +1,164 @@
+{
+  "9.8w钻": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\经典简洁_v1.6.58\\01_绿色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\经典简洁_v1.6.58\\02_金色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\经典简洁_v1.6.58\\03_蓝色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\经典简洁_v1.6.58\\04_紫色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\经典简洁_v1.6.58\\05_红色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\经典简洁_v1.6.58\\06_青色.png",
+        "theme_id": "classic_clean",
+        "theme_name": "经典简洁",
+        "theme_version": "1.6.58",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\9.8w钻\\00_全主题总览.jpg",
+    "count": 6
+  },
+  "12500翡翠": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\柔光新拟物_v1.0.0\\01_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\柔光新拟物_v1.0.0\\02_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\柔光新拟物_v1.0.0\\03_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\柔光新拟物_v1.0.0\\04_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\柔光新拟物_v1.0.0\\05_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\柔光新拟物_v1.0.0\\06_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12500翡翠\\00_全主题总览.jpg",
+    "count": 6
+  },
+  "12000翡翠": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\柔光新拟物_v1.0.0\\01_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\柔光新拟物_v1.0.0\\02_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\柔光新拟物_v1.0.0\\03_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\柔光新拟物_v1.0.0\\04_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\柔光新拟物_v1.0.0\\05_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\柔光新拟物_v1.0.0\\06_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\261026周年庆扭蛋机\\12000翡翠\\00_全主题总览.jpg",
+    "count": 6
+  }
+}

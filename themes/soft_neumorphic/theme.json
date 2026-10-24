@@ -12,8 +12,8 @@
     "footer_font_size": 17,
     "footer_min_font_size": 14,
     "footer_height": 72,
-    "font_path": "assets/fonts/HarmonyOS_Sans_SC_Regular.ttf",
-    "font_bold_path": "assets/fonts/HarmonyOS_Sans_SC_Bold.ttf"
+    "font_path": "fonts/HarmonyOS_Sans_SC_Regular.ttf",
+    "font_bold_path": "fonts/HarmonyOS_Sans_SC_Bold.ttf"
   },
   "colors": {
     "primary": "#5B8D72",

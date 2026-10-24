@@ -1,0 +1,617 @@
+{
+  "schema": 1,
+  "entries": {
+    "月兔寻宝10.5w钻攻略图\narcade_pinball\nclassic_red": {
+      "signature": "aaf892785c3a50d95907ce339c2dd0143d89bc5b34413db5a5a29c4df302a83f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 494006,
+      "output_mtime_ns": 1789915768896594900
+    },
+    "月兔寻宝10.5w钻攻略图\narcade_pinball\nneon_night": {
+      "signature": "5a42da842400b100618feacd5b27793b671653f87c251e4f06c097872bb90a8b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 513110,
+      "output_mtime_ns": 1789915769429170600
+    },
+    "月兔寻宝10.5w钻攻略图\narcade_pinball\nsteampunk_gears": {
+      "signature": "63320e61968900b60762e748725ad05760b03bda31835748308c127eca320d32",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 469428,
+      "output_mtime_ns": 1789915769882996000
+    },
+    "月兔寻宝10.5w钻攻略图\nbattle_route\nparchment": {
+      "signature": "3ed08ffa663e2164e3620552cf0e4d1542235ff5a8f6aefa3c3a83e0bd7ec693",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 435462,
+      "output_mtime_ns": 1789915770866325600
+    },
+    "月兔寻宝10.5w钻攻略图\nbattle_route\nnight_recon": {
+      "signature": "c8ac82f952f693b3645a469f2fd404959a36f6df3a97ceb283c8ec2f56accb1d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 353237,
+      "output_mtime_ns": 1789915771851689700
+    },
+    "月兔寻宝10.5w钻攻略图\nbattle_route\nblueprint_command": {
+      "signature": "c13062b94e81cc201265a7f06be38471bf2d9860c0855754801b96b9f3fd3f7a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 350571,
+      "output_mtime_ns": 1789915773126280900
+    },
+    "月兔寻宝10.5w钻攻略图\nclassic_clean\ngreen": {
+      "signature": "cf77a21b70d399b59d716a346a4d7db7585aa01be68fdfd9ad032b31bc2c5f4e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 618206,
+      "output_mtime_ns": 1789915775368316700
+    },
+    "月兔寻宝10.5w钻攻略图\nclassic_clean\ngold": {
+      "signature": "6d7b22840fabc473738415b0a3828c48c60ccef9830384bc818882135fbc0b9e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 622757,
+      "output_mtime_ns": 1789915776894444900
+    },
+    "月兔寻宝10.5w钻攻略图\nclassic_clean\nblue": {
+      "signature": "0faa6903236c1080e356dac07e047466c1475b47ddbf216970662611df77c230",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 617844,
+      "output_mtime_ns": 1789915778476181700
+    },
+    "月兔寻宝10.5w钻攻略图\nclassic_clean\npurple": {
+      "signature": "6432b618c23f2d908f76ed7eb215d036465d2a60a6cc7babe84a7dbffc576d72",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 618870,
+      "output_mtime_ns": 1789915780909670100
+    },
+    "月兔寻宝10.5w钻攻略图\nclassic_clean\nred": {
+      "signature": "66f79809907071dd8a629fceacc62cbe5b457a964d6354534c004bcb51780321",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 616668,
+      "output_mtime_ns": 1789915782956197300
+    },
+    "月兔寻宝10.5w钻攻略图\nclassic_clean\ncyan": {
+      "signature": "9b051385aa345f5f5b0da3db2bd2a3d4b57708340ea302fc9aaddd94f5e44644",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 614241,
+      "output_mtime_ns": 1789915784415327200
+    },
+    "月兔寻宝10.5w钻攻略图\nclassified_dossier\ndefault": {
+      "signature": "a63aa954d1e3f6e20f549c28e479b26c74f4a3b4b5a7c3b415b58e07751dfce9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1232231,
+      "output_mtime_ns": 1789915785938218300
+    },
+    "月兔寻宝10.5w钻攻略图\nclassified_dossier\nfield_olive": {
+      "signature": "b6848bd7374cf1fc34e00da3d0b6c52ef857dce30e5afa3c85e770f174dc9e68",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1264263,
+      "output_mtime_ns": 1789915787225167600
+    },
+    "月兔寻宝10.5w钻攻略图\nclassified_dossier\nintel_blue": {
+      "signature": "d69852e8eea6074bc197e56f1a9ff95552b14a17c6548e46bee0074a6c76cbc7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1267324,
+      "output_mtime_ns": 1789915788322625700
+    },
+    "月兔寻宝10.5w钻攻略图\ncomic_storyboard\nbw_red": {
+      "signature": "2b8fbbd165128536e6b78f2051970021fa91767de6b5e41218b5e8a5a76926dd",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 676053,
+      "output_mtime_ns": 1789915789036646500
+    },
+    "月兔寻宝10.5w钻攻略图\ncomic_storyboard\nretro_newsprint": {
+      "signature": "08321ae7e39f3cde062a58ba6b11de104a849b6cfceaa2c4dc89c9ddd7104303",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 701304,
+      "output_mtime_ns": 1789915789734778400
+    },
+    "月兔寻宝10.5w钻攻略图\ncomic_storyboard\nnoir_casefile": {
+      "signature": "4008d24e9f6ceb87cb3bdfafad3c6906996c33923320c5dca1ea3f949ae6d6b7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 655203,
+      "output_mtime_ns": 1789915790418447100
+    },
+    "月兔寻宝10.5w钻攻略图\ngacha_machine\ndefault": {
+      "signature": "69cb43c6198938ae1de75720efe78bc60c9533c89ffc3777c686dd0305a99386",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 687839,
+      "output_mtime_ns": 1789915790952051400
+    },
+    "月兔寻宝10.5w钻攻略图\nhandwritten_notes\ndefault": {
+      "signature": "d47439fdc1c75c372425c129e7f9ac6f7adb1b704878e6f97bea62d0aeab034d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 661296,
+      "output_mtime_ns": 1789915791527514200
+    },
+    "月兔寻宝10.5w钻攻略图\nhandwritten_notes\ncampus_white": {
+      "signature": "7a1444ac20a33e493d1ee100f875eb7c80662a22f571ccca94b1dd935a52c5ee",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 668817,
+      "output_mtime_ns": 1789915792168768700
+    },
+    "月兔寻宝10.5w钻攻略图\nhandwritten_notes\nretro_lowprint": {
+      "signature": "0335ba7c9e44b9cbdd8fd80140da50691bd2f7901fef09aa143df52c3191810d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1103787,
+      "output_mtime_ns": 1789915794046740000
+    },
+    "月兔寻宝10.5w钻攻略图\nmusic_album\ndefault": {
+      "signature": "f25aae5d50d1432b4bef28d3589cbef3f3eb132ef155fc61a8e2de2a2638cafe",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 206669,
+      "output_mtime_ns": 1789915794765817500
+    },
+    "月兔寻宝10.5w钻攻略图\nreceipt_checkout\ndefault": {
+      "signature": "126fc2817c1b9ceabebcf1a223a23f6774ab43abb04375d054dd6e3b74337581",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 246301,
+      "output_mtime_ns": 1789915795443006200
+    },
+    "月兔寻宝10.5w钻攻略图\nsoft_neumorphic\ngreen": {
+      "signature": "7886432e73bb67420e9fb98c4dcd2b0bb396418539d047fe13ffbdaf137749c1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 559668,
+      "output_mtime_ns": 1789915796143157500
+    },
+    "月兔寻宝10.5w钻攻略图\nsoft_neumorphic\ngold": {
+      "signature": "6c94a38080e03549659842cd47c03849a10ca43ae729e3412527bbf293196693",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 558879,
+      "output_mtime_ns": 1789915796826305400
+    },
+    "月兔寻宝10.5w钻攻略图\nsoft_neumorphic\nblue": {
+      "signature": "f232364875dc1ac2c62788779ad011cf65239e449ee66747678a6611004c3010",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 558788,
+      "output_mtime_ns": 1789915797498055400
+    },
+    "月兔寻宝10.5w钻攻略图\nsoft_neumorphic\npurple": {
+      "signature": "aeef3e702eca4eba60a38ed3e107634d467c3bc2b1ddfde19184f1637bf3706d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 558520,
+      "output_mtime_ns": 1789915798185036900
+    },
+    "月兔寻宝10.5w钻攻略图\nsoft_neumorphic\nred": {
+      "signature": "ebe8e83782cfd73a25cfe111a53ec81a02db516e0b353c583e183a2d87b2656c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 558774,
+      "output_mtime_ns": 1789915798831517400
+    },
+    "月兔寻宝10.5w钻攻略图\nsoft_neumorphic\ncyan": {
+      "signature": "ec238c1ed102632f04d5adb1a0a47199cb906847d2001abb70ce4f4776c2b78d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 558727,
+      "output_mtime_ns": 1789915799485288800
+    },
+    "月兔寻宝10.5w钻攻略图\ntv_news\ndefault": {
+      "signature": "6fd5709aac56a3f81be4e47a7b17fc87fa34d709044ed5d69747b7509bb922b8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 236419,
+      "output_mtime_ns": 1789915800075709000
+    },
+    "月兔寻宝10.5w钻攻略图\nxp_forum\ndefault": {
+      "signature": "037ecb9e23cc0007cc4e240a6480c567f2c2ee490d0dedd33083ce942d2fe246",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 563755,
+      "output_mtime_ns": 1789915800673219200
+    },
+    "月兔寻宝10.5w钻攻略图\nxp_forum\nphpbb_subsilver": {
+      "signature": "5c3dc1d5180b3bf78c839cb148d7dac9798b28115ec33dde0efa03db940e5a50",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 562269,
+      "output_mtime_ns": 1789915801300507500
+    },
+    "月兔寻宝10.5w钻攻略图\nxp_forum\nvbulletin3": {
+      "signature": "881913f752d34780f713f2a29c4e1d77a97aa3a0389dfed475000348e096d3ea",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝10.5w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 572969,
+      "output_mtime_ns": 1789915802319781200
+    },
+    "月兔寻宝4.5w钻攻略图\narcade_pinball\nclassic_red": {
+      "signature": "fdf9bd0ca7e1d6586989046f696fda48e2325351d11e34f8827317effbb7610b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 429867,
+      "output_mtime_ns": 1789915739378597000
+    },
+    "月兔寻宝4.5w钻攻略图\narcade_pinball\nneon_night": {
+      "signature": "e8bea388725b49fb08bc985a9bfff96220f15e51b399887bee2628d6d85c85f4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 448062,
+      "output_mtime_ns": 1789915739810244600
+    },
+    "月兔寻宝4.5w钻攻略图\narcade_pinball\nsteampunk_gears": {
+      "signature": "ae244f8dc75cfa15a3ed1b75738d5acf3929f231ec93761e8f6af564dbbe7b7a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 405701,
+      "output_mtime_ns": 1789915740170315700
+    },
+    "月兔寻宝4.5w钻攻略图\nbattle_route\nparchment": {
+      "signature": "235b9a31242d6bb8d9edfc67b570d4bfaba8d54b11970ffcbec0b99616fe2bb4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 402228,
+      "output_mtime_ns": 1789915741083426700
+    },
+    "月兔寻宝4.5w钻攻略图\nbattle_route\nnight_recon": {
+      "signature": "748e8a50e3f148fd8c0ef0b633d0bddcbb031578649c5ed32f50675cfebe575b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 313360,
+      "output_mtime_ns": 1789915741945122900
+    },
+    "月兔寻宝4.5w钻攻略图\nbattle_route\nblueprint_command": {
+      "signature": "420a8e9fe7beba2fdddd5ebdbdc2f0aac16edf3bf45e44b029381f6f528390f6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 303736,
+      "output_mtime_ns": 1789915742769916500
+    },
+    "月兔寻宝4.5w钻攻略图\nclassic_clean\ngreen": {
+      "signature": "e1a6bcb28376b24bd0d1368d18937facbae1853a6e26e0833620bb50534a5a51",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 519892,
+      "output_mtime_ns": 1789915744922285500
+    },
+    "月兔寻宝4.5w钻攻略图\nclassic_clean\ngold": {
+      "signature": "25066dc67066eeda7c4fb6914932707813d15e4b0d41430e4c1b02586ca1202f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 523590,
+      "output_mtime_ns": 1789915746389362100
+    },
+    "月兔寻宝4.5w钻攻略图\nclassic_clean\nblue": {
+      "signature": "0bd7aa3eb260939d811691d870de55c4a4a8d046bacff15d63045f91a96efc0b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 519787,
+      "output_mtime_ns": 1789915747874389400
+    },
+    "月兔寻宝4.5w钻攻略图\nclassic_clean\npurple": {
+      "signature": "1097ddf2bc1bd2da14e940e99e8e3bade977635614f3df7a84edd737834d27fa",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 520442,
+      "output_mtime_ns": 1789915749341431300
+    },
+    "月兔寻宝4.5w钻攻略图\nclassic_clean\nred": {
+      "signature": "44348ae9c0f96a610d550229bb21fa4172eaec8a0c7b2d9d085123ddf7b10022",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 518490,
+      "output_mtime_ns": 1789915750980074400
+    },
+    "月兔寻宝4.5w钻攻略图\nclassic_clean\ncyan": {
+      "signature": "faf5e3f0a5669ea7588d6bedfb65c04ad5a35ff8f696fe6a8cea73740237502d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 516420,
+      "output_mtime_ns": 1789915752423188600
+    },
+    "月兔寻宝4.5w钻攻略图\nclassified_dossier\ndefault": {
+      "signature": "4ada12fabb0a6b0b293b9fc04cba2d4438a337a720752338b7c8c975cc9bef50",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 972343,
+      "output_mtime_ns": 1789915753646995300
+    },
+    "月兔寻宝4.5w钻攻略图\nclassified_dossier\nfield_olive": {
+      "signature": "4acc070fe1e740085ed679ce6f91c7544e85d58f2914847577d2c3e7d6f40cea",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1014007,
+      "output_mtime_ns": 1789915754670258400
+    },
+    "月兔寻宝4.5w钻攻略图\nclassified_dossier\nintel_blue": {
+      "signature": "e1adcbbd769573459b784e71491f14726d7783b465127e51eff2c5b6f5109f8a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1040673,
+      "output_mtime_ns": 1789915755687539000
+    },
+    "月兔寻宝4.5w钻攻略图\ncomic_storyboard\nbw_red": {
+      "signature": "63f7fa41bc4b2a1882cc0102bebc10cac25c51cbb4c740e7ab2f379b0a5c8ae7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 572317,
+      "output_mtime_ns": 1789915756368768800
+    },
+    "月兔寻宝4.5w钻攻略图\ncomic_storyboard\nretro_newsprint": {
+      "signature": "86c8632bb4bf4776d57744fb9d40c3bdfa343c55d31db196f025d00067b4d45f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 574603,
+      "output_mtime_ns": 1789915757027006600
+    },
+    "月兔寻宝4.5w钻攻略图\ncomic_storyboard\nnoir_casefile": {
+      "signature": "5ee1c01bc694ba595e2f66af9f0d2e8c4826b24fd4f93b4c00486488737e3e98",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 560767,
+      "output_mtime_ns": 1789915757681362500
+    },
+    "月兔寻宝4.5w钻攻略图\ngacha_machine\ndefault": {
+      "signature": "1dfbbcdb680de5fa1a50705c86cc65b057ed07b106dd1c55c0d76e036e23bafd",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 626735,
+      "output_mtime_ns": 1789915758182457900
+    },
+    "月兔寻宝4.5w钻攻略图\nhandwritten_notes\ndefault": {
+      "signature": "48c107976f9818cb056b1e8ff1b401a1e755e3045c91f661ea408d4ff63793c7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 552509,
+      "output_mtime_ns": 1789915758811774500
+    },
+    "月兔寻宝4.5w钻攻略图\nhandwritten_notes\ncampus_white": {
+      "signature": "d10ae1f401759c335f1d75c54f72e591c038138d31795f0f1703d4d2cb6df671",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 554829,
+      "output_mtime_ns": 1789915759376290400
+    },
+    "月兔寻宝4.5w钻攻略图\nhandwritten_notes\nretro_lowprint": {
+      "signature": "e475e11b193afc8f76577a58882b94f09d1aac6807d5e1d15259a6b296f897ba",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 924195,
+      "output_mtime_ns": 1789915760714682600
+    },
+    "月兔寻宝4.5w钻攻略图\nmusic_album\ndefault": {
+      "signature": "98802c5a8527f255bfe654ca78ecb965da71ddf757e8ec906b8b6862028049fc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 172068,
+      "output_mtime_ns": 1789915761089104900
+    },
+    "月兔寻宝4.5w钻攻略图\nreceipt_checkout\ndefault": {
+      "signature": "b270bfc92eab116d91dd8313500f8aa02932712f9de41fa54d73c1c07dc775bd",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 197939,
+      "output_mtime_ns": 1789915761481064300
+    },
+    "月兔寻宝4.5w钻攻略图\nsoft_neumorphic\ngreen": {
+      "signature": "bb9c74f29aa1f4ae7c6d82a073b69b6ac88a54deb4aeb336b5dfb326a541a3ae",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 474139,
+      "output_mtime_ns": 1789915762206126900
+    },
+    "月兔寻宝4.5w钻攻略图\nsoft_neumorphic\ngold": {
+      "signature": "72fea40bd26f71b1d39068d23bdbca6dac1b15ae608ef2366fefc9a446ef6251",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 473284,
+      "output_mtime_ns": 1789915762779375800
+    },
+    "月兔寻宝4.5w钻攻略图\nsoft_neumorphic\nblue": {
+      "signature": "910bc42835cfe5d80051fb685e6b028875e82cb2c1c0be626e5244642aad707d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 473187,
+      "output_mtime_ns": 1789915763344896900
+    },
+    "月兔寻宝4.5w钻攻略图\nsoft_neumorphic\npurple": {
+      "signature": "3642051bbb299dcac387e61eb4ed349599ca021f697bc3e227fa6b0310759007",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 472887,
+      "output_mtime_ns": 1789915763907356500
+    },
+    "月兔寻宝4.5w钻攻略图\nsoft_neumorphic\nred": {
+      "signature": "2968d6123c8c43987b1d073822a8c828a90a7509701e12a5e07d48fad068afd7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 473108,
+      "output_mtime_ns": 1789915764466888500
+    },
+    "月兔寻宝4.5w钻攻略图\nsoft_neumorphic\ncyan": {
+      "signature": "9c8b666a4dca670936a48829324a2c65b85a0171f845337ea636e986589ae6b3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 473143,
+      "output_mtime_ns": 1789915765064262100
+    },
+    "月兔寻宝4.5w钻攻略图\ntv_news\ndefault": {
+      "signature": "de41e0b5131a3fa0893c6bf5cb8def2ab51c030888aa164853efa8fc66ffeaca",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 195749,
+      "output_mtime_ns": 1789915765441255200
+    },
+    "月兔寻宝4.5w钻攻略图\nxp_forum\ndefault": {
+      "signature": "e2a30cbe96f6794b70ab402afa6214dd421c9831a7f17ed634c84cbc502681b2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 499124,
+      "output_mtime_ns": 1789915765919003300
+    },
+    "月兔寻宝4.5w钻攻略图\nxp_forum\nphpbb_subsilver": {
+      "signature": "dcfb457a547fe61992fb11f100a4b88d64ea724820e2b8eb37b77dfebc9a2802",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 497346,
+      "output_mtime_ns": 1789915766364783400
+    },
+    "月兔寻宝4.5w钻攻略图\nxp_forum\nvbulletin3": {
+      "signature": "8094c332873c6e208ce6ae29593c35b91196a8ba4673a4c4a94a5158ccd9f787",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝4.5w钻攻略图\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 505719,
+      "output_mtime_ns": 1789915766804642100
+    },
+    "月兔寻宝13500翡翠氪金攻略图\narcade_pinball\nclassic_red": {
+      "signature": "5b1f95a0d2f74d40a7f02d0ba2a13b1d9fd9cc9c7b3c3fecdeebcafc41fdd2e1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 544713,
+      "output_mtime_ns": 1789915805302837900
+    },
+    "月兔寻宝13500翡翠氪金攻略图\narcade_pinball\nneon_night": {
+      "signature": "e38b6eb09f52b5a664b05236df8c1c82e8f6d0940edcf65b6ac8495b1ab825de",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 564319,
+      "output_mtime_ns": 1789915805962040400
+    },
+    "月兔寻宝13500翡翠氪金攻略图\narcade_pinball\nsteampunk_gears": {
+      "signature": "1798702e6c281c9f52d0b4521559e097a59caf3a4d5ae05b540f3db8934be4bc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 518954,
+      "output_mtime_ns": 1789915806511567800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nbattle_route\nparchment": {
+      "signature": "e65dd216d977ee7333da98f8b576f073b23068b7a47f29d6868afefd96c857aa",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 455766,
+      "output_mtime_ns": 1789915807665481400
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nbattle_route\nnight_recon": {
+      "signature": "3da986c24fa5dd72c551315e039f005457f8568bba75db8e032c8353cbbb2f85",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 372852,
+      "output_mtime_ns": 1789915808903172500
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nbattle_route\nblueprint_command": {
+      "signature": "8df10160b84f1146c602cba9ddf128aecaf59a1f412420495dfb6ce2035a19da",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 369252,
+      "output_mtime_ns": 1789915809948374800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassic_clean\ngreen": {
+      "signature": "2d704579be2b3f2b64fef4ac516c1ef1b24557417b9ea364593efc0b5e4eb52f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 688957,
+      "output_mtime_ns": 1789915811086390600
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassic_clean\ngold": {
+      "signature": "3bf445abc2ce346aa796cf07ffda70efe123557cd48151dc336056f9f9de672f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 692976,
+      "output_mtime_ns": 1789915812307125800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassic_clean\nblue": {
+      "signature": "3d4e16de50e77972cc6dc677ac36170407bcbdd4d329dc2fd44ba649865e4029",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 688107,
+      "output_mtime_ns": 1789915814076392800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassic_clean\npurple": {
+      "signature": "4d5f75f0e150dc146b504b885c7c765d982cfd2df48a9978391c81340c82e338",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 688882,
+      "output_mtime_ns": 1789915815184430300
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassic_clean\nred": {
+      "signature": "f86ce7b5b4ec86837fc4b63df31006e45f0287619c2eeab7fe8dc8fc5606cf3f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 687729,
+      "output_mtime_ns": 1789915816342332500
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassic_clean\ncyan": {
+      "signature": "6cffcb23878aa6c48338b9c7cb295cf328349a022760190c9afbbad50bbba0ae",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 684863,
+      "output_mtime_ns": 1789915817423441200
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassified_dossier\ndefault": {
+      "signature": "e65976db472c46676a4a5ded7c3731208ce6406910b8a1aa424046c253b5f037",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1422587,
+      "output_mtime_ns": 1789915818655179300
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassified_dossier\nfield_olive": {
+      "signature": "33255740666be882fb8b35a22d1e14fe21ae05f304c8d12162cfab9ddd76ed88",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1393690,
+      "output_mtime_ns": 1789915819870928500
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nclassified_dossier\nintel_blue": {
+      "signature": "de2d72d4bb18871e5d955baceae31e17e9842723cef353c63d529c6eebf2e709",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1439873,
+      "output_mtime_ns": 1789915821135510600
+    },
+    "月兔寻宝13500翡翠氪金攻略图\ncomic_storyboard\nbw_red": {
+      "signature": "666fe86fed8bea6d01a373089993f6a023deb4692385299a8efff914fac44ef5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 668518,
+      "output_mtime_ns": 1789915821909439700
+    },
+    "月兔寻宝13500翡翠氪金攻略图\ncomic_storyboard\nretro_newsprint": {
+      "signature": "ef7d720886dc089c26c9d6de4b439c75430220be5eebf7e7808b4d38ce2c9451",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 662914,
+      "output_mtime_ns": 1789915822673398200
+    },
+    "月兔寻宝13500翡翠氪金攻略图\ncomic_storyboard\nnoir_casefile": {
+      "signature": "6677b1afeb95f916babb5995ffa07fbc3fb0718bb4858ff9e2a058e881d8eeea",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 619134,
+      "output_mtime_ns": 1789915823427413000
+    },
+    "月兔寻宝13500翡翠氪金攻略图\ngacha_machine\ndefault": {
+      "signature": "1d10347d006b08d01428c62bc1589636c80b7d1acc283d6e84cff7338f9385c1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 717197,
+      "output_mtime_ns": 1789915824058692500
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nhandwritten_notes\ndefault": {
+      "signature": "4fbc40163ab3509c8ac27ecd7cfc03804bdf5d96d2cfea99911d37a471cf31c7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 736602,
+      "output_mtime_ns": 1789915824775776200
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nhandwritten_notes\ncampus_white": {
+      "signature": "f90d2868b209e9f248d84969e00c6097b28aac690ebc1ea363a77681fd3c66c0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 744035,
+      "output_mtime_ns": 1789915825433015200
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nhandwritten_notes\nretro_lowprint": {
+      "signature": "8ff3ffe496aff7d16d1e3497caef996989e8adfce6f4f15365a57e08f00809f7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1262765,
+      "output_mtime_ns": 1789915827717153300
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nmusic_album\ndefault": {
+      "signature": "fdc1a0a3978358cadcb9574df2e30022424ac9d08ccde17a4f66efc4cdfe5350",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 211004,
+      "output_mtime_ns": 1789915828522999800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nreceipt_checkout\ndefault": {
+      "signature": "f8041e1a220a036e47efe37939aef46cf71e1a1079ce71dcd791b10acf61cf78",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 238254,
+      "output_mtime_ns": 1789915829375751600
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nsoft_neumorphic\ngreen": {
+      "signature": "d575168d47e2ee094f1ae8049aa98dd4baeffb2070fa610485e310717808a3ae",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 621954,
+      "output_mtime_ns": 1789915830095792000
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nsoft_neumorphic\ngold": {
+      "signature": "4dfd6c3e84cdfb6ffa3a775b5a98f106fef43a314c5fe44722bcdf03680f4856",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 621384,
+      "output_mtime_ns": 1789915830811397600
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nsoft_neumorphic\nblue": {
+      "signature": "5be909f40793f4b9915d22dddea21a0c1bb4d1e537d85ec74e961ae0f7a635bd",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 621192,
+      "output_mtime_ns": 1789915831548176200
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nsoft_neumorphic\npurple": {
+      "signature": "4ad8863af3fda79c7376f106d1573447cf5142eec4d3bba41810d72317eac58b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 620921,
+      "output_mtime_ns": 1789915832347160800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nsoft_neumorphic\nred": {
+      "signature": "52169d39a89ecf754ce1193b7cfd48510c653a7b7d33b9b677b4eefe6935e94a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 620883,
+      "output_mtime_ns": 1789915833086186600
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nsoft_neumorphic\ncyan": {
+      "signature": "0c5d04a42ebf4514ab271ac69e43ca0839e6b0843f6d3213859699ae9674f348",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 620926,
+      "output_mtime_ns": 1789915833773079200
+    },
+    "月兔寻宝13500翡翠氪金攻略图\ntv_news\ndefault": {
+      "signature": "c9adf1ca9c84cd14abf7214b2ebc7e6285b2852b11038502dc27e4121c5146ed",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 245169,
+      "output_mtime_ns": 1789915834430695600
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nxp_forum\ndefault": {
+      "signature": "3ebd8f5a015db6989fd075226b6fc2007803dcc63a02c8be22f15ecc09e3c66d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 592803,
+      "output_mtime_ns": 1789915835111873800
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nxp_forum\nphpbb_subsilver": {
+      "signature": "bc88b22a0ca327a2d4947008c3bc686d0f45e144573612ab8021dddf0d8c3495",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 590449,
+      "output_mtime_ns": 1789915835776095400
+    },
+    "月兔寻宝13500翡翠氪金攻略图\nxp_forum\nvbulletin3": {
+      "signature": "8a4152f449ee0d374e90f6f85862dfe11bdf48664b930360503a2caf1f0ad442",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260920月兔寻宝攻略\\月兔寻宝13500翡翠氪金攻略图\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 603300,
+      "output_mtime_ns": 1789915836518112000
+    }
+  }
+}

@@ -1,0 +1,10 @@
+
+### Attempt 1 of 3: Tsinghua mirror ###
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting numpy==1.26.4
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/b5/42/054082bd8220bbf6f297f982f0a8f5479fcbc55c8b511d928df07b965869/numpy-1.26.4-cp39-cp39-win_amd64.whl (15.8 MB)
+Collecting scipy==1.13.1
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/3e/77/dab54fe647a08ee4253963bcd8f9cf17509c8ca64d6335141422fe2e2114/scipy-1.13.1-cp39-cp39-win_amd64.whl (46.2 MB)
+Installing collected packages: numpy, scipy
+Successfully installed numpy-1.26.4 scipy-1.13.1
+Exit code: 0

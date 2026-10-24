@@ -1,0 +1,821 @@
+{
+  "schema": 1,
+  "entries": {
+    "1.4w钻\narcade_pinball\nclassic_red": {
+      "signature": "72c25a23827d5f2ca3f1ade2c2d8ee899088d64d3930cc06b0643f14226684b3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 450707,
+      "output_mtime_ns": 1791740266645995000
+    },
+    "1.4w钻\narcade_pinball\nneon_night": {
+      "signature": "5006fa9994eaab3b73541a1773f411f6e456f9734fce90a635aeadecb3b1e830",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 470181,
+      "output_mtime_ns": 1791740267140105800
+    },
+    "1.4w钻\narcade_pinball\nsteampunk_gears": {
+      "signature": "bc096449a3603f1176bcf73ba44328967b8491097a5fcce4baf4d00fb68c3335",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 427948,
+      "output_mtime_ns": 1791740267580895200
+    },
+    "1.4w钻\nbattle_route\nparchment": {
+      "signature": "28ab56a7da4b2e061709aa7da7435789eecb2f7c8ddd95b91c29e41c7e630b81",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 409655,
+      "output_mtime_ns": 1791740268566939800
+    },
+    "1.4w钻\nbattle_route\nnight_recon": {
+      "signature": "da61ae567c0464c414ba243c9eba3ec8cd62c670f868e44abffedce4128f5d43",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 314734,
+      "output_mtime_ns": 1791740269450574400
+    },
+    "1.4w钻\nbattle_route\nblueprint_command": {
+      "signature": "36e97b17afcec5d42f2aa69e637b6e29a0081647de3e218cdd88db5a45f36b23",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 305629,
+      "output_mtime_ns": 1791740270334501400
+    },
+    "1.4w钻\nclassic_clean\ngreen": {
+      "signature": "809b9b9d6a22cd79c1edbae29fdb772a83067992ed13aacfc55515883fa505a5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 540834,
+      "output_mtime_ns": 1791740272574397300
+    },
+    "1.4w钻\nclassic_clean\ngold": {
+      "signature": "8e2e2e8cdd1d0602b3fb7aaeb9d22104fe15c43e24dd059a6650f4637959a245",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 544614,
+      "output_mtime_ns": 1791740274090258600
+    },
+    "1.4w钻\nclassic_clean\nblue": {
+      "signature": "00d3724fb102d33b3812ec36ca262c9f0656a0329fde4123373d8195b46b0a66",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 541058,
+      "output_mtime_ns": 1791740275591471600
+    },
+    "1.4w钻\nclassic_clean\npurple": {
+      "signature": "dae92144e0dbbcfa1ce4c50a945134533dc17163a1fa7cd9279d28a606eec5a8",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 541772,
+      "output_mtime_ns": 1791740277105460100
+    },
+    "1.4w钻\nclassic_clean\nred": {
+      "signature": "9bb589ccb41b363b8c5d793c4de11039a74be7c9a2ef0ddac60e3b2d5ab80273",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 539813,
+      "output_mtime_ns": 1791740278632862800
+    },
+    "1.4w钻\nclassic_clean\ncyan": {
+      "signature": "2aacfd970e1d1d2d4d385f23fa8ba9e673a6c3df74dcaa91005dbc3bb4402d15",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 537564,
+      "output_mtime_ns": 1791740280145999600
+    },
+    "1.4w钻\nclassified_dossier\ndefault": {
+      "signature": "ae42b8d37f76635b0d52307e82312b219baa3126ff21aa08d42bf6c74ed7c691",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1047070,
+      "output_mtime_ns": 1791740281550804300
+    },
+    "1.4w钻\nclassified_dossier\nfield_olive": {
+      "signature": "72b06b695282d1bb078b7987bf7b0bcb130920c8216a8c62513452cb3dfc0962",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1080898,
+      "output_mtime_ns": 1791740282683565300
+    },
+    "1.4w钻\nclassified_dossier\nintel_blue": {
+      "signature": "943567e008c26900f8ab801c92da2b0705a6df2ee513e7cca7075500bf00d037",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1098678,
+      "output_mtime_ns": 1791740283855434900
+    },
+    "1.4w钻\ncomic_storyboard\nbw_red": {
+      "signature": "3a57cda6e299aae5281b8628f5d7701e03e711ba6ab6a3e9122470a379a0789a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 616143,
+      "output_mtime_ns": 1791740284701100700
+    },
+    "1.4w钻\ncomic_storyboard\nretro_newsprint": {
+      "signature": "ab2cc797be4481d5d110bf2ae9e71561a4870dc49d1c2c0675f14b4fb2902e40",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 631273,
+      "output_mtime_ns": 1791740285431194300
+    },
+    "1.4w钻\ncomic_storyboard\nnoir_casefile": {
+      "signature": "ba5f01e84fb7eca1700c02cc6c4b5c43ae762217455166d886de06e07e760a56",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 566080,
+      "output_mtime_ns": 1791740286203551200
+    },
+    "1.4w钻\ngacha_machine\ndefault": {
+      "signature": "66f3a801f46e46c3de0cf3aa52bba0618cd3e921d2b6bab3376545c26a341a13",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 644075,
+      "output_mtime_ns": 1791740286786684800
+    },
+    "1.4w钻\nhandwritten_notes\ndefault": {
+      "signature": "bff6a68d866660de1e3f7911acf6bc00f18044d6a3c6479e29f0337b75a9af90",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 592764,
+      "output_mtime_ns": 1791740287664333100
+    },
+    "1.4w钻\nhandwritten_notes\ncampus_white": {
+      "signature": "11c1ab974d5cb62cdd110fb573a5a2fa090fed2745c682d8b012a8f070bf0aeb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 591084,
+      "output_mtime_ns": 1791740288382414600
+    },
+    "1.4w钻\nhandwritten_notes\nretro_lowprint": {
+      "signature": "7a34493f1f01791097f365fd19ba09e70efdf3138fb78bb57017417c4527093f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 961858,
+      "output_mtime_ns": 1791740290369102600
+    },
+    "1.4w钻\nmusic_album\ndefault": {
+      "signature": "9512113b3b388e54588e14dbe10fb288d39f39bccdc3371640491b7cd7ae4e68",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 187839,
+      "output_mtime_ns": 1791740290856878900
+    },
+    "1.4w钻\nreceipt_checkout\ndefault": {
+      "signature": "c2a49f72fb5ff203fa81619d04faac1bedcaa52d7fe9609c7375e74d8ecb547e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 203913,
+      "output_mtime_ns": 1791740291363560700
+    },
+    "1.4w钻\nsoft_neumorphic\ngreen": {
+      "signature": "1714c77319eb216436d24f4ca220fe8d759c9bccf7de2b1b5eb0a5a06db7f815",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 504820,
+      "output_mtime_ns": 1791740292405743200
+    },
+    "1.4w钻\nsoft_neumorphic\ngold": {
+      "signature": "5783feaa61076ab5151a3f1a8619b23148ffa032466cab129305198d5c658bb6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 503967,
+      "output_mtime_ns": 1791740293175652400
+    },
+    "1.4w钻\nsoft_neumorphic\nblue": {
+      "signature": "a2ba8c3ef64538c183386f7c799c89bfdb215e8b92dfa9af01c9e91b8535d2b7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 503948,
+      "output_mtime_ns": 1791740293903739800
+    },
+    "1.4w钻\nsoft_neumorphic\npurple": {
+      "signature": "9e310b8329529b77c4016f6d6817c884abb11940c03783e3a01ea2c80f971427",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 503502,
+      "output_mtime_ns": 1791740294579158500
+    },
+    "1.4w钻\nsoft_neumorphic\nred": {
+      "signature": "3447f229810d3587878d192bf146547256dbf276f24d3c5eec9c63b1aafd2f35",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 503726,
+      "output_mtime_ns": 1791740295291957100
+    },
+    "1.4w钻\nsoft_neumorphic\ncyan": {
+      "signature": "54dd92b41381b0166fb54251cb780866286d93d079698295c0a037436be0539d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 503780,
+      "output_mtime_ns": 1791740295951091400
+    },
+    "1.4w钻\ntv_news\ndefault": {
+      "signature": "04f2fa17bb3bca00439b7d0f22d902f21dc120d0f9092a2768fe5bffad0c1a35",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 215514,
+      "output_mtime_ns": 1791740296334787000
+    },
+    "1.4w钻\nxp_forum\ndefault": {
+      "signature": "3a25c699025dcb6afe7e569db14712654753b6bf5854024ed3673647b0865356",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 521864,
+      "output_mtime_ns": 1791740296894556100
+    },
+    "1.4w钻\nxp_forum\nphpbb_subsilver": {
+      "signature": "ad78607ba3415f4c93c4d5ad9f98ab476158d0ac360357f67f7283d481d10899",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 519459,
+      "output_mtime_ns": 1791740297458049300
+    },
+    "1.4w钻\nxp_forum\nvbulletin3": {
+      "signature": "02d1af048ae1db4a61e3a72fd1ce563dd41532090b7b0d783a411a6835e1d77a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\1.4w钻\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 527744,
+      "output_mtime_ns": 1791740298046503600
+    },
+    "5w钻\narcade_pinball\nclassic_red": {
+      "signature": "d43a187a3963a76e1f92e4922201c25631147cffc2cc4eabcb3b76858ad50b96",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 493636,
+      "output_mtime_ns": 1791740300310043300
+    },
+    "5w钻\narcade_pinball\nneon_night": {
+      "signature": "49f93b033e2b7fca181f26815c252818c742229252e7844919de7a03f89e575b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 512445,
+      "output_mtime_ns": 1791740300874501200
+    },
+    "5w钻\narcade_pinball\nsteampunk_gears": {
+      "signature": "16076f56430d263e67e987148084fa8ad1d6c7c2b0cc77fddc234c521328f0b2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 469655,
+      "output_mtime_ns": 1791740301343249000
+    },
+    "5w钻\nbattle_route\nparchment": {
+      "signature": "8e2e4a7a9ff063fdf24757220ec89e34a0ae200e93212cd1d053f62aa3472adb",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 438788,
+      "output_mtime_ns": 1791740302309698000
+    },
+    "5w钻\nbattle_route\nnight_recon": {
+      "signature": "14715a8fdc5803d261def8b95b69102fae901dc68e3f826392eb00d13130c5dc",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 350186,
+      "output_mtime_ns": 1791740303259774400
+    },
+    "5w钻\nbattle_route\nblueprint_command": {
+      "signature": "2e71ac7c890a7e095ef11813d50debff2e21245d91108cd4e0f5eb9b21a75359",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 343236,
+      "output_mtime_ns": 1791740304217184200
+    },
+    "5w钻\nclassic_clean\ngreen": {
+      "signature": "f58eddd8a73fd4ef3bb32c3c2f9c5834d1a66abf22b66edb44803497d074a440",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 595566,
+      "output_mtime_ns": 1791740305282334900
+    },
+    "5w钻\nclassic_clean\ngold": {
+      "signature": "316bd1dea324dce5672061d243ac54f9023c0b95f51da73c9cef0b36b077f2ba",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 599906,
+      "output_mtime_ns": 1791740306316585000
+    },
+    "5w钻\nclassic_clean\nblue": {
+      "signature": "e87fbc18dac1eafd73aba37917beba067232acd5f85230603bb5aecf9a9e96b3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 596082,
+      "output_mtime_ns": 1791740307353799800
+    },
+    "5w钻\nclassic_clean\npurple": {
+      "signature": "48f8deae0cbf12b45bf5b80f641114ff92b24599bec9191d728fd356e0344f02",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 596802,
+      "output_mtime_ns": 1791740308387815900
+    },
+    "5w钻\nclassic_clean\nred": {
+      "signature": "f33a88bad96a3c75f61d33c5cda1b5e24cf4f1b1655fb9bd86e677876b63148a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 594618,
+      "output_mtime_ns": 1791740309416099200
+    },
+    "5w钻\nclassic_clean\ncyan": {
+      "signature": "219670208a7aee3f3f13ce42626c1a9741a4374d01a04a3fbe9cce123a0aa1a0",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 592421,
+      "output_mtime_ns": 1791740310445317000
+    },
+    "5w钻\nclassified_dossier\ndefault": {
+      "signature": "f8ecd471111ff7ff35b6654bc306676d48c521377ea908b9e7eeaaef6e4b58fa",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1197436,
+      "output_mtime_ns": 1791740311522437800
+    },
+    "5w钻\nclassified_dossier\nfield_olive": {
+      "signature": "67362a033ce3677f0a2e3615b43f8cd0c18f604a5442a0201c006e52be7f53e6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1174979,
+      "output_mtime_ns": 1791740312602584600
+    },
+    "5w钻\nclassified_dossier\nintel_blue": {
+      "signature": "509016256b33edbaa34402884b8e337b11d10d38e96f55afd82c176c5be35a93",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1215202,
+      "output_mtime_ns": 1791740313721596000
+    },
+    "5w钻\ncomic_storyboard\nbw_red": {
+      "signature": "2de4a035f01bffd92d1b3256ccd3eadeb2bb91e7091b6b70980d2d1ae13cfa51",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 664413,
+      "output_mtime_ns": 1791740314481698400
+    },
+    "5w钻\ncomic_storyboard\nretro_newsprint": {
+      "signature": "aa4b31a69ea58bd1ccc3178701b2ed159adc02770b64d942c285b625f7be65f7",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 682557,
+      "output_mtime_ns": 1791740315955758500
+    },
+    "5w钻\ncomic_storyboard\nnoir_casefile": {
+      "signature": "6627ef7012db145da50c49392bdc9d808e235cf916d0bf8ada3d638418e81468",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 649192,
+      "output_mtime_ns": 1791740316750695400
+    },
+    "5w钻\ngacha_machine\ndefault": {
+      "signature": "a1ae47c814f92bc82c85050cff522a579422d59ec4c37e1d7165f6ab2a772c54",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 674295,
+      "output_mtime_ns": 1791740317307241700
+    },
+    "5w钻\nhandwritten_notes\ndefault": {
+      "signature": "ea6e4ff7c6aab8d50e2b92a41526a69ec34118710b144fd7a4e3a9125aa2d90d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 662424,
+      "output_mtime_ns": 1791740317865627100
+    },
+    "5w钻\nhandwritten_notes\ncampus_white": {
+      "signature": "2f7eb0cbe82f02feff0379b4defe64e4492fafdce0fad10ad834fa18c118df57",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 665056,
+      "output_mtime_ns": 1791740318415671200
+    },
+    "5w钻\nhandwritten_notes\nretro_lowprint": {
+      "signature": "4c26f80ac04d8855c535329298d16e757a0f1fcc9018b0a5ce023f6501025e09",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1082147,
+      "output_mtime_ns": 1791740319802932300
+    },
+    "5w钻\nmusic_album\ndefault": {
+      "signature": "a23be99d67d2e7cd6f30881b1df49c3d33d60c24e70c9f95ffb5b2a4f43ab9a3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 205175,
+      "output_mtime_ns": 1791740320269586100
+    },
+    "5w钻\nreceipt_checkout\ndefault": {
+      "signature": "daa1e4480d8e1af7728da720cd5d69893c596e5478876ddef70146f20f07745f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 245332,
+      "output_mtime_ns": 1791740320834075700
+    },
+    "5w钻\nsoft_neumorphic\ngreen": {
+      "signature": "26a3e4176f81fc682f9da75256e721bf8024061b2e97a1a2afa3e0b87baea56b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 550295,
+      "output_mtime_ns": 1791740323752506800
+    },
+    "5w钻\nsoft_neumorphic\ngold": {
+      "signature": "1a752fcdfba2786eaad4af033404030fd2a128cdf6afb10493f4ac5449cf6fcd",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 549603,
+      "output_mtime_ns": 1791740324447552000
+    },
+    "5w钻\nsoft_neumorphic\nblue": {
+      "signature": "dbbd8a5fb506b2207e2c357bd448b6477b4e442b1689a0ad5e0f02009570e36d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 549604,
+      "output_mtime_ns": 1791740325149670800
+    },
+    "5w钻\nsoft_neumorphic\npurple": {
+      "signature": "a7261a5b26133418cf7bdf3f409c93cab0730fb5d3e9653549c0823051aec79f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 549144,
+      "output_mtime_ns": 1791740325836866500
+    },
+    "5w钻\nsoft_neumorphic\nred": {
+      "signature": "7bd6391e13b7dd4fad07b2dcf5996f4c3866b5a842cbf783657114d23ecfd99f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 549387,
+      "output_mtime_ns": 1791740326543000500
+    },
+    "5w钻\nsoft_neumorphic\ncyan": {
+      "signature": "efbdb77daa941420f811b4eb1e935e206ddf928f0d627d218b3866ae24782894",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 549427,
+      "output_mtime_ns": 1791740327230354300
+    },
+    "5w钻\ntv_news\ndefault": {
+      "signature": "a59f56df8e2cdc596c90c0448fea4996dde5dc2b87135efa68a1eba9eaecfdb4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 235080,
+      "output_mtime_ns": 1791740327655218200
+    },
+    "5w钻\nxp_forum\ndefault": {
+      "signature": "e668e4cf37c16ad74f4dcb1756581950071bf34b2b9f9bd7cbc9f178a9171b25",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 562406,
+      "output_mtime_ns": 1791740328151776900
+    },
+    "5w钻\nxp_forum\nphpbb_subsilver": {
+      "signature": "61de5f7e2623b207ba6726632f978060945d66f46826d5c028f6624e06f1f988",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 559588,
+      "output_mtime_ns": 1791740328661082300
+    },
+    "5w钻\nxp_forum\nvbulletin3": {
+      "signature": "5cf9d99de3ee42e286e465bbcd6b12f0eb0f90b468e4634be96f5e683ced85b2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\5w钻\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 570889,
+      "output_mtime_ns": 1791740329158786200
+    },
+    "4000翡翠\narcade_pinball\nclassic_red": {
+      "signature": "7756270a5982c73d02df74f8b1bc33d71e0356e0d0863fd790f704ffdfcb9959",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 513909,
+      "output_mtime_ns": 1791740331275501800
+    },
+    "4000翡翠\narcade_pinball\nneon_night": {
+      "signature": "6c5670ba8e9cb774583ec00872e45b49bb468ead3e36e8b96dcf1a5699236d3d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 534497,
+      "output_mtime_ns": 1791740331795879100
+    },
+    "4000翡翠\narcade_pinball\nsteampunk_gears": {
+      "signature": "f96b01411bf4a40410ad940acbeb072bc9ef4927f9f7625dfcd7a08fd2b1c9ad",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 489938,
+      "output_mtime_ns": 1791740332256699900
+    },
+    "4000翡翠\nbattle_route\nparchment": {
+      "signature": "cf4af2ff58c027014518ba66ab4eb0cabf1339410c5efd160985028363c570da",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 446614,
+      "output_mtime_ns": 1791740333205697100
+    },
+    "4000翡翠\nbattle_route\nnight_recon": {
+      "signature": "951a8a0dbd6abfda041ccac723f160461eb9a0569e5c01a26c805fe165c5ca91",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 357625,
+      "output_mtime_ns": 1791740334137209800
+    },
+    "4000翡翠\nbattle_route\nblueprint_command": {
+      "signature": "09ce4c6b9329883c6682af794fbf3a54b951529d4479d49b6d9bf3976f227b54",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 331128,
+      "output_mtime_ns": 1791740335052766500
+    },
+    "4000翡翠\nclassic_clean\ngreen": {
+      "signature": "6898b565b2fe3f9fd865972b86eb34082ac323f40aaad3e05a8f7769dbd7859b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 648326,
+      "output_mtime_ns": 1791740336546448900
+    },
+    "4000翡翠\nclassic_clean\ngold": {
+      "signature": "def916e966090038ed4c05d76cba551c4dc92f84e1f822d01d0da23786e06815",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 651588,
+      "output_mtime_ns": 1791740338001592600
+    },
+    "4000翡翠\nclassic_clean\nblue": {
+      "signature": "f514f55bed16f3705b0c1c116e306bd1999bd860fd0caa894c41ca1a9cad8f01",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 648243,
+      "output_mtime_ns": 1791740339445734700
+    },
+    "4000翡翠\nclassic_clean\npurple": {
+      "signature": "2ca29021a242742d7a6ec56e60d018c5e1179b7d2c0d394ff73a352f220bb5c3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 648876,
+      "output_mtime_ns": 1791740340880939300
+    },
+    "4000翡翠\nclassic_clean\nred": {
+      "signature": "cd277674a8d6dbf81bf1c082c7abb65aaceeb16cd58116634789bac25493130a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 647241,
+      "output_mtime_ns": 1791740342318059600
+    },
+    "4000翡翠\nclassic_clean\ncyan": {
+      "signature": "c911720a7f18235d593f4d293374187e9ab837662a52c04ca81d8eea6684adda",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 644751,
+      "output_mtime_ns": 1791740343761289600
+    },
+    "4000翡翠\nclassified_dossier\ndefault": {
+      "signature": "c9c970ce132af8e4d0ea64ae2a0c0ed24f999d9b7eb65ca39f5a6f4c7246127e",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1293541,
+      "output_mtime_ns": 1791740344914198200
+    },
+    "4000翡翠\nclassified_dossier\nfield_olive": {
+      "signature": "a0d7588d85dd13c7ff58c114fcc3644dbb4d284f46b3cbdd894de3e3f8ec4872",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1325775,
+      "output_mtime_ns": 1791740346101000700
+    },
+    "4000翡翠\nclassified_dossier\nintel_blue": {
+      "signature": "275a857b3f0b3d086d3c323147611b6f2e0bbad5303aea969d7884a35cf35179",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1288040,
+      "output_mtime_ns": 1791740347277853900
+    },
+    "4000翡翠\ncomic_storyboard\nbw_red": {
+      "signature": "22b466d1279b9cc9cfec84bffd7a5b6fe483a42055b5c41f854ecb64f470bb95",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 611999,
+      "output_mtime_ns": 1791740348011712200
+    },
+    "4000翡翠\ncomic_storyboard\nretro_newsprint": {
+      "signature": "0ad4ca3a51a75202f45bec5c11e48f6b682088896cd2d895ec5e79e613348add",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 619048,
+      "output_mtime_ns": 1791740348753763400
+    },
+    "4000翡翠\ncomic_storyboard\nnoir_casefile": {
+      "signature": "23249c427acb51efcb5d7795ae21c6b4e7dae43ee9b17fb65d47e4212b875002",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 609639,
+      "output_mtime_ns": 1791740349487766400
+    },
+    "4000翡翠\ngacha_machine\ndefault": {
+      "signature": "55b6cc7ffab1d0bbb91068989172199994a14f7ddd96f20df4f9c8a0b0624c2d",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 691583,
+      "output_mtime_ns": 1791740350056648600
+    },
+    "4000翡翠\nhandwritten_notes\ndefault": {
+      "signature": "02467b166a00e97a133a6a639355a6561e3fc78797699f1a43dccf10abd1aa92",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 701978,
+      "output_mtime_ns": 1791740350665985400
+    },
+    "4000翡翠\nhandwritten_notes\ncampus_white": {
+      "signature": "d0a70ef6068133713eea5a400f3eb01e29f481ae53dc23fda1e887e0c5e34c68",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 709639,
+      "output_mtime_ns": 1791740351269405600
+    },
+    "4000翡翠\nhandwritten_notes\nretro_lowprint": {
+      "signature": "8bb4e52b7fc69603e37275ea046b6b495ba94dffb4fcebabab9b2fa877a3f624",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1182520,
+      "output_mtime_ns": 1791740352732495500
+    },
+    "4000翡翠\nmusic_album\ndefault": {
+      "signature": "960d017c462fd3c23c1891270432725979cc83504cfd9b155c3b781afd52a9af",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 210536,
+      "output_mtime_ns": 1791740353186251500
+    },
+    "4000翡翠\nreceipt_checkout\ndefault": {
+      "signature": "2f4e92929b3a8b94bcda2d735c4772dec48b4296c4d9293084352c9e0d1cb94c",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 252594,
+      "output_mtime_ns": 1791740353709883900
+    },
+    "4000翡翠\nsoft_neumorphic\ngreen": {
+      "signature": "b6e663ddf6473bcb1c4362459cb535bcc46f4727cf2448825aac0b3aab635f8b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 588004,
+      "output_mtime_ns": 1791740354457107700
+    },
+    "4000翡翠\nsoft_neumorphic\ngold": {
+      "signature": "a9ecc57c84a3fbac9b218b0f609f73277dfbfa9d37eebaf1c73281f0a8533409",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 587282,
+      "output_mtime_ns": 1791740355153713000
+    },
+    "4000翡翠\nsoft_neumorphic\nblue": {
+      "signature": "7329257bf0c0a0287c6dfe5b49db559e6f92f7af16ceeb4328cccacce7ee6bc4",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 587114,
+      "output_mtime_ns": 1791740355862103000
+    },
+    "4000翡翠\nsoft_neumorphic\npurple": {
+      "signature": "54313f6cf0a61474b1f950c7cb60db6553b86a2b38806a35ca61f83a31633f83",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 586816,
+      "output_mtime_ns": 1791740356565741500
+    },
+    "4000翡翠\nsoft_neumorphic\nred": {
+      "signature": "9c64242c6ce85f3fc3d2cfa5c40ad4ad75fc39bb7327c805858701050eb1c55b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 586699,
+      "output_mtime_ns": 1791740357258277300
+    },
+    "4000翡翠\nsoft_neumorphic\ncyan": {
+      "signature": "bdee116e0ed25474bd8f2b293ed2979db1001cbec56a893542b7aa63862e1313",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 586816,
+      "output_mtime_ns": 1791740357958412600
+    },
+    "4000翡翠\ntv_news\ndefault": {
+      "signature": "e63708cf72e6fc7da0a19356dc51623377cede59342a3f9922753d264021d702",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 241395,
+      "output_mtime_ns": 1791740358367353100
+    },
+    "4000翡翠\nxp_forum\ndefault": {
+      "signature": "a56c2fbbe9b05c3910f43a04db4ab35a6f707f2b9cfbc2f00b2037964175d926",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 582479,
+      "output_mtime_ns": 1791740358868980600
+    },
+    "4000翡翠\nxp_forum\nphpbb_subsilver": {
+      "signature": "89be04c4a4c0dcb658c2c81b2de712d7f9864975390ba470316794c6cc86fe36",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 579282,
+      "output_mtime_ns": 1791740359390688200
+    },
+    "4000翡翠\nxp_forum\nvbulletin3": {
+      "signature": "df072a1fbe3be5f64131239516f9556b5e8298ea4e961683af04e517242dc390",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\4000翡翠\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 592774,
+      "output_mtime_ns": 1791740359918278200
+    },
+    "20500翡翠\narcade_pinball\nclassic_red": {
+      "signature": "13c35fcdc77b5ac6b782c342e5d8d62d7ee92174a4b967a4144132b598cac515",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\街机弹珠_v1.4.0\\01_经典街机·红柜弹珠.png",
+      "output_size": 532351,
+      "output_mtime_ns": 1791740362069393500
+    },
+    "20500翡翠\narcade_pinball\nneon_night": {
+      "signature": "2bd5f782677fae5071f3544eebb55a35784bffadff628944aac3ada6516623df",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\街机弹珠_v1.4.0\\02_午夜霓虹·夜场弹珠.png",
+      "output_size": 555497,
+      "output_mtime_ns": 1791740362628153000
+    },
+    "20500翡翠\narcade_pinball\nsteampunk_gears": {
+      "signature": "9b162975da618b13848a0fd8f65e9106ae73d7981020b27752e3a910816a40a3",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\街机弹珠_v1.4.0\\03_蒸汽齿轮·黄铜弹珠.png",
+      "output_size": 511165,
+      "output_mtime_ns": 1791740363133836300
+    },
+    "20500翡翠\nbattle_route\nparchment": {
+      "signature": "4d23e9aa2eb4120096d5e87386d888f5e60718a8bf7f6995853f0c513c3924e6",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\战术作战路线图_v2.1.0\\04_复古军用作战图.png",
+      "output_size": 463857,
+      "output_mtime_ns": 1791740364182339900
+    },
+    "20500翡翠\nbattle_route\nnight_recon": {
+      "signature": "ecc893bbbfad05c081e56bb9631841b307f52b076f609d9ab8d224c6be0f77a1",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\战术作战路线图_v2.1.0\\05_夜间侦察作战图.png",
+      "output_size": 361422,
+      "output_mtime_ns": 1791740365127810700
+    },
+    "20500翡翠\nbattle_route\nblueprint_command": {
+      "signature": "d55c790b321a7f2a27dd59710779e1fdb002949b61d1ae9e917461b3a7e2db84",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\战术作战路线图_v2.1.0\\06_蓝图战术指挥图.png",
+      "output_size": 352727,
+      "output_mtime_ns": 1791740366097173300
+    },
+    "20500翡翠\nclassic_clean\ngreen": {
+      "signature": "021aea72bf4752bd19e04574a164d6d7762b2483ff33622cf21ea7b39a012ca9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\07_绿色.png",
+      "output_size": 655088,
+      "output_mtime_ns": 1791740367383045000
+    },
+    "20500翡翠\nclassic_clean\ngold": {
+      "signature": "fb7f128ae90661517407558d96b63195d98e5853c115c56c5e239388b3f4e4ec",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\08_金色.png",
+      "output_size": 658292,
+      "output_mtime_ns": 1791740368721746000
+    },
+    "20500翡翠\nclassic_clean\nblue": {
+      "signature": "d6ab174358882f781a86c0b7db2fe1779ce3021fae142ae43b220620541f80dd",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\09_蓝色.png",
+      "output_size": 654553,
+      "output_mtime_ns": 1791740370057177000
+    },
+    "20500翡翠\nclassic_clean\npurple": {
+      "signature": "866397ed0f565438e7daed0f0b18ae411e0147738456111a75e9c9d09508f443",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\10_紫色.png",
+      "output_size": 655055,
+      "output_mtime_ns": 1791740371371410500
+    },
+    "20500翡翠\nclassic_clean\nred": {
+      "signature": "726b7ccf809c05c81b9a9b9b5782ddb20356aa15fd8b0264fa94be4d34825d21",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\11_红色.png",
+      "output_size": 653661,
+      "output_mtime_ns": 1791740372665037300
+    },
+    "20500翡翠\nclassic_clean\ncyan": {
+      "signature": "2ddd4aba995116687d20083d094b86ab54ab6099851c0a46be27c60a7c7ebe4f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\经典简洁_v1.6.58\\12_青色.png",
+      "output_size": 651453,
+      "output_mtime_ns": 1791740373937600500
+    },
+    "20500翡翠\nclassified_dossier\ndefault": {
+      "signature": "8f5e5e25d078f12ef5cbcbfb53215773f38da017300782962f716a54bb4a216b",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\机密行动档案_v1.1.1\\13_黑红机密档案.png",
+      "output_size": 1392753,
+      "output_mtime_ns": 1791740375068577600
+    },
+    "20500翡翠\nclassified_dossier\nfield_olive": {
+      "signature": "e1b9f625020ecdd8aa1e314b34bd92e0c35193126bb872a6da2e19b566fae036",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\机密行动档案_v1.1.1\\14_军绿战术卷宗.png",
+      "output_size": 1401324,
+      "output_mtime_ns": 1791740376220895500
+    },
+    "20500翡翠\nclassified_dossier\nintel_blue": {
+      "signature": "bd0069a30841e9907472498ba79b0e4e2f915bedc26d7802a3bb8f4dc1d12609",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\机密行动档案_v1.1.1\\15_冷蓝情报档案.png",
+      "output_size": 1369393,
+      "output_mtime_ns": 1791740377349780200
+    },
+    "20500翡翠\ncomic_storyboard\nbw_red": {
+      "signature": "95cd994e60fa47bf415ae77c883a101a247cf1908febea086c4ec2e1e82dc613",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\漫画分镜攻略_v3.4.0\\16_黑白漫画·红色重点.png",
+      "output_size": 590877,
+      "output_mtime_ns": 1791740378116974700
+    },
+    "20500翡翠\ncomic_storyboard\nretro_newsprint": {
+      "signature": "11c355ca3055dd5ef91738b3a784b836e5471b7da3cc5d1afb5d6982c3a35fd5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\漫画分镜攻略_v3.4.0\\17_复古旧刊·泛黄彩印.png",
+      "output_size": 588046,
+      "output_mtime_ns": 1791740378932930700
+    },
+    "20500翡翠\ncomic_storyboard\nnoir_casefile": {
+      "signature": "a770c1d4598e4b11b0f8a76b30f080ebd47195b0fb5db7005d52fc97deb94c91",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\漫画分镜攻略_v3.4.0\\18_侦探悬疑·黑红案件簿.png",
+      "output_size": 566835,
+      "output_mtime_ns": 1791740379768593800
+    },
+    "20500翡翠\ngacha_machine\ndefault": {
+      "signature": "1f4b5e9cea3ecb03d3f6f580a333fc67ebf0246e32f6d42f340259edfea44079",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\扭蛋机攻略_v1.0.0\\19_基础版.png",
+      "output_size": 666554,
+      "output_mtime_ns": 1791740380381282100
+    },
+    "20500翡翠\nhandwritten_notes\ndefault": {
+      "signature": "fc8e41cf40399fb5ff665e37e0ea0086549a2f2610f4d13f995f9d467d75c32a",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\手绘玩家笔记_v1.6.3\\20_米白手账·红笔作战稿.png",
+      "output_size": 745632,
+      "output_mtime_ns": 1791740381088019200
+    },
+    "20500翡翠\nhandwritten_notes\ncampus_white": {
+      "signature": "6840e3c128e5a2c3fc39f689e376ff1d9adf632e578eff1279702e937ead01c9",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\手绘玩家笔记_v1.6.3\\21_白纸审阅稿·黑笔红批.png",
+      "output_size": 751383,
+      "output_mtime_ns": 1791740381708677200
+    },
+    "20500翡翠\nhandwritten_notes\nretro_lowprint": {
+      "signature": "a309f38053653302b9a9682be0d4dd40d77b2d60d91f76cee8ba38bafff91c98",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\手绘玩家笔记_v1.6.3\\22_泛黄讲义·低清旧印刷.png",
+      "output_size": 1271661,
+      "output_mtime_ns": 1791740383356273100
+    },
+    "20500翡翠\nmusic_album\ndefault": {
+      "signature": "dd7aeb12beb02558ed5939001601865363e04461925e099c8b7af6a6075937f2",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\音乐专辑攻略_v1.0.0\\23_基础版.png",
+      "output_size": 210454,
+      "output_mtime_ns": 1791740383841219500
+    },
+    "20500翡翠\nreceipt_checkout\ndefault": {
+      "signature": "9d2a7acf3db33e964a622615800c66507dcf991a7b0b12b9d994010213ee6f93",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\收银小票攻略_v1.0.0\\24_基础版.png",
+      "output_size": 237301,
+      "output_mtime_ns": 1791740384470575500
+    },
+    "20500翡翠\nsoft_neumorphic\ngreen": {
+      "signature": "3cfd9afd4120f4279a938e6446127b1c8585e2593ed714fd3b16cd2ab14a86ef",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\25_绿色.png",
+      "output_size": 630753,
+      "output_mtime_ns": 1791740385258370000
+    },
+    "20500翡翠\nsoft_neumorphic\ngold": {
+      "signature": "1e8bc8fbaac966cea74f807a1392d82a4b64b15895c5786c67f36919cdf9ff8f",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\26_金色.png",
+      "output_size": 630117,
+      "output_mtime_ns": 1791740388976024200
+    },
+    "20500翡翠\nsoft_neumorphic\nblue": {
+      "signature": "12410a767f27aca1a189e30744721db196c41f3d6dd413650ff1e828511ab9da",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\27_蓝色.png",
+      "output_size": 629827,
+      "output_mtime_ns": 1791740389764389800
+    },
+    "20500翡翠\nsoft_neumorphic\npurple": {
+      "signature": "c1a161c247b7e3557811b564a8b8cdabf85fcc21d4583b9a1d90bd37a61e75d5",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\28_紫色.png",
+      "output_size": 629590,
+      "output_mtime_ns": 1791740390607162600
+    },
+    "20500翡翠\nsoft_neumorphic\nred": {
+      "signature": "a75bc019d2e7fb0a5d4db3ffb4c099300e34adba6a2c62ff6e7f6d0ebd61a707",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\29_红色.png",
+      "output_size": 629194,
+      "output_mtime_ns": 1791740391837848500
+    },
+    "20500翡翠\nsoft_neumorphic\ncyan": {
+      "signature": "72bb1162f982137518066e1fa00b30cbe3d9ace6b8327e325ebf47f6d437bb56",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\柔光新拟物_v1.0.0\\30_青色.png",
+      "output_size": 629453,
+      "output_mtime_ns": 1791740393242095800
+    },
+    "20500翡翠\ntv_news\ndefault": {
+      "signature": "a5cfa1c27745e10075826b699fdf6d9c8d2d8854a0512b1c95a5efdeb3121b81",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\电视新闻特别节目_v1.0.0\\31_基础版.png",
+      "output_size": 241252,
+      "output_mtime_ns": 1791740394172608000
+    },
+    "20500翡翠\nxp_forum\ndefault": {
+      "signature": "b02c527bf362711e1361ebb4a39937f1b4b13891ad6cf831635d504f684963fa",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\Windows XP论坛精华帖_v1.6.0\\32_XP 经典蓝.png",
+      "output_size": 594046,
+      "output_mtime_ns": 1791740395169942000
+    },
+    "20500翡翠\nxp_forum\nphpbb_subsilver": {
+      "signature": "aa8f826851de41bbc8f0b4521123d8cea3a8bd1672c652ff2db5215efe2cbd62",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\Windows XP论坛精华帖_v1.6.0\\33_phpBB 银灰.png",
+      "output_size": 590566,
+      "output_mtime_ns": 1791740395959021300
+    },
+    "20500翡翠\nxp_forum\nvbulletin3": {
+      "signature": "85b0af40d74ed60b866690a7c9f34ef075424a8be842148d70064f275f497806",
+      "path": "D:\\卡皮模拟\\攻略图生成器\\output\\261012哥布林弹珠攻略\\20500翡翠\\Windows XP论坛精华帖_v1.6.0\\34_vBulletin 靛蓝.png",
+      "output_size": 604298,
+      "output_mtime_ns": 1791740396583639900
+    }
+  }
+}

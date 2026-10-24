@@ -200,6 +200,86 @@
       "name": "灰烬始祖龙",
       "icon": "assets/reward/icon_mount_huijinshizulong.png",
       "quality": "chaoyue"
+    },
+    {
+      "name": "桂月玉兔",
+      "icon": "assets/reward/icon_359002.png",
+      "quality": "pink"
+    },
+    {
+      "name": "盛世华匣",
+      "icon": "assets/reward/icon_359003.png",
+      "quality": "pink"
+    },
+    {
+      "name": "汉谟拉比法典",
+      "icon": "assets/reward/icon_1376004.png",
+      "quality": "red"
+    },
+    {
+      "name": "罗塞塔石碑",
+      "icon": "assets/reward/icon_1376003.png",
+      "quality": "red"
+    },
+    {
+      "name": "图坦卡蒙匕首",
+      "icon": "assets/reward/icon_1376014.png",
+      "quality": "red"
+    },
+    {
+      "name": "吴王夫差剑",
+      "icon": "assets/reward/icon_1376013.png",
+      "quality": "red"
+    },
+    {
+      "name": "深渊吞噬者",
+      "icon": "assets/reward/icon_artifact_shenyuantunshizhe.png",
+      "quality": "chaoyue"
+    },
+    {
+      "name": "精力",
+      "icon": "assets/reward/icon_CapyBattery.png",
+      "quality": "purple"
+    },
+    {
+      "name": "卡皮筹码",
+      "icon": "assets/reward/icon_Capymon_Coin.png",
+      "quality": "orange"
+    },
+    {
+      "name": "传说钥匙",
+      "icon": "assets/reward/icon_key_diamond.png",
+      "quality": "orange"
+    },
+    {
+      "name": "宝石钥匙",
+      "icon": "assets/reward/icon_key_gem.png",
+      "quality": "orange"
+    },
+    {
+      "name": "秘宝钥匙",
+      "icon": "assets/reward/icon_key_collection.png",
+      "quality": "orange"
+    },
+    {
+      "name": "大卫雕像",
+      "icon": "assets/reward/icon_1376011.png",
+      "quality": "red"
+    },
+    {
+      "name": "李纲锏",
+      "icon": "assets/reward/icon_1376019.png",
+      "quality": "red"
+    },
+    {
+      "name": "超越自选箱",
+      "icon": "assets/reward/icon_chest_chaoyuezixuanxiang.png",
+      "quality": "chaoyue"
+    },
+    {
+      "name": "鬼屋",
+      "icon": "assets/reward/homeItemIcon_902201.png",
+      "quality": "pink"
     }
   ],
   "quality_borders": {

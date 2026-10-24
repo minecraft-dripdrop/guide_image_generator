@@ -3,6 +3,7 @@
 import math
 import re
 import time
+from functools import lru_cache
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageOps, ImageFont, ImageFilter, ImageChops
 from .shared import SharedRendererTools
@@ -10,7 +11,119 @@ from .reward_items import RewardItemRenderer
 
 STYLE_IDS = ("classic_clean", "classic_cards")
 
+# ---------------------------------------------------------------------------
+# Classic theme font support
+#
+# User-facing font paths and exchange/reward text sizes live in
+# themes/classic_clean/theme.json -> renderer.  This renderer only reads and
+# applies those values so normal tuning does not require editing Python.
+# ---------------------------------------------------------------------------
+@lru_cache(maxsize=64)
+def _load_classic_font_cached(path_text, mtime_ns, size):
+    try:
+        return ImageFont.truetype(path_text, size=max(1, int(size)))
+    except Exception:
+        return None
 
+
+def _resolve_classic_font_path(guide, services, raw):
+    """Resolve a user-filled classic font path without changing global config."""
+    raw = str(raw or "").strip()
+    if not raw:
+        return None
+
+    cfg = guide.get("cfg") or {}
+    try:
+        resolved = services.resolve_path(cfg, raw)
+        if resolved and Path(resolved).is_file():
+            return Path(resolved)
+    except Exception:
+        pass
+
+    direct = Path(raw).expanduser()
+    if direct.is_file():
+        return direct
+
+    script_root = Path(str(cfg.get("_script_dir") or ""))
+    if script_root:
+        candidate = (script_root / raw).expanduser()
+        if candidate.is_file():
+            return candidate
+    return None
+
+
+def _install_classic_fonts(guide, services):
+    """Temporarily route classic_clean through font paths from theme.json.
+
+    Supported renderer keys:
+      font_path / font_regular_path: regular text
+      font_bold_path: bold text (falls back to regular path)
+
+    Paths may be project-relative or absolute. Empty values preserve the
+    generator's normal config/system font behavior.
+    """
+    theme_cfg = guide.get("theme_config") or {}
+    rcfg = theme_cfg.get("renderer") if isinstance(theme_cfg.get("renderer"), dict) else {}
+
+    regular_raw = rcfg.get("font_regular_path") or rcfg.get("font_path")
+    bold_raw = rcfg.get("font_bold_path")
+    regular = _resolve_classic_font_path(guide, services, regular_raw)
+    bold = _resolve_classic_font_path(guide, services, bold_raw) or regular
+    if regular is None and bold is None:
+        return None
+
+    old_service_get_font = services._values.get("get_font") if hasattr(services, "_values") else None
+
+    # Engine drawing helpers (draw_left/draw_center/draw_kpi_card/...) share the
+    # same module globals.  Repoint that module-level get_font during this render
+    # so the entire classic theme, not only renderer-local text, changes font.
+    engine_globals = None
+    old_engine_get_font = None
+    try:
+        probe = services.draw_left
+        if callable(probe) and hasattr(probe, "__globals__"):
+            engine_globals = probe.__globals__
+            old_engine_get_font = engine_globals.get("get_font")
+    except Exception:
+        engine_globals = None
+
+    def themed_get_font(size, is_bold=False):
+        path = bold if is_bold else regular
+        if path is None:
+            path = regular or bold
+        if path is not None:
+            try:
+                mtime_ns = path.stat().st_mtime_ns
+            except Exception:
+                mtime_ns = 0
+            font = _load_classic_font_cached(str(path), int(mtime_ns), int(size))
+            if font is not None:
+                return font
+        if old_service_get_font is not None:
+            return old_service_get_font(size, is_bold)
+        return ImageFont.load_default()
+
+    if hasattr(services, "_values"):
+        services._values["get_font"] = themed_get_font
+    if engine_globals is not None:
+        engine_globals["get_font"] = themed_get_font
+    return old_service_get_font, engine_globals, old_engine_get_font
+
+
+def _restore_classic_fonts(services, state):
+    if not state:
+        return
+    old_service_get_font, engine_globals, old_engine_get_font = state
+    if hasattr(services, "_values"):
+        if old_service_get_font is None:
+            services._values.pop("get_font", None)
+        else:
+            services._values["get_font"] = old_service_get_font
+    if engine_globals is not None:
+        if old_engine_get_font is None:
+            engine_globals.pop("get_font", None)
+        else:
+            engine_globals["get_font"] = old_engine_get_font
 
 
 # ---------------------------------------------------------------------------
@@ -765,7 +878,35 @@ class ClassicRewardRenderer:
         self.guide = guide
         self.cfg = guide.get("cfg") or {}
         self.palette = guide.get("palette") or {}
+        theme_cfg = guide.get("theme_config") or {}
+        self.renderer_cfg = theme_cfg.get("renderer") if isinstance(theme_cfg.get("renderer"), dict) else {}
         self.items = RewardItemRenderer(services, guide)
+
+        def _cfg_int(name, default, minimum=1):
+            try:
+                value = int(self.renderer_cfg.get(name, default) or default)
+            except Exception:
+                value = int(default)
+            return max(int(minimum), value)
+
+        self.reward_name_max = _cfg_int("exchange_name_font_size", 20, 10)
+        self.reward_name_min = min(
+            self.reward_name_max, _cfg_int("exchange_name_min_font_size", 15, 9)
+        )
+        self.reward_qty_max = _cfg_int("exchange_qty_font_size", 16, 9)
+        self.reward_qty_min = min(
+            self.reward_qty_max, _cfg_int("exchange_qty_min_font_size", 13, 8)
+        )
+        self.reward_compact_name_max = _cfg_int("exchange_compact_name_font_size", 18, 10)
+        self.reward_compact_name_min = min(
+            self.reward_compact_name_max,
+            _cfg_int("exchange_compact_name_min_font_size", 14, 9),
+        )
+        self.reward_compact_qty_max = _cfg_int("exchange_compact_qty_font_size", 15, 9)
+        self.reward_compact_qty_min = min(
+            self.reward_compact_qty_max,
+            _cfg_int("exchange_compact_qty_min_font_size", 12, 8),
+        )
 
     def quality(self, node):
         if not isinstance(node, dict):
@@ -837,36 +978,102 @@ class ClassicRewardRenderer:
         q = resolved.get("quality") or "white"
         box_w = max(1, x2 - x1)
         box_h = max(1, y2 - y1)
-        side_cap = 92 if compact else 98
-        icon_side = min(box_w - 20, max(72, int(box_h * (0.52 if compact else 0.58))), side_cap)
-        icon_side = max(58, icon_side)
-        icon_x1 = int(x1 + (box_w - icon_side) / 2)
-        icon_y1 = int(y1 + (6 if compact else 8))
+
+        # 回退到更稳妥的左图右文结构，并尽量保持 choice 内图标和独立奖励图标同尺度。
+        side_pad = 10 if compact else 12
+        gap = 10 if compact else 12
+        text_min_w = 76 if compact else 88
+        icon_pref = 70 if compact else 74
+        icon_side = min(
+            icon_pref,
+            max(44, box_h - (18 if compact else 20)),
+            max(44, box_w - text_min_w - side_pad * 2 - gap),
+        )
+        icon_side = max(46 if compact else 50, int(icon_side))
+
+        icon_x1 = int(x1 + side_pad)
+        icon_y1 = int(round((y1 + y2 - icon_side) / 2))
         icon_box = (icon_x1, icon_y1, icon_x1 + icon_side, icon_y1 + icon_side)
         # Restore the project's original quality-frame artwork (including its gradient/background),
         # rather than replacing it with a code-drawn outline.
         self.items.draw_icon(base, item, icon_box, draw_quality_frame=True, assume_quality_frame=True)
 
         if not resolved.get("icon_path"):
-            inner = (icon_x1 + 18, icon_y1 + 16, icon_x1 + icon_side - 18, icon_y1 + icon_side - 18)
+            inner = (icon_x1 + 14, icon_y1 + 14, icon_x1 + icon_side - 14, icon_y1 + icon_side - 14)
             self.s.rounded(draw, inner, 10, self.palette.get("light", "#EEF3F7"))
             self.s.draw_center(draw, inner, "物品图", self.palette.get("dark", "#34495E"), max_size=13, min_size=10, bold=True, max_lines=1)
 
-        qty = self.s.clean(str(item.get("qty") or ""))
         name = self.s.clean(str(item.get("name") or "物品"))
-        label = name + ((" ×" + qty) if qty else "")
-        text_top = icon_y1 + icon_side + (5 if compact else 6)
-        self.s.draw_center(
-            draw,
-            (x1 + 5, text_top, x2 - 5, y2 - 4),
-            label,
-            self._item_text_color(q),
-            max_size=14 if compact else 15,
-            min_size=10,
-            bold=True,
-            max_lines=2,
-            line_gap=1,
-        )
+        qty = self.s.clean(str(item.get("qty") or ""))
+        tx1 = icon_box[2] + gap
+        tx2 = x2 - side_pad
+
+        # Reward text should read like normal supporting information, not microcopy.
+        # Compact choice/bundle cells step down only slightly so repeated reward
+        # components still look like the same component family.
+        name_max = self.reward_compact_name_max if compact else self.reward_name_max
+        name_min = self.reward_compact_name_min if compact else self.reward_name_min
+        qty_max = self.reward_compact_qty_max if compact else self.reward_qty_max
+        qty_min = self.reward_compact_qty_min if compact else self.reward_qty_min
+        text_w = max(10, tx2 - tx1)
+        single_line = True
+        # 若名称在可用字号下仍无法单行容纳，则把数量并到名称后面，避免落到第三行且更紧凑。
+        for size in range(name_max, name_min - 1, -1):
+            font = self.s.get_font(size, True)
+            bb = draw.textbbox((0, 0), name, font=font)
+            if bb[2] - bb[0] <= text_w:
+                single_line = True
+                break
+        else:
+            single_line = False
+
+        qty_color = self.s.apply_tint(self._item_text_color(q), 0.16)
+        if single_line and qty:
+            name_h = 40 if compact else 44
+            qty_h = 22 if compact else 24
+            block_h = name_h + qty_h
+            block_y1 = max(y1 + 6, int(round((y1 + y2 - block_h) / 2)))
+            name_box = (tx1, block_y1, tx2, block_y1 + name_h)
+            qty_box = (tx1, block_y1 + name_h - 1, tx2, block_y1 + name_h + qty_h)
+            self.s.draw_left(
+                draw,
+                name_box,
+                name,
+                self._item_text_color(q),
+                max_size=name_max,
+                min_size=name_min,
+                bold=True,
+                max_lines=1,
+                line_gap=0,
+                valign="bottom",
+            )
+            self.s.draw_left(
+                draw,
+                qty_box,
+                f"×{qty}",
+                qty_color,
+                max_size=qty_max,
+                min_size=qty_min,
+                bold=True,
+                max_lines=1,
+                line_gap=0,
+                valign="top",
+            )
+        else:
+            inline_label = name + ((" ×" + qty) if qty else "")
+            text_box = (tx1, y1 + 6, tx2, y2 - 6)
+            self.s.draw_left(
+                draw,
+                text_box,
+                inline_label,
+                self._item_text_color(q),
+                max_size=name_max,
+                min_size=name_min,
+                bold=True,
+                max_lines=2,
+                line_gap=1,
+                valign="center",
+            )
         return resolved
 
     def draw_item(self, base, draw, box, item):
@@ -953,7 +1160,7 @@ class ClassicRewardRenderer:
             self.draw_item(base, draw, box, node)
 
 
-def render(guide, out_path: Path, services):
+def _render_impl(guide, out_path: Path, services):
     W, H = services.W, services.H
     apply_tint = services.apply_tint
     build_render_kpis = services.build_render_kpis
@@ -1198,8 +1405,36 @@ def render(guide, out_path: Path, services):
         section_top = y
         units = build_reward_display_units(reward_items)
         reward_renderer = ClassicRewardRenderer(services, guide)
-        unit_rows = pack_units(units, max_slots=4)
-        gap_x = 14
+        # Keep reward leaves on a stable slot grid.  A three-way choice plus two
+        # standalone rewards is a common 5-leaf pattern; allow five slots so it
+        # can stay on one balanced row instead of producing a stretched singleton
+        # second row.  Other layouts keep the classic four-slot density.
+        total_reward_slots = sum(max(1, node_weight(unit)) for unit in units)
+        has_multi_choice = any(
+            isinstance(unit, dict)
+            and unit.get("type") == "choice"
+            and len(unit.get("options") or []) >= 3
+            for unit in units
+        )
+        if has_multi_choice and total_reward_slots <= 5 and len(units) <= 3:
+            reward_row_capacity = 5
+        elif total_reward_slots <= 3:
+            # 1~3 个普通奖励按实际数量铺满整行。
+            reward_row_capacity = max(1, total_reward_slots)
+        else:
+            reward_row_capacity = 4
+        unit_rows = pack_units(units, max_slots=reward_row_capacity)
+
+        # 按数量微调横向节奏：4 个奖励更紧凑，让每张卡多拿一点宽度；
+        # 3 个奖励稍微拉开，避免显得过密。
+        if reward_row_capacity == 4:
+            gap_x = 10
+        elif reward_row_capacity == 3:
+            gap_x = 16
+        elif reward_row_capacity == 2:
+            gap_x = 20
+        else:
+            gap_x = 14
         gap_y = 9
         item_h = 122
         rows = max(1, len(unit_rows))
@@ -1210,16 +1445,27 @@ def render(guide, out_path: Path, services):
         _draw_fixed_section_title(section_top, "可兑换道具", primary)
 
         current_y = content_y
-        for row_units in unit_rows:
-            total_slots = sum(max(1, node_weight(unit)) for unit in row_units)
+        # 4 个奖励时略放宽内容区，减少“中间挤、两侧空”的感觉；
+        # 3 个及以下则保留更多呼吸空间。
+        if reward_row_capacity == 4:
+            usable_w = W - 96
+        elif reward_row_capacity == 3:
+            usable_w = W - 104
+        else:
             usable_w = W - 112
-            unit_gap_total = gap_x * max(0, len(row_units) - 1)
-            slot_w = (usable_w - unit_gap_total) / max(1, total_slots)
-            row_total_w = slot_w * total_slots + unit_gap_total
-            cursor_x = (W - row_total_w) / 2
+        # Slot width is based on the row capacity, not on each row's item count.
+        # This prevents a lone reward from stretching across the entire module.
+        base_slot_w = (usable_w - gap_x * max(0, reward_row_capacity - 1)) / max(1, reward_row_capacity)
+        for row_units in unit_rows:
+            unit_widths = []
             for unit in row_units:
                 weight = max(1, node_weight(unit))
-                unit_w = slot_w * weight
+                # A multi-slot choice spans the same grid cells (including the
+                # internal inter-slot gaps) that its leaf items would occupy.
+                unit_widths.append(base_slot_w * weight + gap_x * max(0, weight - 1))
+            row_total_w = sum(unit_widths) + gap_x * max(0, len(row_units) - 1)
+            cursor_x = (W - row_total_w) / 2
+            for unit, unit_w in zip(row_units, unit_widths):
                 x1 = int(round(cursor_x))
                 x2 = int(round(x1 + unit_w))
                 y1 = int(current_y)
@@ -1358,7 +1604,20 @@ def render(guide, out_path: Path, services):
                 legend_items.append((len(legend_items) + 1, maximum))
             legend_items = sorted(legend_items, key=lambda pair: (pair[1], pair[0]))
             if legend_items and maximum > 0:
-                _global_tier_legend = {"items": legend_items, "maximum": maximum}
+                # Use the highest planned score across all seven days for the
+                # shared ruler.  This makes the global liquid bar meaningful as
+                # the peak target of the full plan instead of mirroring Day1.
+                current = 0.0
+                for _day in days:
+                    _tp = _day.get("tier_progress") if isinstance(_day, dict) else None
+                    if not isinstance(_tp, dict):
+                        continue
+                    try:
+                        _score = max(0.0, float(_tp.get("score", _tp.get("current", 0)) or 0))
+                    except Exception:
+                        _score = 0.0
+                    current = max(current, _score)
+                _global_tier_legend = {"items": legend_items, "maximum": maximum, "current": current}
 
     def _readable_action_text(raw):
         raw = clean(str(raw or ""))
@@ -1654,6 +1913,10 @@ def render(guide, out_path: Path, services):
 
         items = list(_global_tier_legend.get("items") or [])
         maximum = float(_global_tier_legend.get("maximum", 0) or 0)
+        try:
+            current = max(0.0, float(_global_tier_legend.get("current", 0) or 0))
+        except Exception:
+            current = 0.0
         if not items or maximum <= 0:
             return
 
@@ -1676,11 +1939,9 @@ def render(guide, out_path: Path, services):
         if legend_style in {"tier_blocks_right_cap", "milestone_ruler", "milestone_ticks"}:
             # Readable milestone ruler for the classic theme.
             #
-            # Why this is deliberately *not* a segmented progress bar:
-            # - the values are thresholds, not completion states;
-            # - each label belongs to one exact score position;
-            # - labels stay above the rail so the first short 0-210 range no
-            #   longer dictates a tiny font for the entire component.
+            # Thresholds remain exact milestones, while a single liquid fill
+            # communicates Day1's current score.  Labels stay above the rail so
+            # the first short 0-210 range never dictates tiny typography.
             milestone_label_size = max(13, min(18, int(renderer_cfg.get(
                 "day_tier_progress_milestone_font_size", 15
             ) or 15)))
@@ -1704,10 +1965,20 @@ def render(guide, out_path: Path, services):
             # rail at the icon centre and paste the icon afterwards, so the line
             # appears to grow naturally from behind the icon with no visible gap.
             if _tier_point_source is not None:
-                icon_size = max(22, min(32, icon_size))
-                icon_cx = left + icon_size / 2
+                # The activity point art is often already a circular/medal badge.
+                # Give it breathing room inside a clean liquid reservoir instead
+                # of making the artwork itself fill the whole green socket.
+                icon_size = max(24, min(29, int(renderer_cfg.get(
+                    "day_tier_progress_legend_point_art_size", 28
+                ) or 28)))
+                socket_d = max(icon_size + 14, int(renderer_cfg.get(
+                    "day_tier_progress_legend_point_socket_size", 44
+                ) or 44))
+                socket_r_design = socket_d / 2
+                icon_cx = left + socket_r_design
                 track_x1 = icon_cx
             else:
+                socket_r_design = 0
                 icon_size = 0
                 icon_cx = left
                 track_x1 = left + 2
@@ -1731,6 +2002,15 @@ def render(guide, out_path: Path, services):
                 marker_x1 = track_x1 + max(node_r + 2, 10)
                 marker_x2 = track_x2 - max(node_r + 2, 10)
             marker_w = max(1.0, marker_x2 - marker_x1)
+            milestone_position_mode = clean(str(renderer_cfg.get(
+                "day_tier_progress_milestone_position_mode", "proportional"
+            ) or "proportional")).lower()
+
+            def _milestone_marker_x(index, value):
+                if milestone_position_mode in {"even", "equal", "uniform"} and len(items) > 1:
+                    return marker_x1 + marker_w * (index / max(1, len(items) - 1))
+                ratio = max(0.0, min(1.0, float(value) / maximum))
+                return marker_x1 + marker_w * ratio
 
             ss = tier_progress_supersample
             local_w = max(1, right - left)
@@ -1745,9 +2025,18 @@ def render(guide, out_path: Path, services):
                 return int(round((y - legend_y1) * ss))
 
             label_font = get_font(milestone_label_size * ss, True)
-            # Rail sits in the lower third of the reserved lane.  This leaves a
-            # calm label row above it while keeping the whole module compact.
-            rail_cy = legend_y2 - max(14, int(round(milestone_node_size * 0.82)))
+            # Keep the circular point reservoir entirely inside this lane.
+            # Previously the reservoir extended below legend_y2 and was then
+            # visually covered by the Day1 card.  With stems removed, the rail
+            # can sit higher while the labels remain directly above the nodes.
+            bottom_clearance = max(2, min(8, int(renderer_cfg.get(
+                "day_tier_progress_milestone_bottom_clearance", 3
+            ) or 3)))
+            reservoir_r = socket_r_design if icon_size else node_r
+            rail_cy = legend_y2 - max(
+                reservoir_r + bottom_clearance,
+                node_r + bottom_clearance,
+            )
             rail_y1 = rail_cy - milestone_rail_h / 2
             rail_y2 = rail_cy + milestone_rail_h / 2
 
@@ -1756,16 +2045,19 @@ def render(guide, out_path: Path, services):
             ), (23, 33, 43))
             # Slightly deepen the rail so it stays readable in full-page
             # mobile previews without regressing into a heavy progress bar.
-            rail_fill = _rgb_mix(card_fill, primary, 0.36)
-            rail_outline = _rgb_mix(light, primary, 0.52)
+            rail_fill = _rgb_mix(card_fill, primary, 0.10)
+            rail_outline = _rgb_mix(light, primary, 0.38)
             node_outline = _rgb_mix(primary, dark, 0.46)
             node_fill = _rgb_mix(card_fill, primary, 0.04)
             node_inner = _rgb_mix(primary, dark, 0.10)
             stem_rgb = _rgb_mix(primary, dark, 0.34)
             text_rgb = _rgb_mix(label_ink_rgb, dark, 0.14)
 
-            # Thin rounded threshold rail with a subtle upper highlight.  It is
-            # intentionally uniform: darker spans would imply completed progress.
+            # Rounded trough + Day1 liquid fill.  The fill uses the same theme
+            # colour as the classic controls, with a narrow top sheen rather than
+            # any glow.  Its endpoint is mapped to the threshold span, leaving a
+            # short unfilled tail after the last milestone just like the soft UI
+            # version.
             rx1, rx2 = lx(track_x1), lx(track_x2)
             ry1, ry2 = ly(rail_y1), ly(rail_y2)
             rr = max(1, int(round(milestone_rail_h * ss / 2)))
@@ -1776,14 +2068,60 @@ def render(guide, out_path: Path, services):
                 outline=(*rail_outline, 210),
                 width=max(1, ss),
             )
-            hi_y = min(ry2 - ss, ry1 + max(1, ss))
-            ld.line(
-                (rx1 + rr, hi_y, rx2 - rr, hi_y),
-                fill=(255, 255, 255, 88),
-                width=max(1, ss),
-            )
 
-            label_top = legend_y1 + 2
+            # Liquid length follows the real highest planned score across the
+            # seven-day plan.  No cosmetic halfway remapping is applied.
+            liquid_ratio = max(0.0, min(1.0, current / maximum))
+            liquid_end_x = marker_x1 + marker_w * liquid_ratio
+            liquid_rgb = _header_hex_rgb(primary)
+            liquid_dark = _rgb_mix(primary, dark, 0.24)
+            liquid_hi = _rgb_mix(primary, (255, 255, 255), 0.34)
+            inner_pad_px = max(1, int(round(1.25 * ss)))
+            liquid_y1 = ry1 + inner_pad_px
+            liquid_y2 = ry2 - inner_pad_px
+            liquid_x1 = rx1 + inner_pad_px
+            liquid_x2 = max(liquid_x1, min(rx2 - inner_pad_px, lx(liquid_end_x)))
+            liquid_r = max(1, int(round(max(1, milestone_rail_h - 2.5) * ss / 2)))
+            if current > 0 and liquid_x2 > liquid_x1:
+                ld.rounded_rectangle(
+                    (liquid_x1, liquid_y1, liquid_x2, liquid_y2),
+                    radius=liquid_r,
+                    fill=(*liquid_rgb, 255),
+                )
+                if liquid_x2 - liquid_x1 > 8 * ss:
+                    sheen_y = min(liquid_y2 - 1, liquid_y1 + max(1, ss))
+                    ld.line(
+                        (liquid_x1 + liquid_r, sheen_y, liquid_x2 - max(ss, liquid_r // 2), sheen_y),
+                        fill=(*liquid_hi, 150),
+                        width=max(1, ss),
+                    )
+
+            # The point icon sits inside a circular liquid reservoir and the rail
+            # starts from its centre, so the two coloured areas physically touch.
+            # This keeps the classic flat/clean language while borrowing the
+            # continuous-liquid idea from soft_neumorphic.
+            if icon_size:
+                socket_r = max(socket_r_design, milestone_node_size / 2 + 3)
+                scx = lx(icon_cx)
+                scy = ly(rail_cy)
+                sr = int(round(socket_r * ss))
+                ld.ellipse(
+                    (scx - sr, scy - sr, scx + sr, scy + sr),
+                    fill=(*liquid_rgb, 255),
+                    outline=(*liquid_dark, 245),
+                    width=max(1, ss),
+                )
+                # restrained inner highlight only; no outer bloom/glow
+                hi_r = max(1, sr - max(2, 2 * ss))
+                ld.arc(
+                    (scx - hi_r, scy - hi_r, scx + hi_r, scy + hi_r),
+                    start=205, end=325,
+                    fill=(*liquid_hi, 165),
+                    width=max(1, ss),
+                )
+
+            label_top = legend_y1 + 1
+            show_stems = bool(renderer_cfg.get("day_tier_progress_milestone_show_stems", False))
             min_text_x = lx(track_x1) - 4 * ss
             # Keep a dedicated safe margin at the right edge so the last label
             # never gets clipped even after adding the trailing rail tail.
@@ -1791,9 +2129,8 @@ def render(guide, out_path: Path, services):
             max_text_x = lx(text_safe_right)
             previous_right = None
 
-            for tier, value in items:
-                ratio = max(0.0, min(1.0, float(value) / maximum))
-                marker_x = marker_x1 + marker_w * ratio
+            for item_index, (tier, value) in enumerate(items):
+                marker_x = _milestone_marker_x(item_index, value)
                 marker_x_s = lx(marker_x)
 
                 label = f"{int(tier)}档 {int(round(value))}"
@@ -1809,9 +2146,6 @@ def render(guide, out_path: Path, services):
                 previous_right = text_x + tw
 
                 text_y = ly(label_top) - bb[1]
-                preferred_text_y = ly(rail_cy - node_r - milestone_stem_gap - milestone_stem_len) - bb[3]
-                if preferred_text_y > text_y:
-                    text_y = preferred_text_y
                 ld.text(
                     (int(round(text_x)), int(round(text_y))),
                     label,
@@ -1819,28 +2153,33 @@ def render(guide, out_path: Path, services):
                     fill=(*text_rgb, 255),
                 )
 
-                # Short dashed stem visually binds the label to the exact score
-                # point without making the component look like a chart grid.
-                stem_x = marker_x_s
-                stem_top = int(round(text_y + bb[3] + milestone_stem_gap * ss))
-                stem_bottom = ly(rail_cy - node_r - 3)
-                dash = max(2 * ss, 1)
-                gap = max(2 * ss, 1)
-                yy = stem_top
-                while yy < stem_bottom:
-                    y_end = min(stem_bottom, yy + dash)
-                    ld.line(
-                        (stem_x, yy, stem_x, y_end),
-                        fill=(*stem_rgb, 135),
-                        width=max(1, ss),
-                    )
-                    yy = y_end + gap
+                # Dashed guide stems are optional.  The classic default keeps
+                # the ruler compact: label -> node -> rail, with no extra line.
+                if show_stems:
+                    stem_x = marker_x_s
+                    stem_top = int(round(text_y + bb[3] + milestone_stem_gap * ss))
+                    stem_bottom = ly(rail_cy - node_r - 3)
+                    dash = max(2 * ss, 1)
+                    gap = max(2 * ss, 1)
+                    yy = stem_top
+                    while yy < stem_bottom:
+                        y_end = min(stem_bottom, yy + dash)
+                        ld.line(
+                            (stem_x, yy, stem_x, y_end),
+                            fill=(*stem_rgb, 135),
+                            width=max(1, ss),
+                        )
+                        yy = y_end + gap
 
-                # Milestone marker: light outer disc + strong theme ring + dot.
+                # Milestone marker. Reached milestones pick up the liquid colour;
+                # future milestones remain pale so the fill state is instantly clear.
                 outer_r = node_r * ss
                 inner_r = milestone_inner_size * ss / 2
                 cy_s = ly(rail_cy)
                 shadow_off = max(1, ss)
+                reached = float(value) <= current + 1e-6
+                this_outline = liquid_dark if reached else node_outline
+                this_inner = liquid_rgb if reached else node_inner
                 ld.ellipse(
                     (
                         marker_x_s - outer_r,
@@ -1858,7 +2197,7 @@ def render(guide, out_path: Path, services):
                         cy_s + outer_r,
                     ),
                     fill=(*node_fill, 255),
-                    outline=(*node_outline, 255),
+                    outline=(*this_outline, 255),
                     width=max(2 * ss, ss),
                 )
                 ld.ellipse(
@@ -1868,7 +2207,7 @@ def render(guide, out_path: Path, services):
                         marker_x_s + inner_r,
                         cy_s + inner_r,
                     ),
-                    fill=(*node_inner, 255),
+                    fill=(*this_inner, 255),
                 )
 
             layer = layer.resize((local_w, local_h), Image.Resampling.LANCZOS)
@@ -2766,18 +3105,42 @@ def render(guide, out_path: Path, services):
         bubble_gap = 6
         content_top = ry + 58
         content_bottom = panel_bottom - 8
-        bubble_h = (content_bottom-content_top-bubble_gap*(len(risk_items)-1))/max(1,len(risk_items))
-        for i, risk_item_text in enumerate(risk_items):
-            by1=int(round(content_top+i*(bubble_h+bubble_gap)))
-            by2=int(round(by1+bubble_h))
-            rounded(d,(62,by1,W-62,by2),14,risk_bubble,outline=risk_border,width=2)
-            icon_size=min(31,max(24,int((by2-by1)*0.55)))
-            ix1=78; iy1=int((by1+by2-icon_size)/2)
-            draw_warning_icon(img,d,(ix1,iy1,ix1+icon_size,iy1+icon_size))
-            draw_left(
-                d,(ix1+icon_size+18,by1+5,W-82,by2-5),risk_item_text,risk_text,
-                max_size=20,min_size=15,bold=False,max_lines=3,line_gap=3
-            )
+        compact_risk = bool(renderer_cfg.get("compact_risk_panel", True)) and len(risk_items) >= 3
+        if compact_risk:
+            # Many individual rounded warning bubbles create a strong "stack of
+            # buttons" effect.  Use one calm inner sheet with lightweight row
+            # separators instead, while keeping each warning independently scannable.
+            inner_box = (62, content_top, W - 62, content_bottom)
+            rounded(d, inner_box, 14, risk_bubble, outline=risk_border, width=2)
+            row_h = max(1.0, (content_bottom - content_top) / max(1, len(risk_items)))
+            for i, risk_item_text in enumerate(risk_items):
+                by1 = int(round(content_top + i * row_h))
+                by2 = int(round(content_top + (i + 1) * row_h))
+                if i > 0:
+                    sep_y = by1
+                    d.line((78, sep_y, W - 78, sep_y), fill=apply_tint(risk_border, 0.42), width=1)
+                icon_size = min(28, max(22, int((by2 - by1) * 0.46)))
+                ix1 = 80
+                iy1 = int((by1 + by2 - icon_size) / 2)
+                draw_warning_icon(img, d, (ix1, iy1, ix1 + icon_size, iy1 + icon_size))
+                draw_left(
+                    d, (ix1 + icon_size + 16, by1 + 5, W - 82, by2 - 5),
+                    risk_item_text, risk_text,
+                    max_size=19, min_size=14, bold=False, max_lines=3, line_gap=3
+                )
+        else:
+            bubble_h = (content_bottom-content_top-bubble_gap*(len(risk_items)-1))/max(1,len(risk_items))
+            for i, risk_item_text in enumerate(risk_items):
+                by1=int(round(content_top+i*(bubble_h+bubble_gap)))
+                by2=int(round(by1+bubble_h))
+                rounded(d,(62,by1,W-62,by2),14,risk_bubble,outline=risk_border,width=2)
+                icon_size=min(31,max(24,int((by2-by1)*0.55)))
+                ix1=78; iy1=int((by1+by2-icon_size)/2)
+                draw_warning_icon(img,d,(ix1,iy1,ix1+icon_size,iy1+icon_size))
+                draw_left(
+                    d,(ix1+icon_size+18,by1+5,W-82,by2-5),risk_item_text,risk_text,
+                    max_size=20,min_size=15,bold=False,max_lines=3,line_gap=3
+                )
 
     # Classic-only footer: group avatar + group text as one centered block.
     group_text = clean(str(guide.get("watermark", "") or ""))
@@ -2804,3 +3167,12 @@ def render(guide, out_path: Path, services):
     if bool(perf_cfg.get("print_timing", False)):
         elapsed = time.perf_counter() - render_started
         print("[耗时] {}：{:.2f} 秒".format(out_path.name, elapsed))
+
+
+def render(guide, out_path: Path, services):
+    """Public renderer entrypoint with classic-only font override isolation."""
+    font_state = _install_classic_fonts(guide, services)
+    try:
+        return _render_impl(guide, out_path, services)
+    finally:
+        _restore_classic_fonts(services, font_state)

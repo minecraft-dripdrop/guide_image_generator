@@ -2,7 +2,7 @@
   "surface_mode": "light",
   "renderer": {
     "style": "handwritten_notes",
-    "font_path": "assets/fonts/濑户字体简体.ttf",
+    "font_path": "fonts/濑户字体简体.ttf",
     "font_scale": 3.5,
     "font_weight": 2,
     "font_tracking": 1.2,

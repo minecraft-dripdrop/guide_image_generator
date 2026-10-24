@@ -1,0 +1,56 @@
+{
+  "1000翡翠灰烬龙攻略图": {
+    "records": [
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\柔光新拟物_v1.0.0\\01_绿色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "green",
+        "variant_name": "绿色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\柔光新拟物_v1.0.0\\02_金色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "gold",
+        "variant_name": "金色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\柔光新拟物_v1.0.0\\03_蓝色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "blue",
+        "variant_name": "蓝色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\柔光新拟物_v1.0.0\\04_紫色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "purple",
+        "variant_name": "紫色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\柔光新拟物_v1.0.0\\05_红色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "red",
+        "variant_name": "红色"
+      },
+      {
+        "path": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\柔光新拟物_v1.0.0\\06_青色.png",
+        "theme_id": "soft_neumorphic",
+        "theme_name": "柔光新拟物",
+        "theme_version": "1.0.0",
+        "variant_id": "cyan",
+        "variant_name": "青色"
+      }
+    ],
+    "contact_sheet": "D:\\卡皮模拟\\攻略图生成器\\output\\260914垂钓盛典攻略\\1000翡翠灰烬龙攻略图\\00_全主题总览.jpg",
+    "count": 6
+  }
+}

@@ -497,49 +497,267 @@ def _draw_kpis(services, base, draw, guide, colors, top):
     return top + card_h
 
 
+def _reward_node_weight(node):
+    if not isinstance(node, dict):
+        return 1
+    typ = node.get("type", "item")
+    if typ == "item":
+        return 1
+    if typ == "bundle":
+        return max(1, sum(_reward_node_weight(x) for x in (node.get("items") or [])))
+    if typ == "choice":
+        return max(2, sum(_reward_node_weight(x) for x in (node.get("options") or [])))
+    return 1
+
+
+def _draw_reward_leaf_content(services, base, draw, reward_renderer, item, box, colors, compact=False):
+    """One reward: same icon and type scale for choices and ordinary rewards."""
+    x1, y1, x2, y2 = map(int, box)
+    h = max(1, y2 - y1)
+    w = max(1, x2 - x1)
+    # A choice is a relationship, not a smaller reward: keep the exact same icon cap.
+    icon_cap = 54
+    icon_size = max(34, min(icon_cap, h - 18, max(34, int(w * 0.34))))
+    iy1 = int(round((y1 + y2 - icon_size) / 2))
+    ix1 = x1 + 9
+    ibox = (ix1, iy1, ix1 + icon_size, iy1 + icon_size)
+    resolved = reward_renderer.draw_icon(base, item, ibox)
+    if not (resolved.get("icon_path") and Path(resolved.get("icon_path")).exists()):
+        services.draw_center(draw, ibox, "?", colors["muted"], max_size=20, min_size=14, bold=True, max_lines=1)
+
+    name = services.clean(str(item.get("name") or "物品"))
+    qty = services.clean(str(item.get("qty") or ""))
+    tx1 = ix1 + icon_size + 9
+    tx2 = x2 - 8
+    # No compact downscaling: previous choice labels used 14 / 11,
+    # while standalone labels used 15 / 12. Both now use 15 / 12.
+    name_max, name_min = 15, 10
+    qty_max, qty_min = 12, 9
+    text_w = max(10, tx2 - tx1)
+    name_bbox = draw.textbbox((0, 0), name, font=services.get_font(name_max, True))
+    fits_one_line = name_bbox[2] - name_bbox[0] <= text_w
+
+    if fits_one_line and qty:
+        # Retain the existing standalone alignment for both cases.
+        name_h, qty_h = 34, 18
+        block_h = name_h + qty_h
+        block_y1 = max(y1 + 6, int(round((y1 + y2 - block_h) / 2)))
+        services.draw_left(
+            draw, (tx1, block_y1, tx2, block_y1 + name_h), name, colors["text"],
+            max_size=name_max, min_size=name_min, bold=True,
+            max_lines=1, line_gap=0, valign="bottom",
+        )
+        services.draw_left(
+            draw, (tx1, block_y1 + name_h - 1, tx2, block_y1 + name_h + qty_h), f"×{qty}", colors["muted"],
+            max_size=qty_max, min_size=qty_min, bold=True,
+            max_lines=1, line_gap=0, valign="top",
+        )
+    elif not fits_one_line and compact:
+        # A narrow choice must wrap its *name*, not squeeze its letters.
+        # Keep quantity on its own line, same typography as standalone items.
+        def wrap_at(font):
+            lines, line = [], ""
+            for char in name:
+                candidate = line + char
+                bb = draw.textbbox((0, 0), candidate, font=font)
+                if line and bb[2] - bb[0] > text_w:
+                    lines.append(line)
+                    line = char
+                else:
+                    line = candidate
+            if line:
+                lines.append(line)
+            return lines or [""]
+
+        available_h = max(1, y2 - y1 - 12)
+        for size in range(name_max, name_min - 1, -1):
+            f_name = services.get_font(size, True)
+            lines = wrap_at(f_name)
+            f_qty = services.get_font(qty_max, True)
+            nbb = draw.textbbox((0, 0), "田", font=f_name)
+            qbb = draw.textbbox((0, 0), "×30", font=f_qty)
+            nlh = (nbb[3] - nbb[1]) + 4
+            qlh = (qbb[3] - qbb[1]) + 3
+            total_h = nlh * len(lines) + (3 + qlh if qty else 0)
+            if total_h <= available_h:
+                break
+        # These glyph origins compensate for actual font ascenders, so the
+        # visible text block (not the font baseline) is vertically centered.
+        cursor_y = (y1 + y2 - total_h) / 2
+        for line in lines:
+            bb = draw.textbbox((0, 0), line, font=f_name)
+            draw.text((tx1 - bb[0], cursor_y - bb[1]), line, font=f_name, fill=colors["text"])
+            cursor_y += nlh
+        if qty:
+            cursor_y += 3
+            qtext = f"×{qty}"
+            bb = draw.textbbox((0, 0), qtext, font=f_qty)
+            draw.text((tx1 - bb[0], cursor_y - bb[1]), qtext, font=f_qty, fill=colors["muted"])
+    else:
+        inline_label = name + ((" ×" + qty) if qty else "")
+        services.draw_left(
+            draw, (tx1, y1 + 6, tx2, y2 - 6), inline_label, colors["text"],
+            max_size=name_max, min_size=name_min, bold=True,
+            max_lines=2, line_gap=1, valign="center",
+        )
+
+
+def _draw_choice_or_badge(services, base, draw, cx, y1, y2, colors):
+    """Draw a divider and center the “或” glyph inside its chip by chip geometry.
+
+    The user wants the badge aligned by the square/circle chip itself, not only by
+    the loose space between the two rewards. So both the divider and the glyph are
+    anchored to one explicit geometric center, then given a tiny optical lift to
+    counter the common CJK low-sitting look.
+    """
+    cx = int(round(cx))
+    cy = int(round((y1 + y2) / 2))
+    radius = 14
+    rule = _mix(colors["primary_dark"], colors["surface"], 0.42)
+    draw.line((cx, y1 + 10, cx, y2 - 10), fill=rule, width=3)
+    edge = _mix(colors["shadow_light"], colors["surface"], 0.26)
+    draw.line((cx + 3, y1 + 10, cx + 3, y2 - 10), fill=edge, width=1)
+
+    chip = (cx - radius, cy - radius, cx + radius, cy + radius)
+    fill = _mix(colors["primary_soft"], colors["surface"], 0.26)
+    rim = _mix(colors["primary_dark"], colors["surface"], 0.35)
+    _aa_circle(base, chip, fill, outline=rim, outline_width=2, scale=6)
+
+    # Center according to the chip's own geometric square, then apply a very
+    # small optical lift so the visible “或” sits truly in the middle.
+    font = services.get_font(16, True)
+    bb = draw.textbbox((0, 0), "或", font=font)
+    box_cx = (chip[0] + chip[2]) / 2
+    box_cy = (chip[1] + chip[3]) / 2
+    optical_dx = 0.0
+    optical_dy = -1.0
+    tx = box_cx - (bb[0] + bb[2]) / 2 + optical_dx
+    ty = box_cy - (bb[1] + bb[3]) / 2 + optical_dy
+    draw.text((tx, ty), "或", font=font, fill=colors["primary_dark"])
+
+
+def _draw_reward_inline_node(services, base, draw, reward_renderer, node, box, colors):
+    typ = (node or {}).get("type", "item")
+    if typ == "item":
+        _draw_reward_leaf_content(services, base, draw, reward_renderer, node, box, colors, compact=True)
+        return
+
+    children = list((node or {}).get("items") or []) if typ == "bundle" else list((node or {}).get("options") or [])
+    children = [x for x in children if isinstance(x, dict)]
+    if not children:
+        return
+
+    x1, y1, x2, y2 = map(int, box)
+    sep_gap = 36 if typ == "choice" else 20
+    weights = [_reward_node_weight(x) for x in children]
+    total_weight = max(1, sum(weights))
+    usable = max(1, x2 - x1 - sep_gap * max(0, len(children) - 1))
+    cursor = x1
+    boxes = []
+    for child, weight in zip(children, weights):
+        cw = usable * weight / total_weight
+        a = int(round(cursor))
+        b = int(round(cursor + cw))
+        cb = (a, y1, b, y2)
+        boxes.append(cb)
+        _draw_reward_inline_node(services, base, draw, reward_renderer, child, cb, colors)
+        cursor = b + sep_gap
+
+    for i in range(1, len(boxes)):
+        cx = (boxes[i - 1][2] + boxes[i][0]) // 2
+        if typ == "bundle":
+            services.draw_center(
+                draw, (cx - 10, y1 + 6, cx + 10, y2 - 6), "+", colors["primary_dark"],
+                max_size=16, min_size=12, bold=True, max_lines=1,
+            )
+        else:
+            _draw_choice_or_badge(services, base, draw, cx, y1, y2, colors)
+
+
+def _draw_reward_node(services, base, draw, reward_renderer, node, box, colors):
+    typ = (node or {}).get("type", "item")
+    x1, y1, x2, y2 = map(int, box)
+    # Exactly one raised card per display unit.  Choice children are split inside
+    # this card; their item icons do not get extra button shells.
+    _soft_panel(base, box, 20, colors["surface"], colors["shadow_dark"], colors["shadow_light"],
+                shadow=4, blur=6, dark_alpha=58, light_alpha=168)
+    inner = (x1 + 6, y1 + 5, x2 - 6, y2 - 5)
+    if typ == "item":
+        _draw_reward_leaf_content(services, base, draw, reward_renderer, node, inner, colors, compact=False)
+    else:
+        _draw_reward_inline_node(services, base, draw, reward_renderer, node, inner, colors)
+
+
 def _draw_rewards(services, base, draw, guide, colors, top):
+    """Render every reward and preserve explicit choice/bundle relationships.
+
+    The old implementation flattened to the first four leaf items, so activities
+    such as 月兔寻宝 silently lost the fifth reward.  This version lays display
+    units into up to five logical slots per row.  A 3-way choice consumes three
+    slots and remains one compound raised button; independent items remain their
+    own buttons.
+    """
     W = int(services.W)
     tools = SharedRendererTools(services)
-    leaves = tools.flat_reward_items(guide.get("reward_items") or [])[:4]
-    panel = (48, top, W - 48, top + 188)
+    reward_items = guide.get("reward_items") or []
+    units = services.build_reward_display_units(reward_items) if reward_items else []
+
+    # Pack by semantic weight, not by raw leaf count.  Keep at most 5 slots on
+    # one row so 3-way choice + 2 independent rewards fits without truncation.
+    max_slots = 5
+    rows = []
+    current = []
+    used = 0
+    for unit in units:
+        span = max(1, min(max_slots, _reward_node_weight(unit)))
+        if current and used + span > max_slots:
+            rows.append((current, used))
+            current, used = [], 0
+        current.append((unit, span))
+        used += span
+        if used >= max_slots:
+            rows.append((current, used))
+            current, used = [], 0
+    if current:
+        rows.append((current, used))
+
+    if rows:
+        capacity = max(1, min(max_slots, max(row_used for _, row_used in rows)))
+    else:
+        capacity = 1
+
+    row_h = 98
+    gap_y = 10
+    content_top = top + 68
+    panel_h = 188 if len(rows) <= 1 else 82 + len(rows) * row_h + max(0, len(rows) - 1) * gap_y + 16
+    panel = (48, top, W - 48, top + panel_h)
     _soft_panel(base, panel, 28, colors["surface"], colors["shadow_dark"], colors["shadow_light"],
                 shadow=7, blur=10, dark_alpha=68, light_alpha=198)
 
-    # Compact section label, like a molded control caption rather than a banner.
     label_box = (72, top + 17, 232, top + 55)
     _accent_pill(base, label_box, colors["primary_soft"], colors["shadow_dark"], colors["shadow_light"], radius=18, shadow=2, blur=4)
     services.draw_center(draw, label_box, "可兑换道具", colors["primary_dark"], max_size=18, min_size=15, bold=True, max_lines=1)
 
-    if not leaves:
+    if not units:
         text = tools.reward_summary(guide)
-        services.draw_left(draw, (74, top + 69, W - 74, top + 166), text, colors["text"],
+        services.draw_left(draw, (74, top + 69, W - 74, top + panel_h - 22), text, colors["text"],
                            max_size=21, min_size=15, bold=False, max_lines=3, line_gap=3, valign="center")
-        return top + 188
+        return top + panel_h
 
-    gap = 12
-    left, right = 72, W - 72
-    cell_w = (right - left - gap * (len(leaves) - 1)) / len(leaves)
     reward_renderer = RewardItemRenderer(services, guide)
-    for i, item in enumerate(leaves):
-        x1 = int(round(left + i * (cell_w + gap)))
-        x2 = int(round(x1 + cell_w))
-        card = (x1, top + 68, x2, top + 166)
-        _soft_panel(base, card, 20, colors["surface"], colors["shadow_dark"], colors["shadow_light"],
-                    shadow=4, blur=6, dark_alpha=58, light_alpha=168)
-        icon_size = min(62, int(cell_w * 0.31))
-        ix1 = x1 + 12
-        iy1 = top + 84
-        ibox = (ix1, iy1, ix1 + icon_size, iy1 + icon_size)
-        resolved = reward_renderer.draw_icon(base, item, ibox)
-        if not (resolved.get("icon_path") and Path(resolved.get("icon_path")).exists()):
-            services.draw_center(draw, ibox, "?", colors["muted"], max_size=20, min_size=15, bold=True, max_lines=1)
-        name = services.clean(str(item.get("name") or "物品"))
-        qty = services.clean(str(item.get("qty") or ""))
-        label = name + ((" ×" + qty) if qty else "")
-        services.draw_left(draw, (ix1 + icon_size + 10, top + 76, x2 - 10, top + 157), label, colors["text"],
-                           max_size=15, min_size=12, bold=True, max_lines=3, line_gap=1, valign="center")
-    return top + 188
-
+    left, right = 72, W - 72
+    gap_x = 12
+    slot_w = (right - left - gap_x * max(0, capacity - 1)) / capacity
+    current_y = content_top
+    for row, row_used in rows:
+        cursor_slot = 0
+        for unit, span in row:
+            x1 = int(round(left + cursor_slot * (slot_w + gap_x)))
+            x2 = int(round(x1 + slot_w * span + gap_x * max(0, span - 1)))
+            _draw_reward_node(services, base, draw, reward_renderer, unit, (x1, current_y, x2, current_y + row_h), colors)
+            cursor_slot += span
+        current_y += row_h + gap_y
+    return top + panel_h
 
 
 def _progress_point_icon(services, guide):
@@ -566,6 +784,14 @@ def _draw_tier_ruler(services, base, draw, guide, days, colors, top):
     if not contexts:
         return top
     ctx = contexts[0]
+    # Shared thresholds come from the activity definition; liquid progress uses
+    # the highest planned score across all seven days.
+    highest_score = 0.0
+    for _ctx in contexts:
+        try:
+            highest_score = max(highest_score, float(_ctx.get("score", _ctx.get("current", 0)) or 0))
+        except Exception:
+            pass
     thresholds = list(ctx.get("thresholds") or [])
     try:
         maximum = float(ctx.get("max") or 0)
@@ -617,14 +843,11 @@ def _draw_tier_ruler(services, base, draw, guide, days, colors, top):
     draw.line((tx1 + 9, ty2 - 3, tx2 - 9, ty2 - 3),
               fill=_mix(recessed, colors["shadow_light"], 0.78), width=2)
 
-    # Fill the groove using Day1's actual score. Keep a small inset so the
-    # darker/lighter groove lips remain visible around the coloured progress.
-    try:
-        day1_score = float(ctx.get("score") or 0)
-    except Exception:
-        day1_score = 0.0
-    if day1_score > 0:
-        frac = max(0.0, min(1.0, day1_score / max(1.0, visual_max)))
+    # Fill the groove using the highest planned score across the seven days.
+    # Keep the actual proportional relationship to the milestone scale.
+    plan_score = max(0.0, highest_score)
+    if plan_score > 0:
+        frac = max(0.0, min(1.0, plan_score / max(1.0, visual_max)))
         inner_x1 = tx1 + 4
         inner_x2 = tx2 - 4
         fill_x = int(round(inner_x1 + (inner_x2 - inner_x1) * frac))
@@ -660,13 +883,13 @@ def _draw_tier_ruler(services, base, draw, guide, days, colors, top):
         x = tx1 + (tx2 - tx1) * min(1.0, val / max(1.0, visual_max))
         # Render at high resolution and downsample: smoother molded bead, no hard
         # ring and no pixel-style stair stepping.
-        _draw_molded_tier_node(base, x, cy, colors, active=(val <= day1_score + 1e-6))
+        _draw_molded_tier_node(base, x, cy, colors, active=(val <= plan_score + 1e-6))
 
         label = services.clean(str(item.get("label") or "")).strip()
         score_text = _format_score(val)
         shown = (label + (" " + score_text if score_text else "")).strip()
         if shown:
-            node_label_color = colors["primary_dark"] if val <= day1_score + 1e-6 else colors["muted"]
+            node_label_color = colors["primary_dark"] if val <= plan_score + 1e-6 else colors["muted"]
             services.draw_center(draw, (int(x - 66), y1 + 7, int(x + 66), y1 + 33), shown,
                                  node_label_color, max_size=13, min_size=10,
                                  bold=True, max_lines=1, line_gap=0)
@@ -692,6 +915,59 @@ def _draw_metric_cell(services, base, draw, guide, item, box, colors):
     shown = (label + (" " + value if value else "")).strip()
     services.draw_left(draw, (tx, y1 + 3, x2 - 8, y2 - 3), shown, colors["text"],
                        max_size=14, min_size=12, bold=True, max_lines=1, line_gap=0, valign="center")
+
+
+# Only actions explicitly mentioning real-money spending are emphasized.
+# Do not flag ordinary in-game currency purchases (e.g. "钻石购买").
+_PAID_ACTION_PATTERN = re.compile(r"氪金|补氪|充值|付费")
+
+
+def _wrap_fixed_size(draw, text, font, max_width):
+    """Wrap to the available width without discarding source characters."""
+    result = []
+    for para in str(text or "").replace("\r", "").split("\n"):
+        if not para:
+            result.append("")
+            continue
+        current = ""
+        for char in para:
+            trial = current + char
+            bb = draw.textbbox((0, 0), trial, font=font)
+            if current and bb[2] - bb[0] > max_width:
+                result.append(current)
+                current = char
+            else:
+                current = trial
+        if current:
+            result.append(current)
+    return result or [""]
+
+
+def _draw_day_action_with_paid_emphasis(services, draw, box, action, colors, font_size, line_gap):
+    """Show paid-operation lines in bold dark red; preserve all other lines."""
+    if not _PAID_ACTION_PATTERN.search(action):
+        services.draw_left(draw, box, action, colors["text"],
+                           max_size=font_size, min_size=font_size,
+                           bold=False, max_lines=6, line_gap=line_gap, valign="center")
+        return
+
+    x1, y1, x2, y2 = map(int, box)
+    regular = services.get_font(font_size, False)
+    bold = services.get_font(font_size, True)
+    text_rows = []
+    for paragraph in action.replace("\r", "").split("\n"):
+        paid = bool(_PAID_ACTION_PATTERN.search(paragraph))
+        font = bold if paid else regular
+        for line in _wrap_fixed_size(draw, paragraph, font, x2 - x1):
+            bb = draw.textbbox((0, 0), line or " ", font=font)
+            text_rows.append((line, paid, font, bb[3] - bb[1]))
+
+    total_h = sum(row[3] for row in text_rows) + line_gap * max(0, len(text_rows) - 1)
+    y = y1 + (y2 - y1 - total_h) / 2
+    for line, paid, font, height in text_rows:
+        draw.text((x1, y), line, font=font,
+                  fill="#AC383B" if paid else colors["text"])
+        y += height + line_gap
 
 
 def _draw_day_card(services, base, draw, guide, info, box, colors, rcfg, shared_action_size, shared_metric_area_h):
@@ -730,9 +1006,10 @@ def _draw_day_card(services, base, draw, guide, info, box, colors, rcfg, shared_
     action_box = (x1 + 24, y1 + 57, action_x2, y2 - 16)
 
     action = services.clean(str(info.get("action") or "按计划执行"))
-    services.draw_left(draw, action_box, action, colors["text"],
-                       max_size=shared_action_size, min_size=shared_action_size,
-                       bold=False, max_lines=6, line_gap=int(rcfg.get("day_action_line_gap", 4) or 4), valign="center")
+    _draw_day_action_with_paid_emphasis(
+        services, draw, action_box, action, colors, shared_action_size,
+        int(rcfg.get("day_action_line_gap", 4) or 4),
+    )
 
     if metrics:
         mx1, mx2 = x2 - metric_w, x2 - 18
@@ -770,6 +1047,24 @@ def _day_weights(days):
     return weights
 
 
+def _risk_text_layout(services, draw, risk):
+    """Keep every tip at 20px and give wrapped lines a hanging indent."""
+    font_size, gap, item_gap = 20, 5, 7
+    font = services.get_font(font_size, False)
+    # The bullet is placed separately, leaving all continuation lines aligned.
+    text_width = int(services.W) - 72 - 154
+    rows = []
+    for index, item in enumerate(risk):
+        for i, line in enumerate(_wrap_fixed_size(draw, item, font, text_width)):
+            bb = draw.textbbox((0, 0), line or " ", font=font)
+            rows.append((line, i == 0, bb[3] - bb[1], index > 0 and i == 0))
+    total_h = sum(row[2] for row in rows) + gap * max(0, len(rows) - 1)
+    total_h += max(0, len(risk) - 1) * (item_gap - gap)
+    # Avoid shrinking risk text: grow the card instead and rebalance D1-D7 space.
+    risk_h = max(164, int(math.ceil(total_h + 87)))
+    return rows, font, gap, item_gap, total_h, risk_h
+
+
 def _draw_risk(services, base, draw, guide, colors, top, bottom):
     tools = SharedRendererTools(services)
     risk = tools.risk_items(guide)
@@ -777,8 +1072,6 @@ def _draw_risk(services, base, draw, guide, colors, top, bottom):
         return
     W = int(services.W)
     box = (48, top, W - 48, bottom)
-    # Risk stays red in every accent variant; the original soft-card material
-    # is retained, only the alert surface hue changes.
     risk_surface = _mix(colors["surface"], colors["warning_soft"], 0.78)
     _soft_panel(base, box, 25, risk_surface, colors["shadow_dark"], colors["shadow_light"],
                 shadow=6, blur=9, dark_alpha=68, light_alpha=188)
@@ -790,12 +1083,21 @@ def _draw_risk(services, base, draw, guide, colors, top, bottom):
     cx = (icon_box[0] + icon_box[2]) / 2 + 0.5
     cy = (icon_box[1] + icon_box[3]) / 2 + 1.0
     draw.text((cx - tw / 2 - bb[0], cy - th / 2 - bb[1]), "!", font=font, fill="#FFFFFF")
-    services.draw_left(draw, (132, top + 14, 282, top + 50), "风险提示", colors["warning"],
-                       max_size=19, min_size=16, bold=True, max_lines=1, valign="center")
-    text = "\n".join("• " + x for x in risk)
-    risk_text = _mix(colors["warning"], "#551F1B", 0.34)
-    services.draw_left(draw, (132, top + 48, W - 72, bottom - 14), text, risk_text,
-                       max_size=17, min_size=14, bold=False, max_lines=5, line_gap=3, valign="center")
+    services.draw_left(draw, (132, top + 12, 298, top + 52), "风险提示", colors["warning"],
+                       max_size=22, min_size=22, bold=True, max_lines=1, valign="center")
+
+    rows, font, line_gap, item_gap, text_height, _ = _risk_text_layout(services, draw, risk)
+    # The warning text is deliberately dark and crisp against the pastel card.
+    text_color = "#73312F"
+    area_top, area_bottom = top + 55, bottom - 16
+    y = area_top + max(0, (area_bottom - area_top - text_height) / 2)
+    for i, (line, starts_item, height, new_item) in enumerate(rows):
+        if i:
+            y += item_gap if new_item else line_gap
+        if starts_item:
+            draw.text((132, y), "•", font=font, fill=colors["warning"])
+        draw.text((154, y), line, font=font, fill=text_color)
+        y += height
 
 
 def _draw_footer(services, base, draw, guide, colors, footer_h):
@@ -825,14 +1127,14 @@ def _draw_footer(services, base, draw, guide, colors, footer_h):
     chosen = None
     max_text_w = W - 180
     for size in range(17, 13, -1):
-        font = services.get_font(size, False)
+        font = services.get_font(size, True)
         bb = draw.textbbox((0, 0), text or " ", font=font)
         tw = bb[2] - bb[0]
         if tw <= max_text_w:
             chosen = (font, bb, tw)
             break
     if chosen is None:
-        font = services.get_font(14, False)
+        font = services.get_font(14, True)
         bb = draw.textbbox((0, 0), text or " ", font=font)
         chosen = (font, bb, bb[2] - bb[0])
     font, bb, tw = chosen
@@ -875,7 +1177,8 @@ def _draw_footer(services, base, draw, guide, colors, footer_h):
         text_x = start_x
 
     th = bb[3] - bb[1]
-    draw.text((text_x, cy - th / 2 - bb[1]), text, font=font, fill=colors["muted"])
+    footer_text = _mix(colors["primary_dark"], colors["text"], 0.42)
+    draw.text((text_x, cy - th / 2 - bb[1]), text, font=font, fill=footer_text)
 
 
 def _render_impl(guide, out_path: Path, services):
@@ -967,7 +1270,7 @@ def _render_impl(guide, out_path: Path, services):
     # Reserve readable risk/footer first, then give the rest to D1-D7.
     footer_h = int(rcfg.get("footer_height", 72) or 72)
     risk_items = tools.risk_items(guide)
-    risk_h = 148 if risk_items else 0
+    risk_h = _risk_text_layout(services, draw, risk_items)[5] if risk_items else 0
     bottom_padding = 24
     plan_bottom = H - footer_h - risk_h - bottom_padding - (14 if risk_h else 0)
     gap = 10
